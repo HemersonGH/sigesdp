@@ -8,7 +8,7 @@ O sistema deverá prover uma maneira para gestão das atividades de um docente/p
 
 ### 1. Documentação Técnica
 
-- 1.1 [Tecnologias Utilizadas](tecnologias)
+- 1.1 [Tecnologias Utilizadas](https://github.com/HemersonGH/sigesdp/wiki/tecnologias)
 - 1.2 [Configurações do ambiente de desenvolvimento](configuracoes-ambiente)
 - 1.3 [Padrões de Código](padroes-codigos)
 - 1.4 [Padrões e modelo do Banco de Dados](padroes-modelo-bd)
