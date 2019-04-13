@@ -10,7 +10,7 @@ O sistema deverá prover uma maneira para gestão das atividades de um docente/p
 
 - 1.1 [Tecnologias Utilizadas](https://github.com/HemersonGH/sigesdp/wiki/tecnologias)
 - 1.2 [Configurações do ambiente de desenvolvimento](https://github.com/HemersonGH/sigesdp/wiki/configuracoes-ambiente)
-- 1.3 [Padrões de Código](https://github.com/HemersonGH/sigesdp/wiki/padroes-codigos/padroes-codigos))
+- 1.3 [Padrões de Código](https://github.com/HemersonGH/sigesdp/wiki/padroes-codigos/padroes-codigos)
 - 1.4 [Padrões e modelo do Banco de Dados](https://github.com/HemersonGH/sigesdp/wiki/padroes-modelo-bd)
 - 1.5 [Configurações do Manual do Usuário](https://github.com/HemersonGH/sigesdp/wiki/configuracoes-manual)
 - 1.6 [Tutoriais gerais](https://github.com/HemersonGH/sigesdp/wiki/tutoriais-gerais)
