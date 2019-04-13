@@ -1,9 +1,4 @@
-# SIGESDP
-- Sistema de Gestão de Docentes/Pesquisadores
-
-O sistema deverá prover uma maneira para gestão das atividades de um docente/pesquisador.
-
-## Sistema de Gestão de Professores/Pesquisadores
+## Sistema de Gestão de Professores/Pesquisadores - SIGESDP
 
 Início do desenvolvimento: Abril de 2019
 
