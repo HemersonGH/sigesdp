@@ -29,6 +29,9 @@ O sistema deverá prover uma maneira para gestão das atividades de um docente/p
 - 3.2 [Versões e Changelogs](https://github.com/HemersonGH/sigesdp/wiki/versoes-changelogs)
 - 3.3 [Controle de Deploys](https://github.com/HemersonGH/sigesdp/wiki/controle-deploys)
 
+### 4. Atividades
+- 4.1 [Itens que serão componentizados](https://drive.google.com/open?id=1-AW3FwUCUqh4lUJeR1PiB-ylyowxgg0kMFx8keDXE8s)
+
 
 
 
