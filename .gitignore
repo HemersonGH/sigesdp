@@ -1,1 +1,8 @@
 /bin/
+backend/.classpath
+backend/.project
+backend/.settings/*
+
+backend/lib/*
+backend/tmp/*
+backend/eclipse/*

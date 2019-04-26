@@ -1,28 +1,35 @@
 package models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import play.db.jpa.GenericModel;
+
 @Entity
-@Table(schema = Config.SCHEMA_SIGESDP, name = "usuario")
-public class Usuario extends Models {
+@Table(schema = "sigesdp", name = "usuario")
+public class Usuario extends GenericModel {
 
 	@Id
 	@Column(name = "id_usuario")
-	private Long id_usuario;
-	
+	private Long id;
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "senha")
 	private String senha;
 
 	public Long getIdUsuario() {
-		return id_usuario;
+		return id;
 	}
 
-	public void setIdUsuario(Long id_usuario) {
-		this.id_usuario = id_usuario;
+	public void setIdUsuario(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {

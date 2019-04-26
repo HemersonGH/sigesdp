@@ -1,5 +1,12 @@
 # Application dependencies
 
 require:
-    - play
+    - play:
+        exclude:
+            - org.hibernate -> *
+            - org.postgresql -> *
     - play -> docviewer
+    - org.postgresql -> postgresql 42.2.1
+    - org.hibernate -> hibernate-core 5.2.12.Final
+    - net.sf.flexjson -> flexjson 3.3
+    - org.apache.tika -> tika-core 1.7
