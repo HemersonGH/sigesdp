@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS sigesdp.disciplina (
     id_professor INTEGER NOT NULL,
     id_departamento INTEGER NOT NULL,
     PRIMARY KEY (id_disciplina, id_professor),
-    CONSTRAINT fk_disciplina_professor FOREIGN KEY (id_professor) REFERENCES sigesdp.professor(id_professor),
-    CONSTRAINT fk_disciplina_departamento FOREIGN KEY (id_departamento) REFERENCES sigesdp.departamento (id_departamento)
+    CONSTRAINT fk_disciplina_professor FOREIGN KEY (id_professor) REFERENCES sigesdp.professor(id),
+    CONSTRAINT fk_disciplina_departamento FOREIGN KEY (id_departamento) REFERENCES sigesdp.departamento (id)
 );
 
 -------------------------- COMENTARIOS -------------------------- 
@@ -26,9 +26,9 @@ COMMENT ON COLUMN sigesdp.disciplina.horario IS 'Horário da disciplina.';
 COMMENT ON COLUMN sigesdp.disciplina.id_professor IS 'Identificador do professor que responsável pela disciplina.';
 COMMENT ON COLUMN sigesdp.disciplina.id_departamento IS 'Identificador do departamento da disciplina.';
 
-
 -------------------------- GRANTS AND SEQUENCES --------------------------
-GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE sigesdp.disciplina TO sigesdp_pa;
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE sigesdp.disciplina TO sigesdp_dev;
+GRANT SELECT, USAGE ON SEQUENCE sigesdp.disciplina_id_seq TO sigesdp_dev;
 ALTER TABLE sigesdp.disciplina OWNER TO postgres;
 
 # --- !Downs

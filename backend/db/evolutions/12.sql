@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS sigesdp.rel_prof_aluno (
     id_professor INTEGER NOT NULL,
     id_aluno INTEGER NOT NULL,
     PRIMARY KEY (id_professor, id_aluno),
-    CONSTRAINT fk_professor_has_aluno_professor FOREIGN KEY (id_professor) REFERENCES sigesdp.professor(id_professor),
-    CONSTRAINT fk_professor_has_aluno_aluno FOREIGN KEY (id_aluno) REFERENCES sigesdp.aluno (id_aluno)
+    CONSTRAINT fk_professor_has_aluno_professor FOREIGN KEY (id_professor) REFERENCES sigesdp.professor(id),
+    CONSTRAINT fk_professor_has_aluno_aluno FOREIGN KEY (id_aluno) REFERENCES sigesdp.aluno (id)
 );
 
 -------------------------- COMENTARIOS -------------------------- 
@@ -14,9 +14,9 @@ COMMENT ON TABLE sigesdp.rel_prof_aluno IS 'Entidade responsável por armazenar 
 COMMENT ON COLUMN sigesdp.rel_prof_aluno.id_professor IS 'Identificador do professor que orienta o aluno.';
 COMMENT ON COLUMN sigesdp.rel_prof_aluno.id_aluno IS 'Identificador do aluno.';
 
-
 -------------------------- GRANTS AND SEQUENCES --------------------------
-GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE sigesdp.rel_prof_aluno TO sigesdp_pa;
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE sigesdp.rel_prof_aluno TO sigesdp_dev;
+GRANT SELECT, USAGE ON SEQUENCE sigesdp.rel_prof_aluno_id_seq TO sigesdp_dev;
 ALTER TABLE sigesdp.rel_prof_aluno OWNER TO postgres;
 
 # --- !Downs

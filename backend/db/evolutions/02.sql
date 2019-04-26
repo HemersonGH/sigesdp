@@ -2,24 +2,22 @@
 
 -------------------------- USUARIO --------------------------     
 CREATE TABLE IF NOT EXISTS sigesdp.usuario (
-    id_usuario SERIAL NOT NULL,
-    nome VARCHAR(100) NOT NULL,
+    id SERIAL NOT NULL,
     email VARCHAR(100) NOT NULL,
     senha VARCHAR(64) NOT NULL,
-    PRIMARY KEY (id_usuario)
+    PRIMARY KEY (id)
 );
 
 -------------------------- COMENTARIOS -------------------------- 
 COMMENT ON TABLE sigesdp.usuario IS 'Entidade responsável por armazenar os usuários do sistema.';
-COMMENT ON COLUMN sigesdp.usuario.id_usuario IS 'Identificador único do usuário.';
-COMMENT ON COLUMN sigesdp.usuario.nome IS 'Nome do usuário.';
+COMMENT ON COLUMN sigesdp.usuario.id IS 'Identificador único do usuário.';
 COMMENT ON COLUMN sigesdp.usuario.email IS 'E-mail do usuário.';
 COMMENT ON COLUMN sigesdp.usuario.senha IS 'Senha do usuário.';
 
 -------------------------- GRANTS AND SEQUENCES --------------------------
-GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE sigesdp.usuario TO sigesdp_pa;
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE sigesdp.usuario TO sigesdp_dev;
+GRANT SELECT, USAGE ON SEQUENCE sigesdp.usuario_id_seq TO sigesdp_dev;
 ALTER TABLE sigesdp.usuario OWNER TO postgres;
-
 
 # --- !Downs
 

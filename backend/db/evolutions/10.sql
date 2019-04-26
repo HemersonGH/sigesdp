@@ -2,23 +2,24 @@
 
 -------------------------- ALUNO -------------------------- 
 CREATE TABLE IF NOT EXISTS sigesdp.aluno (
-    id_aluno SERIAL NOT NULL,
+    id SERIAL NOT NULL,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     id_curso_aluno INTEGER NOT NULL,
-    PRIMARY KEY (id_aluno),
-    CONSTRAINT fk_aluno_curso FOREIGN KEY (id_curso_aluno) REFERENCES sigesdp.curso (id_curso)
+    PRIMARY KEY (id),
+    CONSTRAINT fk_aluno_curso FOREIGN KEY (id_curso_aluno) REFERENCES sigesdp.curso (id)
 );
 
 -------------------------- COMENTARIOS -------------------------- 
 COMMENT ON TABLE sigesdp.aluno IS 'Entidade responsável por armazenar os alunos dos projetos de pesquisa do sistema.';
-COMMENT ON COLUMN sigesdp.aluno.id_aluno IS 'Identificador único do aluno.';
+COMMENT ON COLUMN sigesdp.aluno.id IS 'Identificador único do aluno.';
 COMMENT ON COLUMN sigesdp.aluno.nome IS 'Nome do aluno.';
 COMMENT ON COLUMN sigesdp.aluno.email IS 'Email do aluno.';
 COMMENT ON COLUMN sigesdp.aluno.id_curso_aluno IS 'Identificador único do curso que o aluno realiza.';
 
 -------------------------- GRANTS AND SEQUENCES --------------------------
-GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE sigesdp.aluno TO sigesdp_pa;
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE sigesdp.aluno TO sigesdp_dev;
+GRANT SELECT, USAGE ON SEQUENCE sigesdp.aluno_id_seq TO sigesdp_dev;
 ALTER TABLE sigesdp.aluno OWNER TO postgres;
 
 # --- !Downs
