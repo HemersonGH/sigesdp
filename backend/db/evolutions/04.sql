@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS sigesdp.professor (
 -------------------------- COMENTARIOS -------------------------- 
 COMMENT ON TABLE sigesdp.professor IS 'Entidade responsável por armazenar os professores do sistema.';
 COMMENT ON COLUMN sigesdp.professor.id IS 'Identificador único do professor.';
-COMMENT ON COLUMN sigesdp.professor.nome IS 'Nome do professor.'
+COMMENT ON COLUMN sigesdp.professor.nome IS 'Nome do professor.';
 COMMENT ON COLUMN sigesdp.professor.curriculo_lates IS 'Curriculo lates do professor.';
 COMMENT ON COLUMN sigesdp.professor.area_interesse IS 'Área de interesse do professor.';
 COMMENT ON COLUMN sigesdp.professor.formacao_academica IS 'Formação acadêmica do professor.';

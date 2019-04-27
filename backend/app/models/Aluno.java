@@ -11,10 +11,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import play.data.validation.Required;
+import play.db.jpa.GenericModel;
 
 @Entity
 @Table(schema = "sigesdp", name = "aluno")
-public class Aluno {
+public class Aluno extends GenericModel {
 
 	private static final String SEQ = "sigesdp.aluno_id_seq";
 
@@ -31,5 +32,21 @@ public class Aluno {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_professor", referencedColumnName = "id")
 	private Professor professor;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 }

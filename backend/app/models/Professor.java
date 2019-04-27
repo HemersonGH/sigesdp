@@ -16,10 +16,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 
 import play.data.validation.Required;
+import play.db.jpa.GenericModel;
 
 @Entity
 @Table(schema = "sigesdp", name = "professor")
-public class Professor {
+public class Professor extends GenericModel {
 
 	private static final String SEQ = "sigesdp.professor_id_seq";
 
@@ -27,6 +28,9 @@ public class Professor {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ)
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
 	private Long id;
+	
+	@Required
+	private String nome;
 
 	@Required
 	@Column(name = "curriculo_lates")
@@ -43,11 +47,11 @@ public class Professor {
 	@Required
 	private String telefone;
 
-//	private Long id_departamento;
+//	private Long id departamento;
 
 	@Required
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
+	@JoinColumn(name = "id", referencedColumnName = "id")
 	private Usuario usuario;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = Aluno.class)

@@ -5,8 +5,10 @@ CREATE TABLE IF NOT EXISTS sigesdp.aluno (
     id SERIAL NOT NULL,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
+    id_professor INTEGER NOT NULL,
     id_curso_aluno INTEGER NOT NULL,
     PRIMARY KEY (id),
+    CONSTRAINT fk_professor FOREIGN KEY (id_professor) REFERENCES sigesdp.professor (id),
     CONSTRAINT fk_aluno_curso FOREIGN KEY (id_curso_aluno) REFERENCES sigesdp.curso (id)
 );
 
@@ -15,6 +17,7 @@ COMMENT ON TABLE sigesdp.aluno IS 'Entidade responsável por armazenar os alunos
 COMMENT ON COLUMN sigesdp.aluno.id IS 'Identificador único do aluno.';
 COMMENT ON COLUMN sigesdp.aluno.nome IS 'Nome do aluno.';
 COMMENT ON COLUMN sigesdp.aluno.email IS 'Email do aluno.';
+COMMENT ON COLUMN sigesdp.aluno.id_professor IS 'Identificador único do orientador do aluno.';
 COMMENT ON COLUMN sigesdp.aluno.id_curso_aluno IS 'Identificador único do curso que o aluno realiza.';
 
 -------------------------- GRANTS AND SEQUENCES --------------------------

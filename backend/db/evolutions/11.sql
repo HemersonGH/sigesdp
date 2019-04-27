@@ -2,7 +2,7 @@
 
 -------------------------- DISCIPLINA --------------------------    
 CREATE TABLE IF NOT EXISTS sigesdp.disciplina (
-    id_disciplina SERIAL NOT NULL,
+    id SERIAL NOT NULL,
     disciplina VARCHAR(150) NOT NULL,
     codigo_disciplina VARCHAR(10) NOT NULL,
     carga_horaria VARCHAR(45) NOT NULL,
@@ -10,14 +10,14 @@ CREATE TABLE IF NOT EXISTS sigesdp.disciplina (
     horario VARCHAR(50) NOT NULL,
     id_professor INTEGER NOT NULL,
     id_departamento INTEGER NOT NULL,
-    PRIMARY KEY (id_disciplina, id_professor),
+    PRIMARY KEY (id, id_professor),
     CONSTRAINT fk_disciplina_professor FOREIGN KEY (id_professor) REFERENCES sigesdp.professor(id),
     CONSTRAINT fk_disciplina_departamento FOREIGN KEY (id_departamento) REFERENCES sigesdp.departamento (id)
 );
 
--------------------------- COMENTARIOS -------------------------- 
+-------------------------- COMENTARIOS --------------------------
 COMMENT ON TABLE sigesdp.disciplina IS 'Entidade responsável por armazenar as disciplinas dos professores do sistema.';
-COMMENT ON COLUMN sigesdp.disciplina.id_disciplina IS 'Identificador único da disciplina.';
+COMMENT ON COLUMN sigesdp.disciplina.id IS 'Identificador único da disciplina.';
 COMMENT ON COLUMN sigesdp.disciplina.disciplina IS 'Nome da disciplina.';
 COMMENT ON COLUMN sigesdp.disciplina.codigo_disciplina IS 'Código de identificação da disciplina.';
 COMMENT ON COLUMN sigesdp.disciplina.carga_horaria IS 'Carga horária da disciplina.';
