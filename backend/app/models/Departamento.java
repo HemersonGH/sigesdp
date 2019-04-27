@@ -1,19 +1,42 @@
 package models;
 
-public class Departamento {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+import play.data.validation.Required;
+import play.db.jpa.GenericModel;
+
+@Entity
+@Table(schema = "sigesdp", name = "departamento")
+public class Departamento extends GenericModel {
+	private static final String SEQ = "sigesdp.departamento_id_seq";
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ)
+	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
 	private Long id;
 
-	private String departamento;
+	@Required
+	private String nome;
 
-	private String chefe_departamento;
+	@Required
+	private String chefe;
 
+	@Required
 	private String endereco;
 
+	@Required
 	private String telefone;
 
+	@Required
 	private String sigla;
 
+	@Required
 	private String descricao;
 
 	public Long getId() {
@@ -24,20 +47,20 @@ public class Departamento {
 		this.id = id;
 	}
 
-	public String getDepartamento() {
-		return departamento;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDepartamento(String departamento) {
-		this.departamento = departamento;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getChefe_departamento() {
-		return chefe_departamento;
+	public String getChefe() {
+		return chefe;
 	}
 
 	public void setChefe_departamento(String chefe_departamento) {
-		this.chefe_departamento = chefe_departamento;
+		this.chefe = chefe_departamento;
 	}
 
 	public String getEndereco() {

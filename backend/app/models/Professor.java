@@ -16,12 +16,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 
 import play.data.validation.Required;
+import play.data.validation.Validation;
 import play.db.jpa.GenericModel;
+
+import exceptions.ValidationException;
 
 @Entity
 @Table(schema = "sigesdp", name = "professor")
 public class Professor extends GenericModel {
-
 	private static final String SEQ = "sigesdp.professor_id_seq";
 
 	@Id
@@ -47,7 +49,10 @@ public class Professor extends GenericModel {
 	@Required
 	private String telefone;
 
-//	private Long id departamento;
+	@Required
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_departamento", referencedColumnName = "id")
+	private Departamento departamento;
 
 	@Required
 	@OneToOne(cascade = CascadeType.ALL)
@@ -56,5 +61,29 @@ public class Professor extends GenericModel {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = Aluno.class)
 	private List<Aluno> alunos;
+
+	public void salvar(Professor professor) {
+		this._save();
+	}
+	
+//	public void validate() {
+//		Validation.current().clear();
+//
+//		if(!Validation.current().valid(this).ok) {
+//			throw new ValidationException(Validation.current().errors());
+//		}
+//	}
+//
+//
+//	public static Professor createByProfessor(Professor professor) {
+//		Usuario usuario = new Usuario();
+//		
+//		usuario = professor.usuario;
+//		
+//		
+//		return professor;
+//	}
+	
+	
 	
 }
