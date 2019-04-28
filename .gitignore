@@ -1,4 +1,5 @@
 /bin/
+/bin/*
 backend/.classpath
 backend/.project
 backend/.settings/*
