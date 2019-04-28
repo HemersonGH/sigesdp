@@ -24,48 +24,127 @@ import exceptions.ValidationException;
 @Entity
 @Table(schema = "sigesdp", name = "professor")
 public class Professor extends GenericModel {
-	private static final String SEQ = "sigesdp.professor_id_seq";
+	public static final String SEQ = "sigesdp.professor_id_seq";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ)
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
-	private Long id;
-	
+	public Long id;
+
 	@Required
-	private String nome;
+	public String nome;
 
 	@Required
 	@Column(name = "curriculo_lates")
-	private String curriculoLates;
+	public String curriculoLates;
 
 	@Required
 	@Column(name = "area_interesse")
-	private String areaInteresse;
+	public String areaInteresse;
 
 	@Required
 	@Column(name = "formacao_academica")
-	private String formacaoAcademica;
+	public String formacaoAcademica;
+	
+	@Required
+	public String sala;
 
 	@Required
-	private String telefone;
+	public String telefone;
 
 	@Required
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_departamento", referencedColumnName = "id")
-	private Departamento departamento;
+	public Departamento departamento;
 
 	@Required
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", referencedColumnName = "id")
-	private Usuario usuario;
+	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
+	public Usuario usuario;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = Aluno.class)
-	private List<Aluno> alunos;
+	public List<Aluno> alunos;
 
-	public void salvar(Professor professor) {
-		this._save();
+	public Long getId() {
+		return this.id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCurriculoLates() {
+		return this.curriculoLates;
+	}
+
+	public void setCurriculoLates(String curriculoLates) {
+		this.curriculoLates = curriculoLates;
+	}
+
+	public String getAreaInteresse() {
+		return this.areaInteresse;
+	}
+
+	public void setAreaInteresse(String areaInteresse) {
+		this.areaInteresse = areaInteresse;
+	}
+
+	public String getFormacaoAcademica() {
+		return this.formacaoAcademica;
 	}
 	
+	public void setSala(String sala) {
+		this.sala = sala;
+	}
+
+	public String getSala() {
+		return this.sala;
+	}
+
+	public void setFormacaoAcademica(String formacaoAcademica) {
+		this.formacaoAcademica = formacaoAcademica;
+	}
+
+	public String getTelefone() {
+		return this.telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public Departamento getDepartamento() {
+		return this.departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Aluno> getAlunos() {
+		return this.alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
 //	public void validate() {
 //		Validation.current().clear();
 //
@@ -83,7 +162,8 @@ public class Professor extends GenericModel {
 //		
 //		return professor;
 //	}
-	
-	
-	
+
+	public void salvar(Professor professor) {
+		this.save();
+	}
 }

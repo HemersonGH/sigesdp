@@ -1,5 +1,7 @@
 package models;
 
+import java.io.IOException;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,25 +24,27 @@ public class Departamento extends GenericModel {
 	private Long id;
 
 	@Required
+	@Column(name = "nome")
 	private String nome;
 
 	@Required
+	@Column(name = "chefe")
 	private String chefe;
 
 	@Required
-	private String endereco;
-
-	@Required
+	@Column(name = "telefone")
 	private String telefone;
 
 	@Required
+	@Column(name = "sigla")
 	private String sigla;
 
 	@Required
+	@Column(name = "descricao")
 	private String descricao;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -48,7 +52,7 @@ public class Departamento extends GenericModel {
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -56,23 +60,15 @@ public class Departamento extends GenericModel {
 	}
 
 	public String getChefe() {
-		return chefe;
+		return this.chefe;
 	}
 
-	public void setChefe_departamento(String chefe_departamento) {
-		this.chefe = chefe_departamento;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setChefe(String chefe) {
+		this.chefe = chefe;
 	}
 
 	public String getTelefone() {
-		return telefone;
+		return this.telefone;
 	}
 
 	public void setTelefone(String telefone) {
@@ -80,7 +76,7 @@ public class Departamento extends GenericModel {
 	}
 
 	public String getSigla() {
-		return sigla;
+		return this.sigla;
 	}
 
 	public void setSigla(String sigla) {
@@ -88,10 +84,20 @@ public class Departamento extends GenericModel {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public void salvar(Departamento departamento) {
+		for (int i = 0; i < 13; i++) { System.out.println("\n"); }
+		System.out.println("\n" + "--------------------------------------------------------");
+		System.out.println(departamento);
+		System.out.println("Nome: " + departamento.getNome());
+		System.out.println("--------------------------------------------------------");
+		
+//		this.save();
 	}
 }
