@@ -9,8 +9,9 @@ public class Departamentos extends DefaultController {
 //
 //		Professor usuario = Professor.createByProfessor(professor);
 //
-		renderJSON(departamento, DepartamentoSerializer.save);
-		
+//		renderJSON(departamento, DepartamentoSerializer.save);
+
+//		System.out.println(request.current().params.get("body"));
 		departamento.salvar(departamento);
 	}
 }

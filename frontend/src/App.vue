@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.test
+  div.body
     TheHeader
     TheMenuLateral
     router-view
@@ -19,9 +19,8 @@ export default {
 }
 </script>
 
-<style scoped>
-  .error {
-    border: solid 1px firebrick;
-    border-radius: 5px;
-  }
+<style>
+.body {
+  height: 100vh;
+}
 </style>

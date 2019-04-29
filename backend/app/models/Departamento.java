@@ -92,12 +92,14 @@ public class Departamento extends GenericModel {
 	}
 
 	public void salvar(Departamento departamento) {
-		for (int i = 0; i < 13; i++) { System.out.println("\n"); }
+		for (int i = 0; i < 13; i++) {
+			System.out.println("\n");
+		}
 		System.out.println("\n" + "--------------------------------------------------------");
 		System.out.println(departamento);
 		System.out.println("Nome: " + departamento.getNome());
 		System.out.println("--------------------------------------------------------");
-		
+
 //		this.save();
 	}
 }

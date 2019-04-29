@@ -1,23 +1,22 @@
 <template lang="pug">
-  div
-    .component-body
-      .nav
-        ul.ul
-          div(
-            v-for='item in itensMenu'
+  .component-body
+    .nav
+      ul.ul
+        div(
+          v-for='item in itensMenu'
+        )
+          //- el-tooltip(
+          //-   effect='dark',
+          //-   :content='item.nome',
+          //-   :disabled = 'windowWidth > 1365',
+          //-   placement="right"
+          //- )
+          li.menu-item(
+            :class='',
           )
-            //- el-tooltip(
-            //-   effect='dark',
-            //-   :content='item.nome',
-            //-   :disabled = 'windowWidth > 1365',
-            //-   placement="right"
-            //- )
-            li.menu-item(
-              :class='',
-            )
-              .menu-group
-                i.material-icons {{ item.icon }}
-                p.menu-text {{ item.nome }}
+            .menu-group
+              i.material-icons {{ item.icon }}
+              p.menu-text {{ item.nome }}
 </template>
 
 <script>
@@ -66,7 +65,7 @@ export default {
   color: #ffffffff;
   font-family: Helvetica, sans-serif;
   width: 10%;
-  height: 100%;
+  height: calc(100% - 65px);
 }
 
 .nav {
