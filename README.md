@@ -1,4 +1,4 @@
-## Sistema de Gestão de Professores/Pesquisadores - SIGESDP
+## Sistema de Gestão dos Docentes/Pesquisadores - SIGESDP
 
 Início do desenvolvimento: Abril de 2019
 
