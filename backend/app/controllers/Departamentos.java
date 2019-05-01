@@ -1,17 +1,18 @@
 package controllers;
 
+import java.util.List;
+
 import models.Departamento;
-import serializers.DepartamentoSerializer;
 
 public class Departamentos extends DefaultController {
 	public static void cadastraDepartamento(Departamento departamento) {
 //		validateParameters(departamento);
-//
-//		Professor usuario = Professor.createByProfessor(professor);
-//
-//		renderJSON(departamento, DepartamentoSerializer.save);
+		departamento.salvar();
+	}
 
-//		System.out.println(request.current().params.get("body"));
-		departamento.salvar(departamento);
+	public static void findAll() {
+		List<Departamento> departamentos = Departamento.findAll();
+//		List<Departamento> departamentos = Departamento.find("nome = :nome").setParameter("nome", "nome").fetch();
+		renderJSON(departamentos);
 	}
 }

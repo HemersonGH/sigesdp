@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import BotaoTheHeader from '@/components/shared/BotaoTheHeader.vue'
 
 export default {
@@ -51,9 +52,21 @@ export default {
     }
   },
 
-  computed: {},
+  methods: {
+    ...mapActions({
+      getDepartamentos: 'departamento/getDepartamentos'
+    })
+  },
 
-  methods: {}
+  computed: {
+    ...mapGetters({
+      departamentos: 'departamento/departamentos'
+    })
+  },
+
+  created () {
+    this.getDepartamentos()
+  }
 }
 </script>
 

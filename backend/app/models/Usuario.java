@@ -15,12 +15,12 @@ import play.db.jpa.GenericModel;
 @Table(schema = "sigesdp", name = "usuario")
 public class Usuario extends GenericModel {
 	private static final String SEQ = "sigesdp.usuario_id_seq";
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ)
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
 	private Long id;
-	
+
 	@Required
 	private String email;
 

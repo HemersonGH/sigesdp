@@ -45,7 +45,7 @@ public class Professor extends GenericModel {
 	@Required
 	@Column(name = "formacao_academica")
 	public String formacaoAcademica;
-	
+
 	@Required
 	public String sala;
 
@@ -100,7 +100,7 @@ public class Professor extends GenericModel {
 	public String getFormacaoAcademica() {
 		return this.formacaoAcademica;
 	}
-	
+
 	public void setSala(String sala) {
 		this.sala = sala;
 	}

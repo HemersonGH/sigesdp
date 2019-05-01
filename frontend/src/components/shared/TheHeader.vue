@@ -25,12 +25,6 @@ export default {
     return {
       title: 'Sistema de Gestão dos Docentes/Pesquisadores'
     }
-  },
-
-  computed: {
-  },
-
-  methods: {
   }
 }
 </script>
