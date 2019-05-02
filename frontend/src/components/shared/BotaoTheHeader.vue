@@ -18,10 +18,10 @@
                     v-icon(
                         v-else
                     ) home
-            span(
+            span.ajustSize(
                 v-if='true'
             ) Acessar o SiGESDP
-            span(
+            span.ajustSize(
                 v-else
             ) Sair do sistema
 </template>
@@ -41,5 +41,8 @@ export default {
 <style scoped>
     .styleButton {
         font-weight: bold;
+    }
+    .ajustSize {
+        width: max-content;
     }
 </style>
