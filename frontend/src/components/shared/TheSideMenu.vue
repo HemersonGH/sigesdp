@@ -32,8 +32,8 @@
       v-list-tile(
         v-for='(item, i) in itensMenu'
         :key='i'
-        :to='item.to'
-        :active-class='color'
+        :to='item.route'
+        active-class='red'
         avatar
         class='v-list-item'
       )
@@ -74,7 +74,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      logo: '@/assets/images/logo.png',
+      logo: 'logo.png',
       responsive: false,
       itensMenu: [
         {
@@ -102,7 +102,7 @@ export default {
     }),
 
     onResponsiveInverted () {
-      if (window.innerWidth < 991) {
+      if (window.innerWidth < 980) {
         this.responsive = true
       } else {
         this.responsive = false
@@ -118,11 +118,11 @@ export default {
 
     inputValue: {
       get () {
-        return this.$store.state.app.drawer
+        // return this.$store.state.app.drawer
       },
 
       set (val) {
-        this.setDrawer(val)
+        // this.setDrawer(val)
       }
     },
 
@@ -146,22 +146,44 @@ export default {
 }
 </script>
 
-<style scoped>
-/* .ajust {
-    height: calc(100% - 64px);
-  } */
+<style lang="scss" scoped>
+  /* .ajust {
+      height: calc(100% - 64px);
+    } */
 
-.bold {
-  font-weight: bold;
-}
+  .bold {
+    font-weight: bold;
+  }
 
-.style-side {
-  background-color: #35a349;
-  color: #ffffffff;
-  height: 100%;
-}
+  .style-side {
+    background-color: #35a349;
+    color: #ffffffff;
+    height: 100%;
+  }
 
-.v-tooltip__content {
-  width: max-content;
-}
+  .v-tooltip__content {
+    width: max-content;
+  }
+
+  #app-drawer {
+    .v-list__tile {
+      border-radius: 4px;
+
+      &--buy {
+        margin-top: auto;
+        margin-bottom: 17px;
+      }
+    }
+
+    .v-image__image--contain {
+      top: 9px;
+      height: 60%;
+    }
+
+    .search-input {
+      margin-bottom: 30px !important;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
 </style>
