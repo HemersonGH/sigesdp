@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.font
+  div.body
     TheHeader
     TheSideMenu
       template(slot='router')
@@ -24,13 +24,15 @@ export default {
   body {
     height: 100%;
     width: 100%;
+    font-family: Helvetica, sans-serif;
   }
+
+  .body {
+    height: 100vh;
+  }
+
   html {
     height: 100%;
     width: 100%;
-  }
-
-  .font{
-    font-family: Helvetica, sans-serif;
   }
 </style>

@@ -28,9 +28,10 @@ export default {
 
 <style scoped>
   .logo {
-    margin-top: 1.0vh;
-    height: 7.9vh;
-    width: 20.0vh;
+    margin-top: 2.5px;
+    margin-bottom: 1.5px;
+    height: 90%;
+    width: 90%;
   }
 
   .style-toolbar {

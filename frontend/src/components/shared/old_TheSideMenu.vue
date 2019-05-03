@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    v-layout(row)
+    v-layout.ajust(row)
       v-flex(
         xs1
       )
@@ -91,6 +91,9 @@ export default {
 </script>
 
 <style scoped>
+  .ajust {
+    height: 100%;
+  }
   .component-body {
     /* display: flex; */
     /* position: relative; */
