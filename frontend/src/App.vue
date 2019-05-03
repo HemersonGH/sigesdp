@@ -1,28 +1,36 @@
 <template lang="pug">
-  div.body
+  div.font
     TheHeader
-    TheMenuLateral
-    router-view
+    TheSideMenu
+      template(slot='router')
+        router-view
 </template>
 
 <script>
 import TheHeader from '@/components/shared/TheHeader.vue'
-import TheMenuLateral from '@/components/shared/TheMenuLateral.vue'
-import TheCard from '@/components/shared/TheCard.vue'
+import TheSideMenu from '@/components/shared/TheSideMenu.vue'
 
 export default {
   name: 'App',
 
   components: {
     TheHeader,
-    TheMenuLateral,
-    TheCard
+    TheSideMenu
   }
 }
 </script>
 
 <style>
-.body {
-  height: 100vh;
-}
+  body {
+    height: 100%;
+    width: 100%;
+  }
+  html {
+    height: 100%;
+    width: 100%;
+  }
+
+  .font{
+    font-family: Helvetica, sans-serif;
+  }
 </style>

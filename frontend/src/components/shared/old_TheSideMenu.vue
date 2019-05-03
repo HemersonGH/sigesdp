@@ -1,32 +1,42 @@
 <template lang="pug">
-  .component-body
-    .nav
-      ul.ul
-        div(
-          v-for='item in itensMenu'
-        )
-          v-tooltip(
-            :right='true'
-          )
-            template(
-              v-slot:activator='{ on }'
-            )
-              li.menu-item(
-                :class='',
-                v-on='on'
+  div
+    v-layout(row)
+      v-flex(
+        xs1
+      )
+        div.component-body
+          .nav
+            ul.ul
+              div(
+                v-for='item in itensMenu'
               )
-                .menu-group
-                  i.material-icons {{ item.icon }}
-                  p.menu-text {{ item.nome }} &nbsp
-            span(
-                v-if='item.nome == "Acadêmico"'
-            ) Acessar a área acadêmica
-            span(
-                v-if='item.nome == "Pesquisa"'
-            ) Acessar as pesquisas
-            span(
-                v-if='item.nome == "Cursos"'
-            ) Acessar os cursos
+                v-tooltip(
+                  :right='true'
+                )
+                  template(
+                    v-slot:activator='{ on }'
+                  )
+                    li.menu-item(
+                      :class='',
+                      v-on='on'
+                    )
+                      .menu-group
+                        i.material-icons {{ item.icon }}
+                        p.menu-text {{ item.nome }} &nbsp
+                  span(
+                      v-if='item.nome == "Acadêmico"'
+                  ) Acessar a área acadêmica
+                  span(
+                      v-if='item.nome == "Pesquisa"'
+                  ) Acessar as pesquisas
+                  span(
+                      v-if='item.nome == "Cursos"'
+                  ) Acessar os cursos
+      v-flex(
+        xs11
+      )
+        slot(name='router')
+      
 </template>
 
 <script>
@@ -34,7 +44,7 @@ import { mapActions, mapGetters } from 'vuex'
 import BotaoTheHeader from '@/components/shared/BotaoTheHeader.vue'
 
 export default {
-  name: 'TheMenuLateral',
+  name: 'TheSideMenu',
 
   components: {
     BotaoTheHeader
@@ -82,18 +92,18 @@ export default {
 
 <style scoped>
   .component-body {
-    display: flex;
-    position: relative;
+    /* display: flex; */
+    /* position: relative; */
     background-color: #35a349;
     color: #ffffffff;
     font-family: Helvetica, sans-serif;
-    width: 10%;
-    height: calc(100% - 65px);
+    /* width: 10%; */
+    height: 100%;
   }
 
-  .nav {
+  /* .nav {
     width: 100%;
-  }
+  } */
 
   .ul {
     padding: 0;

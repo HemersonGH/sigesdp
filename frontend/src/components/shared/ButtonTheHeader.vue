@@ -1,5 +1,4 @@
 <template lang="pug">
-    div
         v-tooltip(
             :bottom='true'
         )
@@ -7,8 +6,8 @@
                 v-slot:activator='{ on }'
             )
                 v-btn.styleButton(
+                    flat,
                     v-if='true',
-                    color='blue',
                     class='white--text',
                     v-on='on'
                 ) {{ labelBtn }} &nbsp
@@ -18,17 +17,17 @@
                     v-icon(
                         v-else
                     ) home
-            span.ajustSize(
+            span(
                 v-if='true'
             ) Acessar o SiGESDP
-            span.ajustSize(
+            span(
                 v-else
             ) Sair do sistema
 </template>
 
 <script>
 export default {
-  name: 'BotaoTheHeader',
+  name: 'ButtonTheHeader',
   props: {
     labelBtn: {
       type: String,
@@ -40,9 +39,11 @@ export default {
 
 <style scoped>
     .styleButton {
+        color: #ffffff;
         font-weight: bold;
     }
-    .ajustSize {
+
+    .v-tooltip__content {
         width: max-content;
     }
 </style>
