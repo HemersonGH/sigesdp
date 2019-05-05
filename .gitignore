@@ -7,3 +7,7 @@ backend/.settings/*
 backend/lib/*
 backend/tmp/*
 backend/eclipse/*
+
+.settings/*
+.project
+.classpath
