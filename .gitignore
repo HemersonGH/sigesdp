@@ -8,6 +8,6 @@ backend/lib/*
 backend/tmp/*
 backend/eclipse/*
 
-.settings/*
+.settings/
 .project
 .classpath
