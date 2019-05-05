@@ -1,38 +1,30 @@
 <template lang="pug">
-  div.body
-    TheHeader
-    TheSideMenu
-      template(slot='router')
-        router-view
+  v-app
+    Toolbar
+    SideMenu
+    Content
 </template>
 
 <script>
-import TheHeader from '@/components/shared/TheHeader.vue'
-import TheSideMenu from '@/components/shared/TheSideMenu.vue'
+import Toolbar from '@/components/shared/Toolbar.vue'
+import SideMenu from '@/components/shared/SideMenu.vue'
+import Content from '@/components/shared/Content.vue'
 
 export default {
   name: 'App',
 
   components: {
-    TheHeader,
-    TheSideMenu
+    Toolbar,
+    SideMenu,
+    Content
   }
 }
 </script>
 
-<style>
-  body {
-    height: 100%;
-    width: 100%;
-    font-family: Helvetica, sans-serif;
-  }
+<style lang="scss">
+@import '@/styles/index.scss';
 
-  .body {
-    height: 100vh;
-  }
-
-  html {
-    height: 100%;
-    width: 100%;
-  }
+.v-datatable thead th.column.sortable i {
+  vertical-align: unset;
+}
 </style>

@@ -1,1 +1,3 @@
 export const SET_DEPARTAMENTOS = 'SET_DEPARTAMENTOS'
+
+export const SET_MENU_SIDE = 'SET_MENU_SIDE'

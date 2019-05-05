@@ -1,0 +1,150 @@
+<template lang="pug">
+  v-navigation-drawer(
+    id='app-drawer'
+    app
+    v-model='changeValue'
+    persistent
+    mobile-break-point='980'
+    width='260'
+    dark
+  )
+    v-layout(
+      class='fill-height'
+      tag='v-list'
+      column
+    )
+      v-list-tile(
+        avatar
+      )
+        v-list-tile-avatar(
+          color='white'
+        )
+          v-img(
+            :src='logo'
+            height='45'
+            contain
+          )
+        v-list-tile-title.font-weight-bold.style-title.title S I G E S D P
+      v-divider
+      v-list-tile(
+        v-for='(item, i) in itensMenu'
+        :key='i'
+        :to='item.route'
+        active-class='blue'
+        avatar
+        class='v-list-item'
+      )
+        v-tooltip(
+          right
+        )
+          template(
+            v-slot:activator='{ on }'
+          )
+            v-list-tile-action(
+              v-on='on'
+            )
+              v-icon {{ item.icon }}
+            v-list-tile-title.font-weight-bold(
+              v-text='item.title'
+              v-on='on'
+            )
+          span(
+            v-if='item.title == "Acadêmico"'
+          ) Acesse a área acadêmica
+          span(
+            v-if='item.title == "Pesquisa"'
+          ) Acesse as pesquisas
+          span(
+            v-if='item.title == "Cursos"'
+          ) Acesse os cursos
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'SideMenu',
+
+  data () {
+    return {
+      responsive: false,
+      logo: './images/icone-ufla.png',
+      itensMenu: [
+        {
+          title: 'Acadêmico',
+          route: '/academico',
+          icon: 'account_balance'
+        },
+        {
+          title: 'Pesquisa',
+          route: '/pesquisa',
+          icon: 'find_in_page'
+        },
+        {
+          title: 'Cursos',
+          route: '/cursos',
+          icon: 'collections_bookmark'
+        }
+      ]
+    }
+  },
+
+  computed: {
+    ...mapGetters({
+      menu: 'menu/menu'
+    }),
+
+    changeValue: {
+      get () {
+        return this.$store.state.menu
+      }
+    }
+  },
+
+  mounted () {
+    this.onResponsiveInverted()
+    window.addEventListener('resize', this.onResponsiveInverted)
+  },
+
+  beforeDestroy () {
+    window.removeEventListener('resize', this.onResponsiveInverted)
+  },
+
+  methods: {
+    onResponsiveInverted () {
+      if (window.innerWidth < 980) {
+        this.responsive = true
+      } else {
+        this.responsive = false
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+#app-drawer {
+  .v-list__tile {
+    border-radius: 4px;
+
+    &--buy {
+      margin-top: auto;
+      margin-bottom: 17px;
+    }
+  }
+
+  .v-image__image--contain {
+    top: 9px;
+    height: 60%;
+  }
+}
+
+.style-title {
+  margin-left: 25px;
+  font-family: Roboto, sans-serif;
+}
+
+.v-tooltip__content {
+  width: max-content;
+}
+</style>

@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@mdi/font": "^3.6.95",
-    "@mdi/js": "^3.6.95",
     "@vue/cli-plugin-babel": "^3.6.0",
     "@vue/cli-plugin-e2e-nightwatch": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.6.0",
@@ -42,7 +41,13 @@
     "stylus-loader": "^3.0.1",
     "vue-cli-plugin-vuetify": "^0.5.0",
     "vue-template-compiler": "^2.5.21",
-    "vuetify-loader": "^1.0.5"
+    "vuetify-loader": "^1.0.5",
+    "chartist": "0.11.0",
+    "vue-chartist": "^2.1.2",
+    "vue-meta": "^1.5.2",
+    "vue-analytics": "^5.8.0",
+    "vue-i18n": "^7.4.0",
+    "vuex-router-sync": "^5.0.0"
   },
   "eslintConfig": {
     "root": true,

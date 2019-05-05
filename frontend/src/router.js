@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/Home.vue'
+import Academico from '@/views/Academico.vue'
 
 Vue.use(Router)
 
@@ -10,8 +10,15 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'academico',
+      component: Academico,
+      title: 'Acadêmico'
+    },
+    {
+      path: '/academico',
+      name: 'academico',
+      component: Academico,
+      title: 'Acadêmico'
     }
   ]
 })
