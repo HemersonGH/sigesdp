@@ -96,7 +96,10 @@ export default {
 
     changeValue: {
       get () {
-        return this.$store.state.menu
+        return this.menu
+      },
+      set () {
+
       }
     }
   },

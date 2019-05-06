@@ -69,7 +69,7 @@ export default {
 
   methods: {
     showMenu () {
-      this.$store.state.menu = !this.$store.state.menu
+      this.$store.commit('menu/SET_SIDE_MENU')
     },
 
     onClick () {

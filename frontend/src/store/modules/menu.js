@@ -1,5 +1,5 @@
 import {
-  SET_MENU_SIDE
+  SET_SIDE_MENU
 } from '../mutation-types'
 
 const state = {
@@ -11,8 +11,10 @@ const getters = {
 }
 
 const mutations = {
-  [SET_MENU_SIDE] (state) {
+  [SET_SIDE_MENU] (state) {
     state.menu = !state.menu
+    console.log(state.menu);
+    
   }
 }
 
