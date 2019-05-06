@@ -3,7 +3,7 @@ import {
 } from '../mutation-types'
 
 const state = {
-  menu: false
+  menu: true
 }
 
 const getters = {
@@ -13,8 +13,6 @@ const getters = {
 const mutations = {
   [SET_SIDE_MENU] (state) {
     state.menu = !state.menu
-    console.log(state.menu);
-    
   }
 }
 

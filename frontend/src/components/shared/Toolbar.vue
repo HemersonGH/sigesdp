@@ -4,17 +4,21 @@
     flat
     prominent
   )
-    v-spacer
-    div.v-toolbar-title
-      v-toolbar-title.font-weight-bold.white--text
+    v-toolbar-items
+      v-flex(
+        layout
+        py-2
+      )
         v-btn(
           v-if='responsive'
           dark
           icon
-          @click='showMenu'
+          @click.stop='showMenu'
         )
           v-icon mdi-view-list
-          v-spacer
+    v-spacer
+    div.v-toolbar-title
+      v-toolbar-title.font-weight-bold.white--text
         | {{ title }}
     v-spacer
     div
@@ -53,8 +57,7 @@ export default {
   data () {
     return {
       title: 'Sistema de Gestão do Docente/Professor',
-      responsive: false,
-      responsiveInput: false
+      responsive: false
     }
   },
 
@@ -77,12 +80,10 @@ export default {
     },
 
     onResponsiveInverted () {
-      if (window.innerWidth < 980) {
-        this.responsive = true
-        this.responsiveInput = false
+      if (window.innerWidth < 1264) {
+        this.responsive = true    
       } else {
         this.responsive = false
-        this.responsiveInput = true
       }
     }
   },

@@ -16,7 +16,7 @@
           v-for='(item, i) in itensCard'
           :key='i'
         )
-          material-stats-card(
+          material-stats-card.styleMouse(
             :color='item.colorCard'
             :icon='item.icon'
             :value='item.title'
@@ -63,7 +63,7 @@ export default {
           text: 'Conheça os departamentos da UFLA.',
           colorCard: '#3169B3',
           icon: 'mdi-domain',
-          colorSubText: 'text-sucess'
+          colorSubText: 'text-pri'
         },
         {
           title: 'Publicações',
@@ -84,5 +84,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.styleMouse{
+  cursor: pointer;
+}
+
+.v-card--material-stats.v-card .v-card__actions .caption {
+    color: #000;
+}
+
 </style>

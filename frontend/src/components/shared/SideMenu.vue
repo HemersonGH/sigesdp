@@ -2,9 +2,9 @@
   v-navigation-drawer(
     id='app-drawer'
     app
-    v-model='changeValue'
+    v-model='getValueShowMenu'
     persistent
-    mobile-break-point='980'
+    mobile-break-point='1264'
     width='260'
     dark
   )
@@ -94,12 +94,11 @@ export default {
       menu: 'menu/menu'
     }),
 
-    changeValue: {
+    getValueShowMenu: {
       get () {
         return this.menu
       },
       set () {
-
       }
     }
   },
