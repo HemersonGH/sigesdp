@@ -8,8 +8,7 @@
     width='260'
     dark
   )
-    v-layout(
-      class='fill-height'
+    v-layout.fill-height(
       tag='v-list'
       column
     )
@@ -26,13 +25,12 @@
           )
         v-list-tile-title.font-weight-bold.style-title.title S I G E S D P
       v-divider
-      v-list-tile(
+      v-list-tile.v-list-item(
         v-for='(item, i) in itensMenu'
         :key='i'
         :to='item.route'
         active-class='blue'
         avatar
-        class='v-list-item'
       )
         v-tooltip(
           right
@@ -49,13 +47,13 @@
               v-on='on'
             )
           span(
-            v-if='item.title == "Acadêmico"'
+            v-if="item.title == 'Acadêmico'"
           ) Acesse a área acadêmica
           span(
-            v-if='item.title == "Pesquisa"'
+            v-if="item.title == 'Pesquisa'"
           ) Acesse as pesquisas
           span(
-            v-if='item.title == "Cursos"'
+            v-if="item.title == 'Cursos'"
           ) Acesse os cursos
 </template>
 
@@ -67,8 +65,7 @@ export default {
 
   data () {
     return {
-      responsive: false,
-      logo: './images/icone-ufla.png',
+      logo: '@/assets/images/logo.png',
       itensMenu: [
         {
           title: 'Acadêmico',
@@ -99,25 +96,6 @@ export default {
         return this.menu
       },
       set () {
-      }
-    }
-  },
-
-  mounted () {
-    this.onResponsiveInverted()
-    window.addEventListener('resize', this.onResponsiveInverted)
-  },
-
-  beforeDestroy () {
-    window.removeEventListener('resize', this.onResponsiveInverted)
-  },
-
-  methods: {
-    onResponsiveInverted () {
-      if (window.innerWidth < 980) {
-        this.responsive = true
-      } else {
-        this.responsive = false
       }
     }
   }

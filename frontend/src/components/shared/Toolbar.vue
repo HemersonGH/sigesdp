@@ -37,7 +37,6 @@
               py-2
             )
               router-link(
-                v-ripple
                 class='toolbar-items'
                 to='/login'
               )
@@ -50,6 +49,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { log } from 'util';
 
 export default {
   name: 'Toolbar',
@@ -57,21 +57,27 @@ export default {
   data () {
     return {
       title: 'Sistema de Gestão do Docente/Professor',
-      responsive: false
+      responsive: false,
+      showedMenu: false
     }
   },
 
   mounted () {
     this.onResponsiveInverted()
+    this.onResponsiveShowedSideMenu()
     window.addEventListener('resize', this.onResponsiveInverted)
+    window.addEventListener('resize', this.onResponsiveShowedSideMenu)
   },
 
   beforeDestroy () {
     window.removeEventListener('resize', this.onResponsiveInverted)
+    window.removeEventListener('resize', this.onResponsiveShowedSideMenu)
   },
 
   methods: {
     showMenu () {
+      console.log(this.menu)
+      this.showedMenu = true
       this.$store.commit('menu/SET_SIDE_MENU')
     },
 
@@ -81,10 +87,20 @@ export default {
 
     onResponsiveInverted () {
       if (window.innerWidth < 1264) {
-        this.responsive = true    
+        this.responsive = true
       } else {
+        this.showedMenu = false
         this.responsive = false
       }
+    },
+
+    onResponsiveShowedSideMenu() {
+      if (this.menu && !this.showedMenu) { 
+        this.$store.commit('menu/SET_SIDE_MENU')
+      }
+      //if (window.innerWidth >= 1264 && this.menu && !this.showedMenu) {
+        //this.$store.commit('menu/SET_SIDE_MENU')
+      //}
     }
   },
 

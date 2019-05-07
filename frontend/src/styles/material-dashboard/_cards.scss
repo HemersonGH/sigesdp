@@ -12,6 +12,7 @@
     letter-spacing: 0 !important;
     font-size: $font-size-h4 !important;
     margin-bottom: $card-title-margin !important;
+    font-weight: 450 !important;
   }
 
   .v-divider {
@@ -72,7 +73,7 @@
   }
 }
 
-.v-card--material-stats.v-card:not(.v-card--material__header),
+.v-card--shared-stats.v-card:not(.v-card--material__header),
 .v-card--material-chart.v-card:not(.v-card--material__header) {
   margin: $card-margin 0 !important;
 }
@@ -83,7 +84,7 @@
 @include card-header-color('orange', $brand-warning, $orange-400, $orange-600);
 @include card-header-color('purple', $brand-primary, $purple-400, $purple-600);
 
-.v-card--material-stats.v-card {
+.v-card--shared-stats.v-card {
   .v-offset {
     position: absolute;
 
@@ -131,6 +132,7 @@
 
     .caption {
       color: $black;
+      font-size: $font-size-general + 1 !important;
     }
   }
 }

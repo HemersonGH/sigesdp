@@ -1,22 +1,26 @@
-<template>
-  <div
-    :style="styles"
-    :class="classes"
-    class="v-offset"
-  >
-    <slot />
-  </div>
+<template lang="pug">
+  div.v-offset(
+    :style='styles'
+    :class='classes'
+  )
+    slot
 </template>
 
 <script>
 export default {
+  name: 'Offset',
+
   props: {
     fullWidth: {
       type: Boolean,
       default: false
     },
+
     offset: {
-      type: [Number, String],
+      type: [
+        Number,
+        String
+      ],
       default: 0
     }
   },
@@ -43,6 +47,7 @@ export default {
   max-width: calc(100% - 32px);
   position: relative;
 }
+
 .v-offset--full-width {
   max-width: 100%;
 }

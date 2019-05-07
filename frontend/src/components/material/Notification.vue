@@ -1,22 +1,25 @@
-<template>
-  <v-alert
-    v-bind="$attrs"
-    :class="[`elevation-${elevation}`]"
-    :value="value"
-    class="v-alert--notification"
-    v-on="$listeners"
-  >
-    <slot />
-  </v-alert>
+<template lang="pug">
+  v-alert.v-alert--notification(
+    v-bind='$attrs'
+    :class='[`elevation-${elevation}`]'
+    :value='value'
+    v-on='$listeners'
+  )
+    slot
 </template>
 
 <script>
 export default {
+  name: 'Notification',
+
   inheritAttrs: false,
 
   props: {
     elevation: {
-      type: [Number, String],
+      type: [
+        Number,
+        String
+      ],
       default: 6
     },
     value: {

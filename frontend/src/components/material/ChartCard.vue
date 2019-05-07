@@ -1,7 +1,7 @@
 <template>
-  <material-card
+  <shared-card
     v-bind="$attrs"
-    class="v-card--material-chart"
+    class="v-card--shared-chart"
     v-on="$listeners"
   >
     <chartist
@@ -20,7 +20,7 @@
       slot="actions"
       name="actions"
     />
-  </material-card>
+  </shared-card>
 </template>
 
 <script>
