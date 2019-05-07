@@ -16,13 +16,18 @@
           v-for='(item, i) in itensCard'
           :key='i'
         )
-          material-stats-card.styleMouse(
-            :color='item.colorCard'
-            :icon='item.icon'
-            :value='item.title'
-            :sub-text='item.text'
-            :sub-text-color='item.colorSubText'
-            @click='onClick'
+          router-link(
+            v-ripple
+            class='toolbar-items'
+            :to='item.route'
+          )
+            material-stats-card.styleMouse(
+              :color='item.colorCard'
+              :icon='item.icon'
+              :value='item.title'
+              :sub-text='item.text'
+              :sub-text-color='item.colorSubText'
+              @click='onClick'
           )
         //- v-flex(
         //-   md12
@@ -56,21 +61,24 @@ export default {
           text: 'Acesse as páginas públicas dos docentes da UFLA.',
           colorCard: '#2CBF36',
           icon: 'mdi-account-multiple',
-          colorSubText: 'text-sucess'
+          colorSubText: '',
+          route: '/academico/docentes'
         },
         {
           title: 'Departamentos',
           text: 'Conheça os departamentos da UFLA.',
           colorCard: '#3169B3',
           icon: 'mdi-domain',
-          colorSubText: 'text-pri'
+          colorSubText: '',
+          route: '/academico/departamentos'
         },
         {
           title: 'Publicações',
           text: 'Consulte as publicações dos discentes.',
           colorCard: '#B836B6',
           icon: 'mdi-book-open',
-          colorSubText: 'text-sucess'
+          colorSubText: '',
+          route: '/academico/publicacoes'
         }
       ]
     }
