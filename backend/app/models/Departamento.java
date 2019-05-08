@@ -21,7 +21,7 @@ public class Departamento extends GenericModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ)
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
-	private Long id;
+	private Integer id;
 
 	@Required
 	@Column(name = "nome")
@@ -43,11 +43,11 @@ public class Departamento extends GenericModel {
 	@Column(name = "descricao")
 	private String descricao;
 
-	public Long getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

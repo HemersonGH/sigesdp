@@ -18,12 +18,9 @@
       slot-scope='{ item }'
     )
       td(
-        v-for='(column, i) in item'
+        v-for='(column, i) in columnsTable'
         :key='i'
-      ) {{ `${item}.${column}` }}
-            td.text-xs-left {{ item.nome }}
-      td {{ item.sigla }}
-      td {{ item.chefe }}
+      )  {{ item[column] }}
       td.text-xs-right
         v-tooltip(
           top

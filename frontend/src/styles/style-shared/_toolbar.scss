@@ -59,12 +59,22 @@
         .v-icon {
           font-size: $font-size-toolbar-items;
         }
-      }
 
+      }
+      
       .v-input {
         margin: 0 !important;
         padding: 0;
       }
+    }
+
+    .toolbar-items-left {
+      justify-content: flex-start !important;
+      justify-items: flex-start !important;
+    }
+  
+    .toolbar-items-right {
+      justify-content: flex-end !important;
     }
   }
 }

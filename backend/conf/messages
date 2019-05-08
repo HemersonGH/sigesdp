@@ -1,3 +1,12 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+sigesdp.erro.padrao=Ocorreu um erro no sistema, tente novamente mais tarde.
+
+sigesdp.departamentos.nao.encontrados=Não foi possível encontrar todos os departamentos.
+
+sigesdp.departamento.nao.encontrado=Não foi possível encontrar o departamento.
+
+sigesdp.id.departamento.nao.encontrado=Nenhum departamento foi encontrado com esse id.
+
+sigesdp.erros.de.validacao=Ocorreram erros de validação

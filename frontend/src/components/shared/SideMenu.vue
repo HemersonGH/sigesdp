@@ -65,7 +65,7 @@ export default {
 
   data () {
     return {
-      logo: '../public/images/icone-ufla.png',
+      logo: './public/images/icone-ufla.png',
       itensMenu: [
         {
           title: 'Acadêmico',
@@ -100,8 +100,8 @@ export default {
     }
   },
 
-  beforeCreate(){
-    this.itemActive = this.$route.name   
+  created () {
+    this.itemActive = this.$route.name
   }
 }
 </script>

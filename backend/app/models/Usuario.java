@@ -19,7 +19,7 @@ public class Usuario extends GenericModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ)
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
-	private Long id;
+	private Integer id;
 
 	@Required
 	private String email;
@@ -27,11 +27,11 @@ public class Usuario extends GenericModel {
 	@Required
 	private String senha;
 
-	public Long getIdUsuario() {
+	public Integer getIdUsuario() {
 		return id;
 	}
 
-	public void setIdUsuario(Long id) {
+	public void setIdUsuario(Integer id) {
 		this.id = id;
 	}
 

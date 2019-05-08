@@ -5,6 +5,7 @@
 POST 	/cadastrar								Professores.cadastraProfessor
 POST 	/cadastrar-departamento					Departamentos.cadastraDepartamento
 GET 	/departamentos							Departamentos.findAll
+GET 	/departamentos/{id}						Departamentos.findById
 
 # Home page
 GET     /                                       Application.index

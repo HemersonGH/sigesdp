@@ -29,7 +29,7 @@ public class Professor extends GenericModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ)
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
-	public Long id;
+	public Integer id;
 
 	@Required
 	public String nome;
@@ -65,11 +65,11 @@ public class Professor extends GenericModel {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = Aluno.class)
 	public List<Aluno> alunos;
 
-	public Long getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

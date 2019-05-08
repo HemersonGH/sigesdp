@@ -21,7 +21,7 @@ public class Aluno extends GenericModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ)
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
-	private Long id;
+	private Integer id;
 
 	private String nome;
 

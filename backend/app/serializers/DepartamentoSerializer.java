@@ -7,12 +7,15 @@ import play.Play;
 import play.Play.Mode;
 
 public class DepartamentoSerializer {
-	public static JSONSerializer getAll;
+	public static JSONSerializer listAllToTable, getDetails;
 
 	static {
 		boolean prettyPrint = Play.mode == Mode.DEV;
 
-		getAll = new JSONSerializer().include("nome", "chefe", "sigla").exclude("*")
+		listAllToTable = new JSONSerializer().include("nome", "sigla", "chefe").exclude("*")
+				.prettyPrint(prettyPrint);
+		
+		getDetails = new JSONSerializer().include("nome", "sigla", "chefe", "telefone", "descricao").exclude("*")
 				.prettyPrint(prettyPrint);
 	}
 

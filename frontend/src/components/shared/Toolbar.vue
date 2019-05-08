@@ -10,7 +10,7 @@
         py-2
       )
         v-btn(
-          v-if='responsive'
+          v-if='true'
           dark
           icon
           @click.stop='showMenu'
@@ -72,8 +72,6 @@ export default {
 
   methods: {
     showMenu () {
-      console.log(this.menu)
-      this.drawer = true
       this.$store.commit('menu/SET_SIDE_MENU')
     },
 
@@ -85,7 +83,6 @@ export default {
       if (window.innerWidth < 1264) {
         this.responsive = true
       } else {
-        this.drawer = false
         this.responsive = false
       }
     }
