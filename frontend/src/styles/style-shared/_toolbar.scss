@@ -2,6 +2,7 @@
   min-height: $toolbar-min-height;
   border-radius: $border-radius-base;
   margin-bottom: $margin-general;
+  background: #2196f3 !important;
 
   &:not(.v-toolbar--fixed) .v-toolbar__content {
     margin-left: $toolbar-margin-left;
@@ -15,10 +16,9 @@
   @include toolbar-colors('bg-default', $gray-light);
 
   &[class*="bg-"] {
-    .v-toolbar__title,
-    .v-btn__content,
-    .v-ripple__container {
+    .v-toolbar__title, .v-btn__content, .v-ripple__container {
       color: $white !important;
+      font-weight: bold !important;
     }
   }
 
@@ -30,7 +30,7 @@
     .v-toolbar__title {
       font-size: $font-size-toolbar-title;
       letter-spacing: unset;
-      color: $black-color;
+      color: white;
     }
 
     .v-toolbar__items {

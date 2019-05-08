@@ -15,52 +15,27 @@
           color='#3169B3'
           :title='title'
           :text='text'
+          styleTitleDataTable='title-data-table'
           full-width
         )
-          v-data-table(
+          DataTable(
             :headers='headers'
-            :items='departamentos'
+            :columnsTable='columnsTable'
+            :contentTable='departamentos.data'
           )
-            template(
-              slot='headerCell'
-              slot-scope='{ header }'
-            )
-              span.subheading.font-weight-bold.text--darken-3(
-                v-text='header.text'
-              )
-            template(
-              slot='items'
-              slot-scope='{ item }'
-            )
-              td.text-xs-left {{ item.name }}
-              td {{ item.sigla }}
-              td {{ item.city }}
-              td.text-xs-right
-                v-tooltip(
-                  top
-                  content-class='top'
-                )
-                  v-btn(
-                    slot='activator'
-                    class='v-btn--simple'
-                    color=''
-                    icon
-                  )
-                    v-icon(
-                      color='primary'
-                    ) mdi-eye
-                  span Edit
 </template>
 
 <script>
 import Card from '@/components/shared/Card.vue'
+import DataTable from '@/components/shared/DataTable.vue'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'Departamento',
 
   components: {
-    Card
+    Card,
+    DataTable
   },
 
   data () {
@@ -71,7 +46,7 @@ export default {
         {
           sortable: true,
           text: 'Nome',
-          value: 'name',
+          value: 'nome',
           align: 'left'
         },
         {
@@ -81,95 +56,38 @@ export default {
         },
         {
           sortable: true,
-          text: 'City',
-          value: 'city'
+          text: 'Chefe do Departamento',
+          value: 'chefe'
         },
         {
           sortable: false,
           text: 'Ações',
-          value: 'salary',
+          value: 'actions',
           align: 'right'
         }
       ],
-      departamentos: [
-        {
-          name: 'Dakota Rice',
-          sigla: 'Niger',
-          city: 'Oud-Tunrhout'
-        },
-        {
-          name: 'Minerva Hooper',
-          sigla: 'Curaçao',
-          city: 'Sinaai-Waas'
-        },
-        {
-          name: 'Sage Rodriguez',
-          sigla: 'Netherlands',
-          city: 'Overland Park'
-        },
-        {
-          name: 'Philip Chanley',
-          sigla: 'Korea, South',
-          city: 'Gloucester'
-        },
-        {
-          name: 'Doris Greene',
-          sigla: 'Malawi',
-          city: 'Feldkirchen in Kārnten'
-        },
-        {
-          name: 'Mason Porter',
-          sigla: 'Chile',
-          city: 'Gloucester'
-        },
-        {
-          name: 'Dakota Rice',
-          sigla: 'Niger',
-          city: 'Oud-Tunrhout'
-        },
-        {
-          name: 'Minerva Hooper',
-          sigla: 'Curaçao',
-          city: 'Sinaai-Waas'
-        },
-        {
-          name: 'Sage Rodriguez',
-          sigla: 'Netherlands',
-          city: 'Overland Park'
-        },
-        {
-          name: 'Philip Chanley',
-          sigla: 'Korea, South',
-          city: 'Gloucester'
-        },
-        {
-          name: 'Doris Greene',
-          sigla: 'Malawi',
-          city: 'Feldkirchen in Kārnten'
-        },
-        {
-          name: 'Mason Porter',
-          sigla: 'Chile',
-          city: 'Gloucester'
-        }
+      columnsTable: [
+        'nome',
+        'sigla',
+        'chefe'
       ]
     }
   },
 
   methods: {
-    //...mapActions({
-    //  getDepartamentos: 'departamento/getDepartamentos'
-    //})
+    ...mapActions({
+      getDepartamentos: 'departamento/getDepartamentos'
+    })
   },
 
   computed: {
-    //...mapGetters({
-      //departamentos: 'departamento/departamentos'
-    //})
+    ...mapGetters({
+      departamentos: 'departamento/departamentos'
+    })
   },
 
   created () {
-    //this.getDepartamentos()
+    this.getDepartamentos()
   }
 }
 </script>

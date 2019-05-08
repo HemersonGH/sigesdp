@@ -12,7 +12,18 @@
     letter-spacing: 0 !important;
     font-size: $font-size-h4 !important;
     margin-bottom: $card-title-margin !important;
-    font-weight: 450 !important;
+    font-weight: 400 !important;
+    color: $black-color;
+  }
+
+  .title-data-table {
+    margin-top: 0;
+    line-height: $line-height-base !important;
+    letter-spacing: 0 !important;
+    font-size: $font-size-h4 !important;
+    margin-bottom: $card-title-margin !important;
+    font-weight: 400 !important;
+    color: white;
   }
 
   .v-divider {
@@ -27,7 +38,7 @@
     margin-bottom: $card-offset !important;
 
     .category {
-      color: rgba($white, .62);
+      color: white;
     }
 
     .v-card--material__header.v-card{
@@ -131,7 +142,7 @@
     }
 
     .caption {
-      color: $black;
+      color: $black-color;
       font-size: $font-size-general + 1 !important;
     }
   }

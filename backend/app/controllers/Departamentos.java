@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Departamento;
+import serializers.DepartamentoSerializer;
 
 public class Departamentos extends DefaultController {
 	public static void cadastraDepartamento(Departamento departamento) {
@@ -13,6 +14,6 @@ public class Departamentos extends DefaultController {
 	public static void findAll() {
 		List<Departamento> departamentos = Departamento.findAll();
 //		List<Departamento> departamentos = Departamento.find("nome = :nome").setParameter("nome", "nome").fetch();
-		renderJSON(departamentos);
+		renderJSON(departamentos, DepartamentoSerializer.getAll);
 	}
 }

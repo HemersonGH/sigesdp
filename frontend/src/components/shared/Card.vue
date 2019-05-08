@@ -23,10 +23,11 @@
         span(
           v-else
         )
-          h4.title.font-weight-light.mb-2(
+          h4.font-weight-light.mb-2(
             v-text='title'
+            :class='styleTitleDataTable'
           )
-          p.category.font-weight-thin(
+          p.category(
             v-text='text'
           )
       slot(
@@ -87,6 +88,11 @@ export default {
     text: {
       type: String,
       default: undefined
+    },
+
+    styleTitleDataTable: {
+      type: String,
+      default: 'title'
     }
   },
 

@@ -23,7 +23,7 @@
             height='45'
             contain
           )
-        v-list-tile-title.font-weight-bold.style-title.title S I G E S D P
+        v-list-tile-title.style-title.font-weight-bold SIGESDP
       v-divider
       v-list-tile.v-list-item(
         v-for='(item, i) in itensMenu'
@@ -65,7 +65,7 @@ export default {
 
   data () {
     return {
-      logo: '@/assets/images/logo.png',
+      logo: '../public/images/icone-ufla.png',
       itensMenu: [
         {
           title: 'Acadêmico',
@@ -98,6 +98,10 @@ export default {
       set () {
       }
     }
+  },
+
+  beforeCreate(){
+    this.itemActive = this.$route.name   
   }
 }
 </script>
@@ -121,7 +125,7 @@ export default {
 
 .style-title {
   margin-left: 25px;
-  font-family: Roboto, sans-serif;
+  letter-spacing: 3.5px !important;
 }
 
 .v-tooltip__content {

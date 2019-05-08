@@ -49,7 +49,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { log } from 'util';
 
 export default {
   name: 'Toolbar',
@@ -58,26 +57,23 @@ export default {
     return {
       title: 'Sistema de Gestão do Docente/Professor',
       responsive: false,
-      showedMenu: false
+      drawer: false
     }
   },
 
   mounted () {
     this.onResponsiveInverted()
-    this.onResponsiveShowedSideMenu()
     window.addEventListener('resize', this.onResponsiveInverted)
-    window.addEventListener('resize', this.onResponsiveShowedSideMenu)
   },
 
   beforeDestroy () {
     window.removeEventListener('resize', this.onResponsiveInverted)
-    window.removeEventListener('resize', this.onResponsiveShowedSideMenu)
   },
 
   methods: {
     showMenu () {
       console.log(this.menu)
-      this.showedMenu = true
+      this.drawer = true
       this.$store.commit('menu/SET_SIDE_MENU')
     },
 
@@ -89,18 +85,9 @@ export default {
       if (window.innerWidth < 1264) {
         this.responsive = true
       } else {
-        this.showedMenu = false
+        this.drawer = false
         this.responsive = false
       }
-    },
-
-    onResponsiveShowedSideMenu() {
-      if (this.menu && !this.showedMenu) { 
-        this.$store.commit('menu/SET_SIDE_MENU')
-      }
-      //if (window.innerWidth >= 1264 && this.menu && !this.showedMenu) {
-        //this.$store.commit('menu/SET_SIDE_MENU')
-      //}
     }
   },
 
@@ -120,10 +107,5 @@ export default {
   .style-button {
     font-weight: bold !important;
     font-size: inherit;
-  }
-
-  .theme--light.v-toolbar {
-    background-color: #2196f3;
-    color: white;
   }
 </style>
