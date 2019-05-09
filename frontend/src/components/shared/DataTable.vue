@@ -35,27 +35,18 @@
               v-on='on'
               slot='activator'
               icon
-              @click='viewDetailsDepartament(item)'
+              @click.stop='viewDetails(item)'
             )
               v-icon.no-margin(
                 :color='colorIcon'
               ) {{ icon }}
           span {{ iconAction }}
-      Dialog(
-        :dialog='dialog'
-        :contentDialog='contentDialog'
-      )
 </template>
 
 <script>
-import Dialog from '@/components/shared/Dialog.vue'
 
 export default {
   name: 'DataTable',
-
-  components: {
-    Dialog
-  },
 
   props: {
     headers: {
@@ -84,24 +75,16 @@ export default {
       type: String,
       default: 'Visualizar'
     },
-
-    dialog: {
-      type: Object,
-      required: false
-    },
-
   },
 
   data () {
     return {
-      contentDialog: null
     }
   },
 
   methods: {
-    viewDetailsDepartament (item){
-      console.log(item)
-      this.contentDialog = item
+    viewDetails (item) {
+      this.$emit('openModal', item)
     }
   }
 }

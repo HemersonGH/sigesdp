@@ -1,49 +1,37 @@
 <template lang="pug">
-  v-layout(
-    row
-    justify-center
+  v-dialog(
+    max-width='600px'
+    v-model='showDialog'
+    :persistent='true'
   )
-    v-dialog(
-      v-model='dialog'
-      max-width='600px'
-    )
-      template(
-        v-slot:activator='{ on }'
-      )
-        v-btn(
-          small
-          color='primary'
-          dark
-          v-on='on'
-        ) Open Dialog
-      v-card
-        v-card-title.center
-          span.headline {{ dialog.title }}
-        v-divider.mx-3
-        v-card-text.no-margin-top
-          v-container(
-            grid-list-md
+    v-card
+      v-card-title.center
+        span.headline {{ detailsDialog.title }}
+      v-divider.mx-3
+      v-card-text.no-margin-top
+        v-container(
+          grid-list-md
+        )
+          v-layout(
+            wrap
           )
-            v-layout(
-              wrap
+            v-flex(
+              xs12
+              sm12
+              md12
+              v-for='(labels, i) in detailsDialog.labels'
+              :key='i'
             )
-              v-flex(
-                xs12
-                sm12
-                md12
-                v-for='(labels, i) in dialog.labels'
-                :key='i'
-              )
-                h5.font-weight-bold.no-margin-bottom
-                  | {{ labels }}:
-                //- p {{ content }}
-          v-divider.mx-3
-          v-card-actions
-            v-spacer
-            v-btn.font-weight-bold(
-              color='blue darken-1'
-              @click='dialog = false'
-            ) Fechar
+              h5.font-weight-bold.no-margin-bottom
+                | {{ labels[0] }}:
+              p {{ detailsDialog.itemDialog[labels[1]] }}
+        v-divider.mx-3
+        v-card-actions
+          v-spacer
+          v-btn.font-weight-bold(
+            color='blue darken-1'
+            @click='close()'
+          ) Fechar
 </template>
 
 <script>
@@ -51,20 +39,26 @@ export default {
   name: 'Dialog',
 
   props: {
-    dialog: {
-      type: Object,
+    detailsDialog: {
+      type: Object
       // required: true
     },
 
-    contentDialog: {
-      type: Object,
-      // required: true
+    showDialog: {
+      type: Boolean
     }
   },
 
-  data() {
+  data () {
     return {
-      dialog: false
+    }
+  },
+
+  methods: {
+    close() {
+      console.log(this.detailsDialog.itemDialog['nome']);
+      
+      this.$emit('close');
     }
   }
 }

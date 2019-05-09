@@ -22,22 +22,28 @@
             :headers='headers'
             :columnsTable='columnsTable'
             :contentTable='departamentos.data'
-            :dialog='dialog'
+            @openModal="openModal"
           )
-
+      Dialog(
+        :showDialog='showDialog'
+        :detailsDialog='detailsDialog'
+        @close="closeModal"
+      )
 </template>
 
 <script>
 import Card from '@/components/shared/Card.vue'
 import DataTable from '@/components/shared/DataTable.vue'
 import { mapActions, mapGetters } from 'vuex'
+import Dialog from '@/components/shared/Dialog.vue'
 
 export default {
   name: 'Departamento',
 
   components: {
     Card,
-    DataTable
+    DataTable,
+    Dialog
   },
 
   data () {
@@ -72,17 +78,31 @@ export default {
         column: ['nome', 'sigla', 'chefe'],
         class: ['text-xs-left', '', '']
       },
-      dialog: {
+      detailsDialog: {
         title: 'Detalhes do Departamento',
-        labels: ['Nome', 'Chefia', 'Telefone', 'Apresentação']
-      }
+        labels:
+          [
+            ['Nome', 'nome'], ['Chefia', 'chefe'], ['Telefone', 'telefone'], ['Apresentação', 'descricao']
+          ],
+        itemDialog: null
+      },
+      showDialog: false
     }
   },
 
   methods: {
     ...mapActions({
       getDepartamentos: 'departamento/getDepartamentos'
-    })
+    }),
+
+    openModal(item) {
+      this.detailsDialog.itemDialog = item
+      this.showDialog = true
+    },
+    
+    closeModal() {
+      this.showDialog = false;
+    }
   },
 
   computed: {
