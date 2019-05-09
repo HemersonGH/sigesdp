@@ -95,13 +95,13 @@ export default {
       getDepartamentos: 'departamento/getDepartamentos'
     }),
 
-    openModal(item) {
+    openModal (item) {
       this.detailsDialog.itemDialog = item
       this.showDialog = true
     },
-    
-    closeModal() {
-      this.showDialog = false;
+
+    closeModal () {
+      this.showDialog = false
     }
   },
 

@@ -44,21 +44,23 @@
 </template>
 
 <script>
-
 export default {
   name: 'DataTable',
 
   props: {
     headers: {
-      type: Array
+      type: Array,
+      required: true
     },
 
     contentTable: {
-      type: Array
+      type: Array,
+      required: true
     },
 
     columnsTable: {
-      type: Object
+      type: Object,
+      required: true
     },
 
     icon: {
@@ -74,7 +76,7 @@ export default {
     iconAction: {
       type: String,
       default: 'Visualizar'
-    },
+    }
   },
 
   data () {

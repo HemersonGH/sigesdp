@@ -55,10 +55,10 @@ export default {
   },
 
   methods: {
-    close() {
-      console.log(this.detailsDialog.itemDialog['nome']);
-      
-      this.$emit('close');
+    close () {
+      console.log(this.detailsDialog.itemDialog['nome'])
+
+      this.$emit('close')
     }
   }
 }
