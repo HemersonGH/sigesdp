@@ -22,7 +22,9 @@
             :headers='headers'
             :columnsTable='columnsTable'
             :contentTable='departamentos.data'
+            :dialog='dialog'
           )
+
 </template>
 
 <script>
@@ -66,11 +68,14 @@ export default {
           align: 'right'
         }
       ],
-      columnsTable: [
-        'nome',
-        'sigla',
-        'chefe'
-      ]
+      columnsTable: {
+        column: ['nome', 'sigla', 'chefe'],
+        class: ['text-xs-left', '', '']
+      },
+      dialog: {
+        title: 'Detalhes do Departamento',
+        labels: ['Nome', 'Chefia', 'Telefone', 'Apresentação']
+      }
     }
   },
 

@@ -22,7 +22,7 @@ public class Departamentos extends DefaultController {
 		}
 
 //		List<Departamento> departamentos = Departamento.find("nome = :nome").setParameter("nome", "nome").fetch();
-		renderJSON(departamentos, DepartamentoSerializer.listAllToTable);
+		renderJSON(departamentos, DepartamentoSerializer.listAll);
 	}
 
 	public static void findById(Integer id) {
@@ -36,6 +36,6 @@ public class Departamentos extends DefaultController {
 			throw new ValidationException(MessagesUtil.ID_DEPARTAMENTO_NAO_ENCONTRADO);
 		}
 
-		renderJSON(departamento, DepartamentoSerializer.getDetails);
+		renderJSON(departamento, DepartamentoSerializer.listItens);
 	}
 }

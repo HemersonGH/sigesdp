@@ -2,9 +2,9 @@
   v-data-table(
     :headers='headers'
     :items='contentTable'
-    prev-icon="mdi-menu-left"
-    next-icon="mdi-menu-right"
-    sort-icon="mdi-menu-down"
+    prev-icon='mdi-menu-left'
+    next-icon='mdi-menu-right'
+    sort-icon='mdi-menu-down'
   )
     template(
       slot='headerCell'
@@ -18,27 +18,44 @@
       slot-scope='{ item }'
     )
       td(
-        v-for='(column, i) in columnsTable'
+        v-for='(column, i) in columnsTable.column'
         :key='i'
-      )  {{ item[column] }}
-      td.text-xs-right
+        :class='columnsTable.class[i]'
+      ) {{ item[column] }}
+      td.text-xs-right(
+      )
         v-tooltip(
           top
           content-class='top'
         )
-          v-btn.v-btn--simple(
-            slot='activator'
-            icon
+          template(
+            v-slot:activator='{ on }'
           )
-            v-icon(
-              :color='colorIcon'
-            ) {{ icon }}
+            v-btn.v-btn--simple.no-margin(
+              v-on='on'
+              slot='activator'
+              icon
+              @click='viewDetailsDepartament(item)'
+            )
+              v-icon.no-margin(
+                :color='colorIcon'
+              ) {{ icon }}
           span {{ iconAction }}
+      Dialog(
+        :dialog='dialog'
+        :contentDialog='contentDialog'
+      )
 </template>
 
 <script>
+import Dialog from '@/components/shared/Dialog.vue'
+
 export default {
   name: 'DataTable',
+
+  components: {
+    Dialog
+  },
 
   props: {
     headers: {
@@ -50,7 +67,7 @@ export default {
     },
 
     columnsTable: {
-      type: Array
+      type: Object
     },
 
     icon: {
@@ -68,13 +85,31 @@ export default {
       default: 'Visualizar'
     },
 
-    styletitleDataTable: {
-      type: String,
-      default: 'title'
+    dialog: {
+      type: Object,
+      required: false
+    },
+
+  },
+
+  data () {
+    return {
+      contentDialog: null
+    }
+  },
+
+  methods: {
+    viewDetailsDepartament (item){
+      console.log(item)
+      this.contentDialog = item
     }
   }
 }
 </script>
 
 <style scoped>
+.no-margin {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 </style>
