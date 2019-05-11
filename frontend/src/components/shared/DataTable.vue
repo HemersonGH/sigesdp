@@ -5,6 +5,12 @@
     prev-icon='mdi-menu-left'
     next-icon='mdi-menu-right'
     sort-icon='mdi-menu-down'
+    :rows-per-page-items='setRowPerPagItens'
+    rows-per-page-text='Itens por página'
+    no-data-text='Não há dados para exibir.'
+    no-results-text='Não há resultados para sua busca.'
+    :search='search'
+    :pagination.sync='pagination'
   )
     template(
       slot='headerCell'
@@ -54,7 +60,7 @@ export default {
     },
 
     contentTable: {
-      type: Array,
+      type: [Object, Array],
       required: true
     },
 
@@ -76,11 +82,26 @@ export default {
     iconAction: {
       type: String,
       default: 'Visualizar'
+    },
+
+    search: {
+      type: String
     }
   },
 
   data () {
     return {
+      pagination: {
+        sortBy: 'nome'
+      },
+
+      setRowPerPagItens: [
+        5, 10, 20,
+        {
+          'text': 'Todos',
+          'value': -1
+        }
+      ]
     }
   },
 

@@ -3,6 +3,7 @@
     max-width='600px'
     v-model='showDialog'
     :persistent='true'
+    :scrollable='true'
   )
     v-card
       v-card-title.center
@@ -28,7 +29,7 @@
         v-divider.mx-3
         v-card-actions
           v-spacer
-          v-btn.font-weight-bold(
+          v-btn(
             color='blue darken-1'
             @click='close()'
           ) Fechar
@@ -40,24 +41,18 @@ export default {
 
   props: {
     detailsDialog: {
-      type: Object
-      // required: true
+      type: Object,
+      required: true
     },
 
     showDialog: {
-      type: Boolean
-    }
-  },
-
-  data () {
-    return {
+      type: Boolean,
+      required: true
     }
   },
 
   methods: {
     close () {
-      console.log(this.detailsDialog.itemDialog['nome'])
-
       this.$emit('close')
     }
   }

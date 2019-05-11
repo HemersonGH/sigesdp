@@ -18,11 +18,27 @@
           styleTitleDataTable='title-data-table'
           full-width
         )
+          v-layout(
+            justify-end
+            row
+          )
+            v-flex(
+              md4
+              sm4
+            )
+              v-text-field.padding(
+                v-model='search'
+                append-icon='search'
+                label='Pesquise'
+                single-line
+                hide-details
+              )
           DataTable(
             :headers='headers'
             :columnsTable='columnsTable'
             :contentTable='departamentos.data'
             @openModal="openModal"
+            :search='search'
           )
       Dialog(
         :showDialog='showDialog'
@@ -64,7 +80,7 @@ export default {
         },
         {
           sortable: true,
-          text: 'Chefe do Departamento',
+          text: 'Chefia',
           value: 'chefe'
         },
         {
@@ -86,7 +102,8 @@ export default {
           ],
         itemDialog: null
       },
-      showDialog: false
+      showDialog: false,
+      search: ''
     }
   },
 
@@ -118,4 +135,7 @@ export default {
 </script>
 
 <style scoped>
+.padding {
+  padding-bottom: 2%;
+}
 </style>
