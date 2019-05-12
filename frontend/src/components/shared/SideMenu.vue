@@ -34,6 +34,7 @@
       )
         v-tooltip(
           right
+          content-class='right'
         )
           template(
             v-slot:activator='{ on }'
@@ -65,7 +66,7 @@ export default {
 
   data () {
     return {
-      logo: './public/images/icone-ufla.png',
+      logo: 'http://www.blogeditora.ufla.br/wp-content/uploads/2015/01/icone-54ca15b1v1_site_icon.png',
       itensMenu: [
         {
           title: 'Acadêmico',

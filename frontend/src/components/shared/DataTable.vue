@@ -1,10 +1,7 @@
 <template lang="pug">
-  v-data-table(
+  v-data-table.primary--text(
     :headers='headers'
     :items='contentTable'
-    prev-icon='mdi-menu-left'
-    next-icon='mdi-menu-right'
-    sort-icon='mdi-menu-down'
     :rows-per-page-items='setRowPerPagItens'
     rows-per-page-text='Itens por página'
     no-data-text='Não há dados para exibir.'

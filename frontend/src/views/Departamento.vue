@@ -18,26 +18,15 @@
           styleTitleDataTable='title-data-table'
           full-width
         )
-          v-layout(
-            justify-end
-            row
+          FieldSearch(
+            :colorBottom='colorBottom'
+            @valueSearch='valueSearch'
           )
-            v-flex(
-              md4
-              sm4
-            )
-              v-text-field.padding(
-                v-model='search'
-                append-icon='search'
-                label='Pesquise'
-                single-line
-                hide-details
-              )
           DataTable(
             :headers='headers'
             :columnsTable='columnsTable'
             :contentTable='departamentos.data'
-            @openModal="openModal"
+            @openModal='openModal'
             :search='search'
           )
       Dialog(
@@ -48,9 +37,10 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
 import DataTable from '@/components/shared/DataTable.vue'
-import { mapActions, mapGetters } from 'vuex'
+import FieldSearch from '@/components/shared/FieldSearch.vue'
 import Dialog from '@/components/shared/Dialog.vue'
 
 export default {
@@ -59,6 +49,7 @@ export default {
   components: {
     Card,
     DataTable,
+    FieldSearch,
     Dialog
   },
 
@@ -80,7 +71,7 @@ export default {
         },
         {
           sortable: true,
-          text: 'Chefia',
+          text: 'Chefe',
           value: 'chefe'
         },
         {
@@ -103,7 +94,8 @@ export default {
         itemDialog: null
       },
       showDialog: false,
-      search: ''
+      search: '',
+      colorBottom: '#3169B3'
     }
   },
 
@@ -119,6 +111,10 @@ export default {
 
     closeModal () {
       this.showDialog = false
+    },
+
+    valueSearch (query) {
+      this.search = query
     }
   },
 
@@ -135,7 +131,4 @@ export default {
 </script>
 
 <style scoped>
-.padding {
-  padding-bottom: 2%;
-}
 </style>

@@ -44,7 +44,7 @@
       }
 
       .v-list__tile.v-list__tile--active {
-        @include shadow-big-color($brand-success);
+        @include shadow-big-color($brand-info);
       }
     }
 

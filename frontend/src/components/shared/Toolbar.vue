@@ -9,42 +9,51 @@
         layout
         py-2
       )
-        v-btn(
-          v-if='true'
-          dark
-          icon
-          @click.stop='showMenu'
+        v-tooltip(
+          bottom
+          content-class='bottom'
         )
-          v-icon mdi-view-list
+          template(
+            v-slot:activator='{ on }'
+          )
+            v-btn(
+              v-on='on'
+              v-if='true'
+              dark
+              icon
+              @click.stop='showMenu'
+            )
+              v-icon mdi-view-list
+          span {{menu == true ? 'Esconder menu lateral' : 'Exibir menu lateral'}}
     v-spacer
     div.v-toolbar-title
       v-toolbar-title.font-weight-bold.white--text
         | {{ title }}
     v-spacer
     div
-      v-tooltip(
-        bottom
-      )
-        template(
-          v-slot:activator='{ on }'
+      v-toolbar-items
+        v-flex(
+          align-center
+          layout
+          py-2
         )
-          v-toolbar-items(
-            v-on='on'
+          router-link(
+            class='toolbar-items'
+            to='/login'
           )
-            v-flex(
-              align-center
-              layout
-              py-2
+            v-tooltip(
+              bottom
+              content-class='bottom'
             )
-              router-link(
-                class='toolbar-items'
-                to='/login'
+              template(
+                v-slot:activator='{ on }'
               )
                 v-btn.style-button(
+                  v-on='on'
                   icon
                 ) Login
                   v-icon mdi-login
-        span Acesse o sistema
+              span Acesse o sistema
 </template>
 
 <script>
