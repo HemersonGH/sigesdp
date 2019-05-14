@@ -3,7 +3,7 @@
   border-radius: $border-radius-base;
   margin-bottom: $margin-general;
   background: #2196f3 !important;
-
+  
   &:not(.v-toolbar--fixed) .v-toolbar__content {
     margin-left: $toolbar-margin-left;
   }
@@ -14,37 +14,38 @@
   @include toolbar-colors('bg-info', $brand-info);
   @include toolbar-colors('bg-success', $brand-success);
   @include toolbar-colors('bg-default', $gray-light);
-
+  
   &[class*="bg-"] {
     .v-toolbar__title, .v-btn__content, .v-ripple__container {
       color: $white !important;
       font-weight: bold !important;
     }
   }
-
+  
   .v-toolbar__content {
     min-height: $toolbar-min-height;
     padding-bottom: $padding-small;
     padding-top: $padding-small;
+    display: flex;
+    justify-content: space-between;
 
     .v-toolbar__title {
       font-size: $font-size-toolbar-title;
       letter-spacing: unset;
       color: white;
     }
-
+    
     .v-toolbar__items {
       & > div {
         padding: 0 !important;
       }
-
+      
       .toolbar-items{
         align-items: center;
         border-radius: $border-radius-base;
-        display: flex;
         min-height: $list-item-height;
         padding: $padding-small $padding-general;
-
+        
         .v-badge__badge {
           border: $badge-border !important;
           font-size: $font-size-mini;
@@ -59,7 +60,6 @@
         .v-icon {
           font-size: $font-size-toolbar-items;
         }
-
       }
       
       .v-input {
@@ -67,19 +67,10 @@
         padding: 0;
       }
     }
-
-    .toolbar-items-left {
-      justify-content: flex-start !important;
-      justify-items: flex-start !important;
-    }
-  
-    .toolbar-items-right {
-      justify-content: flex-end !important;
-    }
   }
 }
 
-@media all and (max-width: 990px) {
+@media all and (max-width: 1264px) {
   .v-toolbar:not(.v-toolbar--fixed) .v-toolbar__content {
     margin-left: 0;
   }

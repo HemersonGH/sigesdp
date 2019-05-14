@@ -4,36 +4,45 @@
     flat
     prominent
   )
-    v-toolbar-items
-      v-flex(
-        layout
-        py-2
-      )
-        v-tooltip(
-          bottom
-          content-class='bottom'
+    div(v-if='responsive')
+      v-toolbar-items
+        v-flex(
+          layout
+          py-2
         )
-          template(
-            v-slot:activator='{ on }'
+          v-tooltip(
+            bottom
+            content-class='bottom'
           )
-            v-btn(
-              v-on='on'
-              v-if='responsive'
-              dark
-              icon
-              @click.stop='showMenu'
+            template(
+              v-slot:activator='{ on }'
             )
-              v-icon mdi-view-list
-          span {{menu == true ? 'Esconder menu lateral' : 'Exibir menu lateral'}}
-    v-spacer
+              v-btn(
+                v-on='on'
+                dark
+                icon
+                @click.stop='showMenu'
+              )
+                v-icon mdi-view-list
+            span {{menu == true ? 'Esconder menu lateral' : 'Exibir menu lateral'}}
+    div(v-else)
+      v-toolbar-items
+        v-flex(
+          layout
+          py-2
+        )
+          v-btn(
+            disabled
+            icon
+          )
     div.v-toolbar-title
       v-toolbar-title.font-weight-bold.white--text
         | {{ title }}
-    v-spacer
     div
       v-toolbar-items
         v-flex(
           align-center
+          justify-end
           layout
           py-2
         )

@@ -18,11 +18,12 @@
         )
           Card.text-xs-center(
             color='#2196f3'
-            title='Login'
-            text='Sistema de Gestão do Docente/Professor'
+            title=' '
+            text=''
             styleTitleDataTable='title-data-table'
             full-width
             elevation='5'
+            :logoUfla='true'
           )
             div
               v-text-field(
@@ -41,14 +42,8 @@
               ) Entrar
                 v-icon mdi-login
             div.padding
-              v-layout(
-                row
-                align-center
-                justify-space-between
-                fill-height
-              )
-                p.style-text Redefinir senha
-                p.style-text Criar conta
+              span.color-text.align-left Redefinir senha
+              span.color-text.align-right Criar conta
 
 </template>
 
@@ -81,31 +76,25 @@ export default {
 </script>
 
 <style scoped>
-.layout {
-  display: flex;
-}
-
-.align {
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
-  justify-self: center;
-}
-
-.color-text{
-  color: white;
-}
-
 .style-button{
   width: 100%;
 }
 
 .padding {
-  padding-top: 5%;
+  padding-top: 15px;
+  padding-bottom: 30px;
 }
 
-.style-text {
+.color-text {
   color: #2196f3;
   cursor: pointer;
+}
+
+.align-left {
+  float: left;
+}
+
+.align-right {
+  float: right;
 }
 </style>

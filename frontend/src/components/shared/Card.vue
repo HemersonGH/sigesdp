@@ -27,6 +27,12 @@
             v-text='title'
             :class='styleTitleDataTable'
           )
+          v-img.background(
+              v-if='logoUfla'
+              src='./img/svg_ufla_colorida_chapada.svg'
+              height='150'
+              contain
+            )
           p.category(
             v-text='text'
           )
@@ -93,6 +99,11 @@ export default {
     styleTitleDataTable: {
       type: String,
       default: 'title'
+    },
+
+    logoUfla: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -125,5 +136,10 @@ export default {
       border-radius: 4px;
     }
   }
+}
+
+.background{
+  background: white;
+  border-radius: 30px;
 }
 </style>
