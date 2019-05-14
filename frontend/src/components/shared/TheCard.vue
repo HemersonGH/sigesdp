@@ -5,24 +5,6 @@
     :value='titleCard'
     :sub-text='textCard'
   )
-  //- v-flex(
-  //-   md12
-  //-   lg6
-  //- )
-  //-   material-card(
-  //-     color='silver'
-  //-     title='Employee Stats'
-  //-     text='New employees on 15th September, 2016'
-  //-   )
-  //- v-flex(
-  //-   md12
-  //-   lg6
-  //- )
-  //-   material-card(
-  //-     color='blue'
-  //-     title='Employee Stats'
-  //-     text='New employees on 15th September, 2016'
-  //-   )
 </template>
 
 <script>

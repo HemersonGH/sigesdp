@@ -42,7 +42,7 @@
       color: white;
     }
 
-    .v-card--material__header.v-card{
+    .v-card--shared__header.v-card{
       padding: $padding-general;
     }
   }
@@ -55,11 +55,11 @@
 }
 
 .v-card--material-chart.v-card {
-  &:not(.v-card--material__header) {
+  &:not(.v-card--shared__header) {
     margin: $card-margin 0 !important;
   }
 
-  .v-card--material__header{
+  .v-card--shared__header{
     border-radius: $border-radius-base + 3;
     min-height: $card-chart-min-height;
     padding: 0 !important;
@@ -85,8 +85,8 @@
   }
 }
 
-.v-card--shared-stats.v-card:not(.v-card--material__header),
-.v-card--material-chart.v-card:not(.v-card--material__header) {
+.v-card--shared-stats.v-card:not(.v-card--shared__header),
+.v-card--material-chart.v-card:not(.v-card--shared__header) {
   margin: $card-margin 0 !important;
 }
 

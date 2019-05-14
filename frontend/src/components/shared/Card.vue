@@ -10,7 +10,7 @@
       :full-width='fullWidth'
       :offset='offset'
     )
-      v-card.v-card--material__header(
+      v-card.v-card--shared__header(
         v-if='!$slots.offset'
         :color='color'
         :class='`elevation-${elevation}`'

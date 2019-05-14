@@ -18,7 +18,7 @@
           )
             v-btn(
               v-on='on'
-              v-if='true'
+              v-if='responsive'
               dark
               icon
               @click.stop='showMenu'

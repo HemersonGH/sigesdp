@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Academico from '@/views/Academico.vue'
 import Departamento from '@/views/Departamento.vue'
+import Login from '@/components/shared/Login.vue'
 
 Vue.use(Router)
 
@@ -14,6 +15,12 @@ export default new Router({
       name: 'home',
       component: Academico,
       title: 'Acadêmico'
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      title: 'Login'
     },
     {
       path: '/academico',
