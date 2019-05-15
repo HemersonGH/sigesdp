@@ -23,8 +23,10 @@ public class Aluno extends GenericModel {
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
 	private Integer id;
 
+	@Required
 	private String nome;
 
+	@Required
 	private String email;
 
 	@Required
@@ -48,4 +50,7 @@ public class Aluno extends GenericModel {
 		this.email = email;
 	}
 
+	public void salvar() {
+		this.save();
+	}
 }

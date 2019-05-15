@@ -36,6 +36,6 @@ public class Departamentos extends DefaultController {
 			throw new ValidationException(MessagesUtil.ID_DEPARTAMENTO_NAO_ENCONTRADO);
 		}
 
-		renderJSON(departamento, DepartamentoSerializer.listItens);
+		renderJSON(departamento, DepartamentoSerializer.listIten);
 	}
 }

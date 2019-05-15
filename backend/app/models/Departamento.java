@@ -24,23 +24,18 @@ public class Departamento extends GenericModel {
 	private Integer id;
 
 	@Required
-	@Column(name = "nome")
 	private String nome;
 
 	@Required
-	@Column(name = "chefe")
 	private String chefe;
 
 	@Required
-	@Column(name = "telefone")
 	private String telefone;
 
 	@Required
-	@Column(name = "sigla")
 	private String sigla;
 
 	@Required
-	@Column(name = "descricao")
 	private String descricao;
 
 	public Integer getId() {

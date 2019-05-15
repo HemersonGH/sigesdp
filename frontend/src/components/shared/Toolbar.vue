@@ -46,8 +46,7 @@
           layout
           py-2
         )
-          router-link(
-            class='toolbar-items'
+          router-link.toolbar-items(
             to='/login'
           )
             v-tooltip(
@@ -122,5 +121,6 @@ export default {
   .style-button {
     font-weight: bold !important;
     font-size: inherit;
+    color: white !important;
   }
 </style>

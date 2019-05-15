@@ -10,10 +10,11 @@ import javax.persistence.Table;
 
 import play.data.validation.Required;
 import play.db.jpa.GenericModel;
+import security.IAuthUser;
 
 @Entity
 @Table(schema = "sigesdp", name = "usuario")
-public class Usuario extends GenericModel {
+public class Usuario extends GenericModel implements IAuthUser{
 	private static final String SEQ = "sigesdp.usuario_id_seq";
 
 	@Id
@@ -26,15 +27,17 @@ public class Usuario extends GenericModel {
 
 	@Required
 	private String senha;
-
-	public Integer getIdUsuario() {
+	
+	@Override
+	public Integer getId() {
 		return id;
 	}
-
-	public void setIdUsuario(Integer id) {
+	
+	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
+	@Override
 	public String getEmail() {
 		return email;
 	}
@@ -49,5 +52,9 @@ public class Usuario extends GenericModel {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public void salvar() {
+		this.save();
 	}
 }

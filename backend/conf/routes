@@ -2,6 +2,9 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+POST    /login                                  Secure.authenticate
+GET     /getAuthUser                            Secure.getAuthenticatedUser
+GET     /logout                                 Secure.logout
 POST 	/cadastrar								Professores.cadastraProfessor
 POST 	/cadastrar-departamento					Departamentos.cadastraDepartamento
 GET 	/departamentos							Departamentos.findAll

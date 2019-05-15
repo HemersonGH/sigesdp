@@ -163,7 +163,7 @@ public class Professor extends GenericModel {
 //		return professor;
 //	}
 
-	public void salvar(Professor professor) {
+	public void salvar() {
 		this.save();
 	}
 }

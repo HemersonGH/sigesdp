@@ -17,7 +17,7 @@
           lg6
         )
           Card(
-            color='#2196f3'
+            color='white'
             title=' '
             text=' '
             full-width
@@ -35,12 +35,10 @@
                   type='email'
                   autocomplete='off'
                   v-validate="'required|email'"
-                  data-vv-as='Email'
-                  data-vv-validate-on='change'
-                  :class="{'box-erro' : errors.has('email')}"
-                  data-vv-delay='90'
+                  :error-messages="errors.collect('email')"
+                  data-vv-name="Email"
+                  required
                 )
-                p.help.erro(v-show="errors.has('email')") {{ errors.first('email') }}
               div
                 v-text-field(
                   label='Senha'
@@ -48,13 +46,11 @@
                   color='#2196f3'
                   type='password'
                   autocomplete='off'
-                  v-validate="'required|min:3'"
-                  data-vv-as='Senha'
-                  data-vv-validate-on='change'
-                  :class="{'box-erro' : errors.has('password')}"
-                  data-vv-delay='90'
+                  v-validate="'required'"
+                  :error-messages="errors.collect('password')"
+                  data-vv-name="Senha"
+                  required
                 )
-                p.help.erro(v-show="errors.has('password')") {{ errors.first('password') }}
               div
                 v-btn.style-button(
                   color='#2196f3'
@@ -99,7 +95,15 @@ export default {
 
   methods: {
     login () {
-      this.$validator.validateAll()      
+      this.$validator.validateAll()
+    },
+
+    clear () {
+      this.name = ''
+      this.email = ''
+      this.select = null
+      this.checkbox = null
+      this.$validator.reset()
     }
   }
 }
@@ -110,13 +114,13 @@ export default {
   width: 100%;
   font-weight: bold !important;
   font-size: 100%;
+  color: white;
 }
 
 .style-div {
   padding-top: 15px;
   padding-bottom: 30px;
   color: #2196f3;
-  cursor: pointer;
   font-weight: 400;
 }
 
