@@ -12,9 +12,8 @@ public class DepartamentoSerializer {
 	static {
 		boolean prettyPrint = Play.mode == Mode.DEV;
 
-		listItens = new JSONSerializer().include("nome", "sigla", "chefe").exclude("*")
-				.prettyPrint(prettyPrint);
-		
+		listItens = new JSONSerializer().include("nome", "sigla", "chefe").exclude("*").prettyPrint(prettyPrint);
+
 		listAll = new JSONSerializer().include("id", "nome", "sigla", "chefe", "telefone", "descricao").exclude("*")
 				.prettyPrint(prettyPrint);
 	}
