@@ -23,16 +23,16 @@
         span(
           v-else
         )
+          v-img.background(
+            v-if='logoUfla'
+            src='./img/svg_ufla_colorida_chapada.svg'
+            height='150'
+            contain
+          )
           h4.font-weight-light.mb-2(
             v-text='title'
             :class='styleTitleDataTable'
           )
-          v-img.background(
-              v-if='logoUfla'
-              src='./img/svg_ufla_colorida_chapada.svg'
-              height='150'
-              contain
-            )
           p.category(
             v-text='text'
           )

@@ -16,34 +16,54 @@
           md6
           lg6
         )
-          Card.text-xs-center(
+          Card(
             color='#2196f3'
             title=' '
-            text=''
-            styleTitleDataTable='title-data-table'
+            text=' '
             full-width
             elevation='5'
             :logoUfla='true'
           )
-            div
-              v-text-field(
-                label='Email'
-                color='#2196f3'
-                type='email'
-              )
-              v-text-field(
-                label='Senha'
-                color='#2196f3'
-                type='password'
-              )
-            div
-              v-btn.style-button(
-                color='#2196f3'
-              ) Entrar
-                v-icon mdi-login
-            div.padding
-              span.color-text.align-left Redefinir senha
-              span.color-text.align-right Criar conta
+            v-form(
+              @submit.prevent='login()'
+            )
+              div
+                v-text-field(
+                  label='Email'
+                  name="email"
+                  color='#2196f3'
+                  type='email'
+                  autocomplete='off'
+                  v-validate="'required|email'"
+                  data-vv-as='Email'
+                  data-vv-validate-on='change'
+                  :class="{'box-erro' : errors.has('email')}"
+                  data-vv-delay='90'
+                )
+                p.help.erro(v-show="errors.has('email')") {{ errors.first('email') }}
+              div
+                v-text-field(
+                  label='Senha'
+                  name='password'
+                  color='#2196f3'
+                  type='password'
+                  autocomplete='off'
+                  v-validate="'required|min:3'"
+                  data-vv-as='Senha'
+                  data-vv-validate-on='change'
+                  :class="{'box-erro' : errors.has('password')}"
+                  data-vv-delay='90'
+                )
+                p.help.erro(v-show="errors.has('password')") {{ errors.first('password') }}
+              div
+                v-btn.style-button(
+                  color='#2196f3'
+                  type='submit'
+                ) Entrar
+                  v-icon mdi-login
+            div.style-div
+              span.align-left Redefinir senha
+              span.align-right Criar conta
 
 </template>
 
@@ -53,6 +73,10 @@ import TheCard from '@/components/shared/TheCard.vue'
 
 export default {
   name: 'Login',
+
+  $_veeValidate: {
+    validator: 'new'
+  },
 
   components: {
     Card,
@@ -71,23 +95,29 @@ export default {
         }
       ]
     }
+  },
+
+  methods: {
+    login () {
+      this.$validator.validateAll()      
+    }
   }
 }
 </script>
 
 <style scoped>
-.style-button{
+.style-button {
   width: 100%;
+  font-weight: bold !important;
+  font-size: 100%;
 }
 
-.padding {
+.style-div {
   padding-top: 15px;
   padding-bottom: 30px;
-}
-
-.color-text {
   color: #2196f3;
   cursor: pointer;
+  font-weight: 400;
 }
 
 .align-left {
@@ -96,5 +126,9 @@ export default {
 
 .align-right {
   float: right;
+}
+
+.error {
+  color: red;
 }
 </style>
