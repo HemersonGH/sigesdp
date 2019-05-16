@@ -52,10 +52,14 @@ public class Professor extends GenericModel {
 	@Required
 	public String telefone;
 
-	@Required
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_departamento", referencedColumnName = "id")
-	public Departamento departamento;
+//	@Required
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "id_departamento", referencedColumnName = "id")
+//	public Departamento departamento;
+	
+	@Required	
+	@Column(name = "id_departamento")
+	public Integer idDepartamento;
 
 	@Required
 	@OneToOne(cascade = CascadeType.ALL)
@@ -121,13 +125,13 @@ public class Professor extends GenericModel {
 		this.telefone = telefone;
 	}
 
-	public Departamento getDepartamento() {
-		return this.departamento;
-	}
-
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
-	}
+//	public Departamento getDepartamento() {
+//		return this.departamento;
+//	}
+//
+//	public void setDepartamento(Departamento departamento) {
+//		this.departamento = departamento;
+//	}
 
 	public Usuario getUsuario() {
 		return this.usuario;

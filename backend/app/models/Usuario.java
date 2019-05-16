@@ -14,7 +14,7 @@ import security.IAuthUser;
 
 @Entity
 @Table(schema = "sigesdp", name = "usuario")
-public class Usuario extends GenericModel implements IAuthUser{
+public class Usuario extends GenericModel implements IAuthUser {
 	private static final String SEQ = "sigesdp.usuario_id_seq";
 
 	@Id
@@ -27,16 +27,16 @@ public class Usuario extends GenericModel implements IAuthUser{
 
 	@Required
 	private String senha;
-	
+
 	@Override
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	@Override
 	public String getEmail() {
 		return email;
@@ -53,7 +53,7 @@ public class Usuario extends GenericModel implements IAuthUser{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	public void salvar() {
 		this.save();
 	}

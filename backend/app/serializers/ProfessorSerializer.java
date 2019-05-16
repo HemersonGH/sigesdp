@@ -5,25 +5,13 @@ import play.Play;
 import play.Play.Mode;
 
 public class ProfessorSerializer {
-	public static JSONSerializer findAllPaginated, create;
+	public static JSONSerializer getProfessor;
 
 	static {
 		boolean prettyPrint = Play.mode == Mode.DEV;
 
-		create = findAllPaginated = new JSONSerializer()
-			.include(
-				"id",
-				"login",
-				"ativo",
-				"pessoa.id",
-				"pessoa.nome",
-				"pessoa.pessoaFisica",
-				"perfis.id",
-				"perfis.nome",
-				"perfis.codigo",
-				"perfis.modulo"
-			)
-			.exclude("*").prettyPrint(prettyPrint);
+		getProfessor = new JSONSerializer().include("id", "nome", "curriculoLates", "areaInteresse",
+				"formacaoAcademica", "sala", "telefone", "idDepartamento", "usuario.id", "usuario.email").exclude("*")
+				.prettyPrint(prettyPrint);
 	}
-
 }

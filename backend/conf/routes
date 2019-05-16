@@ -5,10 +5,10 @@
 POST    /login                                  Secure.authenticate
 GET     /getAuthUser                            Secure.getAuthenticatedUser
 GET     /logout                                 Secure.logout
-POST 	/cadastrar								Professores.cadastraProfessor
-POST 	/cadastrar-departamento					Departamentos.cadastraDepartamento
+POST 	/cadastro-professor						Professores.cadastraProfessor
+POST 	/cadastro-departamento					Departamentos.cadastraDepartamento
 GET 	/departamentos							Departamentos.findAll
-GET 	/departamentos/{id}						Departamentos.findById
+GET 	/departamento/{id}						Departamentos.findById
 
 # Home page
 GET     /                                       Application.index
