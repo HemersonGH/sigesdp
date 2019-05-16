@@ -24,37 +24,32 @@
             elevation='5'
             :logoUfla='true'
           )
-            v-form(
+            form(
               @submit.prevent='login()'
             )
               div
                 v-text-field(
                   label='Email'
-                  name="email"
                   color='#2196f3'
-                  type='email'
-                  autocomplete='off'
+                  v-model='email'
                   v-validate="'required|email'"
                   :error-messages="errors.collect('email')"
-                  data-vv-name="Email"
-                  required
+                  data-vv-name='email'
+                  data-vv-as='Email'
                 )
-              div
                 v-text-field(
                   label='Senha'
-                  name='password'
                   color='#2196f3'
                   type='password'
-                  autocomplete='off'
+                  v-model='password'
                   v-validate="'required'"
                   :error-messages="errors.collect('password')"
-                  data-vv-name="Senha"
-                  required
+                  data-vv-name='password'
+                  data-vv-as='Senha'
                 )
-              div
                 v-btn.style-button(
                   color='#2196f3'
-                  type='submit'
+                  @click='login'
                 ) Entrar
                   v-icon mdi-login
             div.style-div
@@ -81,29 +76,18 @@ export default {
 
   data () {
     return {
-      item: [
-        {
-          title: 'Docentes',
-          text: 'Acesse as páginas publicas dos docentes da UFLA.',
-          colorCard: '#2CBF36',
-          icon: 'mdi-account-multiple',
-          route: '/academico/docentes'
-        }
-      ]
+      email: '',
+      password: ''
     }
   },
 
   methods: {
     login () {
-      this.$validator.validateAll()
-    },
-
-    clear () {
-      this.name = ''
-      this.email = ''
-      this.select = null
-      this.checkbox = null
-      this.$validator.reset()
+      this.$validator.validateAll().then(sucess => {
+        if (sucess) {
+          console.log('Validator OK')
+        }
+      })
     }
   }
 }
@@ -130,9 +114,5 @@ export default {
 
 .align-right {
   float: right;
-}
-
-.error {
-  color: red;
 }
 </style>

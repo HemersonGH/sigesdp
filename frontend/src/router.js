@@ -43,7 +43,7 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.path !== '/auth') {
+  if (to.path === '/' || to.path === '/login' || to.path === '/academico' || to.path === '/academico/departamentos') {
     next()
   } else {
     store.dispatch('auth/getAuthUser').then(() => {
