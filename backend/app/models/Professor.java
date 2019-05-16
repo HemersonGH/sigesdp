@@ -52,14 +52,10 @@ public class Professor extends GenericModel {
 	@Required
 	public String telefone;
 
-//	@Required
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "id_departamento", referencedColumnName = "id")
-//	public Departamento departamento;
-	
-	@Required	
-	@Column(name = "id_departamento")
-	public Integer idDepartamento;
+	@Required
+	@OneToOne
+	@JoinColumn(name = "id_departamento", referencedColumnName = "id")
+	public Departamento departamento;
 
 	@Required
 	@OneToOne(cascade = CascadeType.ALL)
@@ -157,7 +153,6 @@ public class Professor extends GenericModel {
 //		}
 //	}
 //
-//
 //	public static Professor createByProfessor(Professor professor) {
 //		Usuario usuario = new Usuario();
 //		
@@ -168,6 +163,7 @@ public class Professor extends GenericModel {
 //	}
 
 	public void salvar() {
+		this.departamento = Departamento.findById(this.departamento.getId());
 		this.save();
 	}
 }
