@@ -25,9 +25,8 @@
           DataTable(
             :headers='headers'
             :columnsTable='columnsTable'
-            :contentTable='departamentos.data'
+            :contentTable='docentes.data'
             @openModal='openModal'
-            :search='search'
           )
       Dialog(
         :showDialog='showDialog'
@@ -44,7 +43,7 @@ import DataTable from '@/components/shared/DataTable.vue'
 import Dialog from '@/components/shared/Dialog.vue'
 
 export default {
-  name: 'Departamento',
+  name: 'Docentes',
 
   components: {
     LinkVoltar,
@@ -66,12 +65,7 @@ export default {
         },
         {
           sortable: true,
-          text: 'Sigla',
-          value: 'sigla'
-        },
-        {
-          sortable: true,
-          text: 'Chefe',
+          text: 'Departamento',
           value: 'chefe'
         },
         {
@@ -82,15 +76,17 @@ export default {
         }
       ],
       columnsTable: {
-        column: ['nome', 'sigla', 'chefe'],
-        class: ['text-xs-left', '', '']
+        column: ['nome', 'chefe'],
+        class: ['text-xs-left', '']
       },
       detailsDialog: {
         title: 'Detalhes do Departamento',
-        labels:
-          [
-            ['Nome', 'nome'], ['Chefia', 'chefe'], ['Telefone', 'telefone'], ['Apresentação', 'descricao']
-          ],
+        labels: [
+          ['Nome', 'nome'],
+          ['Chefia', 'chefe'],
+          ['Telefone', 'telefone'],
+          ['Apresentação', 'descricao']
+        ],
         itemDialog: null
       },
       showDialog: false,
@@ -119,7 +115,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      departamentos: 'departamento/departamentos'
+      docentes: 'departamento/departamentos'
     })
   },
 

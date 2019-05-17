@@ -3,7 +3,7 @@
     :headers='headers'
     :items='contentTable'
     :rows-per-page-items='setRowPerPagItens'
-    rows-per-page-text='Itens por página:'
+    rows-per-page-text='Linhas por página:'
     no-data-text='Não há dados para exibir.'
     no-results-text='Não há resultados para sua busca.'
     :search='search'
@@ -25,8 +25,7 @@
         :key='i'
         :class='columnsTable.class[i]'
       ) {{ item[column] }}
-      td.text-xs-right(
-      )
+      td.text-xs-right
         v-tooltip(
           top
           content-class='top'
@@ -44,6 +43,10 @@
                 :color='colorIcon'
               ) {{ icon }}
           span {{ iconAction }}
+    template(
+      v-slot:pageText='props'
+    )
+    | {{ props.pageStart }} - {{ props.pageStop }} de {{ props.itemsLength }}
 </template>
 
 <script>
