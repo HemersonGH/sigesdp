@@ -15,17 +15,13 @@
           :link='routeParent'
         )
         Card(
-          color='#3169B3'
+          color='#2CBF36'
           :title='title'
           :text='text'
           styleTitleDataTable='title-data-table'
           full-width
           elevation='6'
         )
-          FieldSearch(
-            :colorBottomFieldSearch='colorBottomFieldSearch'
-            @valueSearch='valueSearch'
-          )
           DataTable(
             :headers='headers'
             :columnsTable='columnsTable'
@@ -45,7 +41,6 @@ import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
 import DataTable from '@/components/shared/DataTable.vue'
-import FieldSearch from '@/components/shared/FieldSearch.vue'
 import Dialog from '@/components/shared/Dialog.vue'
 
 export default {
@@ -55,14 +50,13 @@ export default {
     LinkVoltar,
     Card,
     DataTable,
-    FieldSearch,
     Dialog
   },
 
   data () {
     return {
-      title: 'Departamentos',
-      text: 'Pesquise os departamentos da UFLA',
+      title: 'Docentes',
+      text: 'Pesquise os docentes da UFLA',
       headers: [
         {
           sortable: true,
@@ -100,8 +94,6 @@ export default {
         itemDialog: null
       },
       showDialog: false,
-      search: '',
-      colorBottomFieldSearch: '#3169B3',
       routeParent: '/academico'
     }
   },

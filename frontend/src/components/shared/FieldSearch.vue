@@ -14,7 +14,7 @@
         label='Pesquise'
         single-line
         hide-details
-        :color='colorBottom'
+        :color='colorBottomFieldSearch'
       )
 </template>
 
@@ -29,7 +29,7 @@ export default {
   },
 
   props: {
-    colorBottom: {
+    colorBottomFieldSearch: {
       type: String,
       default: ''
     }
