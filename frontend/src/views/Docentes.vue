@@ -61,7 +61,7 @@ export default {
         {
           sortable: true,
           text: 'Departamento',
-          value: 'departamento.sigla'
+          value: 'departamento'
         },
         {
           sortable: false,
@@ -71,7 +71,8 @@ export default {
         }
       ],
       columnsTable: {
-        column: ['nome', 'departamento.sigla'],
+        column: ['nome', 'departamento'],
+        subIten: ['', 'sigla'],
         class: ['text-xs-left', '']
       },
       routeParent: '/academico'

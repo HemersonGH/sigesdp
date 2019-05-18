@@ -23,7 +23,9 @@
         v-for='(column, i) in columnsTable.column'
         :key='i'
         :class='columnsTable.class[i]'
-      ) {{ item[column] }}
+      ) {{ item[column].sigla }}
+      //- ) {{ item[column].columnsTable.subIten[i] }}
+      //- ) {{ item[column] }}
       td.text-xs-right
         v-tooltip(
           top
@@ -44,7 +46,7 @@
           span {{ iconAction }}
     template(
       v-slot:pageText='props'
-    ) {{ props.pageStart }} - {{ props.pageStop }} de {{ Math.round(props.itemsLength/props.pageStop) }}
+    ) {{ props.pageStart }} - {{ props.pageStop }} de {{ props.itemsLength }}
 </template>
 
 <script>
