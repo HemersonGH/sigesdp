@@ -14,6 +14,7 @@ public class AuthServiceFactory {
 		return service;
 	}
 
+	@SuppressWarnings("deprecation")
 	private IAuthService createService() {
 		try {
 			String className = "security.auth.CookieAuth";

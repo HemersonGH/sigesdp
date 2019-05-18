@@ -44,7 +44,7 @@
           span {{ iconAction }}
     template(
       v-slot:pageText='props'
-    ) {{ props.pageStart }} - {{ props.pageStop }} de {{ props.itemsLength/props.pageStop }}
+    ) {{ props.pageStart }} - {{ props.pageStop }} de {{ Math.round(props.itemsLength/props.pageStop) }}
 </template>
 
 <script>
