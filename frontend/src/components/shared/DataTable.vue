@@ -7,7 +7,6 @@
     no-data-text='Não há dados para exibir.'
     no-results-text='Não há resultados para sua busca.'
     :search='search'
-    :pagination.sync='pagination'
   )
     template(
       slot='headerCell'
@@ -45,8 +44,7 @@
           span {{ iconAction }}
     template(
       v-slot:pageText='props'
-    )
-    | {{ props.pageStart }} - {{ props.pageStop }} de {{ props.itemsLength }}
+    ) {{ props.pageStart }} - {{ props.pageStop }} de {{ props.itemsLength/props.pageStop }}
 </template>
 
 <script>
@@ -60,8 +58,7 @@ export default {
     },
 
     contentTable: {
-      type: [Object, Array],
-      required: true
+      type: [Object, Array]
     },
 
     columnsTable: {

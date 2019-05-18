@@ -28,11 +28,6 @@
             :contentTable='docentes.data'
             @openModal='openModal'
           )
-      Dialog(
-        :showDialog='showDialog'
-        :detailsDialog='detailsDialog'
-        @close="closeModal"
-      )
 </template>
 
 <script>
@@ -66,7 +61,7 @@ export default {
         {
           sortable: true,
           text: 'Departamento',
-          value: 'chefe'
+          value: 'departamento.sigla'
         },
         {
           sortable: false,
@@ -76,37 +71,17 @@ export default {
         }
       ],
       columnsTable: {
-        column: ['nome', 'chefe'],
+        column: ['nome', 'departamento.sigla'],
         class: ['text-xs-left', '']
       },
-      detailsDialog: {
-        title: 'Detalhes do Departamento',
-        labels: [
-          ['Nome', 'nome'],
-          ['Chefia', 'chefe'],
-          ['Telefone', 'telefone'],
-          ['Apresentação', 'descricao']
-        ],
-        itemDialog: null
-      },
-      showDialog: false,
       routeParent: '/academico'
     }
   },
 
   methods: {
     ...mapActions({
-      getDepartamentos: 'departamento/getDepartamentos'
+      getDocentes: 'docente/getDocentes'
     }),
-
-    openModal (item) {
-      this.detailsDialog.itemDialog = item
-      this.showDialog = true
-    },
-
-    closeModal () {
-      this.showDialog = false
-    },
 
     valueSearch (query) {
       this.search = query
@@ -115,12 +90,12 @@ export default {
 
   computed: {
     ...mapGetters({
-      docentes: 'departamento/departamentos'
+      docentes: 'docente/docentes'
     })
   },
 
   created () {
-    this.getDepartamentos()
+    this.getDocentes()
   }
 }
 </script>

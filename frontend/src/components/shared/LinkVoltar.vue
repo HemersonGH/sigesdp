@@ -23,6 +23,7 @@ export default {
   font-size: 100%;
   color: #0000FF;
   width: 105px;
+  text-decoration: underline;
 }
 
 .style-span:hover {
