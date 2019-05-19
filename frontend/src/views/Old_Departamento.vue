@@ -26,8 +26,9 @@
             :colorBottomFieldSearch='colorBottomFieldSearch'
             @valueSearch='valueSearch'
           )
-          ListagemDepartamento(
+          DataTable(
             :headers='headers'
+            :columnsTable='columnsTable'
             :contentTable='departamentos.data'
             :search='search'
             @openModal='openModal'
@@ -43,7 +44,7 @@
 import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
-import ListagemDepartamento from '@/components/departamento/ListagemDepartamento.vue'
+import DataTable from '@/components/shared/DataTable.vue'
 import FieldSearch from '@/components/shared/FieldSearch.vue'
 import Dialog from '@/components/shared/Dialog.vue'
 
@@ -53,7 +54,7 @@ export default {
   components: {
     LinkVoltar,
     Card,
-    ListagemDepartamento,
+    DataTable,
     FieldSearch,
     Dialog
   },
@@ -86,6 +87,10 @@ export default {
           align: 'right'
         }
       ],
+      columnsTable: {
+        column: ['nome', 'sigla', 'chefe'],
+        class: ['text-xs-left', '', '']
+      },
       detailsDialog: {
         title: 'Detalhes do Departamento',
         labels:

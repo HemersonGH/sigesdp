@@ -46,5 +46,4 @@ export default {
 .v-card--shared-stats.v-card .v-card__actions .caption {
     color: #000;
 }
-
 </style>

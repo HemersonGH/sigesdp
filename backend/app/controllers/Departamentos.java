@@ -38,4 +38,14 @@ public class Departamentos extends DefaultController {
 
 		renderJSON(departamento, DepartamentoSerializer.listIten);
 	}
+	
+	public static void fieldSelect() {
+		List<Departamento> departamentos = Departamento.findAll();
+
+		if (departamentos == null) {
+			throw new ValidationException(MessagesUtil.DEPARTAMENTOS_NAO_ENCONTRADOS);
+		}
+
+		renderJSON(departamentos, DepartamentoSerializer.listSelect);
+	}
 }

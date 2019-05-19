@@ -14,6 +14,9 @@
         LinkVoltar(
           :link='routeParent'
         )
+        PesquisaDocentes(
+          :departamentos='departamentosSelect.data'
+        )
         Card(
           color='#2CBF36'
           :title='title'
@@ -22,11 +25,10 @@
           full-width
           elevation='6'
         )
-          DataTable(
+          ListagemDocentes(
             :headers='headers'
-            :columnsTable='columnsTable'
             :contentTable='docentes.data'
-            @openModal='openModal'
+            @openDetails='openDetails'
           )
 </template>
 
@@ -34,7 +36,8 @@
 import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
-import DataTable from '@/components/shared/DataTable.vue'
+import PesquisaDocentes from '@/components/docente/PesquisaDocentes.vue'
+import ListagemDocentes from '@/components/docente/ListagemDocentes.vue'
 import Dialog from '@/components/shared/Dialog.vue'
 
 export default {
@@ -43,7 +46,8 @@ export default {
   components: {
     LinkVoltar,
     Card,
-    DataTable,
+    PesquisaDocentes,
+    ListagemDocentes,
     Dialog
   },
 
@@ -61,7 +65,7 @@ export default {
         {
           sortable: true,
           text: 'Departamento',
-          value: 'departamento'
+          value: 'departamento.sigla'
         },
         {
           sortable: false,
@@ -70,33 +74,34 @@ export default {
           align: 'right'
         }
       ],
-      columnsTable: {
-        column: ['nome', 'departamento'],
-        subIten: ['', 'sigla'],
-        class: ['text-xs-left', '']
-      },
       routeParent: '/academico'
     }
   },
 
   methods: {
     ...mapActions({
-      getDocentes: 'docente/getDocentes'
+      getDocentes: 'docente/getDocentes',
+      getDepartamentosSelect: 'departamento/getDepartamentosSelect'
     }),
 
     valueSearch (query) {
       this.search = query
+    },
+
+    openDetails () {
     }
   },
 
   computed: {
     ...mapGetters({
-      docentes: 'docente/docentes'
+      docentes: 'docente/docentes',
+      departamentosSelect: 'departamento/departamentosSelect'
     })
   },
 
   created () {
     this.getDocentes()
+    this.getDepartamentosSelect()
   }
 }
 </script>
@@ -104,5 +109,13 @@ export default {
 <style scoped>
 .no-padding-top {
   padding-top: 0px !important;
+}
+
+.styleMouse{
+  cursor: pointer;
+}
+
+.v-card--shared-stats.v-card .v-card__actions .caption {
+    color: #000;
 }
 </style>

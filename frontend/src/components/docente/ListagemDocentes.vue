@@ -19,11 +19,8 @@
       slot='items'
       slot-scope='{ item }'
     )
-      td(
-        v-for='(column, i) in columnsTable.column'
-        :key='i'
-        :class='columnsTable.class[i]'
-      ) {{ item[column] }}
+      td.text-xs-left {{ item.nome }}
+      td {{ item.departamento.sigla }}
       td.text-xs-right
         v-tooltip(
           top
@@ -39,9 +36,9 @@
               @click.stop='viewDetails(item)'
             )
               v-icon.no-margin(
-                :color='colorIcon'
-              ) {{ icon }}
-          span {{ iconAction }}
+                color='#707070'
+              ) mdi-eye
+          span Visualizar
     template(
       v-slot:pageText='props'
     ) {{ props.pageStart }} - {{ props.pageStop }} de {{ props.itemsLength }}
@@ -49,7 +46,7 @@
 
 <script>
 export default {
-  name: 'DataTable',
+  name: 'ListagemDocentes',
 
   props: {
     headers: {
@@ -59,26 +56,6 @@ export default {
 
     contentTable: {
       type: [Object, Array]
-    },
-
-    columnsTable: {
-      type: Object,
-      required: true
-    },
-
-    icon: {
-      type: String,
-      default: 'mdi-eye'
-    },
-
-    colorIcon: {
-      type: String,
-      default: '#707070'
-    },
-
-    iconAction: {
-      type: String,
-      default: 'Visualizar'
     },
 
     search: {
@@ -104,7 +81,7 @@ export default {
 
   methods: {
     viewDetails (item) {
-      this.$emit('openModal', item)
+      this.$emit('openDetails', item)
     }
   }
 }
