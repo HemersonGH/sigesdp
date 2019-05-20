@@ -42,7 +42,7 @@
           span Visualizar
     template(
       v-slot:pageText='props'
-    ) {{ props.pageStart }} - {{ props.pageStop }} de {{ props.itemsLength }}
+    ) Exibindo de {{ props.pageStart }} até {{ props.pageStop }} de {{ props.itemsLength }}
 </template>
 
 <script>

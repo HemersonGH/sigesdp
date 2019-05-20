@@ -17,13 +17,13 @@
           align-center
         )
           v-flex.padding-bottom(
-            xs2
+            xs4
             sm2
             md2
           )
             h5.padding-bottom.font-weight.no-margin-bottom Nome:
           v-flex.padding-bottom(
-            xs10
+            xs8
             sm10
             md10
           )
@@ -40,13 +40,13 @@
           align-center
         )
           v-flex.padding-top(
-            xs2
+            xs4
             sm2
             md2
           )
             h5.padding-top.font-weight.no-margin-bottom Departamento:
           v-flex.padding-top(
-            xs10
+            xs8
             sm10
             md10
           )
