@@ -32,9 +32,9 @@
             :search='search'
             @openModal='openModal'
           )
-      Dialog(
+      DetalhesDepartamento(
         :showDialog='showDialog'
-        :detailsDialog='detailsDialog'
+        :data='departamento'
         @close="closeModal"
       )
 </template>
@@ -45,7 +45,7 @@ import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
 import ListagemDepartamento from '@/components/departamento/ListagemDepartamento.vue'
 import FieldSearch from '@/components/shared/FieldSearch.vue'
-import Dialog from '@/components/shared/Dialog.vue'
+import DetalhesDepartamento from '@/components/departamento/DetalhesDepartamento.vue'
 
 export default {
   name: 'Departamento',
@@ -55,7 +55,7 @@ export default {
     Card,
     ListagemDepartamento,
     FieldSearch,
-    Dialog
+    DetalhesDepartamento
   },
 
   data () {
@@ -86,14 +86,7 @@ export default {
           align: 'right'
         }
       ],
-      detailsDialog: {
-        title: 'Detalhes do Departamento',
-        labels:
-          [
-            ['Nome', 'nome'], ['Chefia', 'chefe'], ['Telefone', 'telefone'], ['Apresentação', 'descricao']
-          ],
-        itemDialog: null
-      },
+      departamento: null,
       showDialog: false,
       search: '',
       colorBottomFieldSearch: '#3169B3',
@@ -107,7 +100,7 @@ export default {
     }),
 
     openModal (item) {
-      this.detailsDialog.itemDialog = item
+      this.departamento = item
       this.showDialog = true
     },
 

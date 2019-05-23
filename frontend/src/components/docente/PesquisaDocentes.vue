@@ -5,7 +5,7 @@
       :class='`elevation-4`'
     )
       v-card-title.center.color
-        span.font-weight Pesquisa avançada
+        span.font-weight Pesquisar
     v-divider.mx-3
     v-card-text.padding
       v-container.padding(
@@ -33,6 +33,7 @@
               v-validate="'required'"
               :error-messages="errors.collect('select')"
               data-vv-name='Nome'
+              clearable
             )
         v-layout(
           justify-start
@@ -58,6 +59,7 @@
               item-value='id'
               no-data-text='Não há dados.'
               data-vv-name='Departamento'
+              clearable
             )
       v-divider.mx-3
       v-card-actions

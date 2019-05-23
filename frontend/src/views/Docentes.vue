@@ -38,7 +38,6 @@ import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
 import PesquisaDocentes from '@/components/docente/PesquisaDocentes.vue'
 import ListagemDocentes from '@/components/docente/ListagemDocentes.vue'
-import Dialog from '@/components/shared/Dialog.vue'
 
 export default {
   name: 'Docentes',
@@ -47,8 +46,7 @@ export default {
     LinkVoltar,
     Card,
     PesquisaDocentes,
-    ListagemDocentes,
-    Dialog
+    ListagemDocentes
   },
 
   data () {
