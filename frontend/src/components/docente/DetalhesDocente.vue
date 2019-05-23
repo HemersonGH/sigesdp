@@ -9,16 +9,18 @@
       v-tabs-slider(
         color='#2196f3'
       )
-      v-tab(
-        v-for='tab in tabs'
-        :key='tab'
-      )
-        v-icon.inherit {{ tab.icon }}
-        | &nbsp {{ tab.nome }}
-      v-tab-item(
-        v-for='tab in tabs'
-        :key='tab'
-      )
+      v-tab
+        v-icon.inherit mdi-account
+        | &nbsp Perfil Pessoal
+      v-tab
+        v-icon.inherit mdi-library-books
+        | &nbsp Projetos
+      v-tab
+        v-icon.inherit mdi-book-multiple-variant
+        | &nbsp Disciplinas
+      v-tab-item
+        PerfilPessoal
+      v-tab-item
         v-container(
           grid-list-xl
           fluid
@@ -31,41 +33,21 @@
             v-flex(
               md12
             )
-              PerfilPessoal
-              Contato
+      v-tab-item
 </template>
 
 <script>
 import PerfilPessoal from '@/components/docente/PerfilPessoal.vue'
-import Contato from '@/components/docente/Contato.vue'
 
 export default {
   name: 'DetalhesDocente',
 
   components: {
-    PerfilPessoal,
-    Contato
+    PerfilPessoal
   },
 
   data () {
     return {
-      tabs: [
-        {
-          nome: 'Perfil Pessoal',
-          icon: 'mdi-account',
-          value: 'tab-1'
-        },
-        {
-          nome: 'Projetos',
-          icon: 'mdi-library-books',
-          value: 'tab-2'
-        },
-        {
-          nome: 'Disciplinas',
-          icon: 'mdi-book-multiple-variant',
-          value: 'tab-3'
-        }
-      ]
     }
   }
 }

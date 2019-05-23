@@ -1,8 +1,8 @@
 <template lang="pug">
-  v-card.padding-top
+  v-card
     v-card-title.align
-      v-icon mdi-file-document-box
-      h4.style-tittle &nbsp Contato
+      v-icon mdi-account-box
+      h4.style-tittle &nbsp Informações Pessoais
     v-divider.mx-3
     v-card-text
       v-container.padding(
@@ -21,17 +21,19 @@
             sm12
             md12
           )
-            h5.font-weight-label Sala:
-              span.style-sub-title 201 - 1º Andar
-            h5.font-weight-label Telefone/Ramal:
-              span.style-sub-title 1957
-            h5.font-weight-label Email:
-              span.style-sub-title fransciso@gmail.com
+            h5.font-weight-label Nome:
+              span.style-sub-title Fransical carvalho da silva
+            h5.font-weight-label Curriculo Lates:
+              span.style-sub-title http://www.caps.ufla.br/prof
+            h5.font-weight-label Área Interesse:
+              span.style-sub-title Inteligência Artificial
+            h5.font-weight-label Formação Acadêmica/Profissional:
+              span.style-sub-title Faculdade federal de bragança
 </template>
 
 <script>
 export default {
-  name: 'Contato'
+  name: 'InformacoesPessoais'
 }
 </script>
 
@@ -55,10 +57,6 @@ export default {
   padding-left: 10px;
   font-weight: 300;
   font-size: calc(1.0625rem - 0.0825rem);
-}
-
-.padding-top {
-  margin-top: 15px;
 }
 
 .align {
