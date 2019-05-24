@@ -30,7 +30,7 @@
               md12
             )
               h5.font-weight-bold.no-margin-bottom
-                | Chefia:
+                | Chefe:
               p {{ data.chefe }}
             v-flex(
               xs12

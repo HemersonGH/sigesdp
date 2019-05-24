@@ -1,7 +1,6 @@
 <template lang="pug">
   div
     v-tabs(
-      v-model='active'
       fixed-tabs
       color='transparent'
       centered
@@ -21,43 +20,36 @@
       v-tab-item
         PerfilPessoal
       v-tab-item
-        v-container(
-          grid-list-xl
-          fluid
-          fill-height
-        )
-          v-layout(
-            justify-center
-            wrap
-          )
-            v-flex(
-              md12
-            )
+        ListagemProjetosPesquisa
       v-tab-item
+        Disciplinas
 </template>
 
 <script>
+import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import PerfilPessoal from '@/components/docente/PerfilPessoal.vue'
+import ListagemProjetosPesquisa from '@/components/docente/ListagemProjetosPesquisa.vue'
+import Disciplinas from '@/components/docente/Disciplinas.vue'
 
 export default {
   name: 'DetalhesDocente',
 
   components: {
-    PerfilPessoal
+    LinkVoltar,
+    PerfilPessoal,
+    ListagemProjetosPesquisa,
+    Disciplinas
   },
 
   data () {
     return {
+      routeParent: '/academico/docentes'
     }
   }
 }
 </script>
 
 <style scoped>
-.padding{
-  padding-left: 5%;
-}
-
 .inherit {
   color: inherit;
 }
