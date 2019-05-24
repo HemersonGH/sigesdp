@@ -11,7 +11,7 @@
       :colorBottomFieldSearch='colorBottomFieldSearch'
       @valueSearch='valueSearch'
     )
-    v-data-table.primary--text(
+    v-data-table(
       :headers='headers'
       :items='contentTable'
       :rows-per-page-items='setRowPerPagItens'
@@ -136,5 +136,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

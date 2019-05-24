@@ -14,7 +14,7 @@
         v-tabs.align(
           color='transparent'
         )
-          v-tabs-slider(
+          v-tabs-slider.width(
             color='#2196f3'
           )
           v-tab Graduação
@@ -51,5 +51,9 @@ export default {
 <style scoped>
 .align {
   padding-top: 10px;
+}
+
+.width {
+  min-width: 91.95px;
 }
 </style>

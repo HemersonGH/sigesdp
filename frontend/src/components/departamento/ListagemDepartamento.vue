@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-data-table.primary--text(
+  v-data-table(
     :headers='headers'
     :items='contentTable'
     :rows-per-page-items='setRowPerPagItens'
@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: 'DataTable',
+  name: 'ListagemDepartamento',
 
   props: {
     headers: {

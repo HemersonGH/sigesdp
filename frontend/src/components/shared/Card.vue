@@ -138,7 +138,7 @@ export default {
   }
 }
 
-.background{
+.background {
   background: white;
   border-radius: 30px;
 }
