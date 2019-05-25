@@ -22,16 +22,23 @@
             md12
           )
             h5.font-weight-label Sala:
-              span.style-sub-title 201 - 1º Andar
+              span.style-sub-title {{ data.sala }}
             h5.font-weight-label Telefone/Ramal:
-              span.style-sub-title 1957
+              span.style-sub-title {{ data.telefone }}
             h5.font-weight-label Email:
-              span.style-sub-title fransciso@gmail.com
+              span.style-sub-title {{ data.usuario.email }}
 </template>
 
 <script>
 export default {
-  name: 'Contato'
+  name: 'Contato',
+
+  props: {
+    data: {
+      type: [Object, Array],
+      required: true
+    }
+  }
 }
 </script>
 

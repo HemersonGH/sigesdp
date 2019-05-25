@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from './store'
+// import store from './store'
 import Academico from '@/views/Academico.vue'
 import Pesquisa from '@/views/Pesquisa.vue'
 import Departamento from '@/views/Departamento.vue'
@@ -50,7 +50,7 @@ const router = new Router({
       public: true
     },
     {
-      path: '/academico/docentes/idDocente',
+      path: '/academico/docente/:id',
       name: 'detalhes-docentes',
       component: DetalhesDocentes,
       title: 'Detalhes do Docentes',
@@ -66,16 +66,16 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.path !== '/login') {
-    next()
-  } else {
-    store.dispatch('auth/getAuthUser').then(() => {
-      next()
-    }).catch(() => {
-      next('/login')
-    })
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.path !== '/login') {
+//     next()
+//   } else {
+//     store.dispatch('auth/getAuthUser').then(() => {
+//       next()
+//     }).catch(() => {
+//       next('/login')
+//     })
+//   }
+// })
 
 export default router

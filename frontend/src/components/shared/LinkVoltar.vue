@@ -1,8 +1,13 @@
 <template lang="pug">
-  router-link(
+  v-btn.style-btn(
+    v-on='on'
+    slot='activator'
     :to='link'
+    small
   )
-    span.style-span < Voltar
+    v-icon.no-margin(
+    ) mdi-arrow-left
+    | &nbsp Voltar
 </template>
 
 <script>
@@ -19,14 +24,8 @@ export default {
 </script>
 
 <style scoped>
-.style-span {
-  font-size: 100%;
-  color: #0000FF;
-  width: 105px;
-  text-decoration: underline;
-}
-
-.style-span:hover {
-  color: #800080;
+.style-btn {
+  text-transform: capitalize;
+  font-size: 80%;
 }
 </style>

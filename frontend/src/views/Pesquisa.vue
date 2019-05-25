@@ -24,7 +24,6 @@
               :iconCard='item.icon'
               :titleCard='item.title'
               :textCard='item.text'
-              :elevation='0'
             )
 </template>
 
@@ -44,23 +43,23 @@ export default {
         {
           title: 'Pesquisadores',
           text: 'Consulte os pesquisadores da UFLA.',
-          colorCard: '',
+          colorCard: '#F5DE31',
           icon: 'mdi-account-multiple',
           route: '/pesquisa/pesquisadores'
         },
         {
           title: 'Iniciação Científica',
           text: 'Conheça os nossos bolsistas.',
-          colorCard: '#00999C',
+          colorCard: '#009194',
           icon: 'mdi-file-find',
-          route: '/academico/departamentos'
+          route: '/pesquisa/iniciacao-cientifica'
         },
         {
           title: 'Bases de Pesquisas',
           text: 'Consulte as bases de pesquisa atuantes na UFLA.',
-          colorCard: '#545969',
+          colorCard: '#FF5201',
           icon: 'mdi-database',
-          route: '/academico/publicacoes'
+          route: '/pesquisa/bases-de-pesquisas'
         }
       ]
     }
@@ -69,4 +68,7 @@ export default {
 </script>
 
 <style scoped>
+.f {
+  color: rgb(245, 222, 49);
+}
 </style>

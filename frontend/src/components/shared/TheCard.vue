@@ -4,6 +4,7 @@
     :icon='iconCard'
     :value='titleCard'
     :sub-text='textCard'
+    :elevation='elevation'
   )
 </template>
 
@@ -22,18 +23,26 @@ export default {
       type: String,
       required: true
     },
+
     iconCard: {
       type: String,
       required: true
     },
+
     titleCard: {
       type: String,
       required: true
     },
+
     textCard: {
       type: String,
       required: true
-    }
+    },
+
+    elevation: {
+      type: [Number, String],
+      default: 5
+    },
   }
 }
 </script>

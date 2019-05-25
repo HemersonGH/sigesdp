@@ -33,7 +33,7 @@
               v-on='on'
               slot='activator'
               icon
-              @click.stop='viewDetails(item)'
+              :to='`docente/${item.id}`'
             )
               v-icon.no-margin(
                 color='#707070'
@@ -76,12 +76,6 @@ export default {
           'value': -1
         }
       ]
-    }
-  },
-
-  methods: {
-    viewDetails (item) {
-      this.$emit('openDetails', item)
     }
   }
 }

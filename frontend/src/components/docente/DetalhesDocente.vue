@@ -1,5 +1,8 @@
 <template lang="pug">
   div
+    LinkVoltar.margin(
+      :link='routeParent'
+    )
     v-tabs(
       fixed-tabs
       color='transparent'
@@ -18,7 +21,9 @@
         v-icon.inherit mdi-book-multiple-variant
         | &nbsp Disciplinas
       v-tab-item
-        PerfilPessoal
+        PerfilPessoal(
+          :data='docente.data'
+        )
       v-tab-item
         ListagemProjetosPesquisa
       v-tab-item
@@ -26,6 +31,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import PerfilPessoal from '@/components/docente/PerfilPessoal.vue'
 import ListagemProjetosPesquisa from '@/components/docente/ListagemProjetosPesquisa.vue'
@@ -45,6 +51,22 @@ export default {
     return {
       routeParent: '/academico/docentes'
     }
+  },
+
+  methods: {
+    ...mapActions({
+      getDocenteById: 'docente/getDocenteById'
+    })
+  },
+
+  computed: {
+    ...mapGetters({
+      docente: 'docente/docente'
+    })
+  },
+
+  created () {
+    this.getDocenteById(this.$route.params.id)
   }
 }
 </script>
@@ -52,5 +74,9 @@ export default {
 <style scoped>
 .inherit {
   color: inherit;
+}
+
+.margin {
+  margin-left: 24px;
 }
 </style>

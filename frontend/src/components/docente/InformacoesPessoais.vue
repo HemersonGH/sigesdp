@@ -22,18 +22,25 @@
             md12
           )
             h5.font-weight-label Nome:
-              span.style-sub-title Fransical carvalho da silva
+              span.style-sub-title {{ data.nome }}
             h5.font-weight-label Curriculo Lates:
-              span.style-sub-title http://www.caps.ufla.br/prof
+              span.style-sub-title {{ data.curriculoLates }}
             h5.font-weight-label Área Interesse:
-              span.style-sub-title Inteligência Artificial
+              span.style-sub-title {{ data.areaInteresse }}
             h5.font-weight-label Formação Acadêmica/Profissional:
-              span.style-sub-title Faculdade federal de bragança
+              span.style-sub-title {{ data.formacaoAcademica }}
 </template>
 
 <script>
 export default {
-  name: 'InformacoesPessoais'
+  name: 'InformacoesPessoais',
+
+  props: {
+    data: {
+      type: [Object, Array],
+      required: true
+    }
+  }
 }
 </script>
 

@@ -31,7 +31,9 @@
         slot='items'
         slot-scope='{ item }'
       )
-        td.text-xs-left {{ item.nome }}
+        td.text-xs-left(
+          v-if="item.tipo == '1'"
+        ) {{ item.nome }}
         td {{ item.sigla }}
         td {{ item.chefe }}
         td.text-xs-right

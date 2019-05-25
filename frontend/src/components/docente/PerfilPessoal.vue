@@ -11,8 +11,12 @@
       v-flex(
         md12
       )
-        InformacoesPessoais
-        Contato
+        InformacoesPessoais(
+          :data='data'
+        )
+        Contato(
+          :data='data'
+        )
 </template>
 
 <script>
@@ -21,6 +25,13 @@ import Contato from '@/components/docente/Contato.vue'
 
 export default {
   name: 'PerfilPessoal',
+
+  props: {
+    data: {
+      type: [Object, Array],
+      required: true
+    }
+  },
 
   components: {
     InformacoesPessoais,
