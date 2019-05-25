@@ -14,3 +14,11 @@ sigesdp.erros.de.validacao=Ocorreram erros de validação
 sigesdp.professores.nao.encontrado=Não foi possível encontrar todos os professores.
 
 sigesdp.id.professor.nao.encontrado=Nenhum professor foi encontrado com esse id.
+
+sigesdp.professor.nao.encontrado=Não foi possível encontrar o professor.
+
+sigesdp.disciplinas.nao.encontradas=Não foi possível encontrar todas as disciplinas do professor.
+
+sigesdp.disciplina.nao.encontrada=Não foi possível encontrar o disciplina.
+
+sigesdp.id.disciplina.nao.encontrada=Nenhuma disciplina foi encontrada com esse id.

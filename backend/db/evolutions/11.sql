@@ -3,7 +3,7 @@
 -------------------------- DISCIPLINA --------------------------    
 CREATE TABLE IF NOT EXISTS sigesdp.disciplina (
     id SERIAL NOT NULL,
-    disciplina VARCHAR(150) NOT NULL,
+    nome VARCHAR(150) NOT NULL,
     codigo_disciplina VARCHAR(10) NOT NULL,
     carga_horaria VARCHAR(45) NOT NULL,
     local VARCHAR(50) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS sigesdp.disciplina (
 -------------------------- COMENTARIOS --------------------------
 COMMENT ON TABLE sigesdp.disciplina IS 'Entidade responsável por armazenar as disciplinas dos professores do sistema.';
 COMMENT ON COLUMN sigesdp.disciplina.id IS 'Identificador único da disciplina.';
-COMMENT ON COLUMN sigesdp.disciplina.disciplina IS 'Nome da disciplina.';
+COMMENT ON COLUMN sigesdp.disciplina.nome IS 'Nome da disciplina.';
 COMMENT ON COLUMN sigesdp.disciplina.codigo_disciplina IS 'Código de identificação da disciplina.';
 COMMENT ON COLUMN sigesdp.disciplina.carga_horaria IS 'Carga horária da disciplina.';
 COMMENT ON COLUMN sigesdp.disciplina.local IS 'Local da disciplina.';

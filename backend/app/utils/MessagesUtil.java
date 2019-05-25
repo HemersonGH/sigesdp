@@ -12,4 +12,8 @@ public class MessagesUtil {
 	public static final String ID_DEPARTAMENTO_NAO_ENCONTRADO = Messages.get("sigesdp.id.departamento.nao.encontrado");
 	public static final String PROFESSORES_NAO_ENCONTRADOS = Messages.get("sigesdp.professores.nao.encontrado");
 	public static final String ID_PROFESSOR_NAO_ENCONTRADO = Messages.get("sigesdp.id.professor.nao.encontrado");
+	public static final String PROFESSOR_NAO_ENCONTRADO = Messages.get("sigesdp.professor.nao.encontrado");
+	public static final String DISCIPLINA_NAO_ENCONTRADA = Messages.get("sigesdp.disciplina.nao.encontrada");
+	public static final String DISCIPLINAS_NAO_ENCONTRADAS = Messages.get("sigesdp.disciplinas.nao.encontradas");
+	public static final String ID_DISCIPLINA_NAO_ENCONTRADA = Messages.get("sigesdp.id.disciplina.nao.encontrada");
 }

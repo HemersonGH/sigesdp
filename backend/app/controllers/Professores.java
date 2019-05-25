@@ -28,7 +28,7 @@ public class Professores extends DefaultController {
 
 	public static void findById(Integer id) {
 		if (id == null) {
-			throw new ValidationException(MessagesUtil.PROFESSORES_NAO_ENCONTRADOS);
+			throw new ValidationException(MessagesUtil.PROFESSOR_NAO_ENCONTRADO);
 		}
 
 		Professor professor = Professor.findById(id);
@@ -37,6 +37,7 @@ public class Professores extends DefaultController {
 			throw new ValidationException(MessagesUtil.ID_PROFESSOR_NAO_ENCONTRADO);
 		}
 
-		renderJSON(professor, ProfessorSerializer.listIten);
+//		renderJSON(professor);
+		renderJSON(professor, ProfessorSerializer.listDetails);
 	}
 }

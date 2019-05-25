@@ -39,10 +39,11 @@ public class ProjetoPesquisa extends GenericModel {
 	@Column(name = "codigo_projeto")
 	private String codigoProjeto;
 
-	// id_grupo_pesquisa
 	// id_area_conhecimento
+	// id_grupo_pesquisa
 	// id_modalidade_bolsa
 	// id_anexo
+	// id_professor
 	// id_aluno
 
 }

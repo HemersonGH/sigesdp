@@ -64,6 +64,12 @@ public class Professor extends GenericModel {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = Aluno.class)
 	public List<Aluno> alunos;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = Disciplina.class)
+	public List<Disciplina> disciplinas;
+	
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = ProjetoPesquisa.class)
+//	public List<ProjetoPesquisa> projetosPesquisa;
 
 	public Integer getId() {
 		return this.id;
@@ -121,13 +127,13 @@ public class Professor extends GenericModel {
 		this.telefone = telefone;
 	}
 
-//	public Departamento getDepartamento() {
-//		return this.departamento;
-//	}
-//
-//	public void setDepartamento(Departamento departamento) {
-//		this.departamento = departamento;
-//	}
+	public Departamento getDepartamento() {
+		return this.departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
 
 	public Usuario getUsuario() {
 		return this.usuario;
@@ -143,6 +149,14 @@ public class Professor extends GenericModel {
 
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
+	}
+	
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+	
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
 
 //	public void validate() {

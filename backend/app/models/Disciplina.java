@@ -25,7 +25,7 @@ public class Disciplina extends GenericModel {
 	private Integer id;
 
 	@Required
-	private String disciplina;
+	private String nome;
 
 	@Required
 	@Column(name = "codigo_disciplina")
@@ -40,6 +40,9 @@ public class Disciplina extends GenericModel {
 
 	@Required
 	private String horario;
+	
+	@Required
+	private Integer tipo;
 
 	@Required
 	@OneToOne(cascade = CascadeType.ALL)
@@ -59,12 +62,12 @@ public class Disciplina extends GenericModel {
 		this.id = id;
 	}
 
-	public String getDisciplina() {
-		return disciplina;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDisciplina(String disciplina) {
-		this.disciplina = disciplina;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getCodigoDisciplina() {
@@ -98,6 +101,14 @@ public class Disciplina extends GenericModel {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
+	
+	public Integer getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
+	}
 
 	public Professor getProfessor() {
 		return professor;
@@ -116,6 +127,8 @@ public class Disciplina extends GenericModel {
 	}
 
 	public void salvar() {
+		this.professor = Professor.findById(this.professor.getId());
+		this.departamento = Departamento.findById(this.departamento.getId());
 		this.save();
 	}
 }
