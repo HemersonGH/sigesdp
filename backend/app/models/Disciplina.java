@@ -28,8 +28,7 @@ public class Disciplina extends GenericModel {
 	private String nome;
 
 	@Required
-	@Column(name = "codigo_disciplina")
-	private String codigoDisciplina;
+	private String codigo;
 
 	@Required
 	@Column(name = "carga_horaria")
@@ -70,12 +69,12 @@ public class Disciplina extends GenericModel {
 		this.nome = nome;
 	}
 
-	public String getCodigoDisciplina() {
-		return codigoDisciplina;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setCodigoDisciplina(String codigoDisciplina) {
-		this.codigoDisciplina = codigoDisciplina;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getCargaHoraria() {

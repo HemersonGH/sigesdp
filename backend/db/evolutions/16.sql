@@ -1,9 +1,8 @@
 # --- !Ups
 
--------------------------- INSERINDO COLUNA TIPO PARA A DISCIPLINA --------------------------
-ALTER TABLE sigesdp.disciplina ADD COLUMN tipo INTEGER NOT NULL;
-COMMENT ON COLUMN sigesdp.disciplina.tipo IS 'Identificador do tipo da disciplina.';
+-------------------------- ALTERANDO O NOME DA COLUNA CODIGO_DISCIPLINA --------------------------
+ALTER TABLE sigesdp.disciplina RENAME COLUMN codigo_disciplina TO codigo;
 
 # --- !Downs
 
-ALTER TABLE sigesdp.disciplina DROP COLUMN tipo;
+ALTER TABLE sigesdp.disciplina RENAME COLUMN codigo TO codigo_disciplina;

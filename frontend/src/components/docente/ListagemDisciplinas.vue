@@ -13,7 +13,7 @@
     )
     v-data-table(
       :headers='headers'
-      :items='contentTable'
+      :items='data'
       :rows-per-page-items='setRowPerPagItens'
       rows-per-page-text='Linhas por página:'
       no-data-text='Não há dados para exibir.'
@@ -31,11 +31,8 @@
         slot='items'
         slot-scope='{ item }'
       )
-        td.text-xs-left(
-          v-if="item.tipo == '1'"
-        ) {{ item.nome }}
-        td {{ item.sigla }}
-        td {{ item.chefe }}
+        td.text-xs-left {{ item.nome }}
+        td.text-xs-left {{ item.codigo }}
         td.text-xs-right
           v-tooltip(
             top
@@ -82,8 +79,9 @@ export default {
       required: true
     },
 
-    contentTable: {
-      type: [Object, Array]
+    data: {
+      type: [Object, Array],
+      required: false
     }
   },
 
@@ -92,14 +90,14 @@ export default {
       headers: [
         {
           sortable: true,
-          text: 'Código',
-          value: 'codigo',
+          text: 'Nome',
+          value: 'nome',
           align: 'left'
         },
         {
           sortable: true,
-          text: 'Nome',
-          value: 'nome',
+          text: 'Código',
+          value: 'codigo',
           align: 'left'
         },
         {
@@ -119,7 +117,6 @@ export default {
           'value': -1
         }
       ],
-      showDialog: false,
       search: '',
       colorBottomFieldSearch: '#3169B3'
     }
@@ -138,4 +135,8 @@ export default {
 </script>
 
 <style scoped>
+.no-margin {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 </style>

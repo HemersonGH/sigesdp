@@ -27,7 +27,9 @@
       v-tab-item
         ListagemProjetosPesquisa
       v-tab-item
-        Disciplinas
+        Disciplinas(
+          :data='docente.data.disciplinas'
+        )
 </template>
 
 <script>

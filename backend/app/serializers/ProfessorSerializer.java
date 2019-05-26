@@ -20,7 +20,7 @@ public class ProfessorSerializer {
 
 		listDetails = new JSONSerializer().include("id", "nome", "curriculoLates", "areaInteresse", "formacaoAcademica",
 				"sala", "telefone", "departamento.id", "departamento.nome", "departamento.sigla", "usuario.id",
-				"usuario.email", "disciplinas.id", "disciplinas.nome", "disciplinas.cargaHoraria", "disciplinas.local",
+				"usuario.email", "disciplinas.id", "disciplinas.codigo", "disciplinas.nome", "disciplinas.cargaHoraria", "disciplinas.local",
 				"disciplinas.horario", "disciplinas.tipo").exclude("*").prettyPrint(prettyPrint);
 	}
 }

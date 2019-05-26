@@ -1,14 +1,9 @@
 # --- !Ups
 
--------------------------- INSERINDO CURSOS --------------------------
-INSERT INTO sigesdp.curso(nome, id_departamento) VALUES ('Sistemas de Informação', 1);
-INSERT INTO sigesdp.curso(nome, id_departamento) VALUES ('Ciência da Computação', 1);
-INSERT INTO sigesdp.curso(nome, id_departamento) VALUES ('ABI – Engenharias', 7);
-INSERT INTO sigesdp.curso(nome, id_departamento) VALUES ('Administração', 2);
+-------------------------- INSERINDO COLUNA TIPO PARA A DISCIPLINA --------------------------
+ALTER TABLE sigesdp.disciplina ADD COLUMN tipo INTEGER NOT NULL;
+COMMENT ON COLUMN sigesdp.disciplina.tipo IS 'Identificador do tipo da disciplina.';
 
 # --- !Downs
 
-DELETE FROM sigesdp.curso WHERE nome = 'Sistemas de Informação';
-DELETE FROM sigesdp.curso WHERE nome = 'Ciência da Computação';
-DELETE FROM sigesdp.curso WHERE nome = 'ABI – Engenharias';
-DELETE FROM sigesdp.curso WHERE nome = 'Administração';
+ALTER TABLE sigesdp.disciplina DROP COLUMN tipo;

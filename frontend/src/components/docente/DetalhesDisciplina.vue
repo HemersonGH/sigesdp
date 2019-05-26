@@ -7,47 +7,45 @@
   )
     v-card
       v-card-title.center
-        span.headline Detalhes do Departamento
+        span.headline Detalhes da Disciplina
       v-divider.mx-3
       v-card-text.no-margin-top
-        v-container(
+        v-container.padding(
           grid-list-md
+          fluid
         )
           v-layout(
+            align-start
+            justify-start
+            row
             wrap
+            fill-height
           )
-            v-flex(
-              xs12
-              sm12
-              md12
+            v-flex.padding(
+              xs6
+              sm6
+              md6
             )
               h5.font-weight-bold.no-margin-bottom
                 | Nome:
-              p {{ data.nome }}
-            v-flex(
-              xs12
-              sm12
-              md12
+                span.style-sub-title {{ data.nome }}
+              h5.font-weight-bold.no-margin-bottom
+                | Local:
+                span.style-sub-title {{ data.local }}
+              h5.font-weight-bold.no-margin-bottom
+                | Carga Horária:
+                span.style-sub-title {{ data.cargaHoraria }} horas
+            v-flex.padding(
+              xs6
+              sm6
+              md6
             )
               h5.font-weight-bold.no-margin-bottom
-                | Chefe:
-              p {{ data.chefe }}
-            v-flex(
-              xs12
-              sm12
-              md12
-            )
+                | Código:
+                span.style-sub-title {{ data.codigo }}
               h5.font-weight-bold.no-margin-bottom
-                | Telefone:
-              p {{ data.telefone }}
-            v-flex(
-              xs12
-              sm12
-              md12
-            )
-              h5.font-weight-bold.no-margin-bottom
-                | Apresentação:
-              p {{ data.descricao }}
+                | Horário:
+                span.style-sub-title {{ data.horario }} horas
       v-divider.mx-3
       v-card-actions
         v-spacer
@@ -59,11 +57,11 @@
 
 <script>
 export default {
-  name: 'DetalhesDepartamento',
+  name: 'DetalhesDisciplina',
 
   props: {
     data: {
-      type: Object,
+      type: [Object, Array],
       required: true
     },
 
@@ -102,5 +100,11 @@ export default {
 .style-button{
   font-weight: 450 !important;
   color: white;
+}
+
+.style-sub-title {
+  padding-left: 10px;
+  font-weight: 300;
+  font-size: calc(1.0625rem - 0.0895rem);
 }
 </style>

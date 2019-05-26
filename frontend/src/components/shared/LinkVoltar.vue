@@ -1,11 +1,9 @@
 <template lang="pug">
   v-btn.style-btn(
-    v-on='on'
-    slot='activator'
     :to='link'
     small
   )
-    v-icon.no-margin(
+    v-icon(
     ) mdi-arrow-left
     | &nbsp Voltar
 </template>
