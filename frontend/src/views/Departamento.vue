@@ -35,7 +35,7 @@
       DetalhesDepartamento(
         :showDialog='showDialog'
         :data='departamento'
-        @close="closeModal"
+        @close='closeModal'
       )
 </template>
 

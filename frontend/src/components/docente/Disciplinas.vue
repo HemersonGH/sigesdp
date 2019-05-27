@@ -36,7 +36,7 @@
       DetalhesDisciplina(
         :showDialog='showDialog'
         :data='disciplina'
-        @close="closeModal"
+        @close='closeModal'
       )
 </template>
 

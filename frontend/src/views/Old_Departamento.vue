@@ -36,7 +36,7 @@
       Dialog(
         :showDialog='showDialog'
         :detailsDialog='detailsDialog'
-        @close="closeModal"
+        @close='closeModal'
       )
 </template>
 
