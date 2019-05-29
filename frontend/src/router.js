@@ -7,6 +7,7 @@ import Departamento from '@/views/Departamento.vue'
 import Login from '@/components/shared/Login.vue'
 import Docentes from '@/views/Docentes.vue'
 import DetalhesDocentes from '@/components/docente/DetalhesDocente.vue'
+import CadastraUsuario from '@/components/shared/CadastraUsuario.vue'
 
 Vue.use(Router)
 
@@ -51,7 +52,7 @@ const router = new Router({
     },
     {
       path: '/academico/docente/:id',
-      name: 'detalhes-docentes',
+      name: 'detalhesDocentes',
       component: DetalhesDocentes,
       title: 'Detalhes do Docentes',
       public: true
@@ -61,6 +62,13 @@ const router = new Router({
       name: 'pesquisa',
       component: Pesquisa,
       title: 'Pesquisa',
+      public: true
+    },
+    {
+      path: '/cadastrar-usuario',
+      name: 'cadastrarUsuario',
+      component: CadastraUsuario,
+      title: 'Cadastrar Usuário',
       public: true
     }
   ]

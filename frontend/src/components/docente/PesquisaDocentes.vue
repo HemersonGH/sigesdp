@@ -5,7 +5,7 @@
       :class='`elevation-4`'
     )
       v-card-title.center.color
-        span.font-weight Pesquisar
+        span.font-weight Pesquisar Docentes
     v-divider.mx-3
     v-card-text.padding
       v-container.padding(
@@ -13,7 +13,7 @@
       )
         v-layout(
           justify-start
-          row
+          wrap
           align-center
         )
           v-flex.padding-bottom(
@@ -30,16 +30,8 @@
             v-text-field.padding-bottom(
               v-model='nome'
               placeholder='Informe o nome do professor'
-              v-validate="'required'"
-              :error-messages="errors.collect('select')"
-              data-vv-name='Nome'
               clearable
             )
-        v-layout(
-          justify-start
-          row
-          align-center
-        )
           v-flex.padding-top(
             xs4
             sm2
@@ -58,7 +50,6 @@
               item-text='nome'
               item-value='id'
               no-data-text='Não há dados.'
-              data-vv-name='Departamento'
               clearable
             )
       v-divider.mx-3
@@ -85,13 +76,8 @@ export default {
     }
   },
 
-  $_veeValidate: {
-    validator: 'new'
-  },
-
   data () {
     return {
-      text: 'Pesquisa',
       nome: '',
       select: null
     }

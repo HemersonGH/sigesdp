@@ -21,32 +21,28 @@
               sm12
               md12
             )
-              h5.font-weight-bold.no-margin-bottom
-                | Nome:
+              h5.font-weight-bold.no-margin-bottom Nome:
               p {{ data.nome }}
             v-flex(
               xs12
               sm12
               md12
             )
-              h5.font-weight-bold.no-margin-bottom
-                | Chefe:
+              h5.font-weight-bold.no-margin-bottom Chefe:
               p {{ data.chefe }}
             v-flex(
               xs12
               sm12
               md12
             )
-              h5.font-weight-bold.no-margin-bottom
-                | Telefone:
+              h5.font-weight-bold.no-margin-bottom Telefone:
               p {{ data.telefone }}
             v-flex(
               xs12
               sm12
               md12
             )
-              h5.font-weight-bold.no-margin-bottom
-                | Apresentação:
+              h5.font-weight-bold.no-margin-bottom Apresentação:
               p {{ data.descricao }}
       v-divider.mx-3
       v-card-actions

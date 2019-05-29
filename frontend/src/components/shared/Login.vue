@@ -54,7 +54,10 @@
                   v-icon mdi-login
             div.style-div
               span.align-left Redefinir senha
-              span.align-right Criar conta
+              router-link(
+                to='/cadastrar-usuario'
+              )
+                span.align-right Criar conta
 
 </template>
 
@@ -104,15 +107,18 @@ export default {
 .style-div {
   padding-top: 15px;
   padding-bottom: 30px;
-  color: #2196f3;
   font-weight: 400;
 }
 
 .align-left {
   float: left;
+  color: #2196f3;
+  cursor: pointer;
 }
 
 .align-right {
   float: right;
+  color: #2196f3;
+  cursor: pointer;
 }
 </style>
