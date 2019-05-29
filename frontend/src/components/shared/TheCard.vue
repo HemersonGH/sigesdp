@@ -42,7 +42,7 @@ export default {
     elevation: {
       type: [Number, String],
       default: 5
-    },
+    }
   }
 }
 </script>

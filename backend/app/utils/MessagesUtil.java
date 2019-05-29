@@ -16,4 +16,7 @@ public class MessagesUtil {
 	public static final String DISCIPLINA_NAO_ENCONTRADA = Messages.get("sigesdp.disciplina.nao.encontrada");
 	public static final String DISCIPLINAS_NAO_ENCONTRADAS = Messages.get("sigesdp.disciplinas.nao.encontradas");
 	public static final String ID_DISCIPLINA_NAO_ENCONTRADA = Messages.get("sigesdp.id.disciplina.nao.encontrada");
+	public static final String AREA_CONHECIMENTO_NAO_ENCONTRADA = Messages.get("sigesdp.area.conhecimento.nao.encontrada");
+	public static final String AREAS_CONHECIMENTO_NAO_ENCONTRADAS = Messages.get("sigesdp.areas.conhecimento.nao.encontradas");
+	public static final String ID_AREA_CONHECIMENTO_NAO_ENCONTRADA = Messages.get("sigesdp.id.area.conhecimento.nao.encontrada");
 }

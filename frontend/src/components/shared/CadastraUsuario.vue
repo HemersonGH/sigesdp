@@ -17,8 +17,9 @@
           lg12
         )
           Card.text-xs-center(
-            color='white'
-            title='Cadastro de usuário'
+            color='#2196f3'
+            title='Cadastro de Usuário'
+            styleTitleDataTable='title-data-table'
             full-width
             elevation='3'
           )
@@ -44,9 +45,9 @@
                     md6
                   )
                     v-text-field(
+                      v-model='camposFormulario.nome'
                       label='Nome * '
                       color='#2196f3'
-                      v-model='nome'
                       v-validate="'required'"
                       :error-messages="errors.collect('nome')"
                       data-vv-name='nome'
@@ -57,16 +58,16 @@
                     sm6
                     md6
                   )
-                    v-select(
+                    v-select.font-weight-select(
+                      v-model='camposFormulario.idDepartamento'
+                      label='Selecione um departamento *'
                       color='#2196f3'
-                      placeholder='Selecione um departamento *'
-                      v-model='selectDepartamento'
-                      :items='departamentos'
+                      :items='departamentos.data'
                       item-text='nome'
                       item-value='id'
+                      no-data-text='Não há dados.'
                       v-validate="'required'"
                       :error-messages="errors.collect('departamento')"
-                      no-data-text='Não há dados.'
                       data-vv-name='departamento'
                       data-vv-as='Departamento'
                       clearable
@@ -77,9 +78,9 @@
                     md6
                   )
                     v-text-field(
+                      v-model='camposFormulario.email'
                       label='Email *'
                       color='#2196f3'
-                      v-model='email'
                       v-validate="'required|email'"
                       :error-messages="errors.collect('email')"
                       data-vv-name='email'
@@ -91,14 +92,17 @@
                     md6
                   )
                     v-text-field(
+                      v-model='camposFormulario.password'
                       label='Senha *'
                       color='#2196f3'
-                      type='password'
-                      v-model='password'
-                      v-validate="'required'"
+                      v-validate="'required|min:8'"
                       :error-messages="errors.collect('password')"
                       data-vv-name='password'
                       data-vv-as='Senha'
+                      hint="Pelo menos 8 caracteres."
+                      :append-icon="showPass ? 'visibility' : 'visibility_off'"
+                      @click:append='showPass = !showPass'
+                      :type="showPass ? 'text' : 'password'"
                     )
                   v-flex(
                     xs12
@@ -109,65 +113,50 @@
                     v-divider
                   v-flex.padding(
                     xs12
-                    sm6
-                    md6
+                    sm12
+                    md12
                   )
                     v-text-field(
-                      label='Nome * '
+                      v-model='camposFormulario.formacaoAcademica'
+                      label='Formação acadêmica/profissional *'
                       color='#2196f3'
-                      v-model='nome'
                       v-validate="'required'"
-                      :error-messages="errors.collect('nome')"
-                      data-vv-name='nome'
-                      data-vv-as='Nome'
+                      :error-messages="errors.collect('formacaoAcademica')"
+                      data-vv-name='formacaoAcademica'
+                      data-vv-as='Formação acadêmica/profissional'
                     )
                   v-flex.padding(
                     xs12
-                    sm6
-                    md6
+                    sm12
+                    md12
                   )
                     v-select(
+                      v-model='camposFormulario.idAreaConhecimento'
+                      label='Selecione uma área de conhecimento *'
                       color='#2196f3'
-                      placeholder='Selecione um departamento *'
-                      v-model='selectDepartamento'
-                      :items='departamentos'
+                      :items='areasConhecimento.data'
                       item-text='nome'
                       item-value='id'
-                      v-validate="'required'"
-                      :error-messages="errors.collect('departamento')"
                       no-data-text='Não há dados.'
-                      data-vv-name='departamento'
-                      data-vv-as='Departamento'
+                      v-validate="'required'"
+                      :error-messages="errors.collect('areaConhecimento')"
+                      data-vv-name='areaConhecimento'
+                      data-vv-as='Área de Conhecimento'
                       clearable
                     )
                   v-flex.padding(
                     xs12
-                    sm6
-                    md6
+                    sm12
+                    md12
                   )
                     v-text-field(
-                      label='Email *'
+                      v-model='camposFormulario.curriculoLattes'
+                      label='Currículo Lattes *'
                       color='#2196f3'
-                      v-model='email'
-                      v-validate="'required|email'"
-                      :error-messages="errors.collect('email')"
-                      data-vv-name='email'
-                      data-vv-as='Email'
-                    )
-                  v-flex.padding(
-                    xs12
-                    sm6
-                    md6
-                  )
-                    v-text-field(
-                      label='Senha *'
-                      color='#2196f3'
-                      type='password'
-                      v-model='password'
                       v-validate="'required'"
-                      :error-messages="errors.collect('password')"
-                      data-vv-name='password'
-                      data-vv-as='Senha'
+                      :error-messages="errors.collect('curriculoLattes')"
+                      data-vv-name='curriculoLattes'
+                      data-vv-as='Currículo Lattes'
                     )
                   v-flex(
                     xs12
@@ -182,33 +171,44 @@
                     md6
                   )
                     v-text-field(
-                      label='Nome * '
+                      v-model='camposFormulario.telefone'
+                      label='Telefone/Ramal *'
                       color='#2196f3'
-                      v-model='nome'
                       v-validate="'required'"
-                      :error-messages="errors.collect('nome')"
-                      data-vv-name='nome'
-                      data-vv-as='Nome'
+                      :error-messages="errors.collect('telefone')"
+                      data-vv-name='telefone'
+                      data-vv-as='Telefone/Ramal'
                     )
                   v-flex.padding(
                     xs12
                     sm6
                     md6
                   )
-                    v-select(
+                    v-text-field(
+                      v-model='camposFormulario.sala'
+                      label='Sala *'
                       color='#2196f3'
-                      placeholder='Selecione um departamento *'
-                      v-model='selectDepartamento'
-                      :items='departamentos'
-                      item-text='nome'
-                      item-value='id'
                       v-validate="'required'"
-                      :error-messages="errors.collect('departamento')"
-                      no-data-text='Não há dados.'
-                      data-vv-name='departamento'
-                      data-vv-as='Departamento'
-                      clearable
-                    )              
+                      :error-messages="errors.collect('sala')"
+                      data-vv-name='sala'
+                      data-vv-as='Sala'
+                    )
+              v-snackbar(
+                v-model='snackbar'
+                color='error'
+                :top='true'
+                :right='true'
+              )
+                v-icon(
+                  color='white'
+                  class='mr-3'
+                ) mdi-alert-circle-outline
+                div
+                  | Verifique os campos obrigatórios.
+                v-icon(
+                  size="16"
+                  @click='snackbar = false'
+                ) mdi-close-circle
               v-layout(
                 align-center
                 justify-space-between
@@ -230,6 +230,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
 import TheCard from '@/components/shared/TheCard.vue'
 
@@ -249,10 +250,17 @@ export default {
     return {
       camposFormulario: {
         nome: '',
-        selectDepartamento: null,
+        idDepartamento: null,
         email: '',
-        password: ''
-      }
+        password: '',
+        formacaoAcademica: '',
+        idAreaConhecimento: null,
+        curriculoLattes: '',
+        telefone: '',
+        sala: ''
+      },
+      showPass: false,
+      snackbar: false
     }
   },
 
@@ -260,10 +268,34 @@ export default {
     cadastrar () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          console.log('Validator OK')
+          this.$router.push({
+            name: 'login',
+            params: {
+              showMessage: true
+            }
+          })
+        } else {
+          this.snackbar = true
         }
       })
-    }
+    },
+
+    ...mapActions({
+      getDepartamentos: 'departamento/getDepartamentos',
+      getAreasConhecimento: 'areasConhecimento/getAreasConhecimento'
+    })
+  },
+
+  computed: {
+    ...mapGetters({
+      departamentos: 'departamento/departamentos',
+      areasConhecimento: 'areasConhecimento/areaConhecimento'
+    })
+  },
+
+  created () {
+    this.getDepartamentos()
+    this.getAreasConhecimento()
   }
 }
 </script>
@@ -285,10 +317,6 @@ export default {
 
 .padding {
   padding-top: 0px !important;
-  padding-bottom: 0px !important;
-}
-
-.padding-bottom {
   padding-bottom: 0px !important;
 }
 

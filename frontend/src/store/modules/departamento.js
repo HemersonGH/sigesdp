@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {
   SET_DEPARTAMENTOS,
-  SET_DEPARTAMENTOS_SELECT
+  SET_DEPARTAMENTOS_LIST
 } from '../mutation-types'
 
 const state = {
@@ -18,7 +18,7 @@ const mutations = {
   [SET_DEPARTAMENTOS] (state, departamentos) {
     state.departamentos = departamentos
   },
-  [SET_DEPARTAMENTOS_SELECT] (state, departamentosSelect) {
+  [SET_DEPARTAMENTOS_LIST] (state, departamentosSelect) {
     state.departamentosSelect = departamentosSelect
   }
 }
@@ -29,8 +29,8 @@ const actions = {
     commit('SET_DEPARTAMENTOS', result)
   },
   async getDepartamentosSelect ({ commit }) {
-    const result = await axios.get('/departamentos-select')
-    commit('SET_DEPARTAMENTOS_SELECT', result)
+    const result = await axios.get('/departamentos-list')
+    commit('SET_DEPARTAMENTOS_LIST', result)
   }
 }
 

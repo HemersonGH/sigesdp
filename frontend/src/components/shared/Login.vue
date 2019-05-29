@@ -58,7 +58,22 @@
                 to='/cadastrar-usuario'
               )
                 span.align-right Criar conta
-
+      v-snackbar(
+        v-model='snackbar'
+        color='success'
+        :top='true'
+        :right='true'
+      )
+        v-icon(
+          color='white'
+          class='mr-3'
+        ) mdi-check-outline
+        div
+          | Usuário cadastrado com sucesso.
+        v-icon(
+          size="16"
+          @click='snackbar = false'
+        ) mdi-close-circle
 </template>
 
 <script>
@@ -80,7 +95,8 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      snackbar: false
     }
   },
 
@@ -92,6 +108,10 @@ export default {
         }
       })
     }
+  },
+
+  created () {
+    this.snackbar = this.$route.params.showMessage
   }
 }
 </script>

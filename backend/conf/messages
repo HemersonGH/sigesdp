@@ -22,3 +22,9 @@ sigesdp.disciplinas.nao.encontradas=Não foi possível encontrar todas as discip
 sigesdp.disciplina.nao.encontrada=Não foi possível encontrar o disciplina.
 
 sigesdp.id.disciplina.nao.encontrada=Nenhuma disciplina foi encontrada com esse id.
+
+sigesdp.area.conhecimento.nao.encontrada=Não foi possível encontrar a área de conhecimento.
+
+sigesdp.areas.conhecimento.nao.encontradas=Não foi possível encontrar todas as áreas de conhecimento.
+
+sigesdp.id.area.conhecimento.nao.encontrada=Nenhuma área de conhecimento foi encontrada com esse id.

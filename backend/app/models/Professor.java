@@ -39,10 +39,6 @@ public class Professor extends GenericModel {
 	public String curriculoLates;
 
 	@Required
-	@Column(name = "area_interesse")
-	public String areaInteresse;
-
-	@Required
 	@Column(name = "formacao_academica")
 	public String formacaoAcademica;
 
@@ -53,21 +49,26 @@ public class Professor extends GenericModel {
 	public String telefone;
 
 	@Required
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
+	public Usuario usuario;
+
+	@Required
 	@OneToOne
 	@JoinColumn(name = "id_departamento", referencedColumnName = "id")
 	public Departamento departamento;
 
 	@Required
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
-	public Usuario usuario;
+	@OneToOne
+	@JoinColumn(name = "id_area_conhecimento", referencedColumnName = "id")
+	public AreaConhecimento areaConhecimento;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = Aluno.class)
 	public List<Aluno> alunos;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = Disciplina.class)
 	public List<Disciplina> disciplinas;
-	
+
 //	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = ProjetoPesquisa.class)
 //	public List<ProjetoPesquisa> projetosPesquisa;
 
@@ -93,14 +94,6 @@ public class Professor extends GenericModel {
 
 	public void setCurriculoLates(String curriculoLates) {
 		this.curriculoLates = curriculoLates;
-	}
-
-	public String getAreaInteresse() {
-		return this.areaInteresse;
-	}
-
-	public void setAreaInteresse(String areaInteresse) {
-		this.areaInteresse = areaInteresse;
 	}
 
 	public String getFormacaoAcademica() {
@@ -135,6 +128,14 @@ public class Professor extends GenericModel {
 		this.departamento = departamento;
 	}
 
+	public AreaConhecimento getAreaConhecimento() {
+		return this.areaConhecimento;
+	}
+
+	public void setAreaConhecimento(AreaConhecimento areaConhecimento) {
+		this.areaConhecimento = areaConhecimento;
+	}
+
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
@@ -150,11 +151,11 @@ public class Professor extends GenericModel {
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
 	}
-	
+
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
-	
+
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
@@ -166,18 +167,10 @@ public class Professor extends GenericModel {
 //			throw new ValidationException(Validation.current().errors());
 //		}
 //	}
-//
-//	public static Professor createByProfessor(Professor professor) {
-//		Usuario usuario = new Usuario();
-//		
-//		usuario = professor.usuario;
-//		
-//		
-//		return professor;
-//	}
 
 	public void salvar() {
 		this.departamento = Departamento.findById(this.departamento.getId());
+		this.areaConhecimento = AreaConhecimento.findById(this.areaConhecimento.getId());
 		this.save();
 	}
 }

@@ -21,22 +21,22 @@ public class AreaConhecimento extends GenericModel {
 	private Integer id;
 
 	@Required
-	private String areaConhecimento;
+	private String nome;
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getAreaConhecimento() {
-		return areaConhecimento;
+	public String getNome() {
+		return this.nome;
 	}
 
-	public void setAreaConhecimento(String areaConhecimento) {
-		this.areaConhecimento = areaConhecimento;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public void salvar() {

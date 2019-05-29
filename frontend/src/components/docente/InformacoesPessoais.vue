@@ -23,10 +23,12 @@
           )
             h5.font-weight-label Nome:
               span.style-sub-title {{ data.nome }}
+            h5.font-weight-label Departamento:
+              span.style-sub-title {{ data.departamento.nome }}
             h5.font-weight-label Curriculo Lates:
               span.style-sub-title {{ data.curriculoLates }}
             h5.font-weight-label Área Interesse:
-              span.style-sub-title {{ data.areaInteresse }}
+              span.style-sub-title {{ data.areaConhecimento.nome }}
             h5.font-weight-label Formação Acadêmica/Profissional:
               span.style-sub-title {{ data.formacaoAcademica }}
 </template>
