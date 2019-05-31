@@ -9,6 +9,7 @@ import serializers.DepartamentoSerializer;
 import utils.MessagesUtil;
 
 public class Departamentos extends DefaultController {
+	
 	public static void cadastraDepartamento(Departamento departamento) {
 //		validateParameters(departamento);
 		departamento.salvar();

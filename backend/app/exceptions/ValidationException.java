@@ -5,6 +5,7 @@ import java.util.List;
 import play.data.validation.Error;
 
 public class ValidationException extends ApplicationException {
+
 	public List<Error> errors;
 
 	public ValidationException() {

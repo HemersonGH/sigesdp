@@ -10,10 +10,10 @@ import security.IAuthService;
 import serializers.SecureSerializer;
 
 public class Secure extends DefaultController {
+
 	private static IAuthService authService = new AuthServiceFactory().getInstance();
 
-	@Before(unless = { "isAuthenticated", "getAuthenticatedUser", "clearUserSession", "authenticate", "logout",
-			"getToken" })
+	@Before(unless = { "isAuthenticated", "getAuthenticatedUser", "clearUserSession", "authenticate", "logout", "getToken" })
 	public static void isAuthenticated() {
 		Usuario usuarioLogado = (Usuario) authService.getAuthenticatedUser(session);
 

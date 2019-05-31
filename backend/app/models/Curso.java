@@ -16,6 +16,7 @@ import play.db.jpa.GenericModel;
 @Entity
 @Table(schema = "sigesdp", name = "curso")
 public class Curso extends GenericModel {
+
 	private static final String SEQ = "sigesdp.curso_id_seq";
 
 	@Id

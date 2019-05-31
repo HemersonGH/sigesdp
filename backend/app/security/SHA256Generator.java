@@ -26,7 +26,6 @@ public class SHA256Generator {
 		}
 
 		return r.toString();
-
 	}
 
 	public static String generateValue(String param) {
@@ -46,7 +45,5 @@ public class SHA256Generator {
 			throw new RuntimeException("Algoritmo de hash 'SHA-256' não encontrado.", e);
 
 		}
-
 	}
-
 }

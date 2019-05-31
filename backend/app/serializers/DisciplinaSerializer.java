@@ -5,6 +5,7 @@ import play.Play;
 import play.Play.Mode;
 
 public class DisciplinaSerializer {
+
 	public static JSONSerializer listIten, listAll, listSelect;
 
 	static {

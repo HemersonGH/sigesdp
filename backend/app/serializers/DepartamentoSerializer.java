@@ -7,6 +7,7 @@ import play.Play;
 import play.Play.Mode;
 
 public class DepartamentoSerializer {
+
 	public static JSONSerializer listIten, listAll, listSelect;
 
 	static {

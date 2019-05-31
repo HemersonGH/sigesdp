@@ -11,27 +11,18 @@ import play.Logger;
 public class SHA512Generator {
 
 	public static String generateValue() {
-
 		return generateValue(UUID.randomUUID().toString());
-
 	}
 
 	public static String generateValue(String param) {
-
 		byte[] hash = null;
 
 		try {
-
 			hash = MessageDigest.getInstance("SHA-512").digest(param.getBytes());
-
-		} catch (NoSuchAlgorithmException e) {
-
-			Logger.error(e, e.getMessage());
-
+		} catch (NoSuchAlgorithmException nsae) {
+			Logger.error(nsae, nsae.getMessage());
 		}
 
 		return Hex.encodeHexString(hash);
-
 	}
-
 }

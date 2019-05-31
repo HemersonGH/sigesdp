@@ -17,6 +17,7 @@ import play.db.jpa.GenericModel;
 @Entity
 @Table(schema = "sigesdp", name = "disciplina")
 public class Disciplina extends GenericModel {
+
 	private static final String SEQ = "sigesdp.disciplina_id_seq";
 
 	@Id
@@ -39,7 +40,7 @@ public class Disciplina extends GenericModel {
 
 	@Required
 	private String horario;
-	
+
 	@Required
 	private Integer tipo;
 
@@ -100,7 +101,7 @@ public class Disciplina extends GenericModel {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-	
+
 	public Integer getTipo() {
 		return tipo;
 	}

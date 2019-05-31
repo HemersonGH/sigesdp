@@ -9,6 +9,7 @@ import serializers.DisciplinaSerializer;
 import utils.MessagesUtil;
 
 public class Disciplinas extends DefaultController {
+
 	public static void cadastraDisciplina(Disciplina disciplina) {
 		disciplina.salvar();
 	}

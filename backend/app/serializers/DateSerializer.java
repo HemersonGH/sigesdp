@@ -14,6 +14,7 @@ import flexjson.transformer.Transformer;
 import play.Play;
 
 public class DateSerializer implements JsonSerializer<Date> {
+
 	private static final String DATE_FORMAT = Play.configuration.getProperty("date.format");
 	private static final String DATE_FORMAT_TIMETABLE = Play.configuration.getProperty("date.format.timetable");
 

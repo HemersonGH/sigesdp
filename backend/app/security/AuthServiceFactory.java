@@ -3,10 +3,10 @@ package security;
 import play.Play;
 
 public class AuthServiceFactory {
+
 	private static IAuthService service = null;
 
 	public IAuthService getInstance() {
-
 		if (service == null) {
 			service = createService();
 		}

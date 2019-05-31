@@ -45,7 +45,7 @@
                     md6
                   )
                     v-text-field(
-                      v-model='camposFormulario.nome'
+                      v-model='novoUsuario.nome'
                       label='Nome * '
                       color='#2196f3'
                       v-validate="'required'"
@@ -59,7 +59,7 @@
                     md6
                   )
                     v-select.font-weight-select(
-                      v-model='camposFormulario.idDepartamento'
+                      v-model='novoUsuario.departamento.id'
                       label='Selecione um departamento *'
                       color='#2196f3'
                       :items='departamentos.data'
@@ -78,7 +78,7 @@
                     md6
                   )
                     v-text-field(
-                      v-model='camposFormulario.email'
+                      v-model='novoUsuario.usuario.email'
                       label='Email *'
                       color='#2196f3'
                       v-validate="'required|email'"
@@ -92,7 +92,7 @@
                     md6
                   )
                     v-text-field(
-                      v-model='camposFormulario.password'
+                      v-model='novoUsuario.usuario.senha'
                       label='Senha *'
                       color='#2196f3'
                       v-validate="'required|min:8'"
@@ -117,7 +117,7 @@
                     md12
                   )
                     v-text-field(
-                      v-model='camposFormulario.formacaoAcademica'
+                      v-model='novoUsuario.formacaoAcademica'
                       label='Formação acadêmica/profissional *'
                       color='#2196f3'
                       v-validate="'required'"
@@ -131,7 +131,7 @@
                     md12
                   )
                     v-select(
-                      v-model='camposFormulario.idAreaConhecimento'
+                      v-model='novoUsuario.areaConhecimento.id'
                       label='Selecione uma área de conhecimento *'
                       color='#2196f3'
                       :items='areasConhecimento.data'
@@ -150,7 +150,7 @@
                     md12
                   )
                     v-text-field(
-                      v-model='camposFormulario.curriculoLattes'
+                      v-model='novoUsuario.curriculoLattes'
                       label='Currículo Lattes *'
                       color='#2196f3'
                       v-validate="'required'"
@@ -171,7 +171,7 @@
                     md6
                   )
                     v-text-field(
-                      v-model='camposFormulario.telefone'
+                      v-model='novoUsuario.telefone'
                       label='Telefone/Ramal *'
                       color='#2196f3'
                       v-validate="'required'"
@@ -185,7 +185,7 @@
                     md6
                   )
                     v-text-field(
-                      v-model='camposFormulario.sala'
+                      v-model='novoUsuario.sala'
                       label='Sala *'
                       color='#2196f3'
                       v-validate="'required'"
@@ -248,13 +248,19 @@ export default {
 
   data () {
     return {
-      camposFormulario: {
+      novoUsuario: {
         nome: '',
-        idDepartamento: null,
-        email: '',
-        password: '',
         formacaoAcademica: '',
-        idAreaConhecimento: null,
+        usuario: {
+          email: '',
+          senha: ''
+        },
+        departamento: {
+          id: null
+        },
+        areaConhecimento: {
+          id: null
+        },
         curriculoLattes: '',
         telefone: '',
         sala: ''
@@ -268,6 +274,7 @@ export default {
     cadastrar () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
+          this.createUsuario(this.novoUsuario)
           this.$router.push({
             name: 'login',
             params: {
@@ -281,6 +288,7 @@ export default {
     },
 
     ...mapActions({
+      createUsuario: 'usuario/createUsuario',
       getDepartamentos: 'departamento/getDepartamentos',
       getAreasConhecimento: 'areasConhecimento/getAreasConhecimento'
     })
@@ -288,6 +296,7 @@ export default {
 
   computed: {
     ...mapGetters({
+      usuario: 'usuario/usuario',
       departamentos: 'departamento/departamentos',
       areasConhecimento: 'areasConhecimento/areaConhecimento'
     })

@@ -40,25 +40,18 @@ public class JsonBinderPlugin extends PlayPlugin {
 		String body = null;
 
 		try {
-
 			body = Request.current().params.get("body");
 			JsonElement jsonElem = new JsonParser().parse(body);
 
 			if (jsonElem.isJsonObject()) {
-
 				JsonObject json = (JsonObject) jsonElem;
 				return gson.fromJson(json, clazz);
-
 			} else if (jsonElem.isJsonArray()) {
-
 				return gson.fromJson(jsonElem.getAsJsonArray(), clazz);
 			}
 		} catch (Exception e) {
-
 			Logger.error("JSON Binder - Problem rendering JSON: %s", e.getMessage());
-
 			Logger.error(e, "####################### - BODY DA REQUISIÇÃO: \n" + body);
-
 		}
 
 		return null;

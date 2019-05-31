@@ -15,6 +15,7 @@ import security.IAuthUser;
 @Entity
 @Table(schema = "sigesdp", name = "usuario")
 public class Usuario extends GenericModel implements IAuthUser {
+
 	private static final String SEQ = "sigesdp.usuario_id_seq";
 
 	@Id

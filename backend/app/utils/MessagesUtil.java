@@ -4,7 +4,6 @@ import play.i18n.Messages;
 
 public class MessagesUtil {
 
-	/* BASE */
 	public static final String ERRO_PADRAO = Messages.get("sigesdp.erro.padrao");
 	public static final String DEPARTAMENTOS_NAO_ENCONTRADOS = Messages.get("sigesdp.departamentos.nao.encontrados");
 	public static final String DEPARTAMENTO_NAO_ENCONTRADO = Messages.get("sigesdp.departamento.nao.encontrado");

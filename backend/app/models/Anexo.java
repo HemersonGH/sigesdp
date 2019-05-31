@@ -13,6 +13,7 @@ import play.db.jpa.GenericModel;
 @Entity
 @Table(schema = "sigesdp", name = "anexo")
 public class Anexo extends GenericModel {
+
 	private static final String SEQ = "sigesdp.anexo_id_seq";
 
 	@Id

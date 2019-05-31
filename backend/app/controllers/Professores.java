@@ -11,6 +11,7 @@ import serializers.ProfessorSerializer;
 import utils.MessagesUtil;
 
 public class Professores extends DefaultController {
+
 	public static void cadastraProfessor(Professor professor) {
 //		validateParameters(professor);
 		professor.salvar();

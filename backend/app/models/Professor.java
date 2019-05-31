@@ -24,6 +24,7 @@ import exceptions.ValidationException;
 @Entity
 @Table(schema = "sigesdp", name = "professor")
 public class Professor extends GenericModel {
+
 	public static final String SEQ = "sigesdp.professor_id_seq";
 
 	@Id
@@ -171,6 +172,7 @@ public class Professor extends GenericModel {
 	public void salvar() {
 		this.departamento = Departamento.findById(this.departamento.getId());
 		this.areaConhecimento = AreaConhecimento.findById(this.areaConhecimento.getId());
+//		this.usuario.setSenha() 
 		this.save();
 	}
 }

@@ -18,9 +18,13 @@ const mutations = {
 }
 
 const actions = {
-  async novoUsuario ({ commit }, usuario) {
-    const result = await axios.post('/cadastrar-professor')
-    commit('SET_CADASTRA_USUARIO', result)
+  async createUsuario ({ commit }, novoUsuario) {
+    try {
+      const result = await axios.post('/cadastrar-professor', novoUsuario)
+      commit('SET_CADASTRA_USUARIO', result)
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 

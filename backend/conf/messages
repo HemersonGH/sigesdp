@@ -28,3 +28,5 @@ sigesdp.area.conhecimento.nao.encontrada=Não foi possível encontrar a área de
 sigesdp.areas.conhecimento.nao.encontradas=Não foi possível encontrar todas as áreas de conhecimento.
 
 sigesdp.id.area.conhecimento.nao.encontrada=Nenhuma área de conhecimento foi encontrada com esse id.
+
+sessao.expirada=Sua sessão expirou. Por favor faça o login novamente.

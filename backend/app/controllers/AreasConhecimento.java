@@ -10,6 +10,7 @@ import serializers.AreaConhecimentoSerializer;
 import utils.MessagesUtil;
 
 public class AreasConhecimento extends Controller {
+	
 	public static void cadastraAreaConhecimento(AreaConhecimento areaConhecimento) {
 		areaConhecimento.salvar();
 	}
