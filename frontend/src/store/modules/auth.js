@@ -1,48 +1,28 @@
-import axios from '../../utils/api-axios'
-import { SET_AUTH_USER, SET_ALL_USERS } from '../mutation-types'
+import axios from 'axios'
+import { SET_AUTH_USER } from '../mutation-types'
 
 const state = {
-  user: {},
-  users: null
+  user: {}
 }
 
 const getters = {
-  user: state => state.user,
-  users: state => state.users
+  user: state => state.user
 }
 
 const mutations = {
   [SET_AUTH_USER] (state, data) {
     state.user = data
-  },
-  [SET_ALL_USERS] (state, data) {
-    state.users = data
   }
 }
 
 const actions = {
-  authenticate ({ commit }, params) {
-    return new Promise((resolve, reject) => {
-      axios({
-        url: 'login',
-        method: 'post',
-        withCredentials: true,
-        auth: {
-          username: params.login,
-          password: params.senha
-        }
-      }).then((response) => {
-        if (response.status !== 200) {
-          commit(SET_AUTH_USER, null)
-          reject(response)
-        } else {
-          commit(SET_AUTH_USER, response.data)
-          resolve(response)
-        }
-      }).catch((error) => {
-        reject(error)
-      })
-    })
+  async authenticate ({ commit }, user) {
+    try {
+      const result = await axios.post('/login', user)
+      commit('SET_AUTH_USER', result)
+    } catch (error) {
+      console.log(error)
+    }
   },
 
   logout ({ commit }) {

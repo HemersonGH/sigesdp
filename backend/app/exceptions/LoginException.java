@@ -23,11 +23,9 @@ public class LoginException extends RuntimeException {
 	}
 
 	public LoginException userMessage(String messageKey, Object... messageArgs) {
-
 		this.messageArgs = messageArgs;
 		this.messageKey = messageKey;
 
 		return this;
-
 	}
 }

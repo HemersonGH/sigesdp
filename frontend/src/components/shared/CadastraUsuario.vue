@@ -24,7 +24,7 @@
             elevation='3'
           )
             form(
-              @submit.prevent='login()'
+              @submit.prevent='cadastrar()'
             )
               v-container(
                 grid-list-md
@@ -85,6 +85,21 @@
                       :error-messages="errors.collect('email')"
                       data-vv-name='email'
                       data-vv-as='Email'
+                      ref='email'
+                    )
+                  v-flex.padding(
+                    xs12
+                    sm6
+                    md6
+                  )
+                    v-text-field(
+                      v-model='confirmEmail'
+                      label='Confirmar email *'
+                      color='#2196f3'
+                      v-validate="'required|confirmed:email'"
+                      :error-messages="errors.collect('confirmEmail')"
+                      data-vv-name='confirmEmail'
+                      data-vv-as='Confirmar email'
                     )
                   v-flex.padding(
                     xs12
@@ -95,14 +110,32 @@
                       v-model='novoUsuario.usuario.senha'
                       label='Senha *'
                       color='#2196f3'
-                      v-validate="'required|min:8'"
+                      v-validate="'required|min:6'"
                       :error-messages="errors.collect('password')"
                       data-vv-name='password'
                       data-vv-as='Senha'
-                      hint="Pelo menos 8 caracteres."
+                      hint='Pelo menos 6 caracteres.'
                       :append-icon="showPass ? 'visibility' : 'visibility_off'"
                       @click:append='showPass = !showPass'
                       :type="showPass ? 'text' : 'password'"
+                      ref='senha'
+                    )
+                  v-flex.padding(
+                    xs12
+                    sm6
+                    md6
+                  )
+                    v-text-field(
+                      v-model='confirmSenha'
+                      label='Confirmar senha *'
+                      color='#2196f3'
+                      v-validate="'required|confirmed:senha'"
+                      :error-messages="errors.collect('confirmSenha')"
+                      data-vv-name='confirmSenha'
+                      data-vv-as='Confirmar senha'
+                      :append-icon="showPassConfirm ? 'visibility' : 'visibility_off'"
+                      @click:append='showPassConfirm = !showPassConfirm'
+                      :type="showPassConfirm ? 'text' : 'password'"
                     )
                   v-flex(
                     xs12
@@ -185,30 +218,17 @@
                     md6
                   )
                     v-text-field(
-                      v-model='novoUsuario.sala'
-                      label='Sala *'
+                      v-model='novoUsuario.telefone'
+                      label='Telefone/Ramal *'
                       color='#2196f3'
                       v-validate="'required'"
-                      :error-messages="errors.collect('sala')"
-                      data-vv-name='sala'
-                      data-vv-as='Sala'
+                      :error-messages="errors.collect('telefone')"
+                      data-vv-name='telefone'
+                      data-vv-as='Telefone/Ramal'
                     )
-              v-snackbar(
-                v-model='snackbar'
-                color='error'
-                :top='true'
-                :right='true'
+              SnackBar(
+                :data='snackbar'
               )
-                v-icon(
-                  color='white'
-                  class='mr-3'
-                ) mdi-alert-circle-outline
-                div
-                  | Verifique os campos obrigatórios.
-                v-icon(
-                  size="16"
-                  @click='snackbar = false'
-                ) mdi-close-circle
               v-layout(
                 align-center
                 justify-space-between
@@ -233,6 +253,8 @@
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
 import TheCard from '@/components/shared/TheCard.vue'
+import SnackBar from '@/components/shared/SnackBar.vue'
+import sjcl from 'sjcl'
 
 export default {
   name: 'CadastraUsuario',
@@ -243,7 +265,8 @@ export default {
 
   components: {
     Card,
-    TheCard
+    TheCard,
+    SnackBar
   },
 
   data () {
@@ -266,7 +289,15 @@ export default {
         sala: ''
       },
       showPass: false,
-      snackbar: false
+      showPassConfirm: false,
+      confirmEmail: '',
+      confirmSenha: '',
+      snackbar: {
+        icon: 'mdi-alert-circle-outline',
+        message: 'Verifique os campos obrigatórios.',
+        value: false,
+        color: 'error'
+      }
     }
   },
 
@@ -274,6 +305,9 @@ export default {
     cadastrar () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
+          const myPassEncrypt = sjcl.hash.sha256.hash(this.novoUsuario.usuario.senha)
+          const myPassEncryptHash = sjcl.codec.hex.fromBits(myPassEncrypt)
+          this.novoUsuario.usuario.senha = myPassEncryptHash
           this.createUsuario(this.novoUsuario)
           this.$router.push({
             name: 'login',
@@ -282,7 +316,7 @@ export default {
             }
           })
         } else {
-          this.snackbar = true
+          this.snackbar.value = true
         }
       })
     },

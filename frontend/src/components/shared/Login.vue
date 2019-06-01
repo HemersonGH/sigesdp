@@ -31,7 +31,7 @@
                 v-text-field(
                   label='Email'
                   color='#2196f3'
-                  v-model='email'
+                  v-model='user.email'
                   v-validate="'required|email'"
                   :error-messages="errors.collect('email')"
                   data-vv-name='email'
@@ -41,7 +41,7 @@
                   label='Senha'
                   color='#2196f3'
                   type='password'
-                  v-model='password'
+                  v-model='user.senha'
                   v-validate="'required'"
                   :error-messages="errors.collect('password')"
                   data-vv-name='password'
@@ -58,27 +58,19 @@
                 to='/cadastrar-usuario'
               )
                 span.align-right Criar conta
-      v-snackbar(
-        v-model='snackbar'
-        color='success'
-        :top='true'
-        :right='true'
+      SnackBar(
+        :data='snackbarCreateUser'
       )
-        v-icon(
-          color='white'
-          class='mr-3'
-        ) mdi-check-outline
-        div
-          | Usuário cadastrado com sucesso.
-        v-icon(
-          size="16"
-          @click='snackbar = false'
-        ) mdi-close-circle
+      SnackBar(
+        :data='snackbarLogin'
+      )
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
 import TheCard from '@/components/shared/TheCard.vue'
+import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
   name: 'Login',
@@ -89,14 +81,28 @@ export default {
 
   components: {
     Card,
-    TheCard
+    TheCard,
+    SnackBar
   },
 
   data () {
     return {
-      email: '',
-      password: '',
-      snackbar: false
+      user: {
+        email: '',
+        senha: ''
+      },
+      snackbarCreateUser: {
+        icon: 'mdi-check-outline',
+        message: 'Usuário cadastrado com sucesso.',
+        value: false,
+        color: 'success'
+      },
+      snackbarLogin: {
+        icon: 'mdi-alert-circle-outline',
+        message: 'Email e/ou senha inválidos.',
+        value: false,
+        color: 'error'
+      }
     }
   },
 
@@ -104,14 +110,39 @@ export default {
     login () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          console.log('Validator OK')
+          // const myPassEncrypt = sjcl.hash.sha256.hash(this.novoUsuario.usuario.senha)
+          // const myPassEncryptHash = sjcl.codec.hex.fromBits(myPassEncrypt)
+          // this.novoUsuario.usuario.senha = myPassEncryptHash
+
+          // this.auth(this.user)
+
+          // this.$router.push({
+          //   name: 'login',
+          //   params: {
+          //     showMessage: true
+          //   }
+          // })
+        } else {
+          this.snackbarLogin.value = true
         }
       })
-    }
+    },
+
+    ...mapActions({
+      auth: 'auth/authenticate'
+    })
+  },
+
+  computed: {
+    ...mapGetters({
+      userAuth: 'auth/user'
+    })
   },
 
   created () {
-    this.snackbar = this.$route.params.showMessage
+    if (this.$route.params.showMessage) {
+      this.snackbarCreateUser.value = this.$route.params.showMessage
+    }
   }
 }
 </script>

@@ -1,7 +1,5 @@
 import axios from 'axios'
-import {
-  SET_CADASTRA_USUARIO
-} from '../mutation-types'
+import { SET_CADASTRA_USUARIO } from '../mutation-types'
 
 const state = {
   usuario: {}

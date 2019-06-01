@@ -1,6 +1,23 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+
+erro.padrao=Ocorreu um erro no sistema, tente novamente mais tarde.
+
+validation.parameters.null=Parâmetros enviados são nulos.
+
+erro.login=Usuário e senha não conferem.
+
+sessao.expirada=Sua sessão expirou. Por favor faça o login novamente.
+
+codigo.invalido=O código de acesso é inválido ou o link expirou. Por favor, faça uma nova requisição.
+
+senha.tamanho.invalido=A senha deve ter no mínimo 6 caracteres.
+
+erro.enviar.email=Ocorreu um erro ao enviar o e-mail.
+
+usuario.nao.encontrado=Usuário não encontrado.
+
 sigesdp.erro.padrao=Ocorreu um erro no sistema, tente novamente mais tarde.
 
 sigesdp.departamentos.nao.encontrados=Não foi possível encontrar todos os departamentos.

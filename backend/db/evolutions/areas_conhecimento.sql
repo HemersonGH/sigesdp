@@ -5,7 +5,7 @@ INSERT INTO sigesdp.area_conhecimento(nome) VALUES ('Teoria da Computação');
 INSERT INTO sigesdp.area_conhecimento(nome) VALUES ('Computabilidade e Modelos de Computação');
 INSERT INTO sigesdp.area_conhecimento(nome) VALUES ('Linguagem Formais e Autômatos');
 INSERT INTO sigesdp.area_conhecimento(nome) VALUES ('Análise de Algoritmos e Complexidade de Computação');
-INSERT INTO sigesdp.area_conhecimento(nome) VALUES ('LÓGICAS E SEMÂNTICA DE PROGRAMAS');
+INSERT INTO sigesdp.area_conhecimento(nome) VALUES ('Lógicas e Semântica de programas');
 INSERT INTO sigesdp.area_conhecimento(nome) VALUES ('Matemática da Computação');
 INSERT INTO sigesdp.area_conhecimento(nome) VALUES ('Matemática Simbólica');
 INSERT INTO sigesdp.area_conhecimento(nome) VALUES ('Modelos Analíticos e de Simulação');

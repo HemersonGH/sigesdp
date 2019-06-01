@@ -5,14 +5,17 @@
 POST    /login                                  Secure.authenticate
 GET     /getAuthUser                            Secure.getAuthenticatedUser
 GET     /logout                                 Secure.logout
-POST 	/cadastrar-professor					Professores.cadastraProfessor
+
 POST 	/cadastrar-departamento					Departamentos.cadastraDepartamento
 GET 	/departamentos							Departamentos.findAll
 GET 	/departamentos-list						Departamentos.fieldSelect
 GET   	/departamento/{id}						Departamentos.findById
+
+POST 	/cadastrar-professor					Professores.cadastraProfessor
 GET   	/professor/{id}							Professores.findById
 GET 	/docentes							    Professores.findAll
 GET 	/docente/{id}				     		Professores.findById
+
 POST 	/cadastrar-disciplina					Disciplinas.cadastraDisciplina
 GET 	/areas-conhecimento					    AreasConhecimento.findAll
 
