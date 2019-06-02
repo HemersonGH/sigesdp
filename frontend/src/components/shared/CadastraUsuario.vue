@@ -226,9 +226,6 @@
                       data-vv-name='telefone'
                       data-vv-as='Telefone/Ramal'
                     )
-              SnackBar(
-                :data='snackbar'
-              )
               v-layout(
                 align-center
                 justify-space-between
@@ -246,6 +243,9 @@
                   @click='cadastrar'
                 ) Cadastrar &nbsp
                   v-icon mdi-plus
+              SnackBar(
+                :data='snackbar'
+              )
 
 </template>
 

@@ -81,6 +81,11 @@ export default {
       nome: '',
       select: null
     }
+  },
+
+  methods: {
+    pesquisa () {
+    }
   }
 }
 </script>

@@ -1,17 +1,25 @@
 import axios from 'axios'
-import { SET_CADASTRA_USUARIO } from '../mutation-types'
+import {
+  SET_CADASTRA_USUARIO,
+  SET_USUARIO_LOGADO
+} from '../mutation-types'
 
 const state = {
-  usuario: {}
+  usuario: {},
+  usuarioLogado: false
 }
 
 const getters = {
-  usuario: state => state.usuario
+  usuario: state => state.usuario,
+  usuarioLogado: state => state.usuarioLogado
 }
 
 const mutations = {
   [SET_CADASTRA_USUARIO] (state, usuario) {
     state.usuario = usuario
+  },
+  [SET_USUARIO_LOGADO] (state) {
+    state.usuarioLogado = !state.usuarioLogado
   }
 }
 

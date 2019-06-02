@@ -26,7 +26,8 @@
         v-list-tile-title.style-title.font-weight-bold SIGESDP
       v-divider
       v-list-tile.v-list-item(
-        v-for='(item, i) in itensMenu'
+        v-if='!getValueUsuarioLogado'
+        v-for='(item, i) in itensMenuPublico'
         :key='i'
         :to='item.route'
         active-class='blue'
@@ -47,15 +48,31 @@
               v-text='item.title'
               v-on='on'
             )
-          span(
-            v-if="item.title == 'Acadêmico'"
-          ) Acesse a área acadêmica
-          span(
-            v-if="item.title == 'Pesquisa'"
-          ) Acesse as pesquisas
-          span(
-            v-if="item.title == 'Cursos'"
-          ) Acesse os cursos
+          span {{ item.textTooltip }}
+      v-list-tile.v-list-item(
+        v-if='getValueUsuarioLogado'
+        v-for='(item, i) in itensMenuDocente'
+        :key='i'
+        :to='item.route'
+        active-class='blue'
+        avatar
+      )
+        v-tooltip(
+          right
+          content-class='right'
+        )
+          template(
+            v-slot:activator='{ on }'
+          )
+            v-list-tile-action(
+              v-on='on'
+            )
+              v-icon {{ item.icon }}
+            v-list-tile-title.font-weight-bold(
+              v-text='item.title'
+              v-on='on'
+            )
+          span {{ item.textTooltip }}
 </template>
 
 <script>
@@ -66,22 +83,51 @@ export default {
 
   data () {
     return {
-      logo: 'http://www.blogeditora.ufla.br/wp-content/uploads/2015/01/icone-54ca15b1v1_site_icon.png',
-      itensMenu: [
+      logo: './img/icone-ufla.png',
+      itensMenuPublico: [
         {
           title: 'Acadêmico',
           route: '/academico',
-          icon: 'account_balance'
+          icon: 'account_balance',
+          textTooltip: 'Acesse a área acadêmica'
         },
         {
           title: 'Pesquisa',
           route: '/pesquisa',
-          icon: 'find_in_page'
+          icon: 'find_in_page',
+          textTooltip: 'Acesse as pesquisas'
         },
         {
           title: 'Cursos',
           route: '/cursos',
-          icon: 'collections_bookmark'
+          icon: 'collections_bookmark',
+          textTooltip: 'Acesse os cursos'
+        }
+      ],
+      itensMenuDocente: [
+        {
+          title: 'Alunos',
+          route: '/alunos',
+          icon: 'account_balance',
+          textTooltip: 'Acesse os cursos'
+        },
+        {
+          title: 'Projetos de Pesquisa',
+          route: '/projetos-pesquisa',
+          icon: 'find_in_page',
+          textTooltip: 'Acesse os cursos'
+        },
+        {
+          title: 'Disciplinas',
+          route: '/disciplinas',
+          icon: 'mdi-book-multiple-variant',
+          textTooltip: 'Acesse os cursos'
+        },
+        {
+          title: 'Publicações',
+          route: '/publicacoes',
+          icon: 'mdi-book-multiple-variant',
+          textTooltip: 'Acesse os cursos'
         }
       ]
     }
@@ -89,7 +135,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      menu: 'menu/menu'
+      menu: 'menu/menu',
+      usuarioLogado: 'usuario/usuarioLogado'
     }),
 
     getValueShowMenu: {
@@ -98,11 +145,15 @@ export default {
       },
       set () {
       }
-    }
-  },
+    },
 
-  created () {
-    this.itemActive = this.$route.name
+    getValueUsuarioLogado: {
+      get () {
+        return this.usuarioLogado
+      },
+      set () {
+      }
+    }
   }
 }
 </script>

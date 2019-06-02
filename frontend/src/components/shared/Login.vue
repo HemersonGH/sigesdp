@@ -88,8 +88,8 @@ export default {
   data () {
     return {
       user: {
-        email: '',
-        senha: ''
+        email: 'hemersonel@gmail.com',
+        senha: 'Eueueueueueu'
       },
       snackbarCreateUser: {
         icon: 'mdi-check-outline',
@@ -107,6 +107,10 @@ export default {
   },
 
   methods: {
+    alteraSideMenu () {
+      this.$store.commit('usuario/SET_USUARIO_LOGADO')
+    },
+
     login () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
@@ -116,12 +120,11 @@ export default {
 
           // this.auth(this.user)
 
-          // this.$router.push({
-          //   name: 'login',
-          //   params: {
-          //     showMessage: true
-          //   }
-          // })
+          this.alteraSideMenu()
+
+          this.$router.push({
+            name: 'alunos'
+          })
         } else {
           this.snackbarLogin.value = true
         }

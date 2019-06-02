@@ -24,7 +24,7 @@
                 @click.stop='showMenu'
               )
                 v-icon mdi-view-list
-            span {{menu == true ? 'Esconder menu lateral' : 'Exibir menu lateral'}}
+            span {{ menu == true ? 'Esconder menu lateral' : 'Exibir menu lateral' }}
     div(v-else)
       v-toolbar-items
         v-flex(
@@ -47,6 +47,7 @@
           py-2
         )
           router-link.toolbar-items(
+            v-if='!getValueUsuarioLogado'
             to='/login'
           )
             v-tooltip(
@@ -61,7 +62,24 @@
                   icon
                 ) Login
                   v-icon mdi-login
-              span Acesse o sistema
+              span Acessar o sistema
+          div.toolbar-items(
+            v-else
+          )
+            v-tooltip(
+              bottom
+              content-class='bottom'
+            )
+              template(
+                v-slot:activator='{ on }'
+              )
+                v-btn.style-button(
+                  v-on='on'
+                  icon
+                  @click='logout()'
+                ) Sair
+                  v-icon mdi-logout
+              span Sair do sistema
 </template>
 
 <script>
@@ -92,8 +110,11 @@ export default {
       this.$store.commit('menu/SET_SIDE_MENU')
     },
 
-    onClick () {
-      //
+    logout () {
+      this.$store.commit('usuario/SET_USUARIO_LOGADO')
+      this.$router.push({
+        name: 'academico'
+      })
     },
 
     onResponsiveInverted () {
@@ -107,8 +128,17 @@ export default {
 
   computed: {
     ...mapGetters({
-      menu: 'menu/menu'
-    })
+      menu: 'menu/menu',
+      usuarioLogado: 'usuario/usuarioLogado'
+    }),
+
+    getValueUsuarioLogado: {
+      get () {
+        return this.usuarioLogado
+      },
+      set () {
+      }
+    }
   }
 }
 </script>

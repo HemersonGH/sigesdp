@@ -1,13 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import store from './store'
-import Academico from '@/views/Academico.vue'
-import Pesquisa from '@/views/Pesquisa.vue'
-import Departamento from '@/views/Departamento.vue'
-import Login from '@/components/shared/Login.vue'
+
+import Alunos from '@/views/Alunos.vue'
 import Docentes from '@/views/Docentes.vue'
-import DetalhesDocentes from '@/components/docente/DetalhesDocente.vue'
+import Pesquisa from '@/views/Pesquisa.vue'
+import Academico from '@/views/Academico.vue'
+import Disciplinas from '@/views/Disciplinas.vue'
+import Publicacoes from '@/views/Publicacoes.vue'
+import Departamento from '@/views/Departamento.vue'
+import ProjetosPesquisa from '@/views/ProjetosPesquisa.vue'
+
+import Login from '@/components/shared/Login.vue'
 import CadastraUsuario from '@/components/shared/CadastraUsuario.vue'
+import DetalhesDocentes from '@/components/docente/DetalhesDocente.vue'
 
 Vue.use(Router)
 
@@ -68,7 +74,35 @@ const router = new Router({
       path: '/cadastrar-usuario',
       name: 'cadastrarUsuario',
       component: CadastraUsuario,
-      title: 'Cadastrar Usuário',
+      title: 'Cadastro de Usuário',
+      public: true
+    },
+    {
+      path: '/alunos',
+      name: 'alunos',
+      component: Alunos,
+      title: 'Alunos',
+      public: true
+    },
+    {
+      path: '/projetos-pesquisa',
+      name: 'pesquisaDocente',
+      component: ProjetosPesquisa,
+      title: 'Projeto de Pesquisa',
+      public: true
+    },
+    {
+      path: '/disciplinas',
+      name: 'disciplinas',
+      component: Disciplinas,
+      title: 'Disciplinas',
+      public: true
+    },
+    {
+      path: '/publicacoes',
+      name: 'publicacoes',
+      component: Publicacoes,
+      title: 'Publicações',
       public: true
     }
   ]
