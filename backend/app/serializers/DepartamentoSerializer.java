@@ -8,16 +8,16 @@ import play.Play.Mode;
 
 public class DepartamentoSerializer {
 
-	public static JSONSerializer listIten, listAll, listSelect;
+	public static JSONSerializer departamentosTables, departamentos, departamentosSelect;
 
 	static {
 		boolean prettyPrint = Play.mode == Mode.DEV;
 
-		listIten = new JSONSerializer().include("nome", "sigla", "chefe").exclude("*").prettyPrint(prettyPrint);
+		departamentosTables = new JSONSerializer().include("nome", "sigla", "chefe").exclude("*").prettyPrint(prettyPrint);
 
-		listAll = new JSONSerializer().include("id", "nome", "sigla", "chefe", "telefone", "descricao").exclude("*")
+		departamentos = new JSONSerializer().include("id", "nome", "sigla", "chefe", "telefone", "descricao").exclude("*")
 				.prettyPrint(prettyPrint);
 
-		listSelect = new JSONSerializer().include("id", "nome").exclude("*").prettyPrint(prettyPrint);
+		departamentosSelect = new JSONSerializer().include("id", "nome").exclude("*").prettyPrint(prettyPrint);
 	}
 }

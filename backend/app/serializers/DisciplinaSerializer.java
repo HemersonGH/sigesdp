@@ -6,16 +6,16 @@ import play.Play.Mode;
 
 public class DisciplinaSerializer {
 
-	public static JSONSerializer listIten, listAll, listSelect;
+	public static JSONSerializer disciplinasTables, disciplinas, disciplinasSelect;
 
 	static {
 		boolean prettyPrint = Play.mode == Mode.DEV;
 
-		listIten = new JSONSerializer().include("nome", "sigla", "chefe").exclude("*").prettyPrint(prettyPrint);
+		disciplinasTables = new JSONSerializer().include("nome", "codigo").exclude("*").prettyPrint(prettyPrint);
 
-		listAll = new JSONSerializer().include("id", "nome", "sigla", "chefe", "telefone", "descricao").exclude("*")
-				.prettyPrint(prettyPrint);
+		disciplinas = new JSONSerializer().include("id", "nome", "codigo", "cargaHoraria", "local", "horario", "tipo")
+				.exclude("*").prettyPrint(prettyPrint);
 
-		listSelect = new JSONSerializer().include("id", "nome").exclude("*").prettyPrint(prettyPrint);
+		disciplinasSelect = new JSONSerializer().include("id", "nome").exclude("*").prettyPrint(prettyPrint);
 	}
 }

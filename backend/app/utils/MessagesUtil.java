@@ -19,6 +19,10 @@ public class MessagesUtil {
 	public static final String AREAS_CONHECIMENTO_NAO_ENCONTRADAS = Messages.get("sigesdp.areas.conhecimento.nao.encontradas");
 	public static final String ID_AREA_CONHECIMENTO_NAO_ENCONTRADA = Messages.get("sigesdp.id.area.conhecimento.nao.encontrada");
 	public static final String MODALIDADE_BOLSA_NAO_ENCONTRADA = Messages.get("sigesdp.modalidade.bolsa.nao.encontrada");
-	public static final String MODALIDADE_BOLSA_NAO_ENCONTRADAS = Messages.get("sigesdp.modalidade.bolsa.nao.encontradas");
+	public static final String MODALIDADES_BOLSA_NAO_ENCONTRADAS = Messages.get("sigesdp.modalidade.bolsa.nao.encontradas");
 	public static final String ID_MODALIDADE_BOLSA_NAO_ENCONTRADA = Messages.get("sigesdp.id.modalidade.bolsa.nao.encontrada");
+	public static final String ALUNO_NAO_ENCONTRADO = Messages.get("sigesdp.aluno.nao.encontrado");
+	public static final String ALUNOS_NAO_ENCONTRADOS = Messages.get("sigesdp.alunos.nao.encontrados");
+	public static final String ID_ALUNO_NAO_ENCONTRADO = Messages.get("sigesdp.id.aluno.nao.encontrado");
+	public static final String ALUNO_REMOVIDO_COM_SUCESSO = Messages.get("sigesdp.aluno.removido.com.sucesso");
 }

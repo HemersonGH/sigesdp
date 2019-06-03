@@ -173,6 +173,7 @@ public class Professor extends GenericModel {
 		this.departamento = Departamento.findById(this.departamento.getId());
 		this.areaConhecimento = AreaConhecimento.findById(this.areaConhecimento.getId());
 //		this.usuario.setSenha() 
+
 		this.save();
 	}
 }

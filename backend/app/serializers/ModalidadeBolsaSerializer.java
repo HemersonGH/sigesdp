@@ -6,11 +6,11 @@ import play.Play.Mode;
 
 public class ModalidadeBolsaSerializer {
 
-	public static JSONSerializer listAll;
+	public static JSONSerializer modalidadesBolsa;
 
 	static {
 		boolean prettyPrint = Play.mode == Mode.DEV;
 
-		listAll = new JSONSerializer().include("id", "sigla").exclude("*").prettyPrint(prettyPrint);
+		modalidadesBolsa = new JSONSerializer().include("id", "sigla").exclude("*").prettyPrint(prettyPrint);
 	}
 }

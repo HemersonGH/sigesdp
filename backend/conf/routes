@@ -2,25 +2,38 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# Autenticação
 POST    /login                                  Secure.authenticate
 GET     /getAuthUser                            Secure.getAuthenticatedUser
 GET     /logout                                 Secure.logout
 
-POST 	/cadastrar-departamento					Departamentos.cadastraDepartamento
+# Departamentos
+POST 	/departamento/novo						Departamentos.cadastraDepartamento
 GET 	/departamentos							Departamentos.findAll
 GET 	/departamentos-list						Departamentos.fieldSelect
 GET   	/departamento/{id}						Departamentos.findById
 
-POST 	/cadastrar-professor					Professores.cadastraProfessor
-GET   	/professor/{id}							Professores.findById
+# Docentes
+POST 	/professor/novo							Professores.cadastraProfessor
 GET 	/docentes							    Professores.findAll
 GET 	/docente/{id}				     		Professores.findById
+GET   	/professor/{id}							Professores.findById
 
-POST 	/cadastrar-disciplina					Disciplinas.cadastraDisciplina
+# Disciplinas
+POST 	/disciplina/novo						Disciplinas.cadastraDisciplina
+
+# Área do Conhecimento
 GET 	/areas-conhecimento					    AreasConhecimento.findAll
 
+# Modalidades Bolsa
 GET 	/modalidades-bolsa					    ModalidadesBolsa.findAll
-GET 	/modalidade-bolsa/{id}		     		ModalidadesBolsa.findById
+GET 	/modalidades-bolsa/{id}		     		ModalidadesBolsa.findById
+
+# Alunos
+POST 	/aluno/novo								Alunos.cadastraAluno
+GET 	/alunos								    Alunos.findAll
+GET 	/aluno/{id}					     		Alunos.findById
+DELETE 	/aluno/remove/{id}			     		Alunos.removeAluno
 
 # Home page
 GET     /                                       Application.index

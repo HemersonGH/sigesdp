@@ -24,7 +24,7 @@ public class Professores extends DefaultController {
 			throw new ValidationException(MessagesUtil.PROFESSORES_NAO_ENCONTRADOS);
 		}
 
-		renderJSON(professor, ProfessorSerializer.listAll);
+		renderJSON(professor, ProfessorSerializer.docentes);
 	}
 
 	public static void findById(Integer id) {
@@ -39,6 +39,6 @@ public class Professores extends DefaultController {
 		}
 
 //		renderJSON(professor);
-		renderJSON(professor, ProfessorSerializer.listDetails);
+		renderJSON(professor, ProfessorSerializer.docentesDetails);
 	}
 }

@@ -7,10 +7,11 @@ import javax.validation.ValidationException;
 import models.AreaConhecimento;
 import models.ModalidadeBolsa;
 import play.mvc.Controller;
+import serializers.ModalidadeBolsaSerializer;
 import utils.MessagesUtil;
 
 public class ModalidadesBolsa extends Controller {
-	
+
 	public static void cadastraAreaConhecimento(ModalidadeBolsa modalidadeBolsa) {
 		modalidadeBolsa.salvar();
 	}
@@ -19,7 +20,7 @@ public class ModalidadesBolsa extends Controller {
 		List<ModalidadeBolsa> modalidadesBolsa = ModalidadeBolsa.findAll();
 
 		if (modalidadesBolsa == null) {
-			throw new ValidationException(MessagesUtil.MODALIDADE_BOLSA_NAO_ENCONTRADAS);
+			throw new ValidationException(MessagesUtil.MODALIDADES_BOLSA_NAO_ENCONTRADAS);
 		}
 
 		renderJSON(modalidadesBolsa);

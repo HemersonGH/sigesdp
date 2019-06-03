@@ -129,6 +129,7 @@ public class Disciplina extends GenericModel {
 	public void salvar() {
 		this.professor = Professor.findById(this.professor.getId());
 		this.departamento = Departamento.findById(this.departamento.getId());
+
 		this.save();
 	}
 }

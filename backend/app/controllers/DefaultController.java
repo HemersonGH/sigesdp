@@ -38,7 +38,6 @@ public class DefaultController extends Controller {
 				.serializeSpecialFloatingPointValues();
 
 		gson = builder.create();
-
 	}
 
 	/**

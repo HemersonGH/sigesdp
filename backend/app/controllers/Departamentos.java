@@ -9,7 +9,7 @@ import serializers.DepartamentoSerializer;
 import utils.MessagesUtil;
 
 public class Departamentos extends DefaultController {
-	
+
 	public static void cadastraDepartamento(Departamento departamento) {
 //		validateParameters(departamento);
 		departamento.salvar();
@@ -23,7 +23,7 @@ public class Departamentos extends DefaultController {
 		}
 
 //		List<Departamento> departamentos = Departamento.find("nome = :nome").setParameter("nome", "nome").fetch();
-		renderJSON(departamentos, DepartamentoSerializer.listAll);
+		renderJSON(departamentos, DepartamentoSerializer.departamentos);
 	}
 
 	public static void findById(Integer id) {
@@ -37,9 +37,9 @@ public class Departamentos extends DefaultController {
 			throw new ValidationException(MessagesUtil.ID_DEPARTAMENTO_NAO_ENCONTRADO);
 		}
 
-		renderJSON(departamento, DepartamentoSerializer.listIten);
+		renderJSON(departamento, DepartamentoSerializer.departamentos);
 	}
-	
+
 	public static void fieldSelect() {
 		List<Departamento> departamentos = Departamento.findAll();
 
@@ -47,6 +47,6 @@ public class Departamentos extends DefaultController {
 			throw new ValidationException(MessagesUtil.DEPARTAMENTOS_NAO_ENCONTRADOS);
 		}
 
-		renderJSON(departamentos, DepartamentoSerializer.listSelect);
+		renderJSON(departamentos, DepartamentoSerializer.departamentosSelect);
 	}
 }

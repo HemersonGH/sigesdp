@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -35,6 +36,24 @@ public class Aluno extends GenericModel {
 	@JoinColumn(name = "id_professor", referencedColumnName = "id")
 	private Professor professor;
 
+	@Required
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_curso", referencedColumnName = "id")
+	public Curso curso;
+
+	@Required
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_modalidade_bolsa", referencedColumnName = "id")
+	public ModalidadeBolsa modalidadeBolsa;
+
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -51,7 +70,39 @@ public class Aluno extends GenericModel {
 		this.email = email;
 	}
 
+	public Professor getProfessor() {
+		return this.professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public Curso getCurso() {
+		return this.curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+	public ModalidadeBolsa getModalidadeBolsa() {
+		return this.modalidadeBolsa;
+	}
+
+	public void setModalidadeBolsa(ModalidadeBolsa modalidadeBolsa) {
+		this.modalidadeBolsa = modalidadeBolsa;
+	}
+
 	public void salvar() {
+		this.professor = Professor.findById(this.professor.getId());
+		this.curso = Curso.findById(this.curso.getId());
+		this.modalidadeBolsa = ModalidadeBolsa.findById(this.modalidadeBolsa.getId());
+
 		this.save();
+	}
+
+	public void remove() {
+		this.delete();
 	}
 }

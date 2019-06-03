@@ -218,13 +218,13 @@
                     md6
                   )
                     v-text-field(
-                      v-model='novoUsuario.telefone'
-                      label='Telefone/Ramal *'
+                      v-model='novoUsuario.sala'
+                      label='Sala *'
                       color='#2196f3'
                       v-validate="'required'"
-                      :error-messages="errors.collect('telefone')"
-                      data-vv-name='telefone'
-                      data-vv-as='Telefone/Ramal'
+                      :error-messages="errors.collect('sala')"
+                      data-vv-name='sala'
+                      data-vv-as='Sala'
                     )
               v-layout(
                 align-center

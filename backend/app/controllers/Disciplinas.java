@@ -21,7 +21,7 @@ public class Disciplinas extends DefaultController {
 			throw new ValidationException(MessagesUtil.DISCIPLINAS_NAO_ENCONTRADAS);
 		}
 
-		renderJSON(disciplinas, DisciplinaSerializer.listAll);
+		renderJSON(disciplinas, DisciplinaSerializer.disciplinas);
 	}
 
 	public static void findById(Integer id) {
@@ -35,7 +35,7 @@ public class Disciplinas extends DefaultController {
 			throw new ValidationException(MessagesUtil.ID_DISCIPLINA_NAO_ENCONTRADA);
 		}
 
-		renderJSON(disciplina, DisciplinaSerializer.listIten);
+		renderJSON(disciplina, DisciplinaSerializer.disciplinas);
 	}
 
 	public static void fieldSelect() {
@@ -45,6 +45,6 @@ public class Disciplinas extends DefaultController {
 			throw new ValidationException(MessagesUtil.DISCIPLINAS_NAO_ENCONTRADAS);
 		}
 
-		renderJSON(disciplinas, DisciplinaSerializer.listSelect);
+		renderJSON(disciplinas, DisciplinaSerializer.disciplinasSelect);
 	}
 }

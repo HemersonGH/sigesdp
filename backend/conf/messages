@@ -53,3 +53,11 @@ sigesdp.modalidade.bolsa.nao.encontradas=Não foi possível encontrar todas as m
 sigesdp.modalidade.bolsa.nao.encontrada=Não foi possível encontrar a modalidade de bolsa.
 
 sigesdp.id.modalidade.bolsa.nao.encontrada=Nenhuma modalidade de bolsa foi encontrada com esse id.
+
+sigesdp.alunos.nao.encontrados=Não foi possível encontrar todos os alunos.
+
+sigesdp.id.aluno.nao.encontrado=Nenhum aluno foi encontrado com esse id.
+
+sigesdp.aluno.nao.encontrado=Não foi possível encontrar o aluno.
+
+sigesdp.aluno.removido.com.sucesso=Aluno removido com sucesso.
