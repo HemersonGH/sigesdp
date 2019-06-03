@@ -1,11 +1,11 @@
 <template lang="pug">
   v-card.ajust-top
     v-card(
-      color='#2CBF36'
+      color='#3169B3'
       :class='`elevation-4`'
     )
       v-card-title.center.color
-        span.font-weight Pesquisar docentes
+        span.font-weight Pesquisar alunos
     v-divider.mx-3
     v-card-text.padding
       v-container.padding(
@@ -28,9 +28,9 @@
             md10
           )
             v-text-field.padding-bottom(
-              v-model='nome'
-              placeholder='Informe o nome do professor'
-              color='#2CBF36'
+              v-model='pesquisaAluno.nomeAluno'
+              placeholder='Informe o nome do aluno'
+              color='#3169B3'
               clearable
             )
           v-flex.padding-top(
@@ -38,27 +38,27 @@
             sm2
             md2
           )
-            h5.padding-top.font-weight.no-margin-bottom Departamento:
+            h5.padding-top.font-weight.no-margin-bottom Modalidade:
           v-flex.padding-top(
             xs8
             sm10
             md10
           )
             v-select.padding-top(
-              placeholder='Selecione um departamento'
-              v-model='select'
-              :items='departamentos'
-              item-text='nome'
+              placeholder='Selecione uma modalidade de bolsa'
+              v-model='pesquisaAluno.idModalidade'
+              color='#3169B3'
+              :items='modalidades'
+              item-text='sigla'
               item-value='id'
               no-data-text='Não há dados.'
-              color='#2CBF36'
               clearable
             )
       v-divider.mx-3
       v-card-actions
         v-spacer
         v-btn.style-button(
-          color='#2CBF36'
+          color='#3169B3'
           @click='pesquisa()'
         ) Pesquisar &nbsp
           v-icon mdi-magnify
@@ -68,23 +68,24 @@
 import Card from '@/components/shared/Card.vue'
 
 export default {
-  name: 'PesquisaDocentes',
+  name: 'PesquisaAlunos',
   
   components: {
     Card
   },
 
-
   props: {
-    departamentos: {
+    modalidades: {
       type: [Object, Array]
     }
   },
 
   data () {
     return {
-      nome: '',
-      select: null
+      pesquisaAluno: {
+        nomeAluno: '',
+        idModalidade: null
+      }
     }
   },
 

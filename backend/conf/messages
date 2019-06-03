@@ -36,7 +36,7 @@ sigesdp.professor.nao.encontrado=Não foi possível encontrar o professor.
 
 sigesdp.disciplinas.nao.encontradas=Não foi possível encontrar todas as disciplinas do professor.
 
-sigesdp.disciplina.nao.encontrada=Não foi possível encontrar o disciplina.
+sigesdp.disciplina.nao.encontrada=Não foi possível encontrar a disciplina.
 
 sigesdp.id.disciplina.nao.encontrada=Nenhuma disciplina foi encontrada com esse id.
 
@@ -47,3 +47,9 @@ sigesdp.areas.conhecimento.nao.encontradas=Não foi possível encontrar todas as
 sigesdp.id.area.conhecimento.nao.encontrada=Nenhuma área de conhecimento foi encontrada com esse id.
 
 sessao.expirada=Sua sessão expirou. Por favor faça o login novamente.
+
+sigesdp.modalidade.bolsa.nao.encontradas=Não foi possível encontrar todas as modalidade de bolsa.
+
+sigesdp.modalidade.bolsa.nao.encontrada=Não foi possível encontrar a modalidade de bolsa.
+
+sigesdp.id.modalidade.bolsa.nao.encontrada=Nenhuma modalidade de bolsa foi encontrada com esse id.

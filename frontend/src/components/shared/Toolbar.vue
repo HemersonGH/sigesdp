@@ -77,7 +77,7 @@
                   v-on='on'
                   icon
                   @click='logout()'
-                ) Sair
+                ) Logout
                   v-icon mdi-logout
               span Sair do sistema
 </template>

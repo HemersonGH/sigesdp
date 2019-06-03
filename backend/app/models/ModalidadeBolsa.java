@@ -22,22 +22,33 @@ public class ModalidadeBolsa extends GenericModel {
 	private Integer id;
 
 	@Required
-	private String modalidade;
+	private String nome;
+	
+	@Required
+	private String sigla;
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getModalidade() {
-		return modalidade;
+	public String getNome() {
+		return this.nome;
 	}
 
-	public void setModalidade(String modalidade) {
-		this.modalidade = modalidade;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getSigla() {
+		return this.sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
 	}
 
 	public void salvar() {

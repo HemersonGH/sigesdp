@@ -33,7 +33,7 @@ COMMENT ON COLUMN sigesdp.projeto_pesquisa.resumo IS 'Resumo do projeto de pesqu
 COMMENT ON COLUMN sigesdp.projeto_pesquisa.codigo_projeto IS 'Código do projeto de pesquisa.';
 COMMENT ON COLUMN sigesdp.projeto_pesquisa.id_grupo_pesquisa IS 'Identificador do grupo de pesquisa do projeto de pesquisa.';
 COMMENT ON COLUMN sigesdp.projeto_pesquisa.id_area_conhecimento IS 'Identificador da area do conhecimento do projeto de pesquisa.';
-COMMENT ON COLUMN sigesdp.projeto_pesquisa.id_modalidade_bolsa IS 'Identificador da modalidade do projeto de pesquisa.';
+COMMENT ON COLUMN sigesdp.projeto_pesquisa.id_modalidade_bolsa IS 'Identificador da modalidade da bolsa do projeto de pesquisa.';
 COMMENT ON COLUMN sigesdp.projeto_pesquisa.id_anexo IS 'Identificador do anexo do projeto de pesquisa.';
 COMMENT ON COLUMN sigesdp.projeto_pesquisa.id_professor IS 'Identificador do professor do projeto de pesquisa.';
 COMMENT ON COLUMN sigesdp.projeto_pesquisa.id_aluno IS 'Identificador do aluno do projeto de pesquisa.';

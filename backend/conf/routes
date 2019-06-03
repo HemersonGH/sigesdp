@@ -19,6 +19,9 @@ GET 	/docente/{id}				     		Professores.findById
 POST 	/cadastrar-disciplina					Disciplinas.cadastraDisciplina
 GET 	/areas-conhecimento					    AreasConhecimento.findAll
 
+GET 	/modalidades-bolsa					    ModalidadesBolsa.findAll
+GET 	/modalidade-bolsa/{id}		     		ModalidadesBolsa.findById
+
 # Home page
 GET     /                                       Application.index
 

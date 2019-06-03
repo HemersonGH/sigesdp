@@ -20,7 +20,6 @@
         Card(
           color='#2CBF36'
           :title='title'
-          :text='text'
           styleTitleDataTable='title-data-table'
           full-width
           elevation='6'
@@ -52,7 +51,6 @@ export default {
   data () {
     return {
       title: 'Docentes',
-      text: 'Pesquise os docentes da UFLA',
       headers: [
         {
           sortable: true,

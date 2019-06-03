@@ -57,7 +57,7 @@ export default {
         {
           title: 'Bases de Pesquisas',
           text: 'Consulte as bases de pesquisa atuantes na UFLA.',
-          colorCard: '#FF5201',
+          colorCard: '#FF407D',
           icon: 'mdi-database',
           route: '/pesquisa/bases-de-pesquisas'
         }
@@ -68,7 +68,4 @@ export default {
 </script>
 
 <style scoped>
-.f {
-  color: rgb(245, 222, 49);
-}
 </style>
