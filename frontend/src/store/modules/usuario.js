@@ -25,12 +25,9 @@ const mutations = {
 
 const actions = {
   async createUsuario ({ commit }, novoUsuario) {
-    try {
-      const result = await axios.post('/professor/novo', novoUsuario)
-      commit('SET_CADASTRA_USUARIO', result)
-    } catch (error) {
-      console.log(error)
-    }
+    const response = await axios.post('/professor/novo', novoUsuario)
+    commit('SET_CADASTRA_USUARIO', response.data)
+    return response
   }
 }
 

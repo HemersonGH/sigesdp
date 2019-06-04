@@ -14,6 +14,8 @@ public class Alunos extends DefaultController {
 	public static void cadastraAluno(Aluno aluno) {
 //		validateParameters(aluno);
 		aluno.salvar();
+
+		renderText(MessagesUtil.ALUNO_CADASTRADO_COM_SUCESSO);
 	}
 
 	public static void findAll() {
@@ -38,6 +40,20 @@ public class Alunos extends DefaultController {
 		}
 
 		renderJSON(aluno, AlunoSerializer.alunos);
+	}
+
+	public static void atualizaAluno(Aluno aluno) {
+		notFoundIfNull(aluno);
+
+		Aluno alunoSave = Aluno.findById(aluno.getId());
+
+		if (alunoSave == null) {
+			throw new ValidationException(MessagesUtil.ALUNO_NAO_ENCONTRADO);
+		}
+
+		alunoSave.atualiza(aluno);
+
+		renderText(MessagesUtil.ALUNO_ATUALIZADO_COM_SUCESSO);
 	}
 
 	public static void removeAluno(Integer id) {

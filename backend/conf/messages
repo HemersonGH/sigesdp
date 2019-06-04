@@ -3,61 +3,46 @@
 #
 
 erro.padrao=Ocorreu um erro no sistema, tente novamente mais tarde.
-
-validation.parameters.null=Parâmetros enviados são nulos.
-
-erro.login=Usuário e senha não conferem.
-
-sessao.expirada=Sua sessão expirou. Por favor faça o login novamente.
-
-codigo.invalido=O código de acesso é inválido ou o link expirou. Por favor, faça uma nova requisição.
-
-senha.tamanho.invalido=A senha deve ter no mínimo 6 caracteres.
-
 erro.enviar.email=Ocorreu um erro ao enviar o e-mail.
-
+erro.login=Usuário e senha não conferem.
+sessao.expirada=Sua sessão expirou. Por favor faça o login novamente.
+validation.parameters.null=Parâmetros enviados são nulos.
+codigo.invalido=O código de acesso é inválido ou o link expirou. Por favor, faça uma nova requisição.
+senha.tamanho.invalido=A senha deve ter no mínimo 6 caracteres.
 usuario.nao.encontrado=Usuário não encontrado.
 
 sigesdp.erro.padrao=Ocorreu um erro no sistema, tente novamente mais tarde.
-
-sigesdp.departamentos.nao.encontrados=Não foi possível encontrar todos os departamentos.
-
-sigesdp.departamento.nao.encontrado=Não foi possível encontrar o departamento.
-
-sigesdp.id.departamento.nao.encontrado=Nenhum departamento foi encontrado com esse id.
-
 sigesdp.erros.de.validacao=Ocorreram erros de validação
 
-sigesdp.professores.nao.encontrado=Não foi possível encontrar todos os professores.
+sigesdp.id.departamento.nao.encontrado=Nenhum departamento foi encontrado com esse id.
+sigesdp.departamento.nao.encontrado=Não foi possível encontrar o departamento.
+sigesdp.departamentos.nao.encontrados=Não foi possível encontrar todos os departamentos.
 
 sigesdp.id.professor.nao.encontrado=Nenhum professor foi encontrado com esse id.
-
 sigesdp.professor.nao.encontrado=Não foi possível encontrar o professor.
-
-sigesdp.disciplinas.nao.encontradas=Não foi possível encontrar todas as disciplinas do professor.
-
-sigesdp.disciplina.nao.encontrada=Não foi possível encontrar a disciplina.
+sigesdp.professores.nao.encontrado=Não foi possível encontrar todos os professores.
+sigesdp.professor.cadastrado.com.sucesso=Professor cadastrado com sucesso.
+sigesdp.professor.atualizado.com.sucesso=Professor atualizado com sucesso.
+sigesdp.professor.removido.com.sucesso=Professor removido com sucesso.
 
 sigesdp.id.disciplina.nao.encontrada=Nenhuma disciplina foi encontrada com esse id.
-
-sigesdp.area.conhecimento.nao.encontrada=Não foi possível encontrar a área de conhecimento.
-
-sigesdp.areas.conhecimento.nao.encontradas=Não foi possível encontrar todas as áreas de conhecimento.
+sigesdp.disciplina.nao.encontrada=Não foi possível encontrar a disciplina.
+sigesdp.disciplinas.nao.encontradas=Não foi possível encontrar todas as disciplinas do professor.
+sigesdp.disciplina.cadastrado.com.sucesso=Disciplina cadastrada com sucesso.
+sigesdp.disciplina.atualizado.com.sucesso=Disciplina atualizada com sucesso.
+sigesdp.disciplina.removido.com.sucesso=Disciplina removida com sucesso.
 
 sigesdp.id.area.conhecimento.nao.encontrada=Nenhuma área de conhecimento foi encontrada com esse id.
-
-sessao.expirada=Sua sessão expirou. Por favor faça o login novamente.
-
-sigesdp.modalidade.bolsa.nao.encontradas=Não foi possível encontrar todas as modalidade de bolsa.
-
-sigesdp.modalidade.bolsa.nao.encontrada=Não foi possível encontrar a modalidade de bolsa.
+sigesdp.area.conhecimento.nao.encontrada=Não foi possível encontrar a área de conhecimento.
+sigesdp.areas.conhecimento.nao.encontradas=Não foi possível encontrar todas as áreas de conhecimento.
 
 sigesdp.id.modalidade.bolsa.nao.encontrada=Nenhuma modalidade de bolsa foi encontrada com esse id.
-
-sigesdp.alunos.nao.encontrados=Não foi possível encontrar todos os alunos.
+sigesdp.modalidade.bolsa.nao.encontradas=Não foi possível encontrar todas as modalidade de bolsa.
+sigesdp.modalidade.bolsa.nao.encontrada=Não foi possível encontrar a modalidade de bolsa.
 
 sigesdp.id.aluno.nao.encontrado=Nenhum aluno foi encontrado com esse id.
-
 sigesdp.aluno.nao.encontrado=Não foi possível encontrar o aluno.
-
+sigesdp.alunos.nao.encontrados=Não foi possível encontrar todos os alunos.
+sigesdp.aluno.cadastrado.com.sucesso=Aluno cadastrado com sucesso.
+sigesdp.aluno.atualizado.com.sucesso=Aluno atualizado com sucesso.
 sigesdp.aluno.removido.com.sucesso=Aluno removido com sucesso.

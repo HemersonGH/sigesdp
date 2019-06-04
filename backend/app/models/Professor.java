@@ -36,8 +36,8 @@ public class Professor extends GenericModel {
 	public String nome;
 
 	@Required
-	@Column(name = "curriculo_lates")
-	public String curriculoLates;
+	@Column(name = "curriculo_lattes")
+	public String curriculoLattes;
 
 	@Required
 	@Column(name = "formacao_academica")
@@ -89,12 +89,12 @@ public class Professor extends GenericModel {
 		this.nome = nome;
 	}
 
-	public String getCurriculoLates() {
-		return this.curriculoLates;
+	public String getcurriculoLattes() {
+		return this.curriculoLattes;
 	}
 
-	public void setCurriculoLates(String curriculoLates) {
-		this.curriculoLates = curriculoLates;
+	public void setcurriculoLattes(String curriculoLattes) {
+		this.curriculoLattes = curriculoLattes;
 	}
 
 	public String getFormacaoAcademica() {
@@ -175,5 +175,22 @@ public class Professor extends GenericModel {
 //		this.usuario.setSenha() 
 
 		this.save();
+	}
+
+	public void atualiza(Professor professor) {
+		this.setNome(professor.nome);
+		this.setcurriculoLattes(professor.curriculoLattes);
+		this.setFormacaoAcademica(professor.formacaoAcademica);
+		this.setSala(professor.sala);
+		this.setTelefone(professor.telefone);
+		this.setUsuario(Professor.findById(professor.usuario.getId()));
+		this.setDepartamento(Professor.findById(professor.departamento.getId()));
+		this.setAreaConhecimento(Professor.findById(professor.areaConhecimento.getId()));
+
+		this.save();
+	}
+
+	public void remove() {
+		this.delete();
 	}
 }

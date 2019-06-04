@@ -186,7 +186,7 @@
                       v-model='novoUsuario.curriculoLattes'
                       label='Currículo Lattes *'
                       color='#2196f3'
-                      v-validate="'required'"
+                      v-validate="'required|max:255'"
                       :error-messages="errors.collect('curriculoLattes')"
                       data-vv-name='curriculoLattes'
                       data-vv-as='Currículo Lattes'
@@ -207,7 +207,7 @@
                       v-model='novoUsuario.telefone'
                       label='Telefone/Ramal *'
                       color='#2196f3'
-                      v-validate="'required'"
+                      v-validate="'required|max:20'"
                       :error-messages="errors.collect('telefone')"
                       data-vv-name='telefone'
                       data-vv-as='Telefone/Ramal'
@@ -221,7 +221,7 @@
                       v-model='novoUsuario.sala'
                       label='Sala *'
                       color='#2196f3'
-                      v-validate="'required'"
+                      v-validate="'required|max:50'"
                       :error-messages="errors.collect('sala')"
                       data-vv-name='sala'
                       data-vv-as='Sala'
@@ -246,6 +246,9 @@
               SnackBar(
                 :data='snackbar'
               )
+              SnackBar(
+                :data='snackbarErroCadastrar'
+              )
 
 </template>
 
@@ -254,7 +257,7 @@ import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
 import TheCard from '@/components/shared/TheCard.vue'
 import SnackBar from '@/components/shared/SnackBar.vue'
-import sjcl from 'sjcl'
+// import sjcl from 'sjcl'
 
 export default {
   name: 'CadastraUsuario',
@@ -297,6 +300,12 @@ export default {
         message: 'Verifique os campos obrigatórios.',
         value: false,
         color: 'error'
+      },
+      snackbarErroCadastrar: {
+        icon: 'mdi-alert-circle-outline',
+        message: 'Ocorreu um erro no sistema, tente novamente ou entre em contato com o administrador.',
+        value: false,
+        color: 'error'
       }
     }
   },
@@ -305,15 +314,18 @@ export default {
     cadastrar () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          const myPassEncrypt = sjcl.hash.sha256.hash(this.novoUsuario.usuario.senha)
-          const myPassEncryptHash = sjcl.codec.hex.fromBits(myPassEncrypt)
-          this.novoUsuario.usuario.senha = myPassEncryptHash
-          this.createUsuario(this.novoUsuario)
-          this.$router.push({
-            name: 'login',
-            params: {
-              showMessage: true
-            }
+          // const myPassEncrypt = sjcl.hash.sha256.hash(this.novoUsuario.usuario.senha)
+          // const myPassEncryptHash = sjcl.codec.hex.fromBits(myPassEncrypt)
+          // this.novoUsuario.usuario.senha = myPassEncryptHash
+          this.createUsuario(this.novoUsuario).then((response) => {
+            this.$router.push({
+              name: 'login',
+              params: {
+                showMessage: true
+              }
+            })
+          }).catch((erro) => {
+            this.snackbarErroCadastrar.value = true
           })
         } else {
           this.snackbar.value = true

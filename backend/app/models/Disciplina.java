@@ -45,12 +45,12 @@ public class Disciplina extends GenericModel {
 	private Integer tipo;
 
 	@Required
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "id_professor", referencedColumnName = "id")
 	public Professor professor;
 
 	@Required
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "id_departamento", referencedColumnName = "id")
 	public Departamento departamento;
 
@@ -131,5 +131,22 @@ public class Disciplina extends GenericModel {
 		this.departamento = Departamento.findById(this.departamento.getId());
 
 		this.save();
+	}
+
+	public void atualiza(Disciplina disciplina) {
+		this.setNome(disciplina.nome);
+		this.setCodigo(disciplina.codigo);
+		this.setCargaHoraria(disciplina.cargaHoraria);
+		this.setLocal(disciplina.local);
+		this.setHorario(disciplina.horario);
+		this.setTipo(disciplina.tipo);
+		this.setProfessor(Professor.findById(disciplina.professor.getId()));
+		this.setDepartamento(Departamento.findById(disciplina.departamento.getId()));
+		
+		this.save();
+	}
+	
+	public void remove() {
+		this.delete();
 	}
 }

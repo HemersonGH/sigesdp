@@ -1,7 +1,5 @@
 import axios from 'axios'
-import {
-  SET_AREA_CONHECIMENTO_LIST
-} from '../mutation-types'
+import { SET_AREA_CONHECIMENTO_LIST } from '../mutation-types'
 
 const state = {
   areaConhecimento: []

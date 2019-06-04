@@ -32,17 +32,17 @@ public class Aluno extends GenericModel {
 	private String email;
 
 	@Required
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "id_professor", referencedColumnName = "id")
 	private Professor professor;
 
 	@Required
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "id_curso", referencedColumnName = "id")
 	public Curso curso;
 
 	@Required
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "id_modalidade_bolsa", referencedColumnName = "id")
 	public ModalidadeBolsa modalidadeBolsa;
 
@@ -95,9 +95,19 @@ public class Aluno extends GenericModel {
 	}
 
 	public void salvar() {
-		this.professor = Professor.findById(this.professor.getId());
-		this.curso = Curso.findById(this.curso.getId());
-		this.modalidadeBolsa = ModalidadeBolsa.findById(this.modalidadeBolsa.getId());
+		this.setProfessor(Professor.findById(this.professor.getId()));
+		this.setCurso(Curso.findById(this.curso.getId()));
+		this.setModalidadeBolsa(ModalidadeBolsa.findById(this.modalidadeBolsa.getId()));
+
+		this.save();
+	}
+
+	public void atualiza(Aluno aluno) {
+		this.setNome(aluno.getNome());
+		this.setEmail(aluno.getEmail());
+		this.setProfessor(Professor.findById(aluno.professor.getId()));
+		this.setCurso(Curso.findById(aluno.curso.getId()));
+		this.setModalidadeBolsa(ModalidadeBolsa.findById(aluno.modalidadeBolsa.getId()));
 
 		this.save();
 	}

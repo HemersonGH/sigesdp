@@ -30,7 +30,7 @@ public class GrupoPesquisa extends GenericModel {
 	private String grupoPesquisa;
 
 	@Required
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "id_professor", referencedColumnName = "id")
 	private Professor professor;
 

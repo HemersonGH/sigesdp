@@ -28,7 +28,7 @@ public class Curso extends GenericModel {
 	private String nome;
 
 	@Required
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "id_departamento", referencedColumnName = "id")
 	public Departamento departamento;
 
