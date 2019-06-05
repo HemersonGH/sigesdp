@@ -19,7 +19,7 @@ GET 	/docentes							    Professores.findAll
 GET 	/docente/{id}				     		Professores.findById
 GET   	/docente/{id}							Professores.findById
 GET   	/docente/alunos/{id}					Professores.findAlunos
-GET   	/docente/email/						Professores.findByEmail
+GET   	/docente/email/							Professores.findByEmail
 PUT 	/docente/atualiza		     			Professores.atualizaProfessor
 DELETE 	/docente/remove/{id}			     	Professores.removeProfessor
 
