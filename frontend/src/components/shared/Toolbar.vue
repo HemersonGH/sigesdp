@@ -25,7 +25,9 @@
               )
                 v-icon mdi-view-list
             span {{ menu == true ? 'Esconder menu lateral' : 'Exibir menu lateral' }}
-    div(v-else)
+    div(
+      v-else
+    )
       v-toolbar-items
         v-flex(
           layout
@@ -37,7 +39,7 @@
           )
     div.v-toolbar-title
       v-toolbar-title.font-weight-bold.white--text
-        | {{ title }}
+          | {{ title }}
     div
       v-toolbar-items
         v-flex(
@@ -46,9 +48,8 @@
           layout
           py-2
         )
-          router-link.toolbar-items(
-            v-if='!getValueUsuarioLogado'
-            to='/login'
+          div.toolbar-items(
+            v-if='!getValueUsuarioLogadoBool'
           )
             v-tooltip(
               bottom
@@ -60,6 +61,7 @@
                 v-btn.style-button(
                   v-on='on'
                   icon
+                  to='/login'
                 ) Login
                   v-icon mdi-login
               span Acessar o sistema
@@ -111,7 +113,7 @@ export default {
     },
 
     logout () {
-      this.$store.commit('usuario/SET_USUARIO_LOGADO')
+      this.$store.commit('usuario/SET_USUARIO_BOOLEN_LOGADO')
       this.$router.push({
         name: 'academico'
       })
@@ -129,12 +131,12 @@ export default {
   computed: {
     ...mapGetters({
       menu: 'menu/menu',
-      usuarioLogado: 'usuario/usuarioLogado'
+      usuarioLogadoBool: 'usuario/usuarioLogadoBool'
     }),
 
-    getValueUsuarioLogado: {
+    getValueUsuarioLogadoBool: {
       get () {
-        return this.usuarioLogado
+        return this.usuarioLogadoBool
       },
       set () {
       }

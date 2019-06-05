@@ -18,6 +18,8 @@ POST 	/professor/novo							Professores.cadastraProfessor
 GET 	/docentes							    Professores.findAll
 GET 	/docente/{id}				     		Professores.findById
 GET   	/professor/{id}							Professores.findById
+GET   	/professor/alunos/{id}					Professores.findAlunos
+GET   	/professor/email/						Professores.findByEmail
 PUT 	/professor/atualiza		     			Professores.atualizaProfessor
 DELETE 	/professor/remove/{id}			     	Professores.removeProfessor
 

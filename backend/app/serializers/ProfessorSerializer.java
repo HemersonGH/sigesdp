@@ -6,7 +6,7 @@ import play.Play.Mode;
 
 public class ProfessorSerializer {
 
-	public static JSONSerializer docentesTables, docentes, docentesDetails;
+	public static JSONSerializer docentesTables, docentes, docentesDetails, login, alunosDocente;
 
 	static {
 		boolean prettyPrint = Play.mode == Mode.DEV;
@@ -27,6 +27,14 @@ public class ProfessorSerializer {
 						"departamento.nome", "departamento.sigla", "usuario.id", "usuario.email", "disciplinas.id",
 						"disciplinas.codigo", "disciplinas.nome", "disciplinas.cargaHoraria", "disciplinas.local",
 						"disciplinas.horario", "disciplinas.tipo", "areaConhecimento.id", "areaConhecimento.nome")
+				.exclude("*").prettyPrint(prettyPrint);
+
+		login = new JSONSerializer().include("id", "nome", "usuario.id", "usuario.email").exclude("*")
+				.prettyPrint(prettyPrint);
+
+		alunosDocente = new JSONSerializer()
+				.include("alunos.id", "alunos.nome", "alunos.email", "alunos.curso.id", "alunos.curso.nome",
+						"alunos.modalidadeBolsa.id", "alunos.modalidadeBolsa.nome", "alunos.modalidadeBolsa.sigla")
 				.exclude("*").prettyPrint(prettyPrint);
 	}
 }

@@ -4,11 +4,8 @@ import java.util.List;
 
 import javax.validation.ValidationException;
 
-import models.Aluno;
-import models.Departamento;
-import models.Disciplina;
 import models.Professor;
-import serializers.DepartamentoSerializer;
+import models.Usuario;
 import serializers.ProfessorSerializer;
 import utils.MessagesUtil;
 
@@ -74,4 +71,36 @@ public class Professores extends DefaultController {
 		renderText(MessagesUtil.PROFESSOR_REMOVIDO_COM_SUCESSO);
 	}
 
+	public static void findByEmail(String email) {
+		if (email == null) {
+			throw new ValidationException(MessagesUtil.PROFESSOR_NAO_ENCONTRADO);
+		}
+
+		Usuario usuario = Usuario.find("email = :email").setParameter("email", email).first();
+
+		Integer idUsuario = usuario.getId();
+
+		Professor professor = Professor.find("usuario.id", idUsuario).first();
+
+		if (professor == null) {
+			throw new ValidationException(MessagesUtil.ID_PROFESSOR_NAO_ENCONTRADO);
+		}
+
+		renderJSON(professor, ProfessorSerializer.login);
+	}
+
+	public static void findAlunos(Integer id) {
+		if (id == null) {
+			throw new ValidationException(MessagesUtil.PROFESSOR_NAO_ENCONTRADO);
+		}
+
+		Professor professor = Professor.findById(id);
+
+		if (professor == null) {
+			throw new ValidationException(MessagesUtil.ID_PROFESSOR_NAO_ENCONTRADO);
+		}
+
+//		renderJSON(professor);
+		renderJSON(professor, ProfessorSerializer.alunosDocente);
+	}
 }

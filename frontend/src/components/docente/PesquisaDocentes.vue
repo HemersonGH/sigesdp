@@ -69,11 +69,10 @@ import Card from '@/components/shared/Card.vue'
 
 export default {
   name: 'PesquisaDocentes',
-  
+
   components: {
     Card
   },
-
 
   props: {
     departamentos: {

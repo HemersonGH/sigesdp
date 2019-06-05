@@ -69,7 +69,7 @@ import Card from '@/components/shared/Card.vue'
 
 export default {
   name: 'PesquisaAlunos',
-  
+
   components: {
     Card
   },

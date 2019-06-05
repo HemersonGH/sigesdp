@@ -107,8 +107,8 @@ export default {
   },
 
   methods: {
-    alteraSideMenu () {
-      this.$store.commit('usuario/SET_USUARIO_LOGADO')
+    alteraSideMenuUsuario () {
+      this.$store.commit('usuario/SET_USUARIO_BOOLEN_LOGADO')
     },
 
     login () {
@@ -117,13 +117,18 @@ export default {
           // const myPassEncrypt = sjcl.hash.sha256.hash(this.novoUsuario.usuario.senha)
           // const myPassEncryptHash = sjcl.codec.hex.fromBits(myPassEncrypt)
           // this.novoUsuario.usuario.senha = myPassEncryptHash
-
           // this.auth(this.user)
-
-          this.alteraSideMenu()
-
-          this.$router.push({
-            name: 'alunos'
+          this.getUsuario(this.user.email).then((response) => {
+            this.$store.commit('usuario/SET_USUARIO_LOGADO', response)
+            this.alteraSideMenuUsuario()
+            this.$router.push({
+              name: 'disciplinas',
+              params: {
+                usuario: response
+              }
+            })
+          }).catch((erro) => {
+            this.snackbarLogin.value = true
           })
         } else {
           this.snackbarLogin.value = true
@@ -132,7 +137,8 @@ export default {
     },
 
     ...mapActions({
-      auth: 'auth/authenticate'
+      auth: 'auth/authenticate',
+      getUsuario: 'usuario/getUsuario'
     })
   },
 

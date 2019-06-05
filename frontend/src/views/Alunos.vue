@@ -21,9 +21,9 @@
           full-width
           elevation='6'
         )
-          ListagemDocentes(
+          ListagemAlunos(
             :headers='headers'
-            :contentTable='docentes.data'
+            :contentTable='alunos.data'
             @openDetails='openDetails'
           )
 </template>
@@ -33,7 +33,8 @@ import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
 import PesquisaAlunos from '@/components/aluno/PesquisaAlunos.vue'
-import ListagemDocentes from '@/components/docente/ListagemDocentes.vue'
+import ListagemAlunos from '@/components/aluno/ListagemAlunos.vue'
+import { async, delay } from 'q';
 
 export default {
   name: 'Alunos',
@@ -42,7 +43,7 @@ export default {
     LinkVoltar,
     Card,
     PesquisaAlunos,
-    ListagemDocentes
+    ListagemAlunos
   },
 
   data () {
@@ -58,7 +59,7 @@ export default {
         {
           sortable: true,
           text: 'Modalidade',
-          value: 'modalidade.sigla'
+          value: 'modalidadeBolsa.sigla'
         },
         {
           sortable: false,
@@ -72,7 +73,7 @@ export default {
 
   methods: {
     ...mapActions({
-      getDocentes: 'docente/getDocentes',
+      getAlunos: 'docente/getAlunos',
       getModalidadesBolsa: 'modalidadesBolsa/getModalidadesBolsa'
     }),
 
@@ -86,13 +87,22 @@ export default {
 
   computed: {
     ...mapGetters({
-      docentes: 'docente/docentes',
+      usuarioLogado: 'usuario/usuarioLogado',
+      alunos: 'docente/alunos',
       modalidadesBolsa: 'modalidadesBolsa/modalidadesBolsa'
-    })
-  },
+    }),
 
+    getUsuarioLogado: {
+      get () {
+        return this.usuarioLogado
+      },
+      set () {
+      }
+    }
+  },
+  
   created () {
-    this.getDocentes()
+    this.getAlunos(this.getUsuarioLogado.id)
     this.getModalidadesBolsa()
   }
 }

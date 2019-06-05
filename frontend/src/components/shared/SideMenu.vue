@@ -26,7 +26,7 @@
         v-list-tile-title.style-title.font-weight-bold SIGESDP
       v-divider
       v-list-tile.v-list-item(
-        v-if='!getValueUsuarioLogado'
+        v-if='!getValueusuarioLogadoBool'
         v-for='(item, i) in itensMenuPublico'
         :key='i'
         :to='item.route'
@@ -50,7 +50,7 @@
             )
           span {{ item.textTooltip }}
       v-list-tile.v-list-item(
-        v-if='getValueUsuarioLogado'
+        v-if='getValueusuarioLogadoBool'
         v-for='(item, i) in itensMenuDocente'
         :key='i'
         :to='item.route'
@@ -136,7 +136,7 @@ export default {
   computed: {
     ...mapGetters({
       menu: 'menu/menu',
-      usuarioLogado: 'usuario/usuarioLogado'
+      usuarioLogadoBool: 'usuario/usuarioLogadoBool'
     }),
 
     getValueShowMenu: {
@@ -147,9 +147,9 @@ export default {
       }
     },
 
-    getValueUsuarioLogado: {
+    getValueusuarioLogadoBool: {
       get () {
-        return this.usuarioLogado
+        return this.usuarioLogadoBool
       },
       set () {
       }
