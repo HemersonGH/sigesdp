@@ -35,11 +35,11 @@ const actions = {
     commit('SET_DOCENTES', result)
   },
   async getDocenteById ({ commit }, id) {
-    const result = await axios.get(`/professor/${id}`)
+    const result = await axios.get(`/docente/${id}`)
     commit('SET_DOCENTE', result)
   },
   async getAlunos ({ commit }, id) {
-    const result = await axios.get(`/professor/alunos/${id}`)
+    const result = await axios.get(`/docente/alunos/${id}`)
     commit('SET_ALUNOS_DOCENTE', result)
   }
 }

@@ -34,7 +34,6 @@ import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
 import PesquisaAlunos from '@/components/aluno/PesquisaAlunos.vue'
 import ListagemAlunos from '@/components/aluno/ListagemAlunos.vue'
-import { async, delay } from 'q';
 
 export default {
   name: 'Alunos',
@@ -100,7 +99,7 @@ export default {
       }
     }
   },
-  
+
   created () {
     this.getAlunos(this.getUsuarioLogado.id)
     this.getModalidadesBolsa()

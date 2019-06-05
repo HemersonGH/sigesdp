@@ -122,10 +122,7 @@ export default {
             this.$store.commit('usuario/SET_USUARIO_LOGADO', response)
             this.alteraSideMenuUsuario()
             this.$router.push({
-              name: 'disciplinas',
-              params: {
-                usuario: response
-              }
+              name: 'alunos'
             })
           }).catch((erro) => {
             this.snackbarLogin.value = true

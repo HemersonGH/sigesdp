@@ -17,11 +17,11 @@ GET   	/departamento/{id}						Departamentos.findById
 POST 	/professor/novo							Professores.cadastraProfessor
 GET 	/docentes							    Professores.findAll
 GET 	/docente/{id}				     		Professores.findById
-GET   	/professor/{id}							Professores.findById
-GET   	/professor/alunos/{id}					Professores.findAlunos
-GET   	/professor/email/						Professores.findByEmail
-PUT 	/professor/atualiza		     			Professores.atualizaProfessor
-DELETE 	/professor/remove/{id}			     	Professores.removeProfessor
+GET   	/docente/{id}							Professores.findById
+GET   	/docente/alunos/{id}					Professores.findAlunos
+GET   	/docente/email/						Professores.findByEmail
+PUT 	/docente/atualiza		     			Professores.atualizaProfessor
+DELETE 	/docente/remove/{id}			     	Professores.removeProfessor
 
 # Disciplinas
 POST 	/disciplina/novo						Disciplinas.cadastraDisciplina
