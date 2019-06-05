@@ -23,9 +23,14 @@
         )
           ListagemAlunos(
             :headers='headers'
-            :contentTable='alunos.data'
-            @openDetails='openDetails'
+            :contentTable='alunos.data.alunos'
+            @openModal='openModal'
           )
+      DetalhesAlunos(
+        :showDialog='showDialog'
+        :data='aluno'
+        @close='closeModal'
+      )
 </template>
 
 <script>
@@ -34,6 +39,7 @@ import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
 import PesquisaAlunos from '@/components/aluno/PesquisaAlunos.vue'
 import ListagemAlunos from '@/components/aluno/ListagemAlunos.vue'
+import DetalhesAlunos from '@/components/aluno/DetalhesAlunos.vue'
 
 export default {
   name: 'Alunos',
@@ -42,7 +48,8 @@ export default {
     LinkVoltar,
     Card,
     PesquisaAlunos,
-    ListagemAlunos
+    ListagemAlunos,
+    DetalhesAlunos
   },
 
   data () {
@@ -66,7 +73,9 @@ export default {
           value: 'actions',
           align: 'right'
         }
-      ]
+      ],
+      aluno: null,
+      showDialog: false
     }
   },
 
@@ -80,7 +89,13 @@ export default {
       this.search = query
     },
 
-    openDetails () {
+    openModal (item) {
+      this.aluno = item
+      this.showDialog = true
+    },
+
+    closeModal () {
+      this.showDialog = false
     }
   },
 

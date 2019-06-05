@@ -33,6 +33,7 @@
               v-on='on'
               slot='activator'
               icon
+              @click.stop='viewDetails(item)'
             )
               v-icon.no-margin(
                 color='#707070'
@@ -54,7 +55,7 @@ export default {
     },
 
     contentTable: {
-      type: [Object, Array]
+      type: Array
     },
 
     search: {
@@ -75,6 +76,12 @@ export default {
           'value': -1
         }
       ]
+    }
+  },
+
+  methods: {
+    viewDetails (item) {
+      this.$emit('openModal', item)
     }
   }
 }
