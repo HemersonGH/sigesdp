@@ -42,7 +42,7 @@
           )
     DetalhesAluno(
       :showDialog='showDialog'
-      :data='aluno'
+      :data='alunoDetalhes'
       @close='closeModal'
     )
     ModalRemoveAluno(
@@ -106,7 +106,7 @@ export default {
           align: 'right'
         }
       ],
-      aluno: null,
+      alunoDetalhes: null,
       alunoRemove: null,
       showDialog: false,
       showDialogCofirmaRemocao: false,
@@ -137,7 +137,7 @@ export default {
     },
 
     openModal (item) {
-      this.aluno = item
+      this.alunoDetalhes = item
       this.showDialog = true
     },
 
@@ -146,8 +146,8 @@ export default {
     },
 
     openModalConfirmaRemocao (aluno) {
-      this.showDialogCofirmaRemocao = true
       this.alunoRemove = aluno
+      this.showDialogCofirmaRemocao = true
     },
 
     closeModalConfirmacaoRemocao () {
@@ -156,7 +156,7 @@ export default {
 
     removeAlunoFromDataBase (aluno) {
       this.removeAluno(aluno.id).then((response) => {
-        this.removeAlunoListagem(aluno)
+        this.getAlunos(this.getUsuarioLogado.id)
         this.showDialogCofirmaRemocao = false
         this.snackbarAlunoRemovidoSucesso.value = true
         this.alunoRemove = null

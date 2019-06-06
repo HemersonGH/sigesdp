@@ -32,13 +32,13 @@
               sm12
               md12
             )
-              h4.no-margin-bottom Tem certeza que deseja remover o aluno {{ aluno.nome }}?
+              h4.no-margin-bottom Tem certeza que deseja remover esse aluno?
       v-divider.mx-3
       v-card-actions
         v-btn.white--text.style-button(
           color='error darken-1'
           small
-          @click='cancela()'
+          @click.stop='cancela()'
         ) Não
         v-spacer
         v-btn.white--text.style-button(
