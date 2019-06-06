@@ -58,12 +58,14 @@
               template(
                 v-slot:activator='{ on }'
               )
-                v-btn.style-button(
+                v-btn.white--text.style-button(
                   v-on='on'
                   icon
                   to='/login'
                 ) Login
-                  v-icon mdi-login
+                  v-icon(
+                    right
+                  ) mdi-login
               span Acessar o sistema
           div.toolbar-items(
             v-else
@@ -75,12 +77,14 @@
               template(
                 v-slot:activator='{ on }'
               )
-                v-btn.style-button(
+                v-btn.white--text.style-button(
                   v-on='on'
                   icon
                   @click='logout()'
                 ) Logout
-                  v-icon mdi-logout
+                  v-icon(
+                    right
+                  ) mdi-logout
               span Sair do sistema
 </template>
 
@@ -146,13 +150,12 @@ export default {
 </script>
 
 <style scoped>
-  #core-toolbar a {
-    text-decoration: none;
-  }
+#core-toolbar a {
+  text-decoration: none;
+}
 
-  .style-button {
-    font-weight: bold !important;
-    font-size: inherit;
-    color: white !important;
-  }
+.style-button {
+  font-weight: bold !important;
+  font-size: inherit;
+}
 </style>

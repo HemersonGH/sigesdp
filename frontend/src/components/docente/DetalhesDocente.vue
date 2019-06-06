@@ -12,14 +12,20 @@
         color='#2196f3'
       )
       v-tab
-        v-icon.inherit mdi-account
-        | &nbsp Perfil Pessoal
+        v-icon.inherit(
+          left
+        ) mdi-account
+        | Perfil Pessoal
       v-tab
-        v-icon.inherit mdi-library-books
-        | &nbsp Projetos
+        v-icon.inherit(
+          left
+        ) mdi-library-books
+        | Projetos
       v-tab
-        v-icon.inherit mdi-book-multiple-variant
-        | &nbsp Disciplinas
+        v-icon.inherit(
+          left
+        ) mdi-book-multiple-variant
+        | Disciplinas
       v-tab-item
         PerfilPessoal(
           :data='docente.data'

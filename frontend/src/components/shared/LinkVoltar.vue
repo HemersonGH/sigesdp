@@ -4,8 +4,9 @@
     small
   )
     v-icon(
+      left
     ) mdi-arrow-left
-    | &nbsp Voltar
+    | Voltar
 </template>
 
 <script>
@@ -24,6 +25,6 @@ export default {
 <style scoped>
 .style-btn {
   text-transform: capitalize;
-  font-size: 80%;
+  font-size: 14px;
 }
 </style>

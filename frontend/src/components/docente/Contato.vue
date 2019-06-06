@@ -1,8 +1,11 @@
 <template lang="pug">
   v-card.padding-top
     v-card-title.align
-      v-icon mdi-file-document-box
-      h4.style-tittle &nbsp Contato
+      v-icon(
+        color='#2b2b2b'
+        left
+      ) mdi-file-document-box
+      h4.style-tittle Contato
     v-divider.mx-3
     v-card-text
       v-container.padding(
@@ -46,7 +49,7 @@ export default {
 .style-tittle {
   margin: 0px !important;
   font-weight: 700 !important;
-  color: #6b6b6b;
+  color: #2b2b2b;
 }
 
 .font-weight-label {

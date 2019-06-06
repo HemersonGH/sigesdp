@@ -232,17 +232,21 @@
                 row
                 fill-height
               )
-                v-btn.style-btn-common.style-button-voltar(
+                v-btn.white--text.style-btn-common.style-button-voltar(
                   color='#2196f3'
                   to='/login'
                 )
-                  v-icon mdi-arrow-left
-                  | &nbsp Voltar
-                v-btn.style-btn-common.style-button-cadastrar(
+                  v-icon(
+                    left
+                  ) mdi-arrow-left
+                  | Voltar
+                v-btn.white--text.style-btn-common.style-button-cadastrar(
                   color='#2196f3'
                   @click='cadastrar'
-                ) Cadastrar &nbsp
-                  v-icon mdi-plus
+                ) Cadastrar
+                  v-icon(
+                    right
+                  ) mdi-plus
               SnackBar(
                 :data='snackbar'
               )
@@ -357,8 +361,7 @@ export default {
 
 <style scoped>
 .style-btn-common {
-  color: white;
-  font-size: 90%;
+  font-size: 14px;
   font-weight: 550 !important;
 }
 

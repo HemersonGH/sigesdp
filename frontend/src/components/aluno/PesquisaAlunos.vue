@@ -4,8 +4,8 @@
       color='#3169B3'
       :class='`elevation-4`'
     )
-      v-card-title.center.color
-        span.font-weight Pesquisar alunos
+      v-card-title
+        span.white--text.font-weight Pesquisar alunos
     v-divider.mx-3
     v-card-text.padding
       v-container.padding(
@@ -57,11 +57,13 @@
       v-divider.mx-3
       v-card-actions
         v-spacer
-        v-btn.style-button(
+        v-btn.white--text.style-button(
           color='#3169B3'
           @click='pesquisa()'
-        ) Pesquisar &nbsp
-          v-icon mdi-magnify
+        ) Pesquisar
+          v-icon(
+            right
+          ) mdi-magnify
 </template>
 
 <script>
@@ -115,15 +117,11 @@ export default {
 }
 
 .style-button{
-  font-weight: 450 !important;
-  color: white;
+  font-size: 14px;
+  font-weight: 500 !important;
 }
 
 .ajust-top {
   margin-top: 28px;
-}
-
-.color {
-  color: white;
 }
 </style>

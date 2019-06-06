@@ -1,8 +1,11 @@
 <template lang="pug">
   v-card
     v-card-title.align
-      v-icon mdi-account-box
-      h4.style-tittle &nbsp Informações Pessoais
+      v-icon(
+        color='#2b2b2b'
+        left
+      ) mdi-account-box
+      h4.style-tittle Informações Pessoais
     v-divider.mx-3
     v-card-text
       v-container.padding(
@@ -26,7 +29,7 @@
             h5.font-weight-label Departamento:
               span.style-sub-title {{ data.departamento.nome }}
             h5.font-weight-label Curriculo Lates:
-              span.style-sub-title {{ data.curriculoLates }}
+              span.style-sub-title {{ data.curriculoLattes }}
             h5.font-weight-label Área Interesse:
               span.style-sub-title {{ data.areaConhecimento.nome }}
             h5.font-weight-label Formação Acadêmica/Profissional:
@@ -50,7 +53,7 @@ export default {
 .style-tittle {
   margin: 0px !important;
   font-weight: 700 !important;
-  color: #6b6b6b;
+  color: #2b2b2b;
 }
 
 .font-weight-label {

@@ -13,17 +13,17 @@
       )
         div
           div.text-xs-center
-            h2.style-title Gerenciar Alunos
+            h2 Gerenciar Alunos
           div.text-xs-right
-            v-btn.style-button(
+            v-btn.white--text.style-button(
               color='#3169B3'
               @click='novoAluno()'
-            )
+            ) Adicionar aluno
               v-icon(
                 color='white'
                 size='25'
+                right
               ) mdi-plus
-              | &nbsp Novo aluno
         PesquisaAlunos(
           :modalidades='modalidadesBolsa.data'
         )
@@ -201,14 +201,8 @@ export default {
   padding-top: 0px !important;
 }
 
-.style-title {
-  font-weight: 300 !important;
-  margin-top: 10px;
-}
-
 .style-button {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500 !important;
-  color: white;
 }
 </style>

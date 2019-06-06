@@ -11,8 +11,9 @@
           v-icon(
             color='red'
             size='30'
+            left
           ) mdi-alert-circle-outline
-          | &nbsp Atenção
+          | Atenção
       v-divider.mx-3
       v-card-text.no-margin-top
         v-container.padding(
@@ -31,16 +32,18 @@
               sm12
               md12
             )
-              h4.no-margin-bottom Tem certeza que deseja remover esse aluno?
+              h4.no-margin-bottom Tem certeza que deseja remover o aluno {{ aluno.nome }}?
       v-divider.mx-3
       v-card-actions
-        v-btn.style-button(
+        v-btn.white--text.style-button(
           color='error darken-1'
+          small
           @click='cancela()'
         ) Não
         v-spacer
-        v-btn.style-button(
+        v-btn.white--text.style-button(
           color='success darken-1'
+          small
           @click='confirmar()'
         ) Sim
 </template>
@@ -92,7 +95,6 @@ export default {
 
 .style-button {
   font-weight: 450 !important;
-  color: white;
   font-size: 90%;
 }
 

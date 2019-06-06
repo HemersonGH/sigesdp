@@ -49,7 +49,7 @@
       v-divider.mx-3
       v-card-actions
         v-spacer
-        v-btn.style-button(
+        v-btn.white--text.style-button(
           color='blue darken-1'
           @click='close()'
         ) Fechar
@@ -99,7 +99,6 @@ export default {
 
 .style-button{
   font-weight: 450 !important;
-  color: white;
 }
 
 .style-sub-title {

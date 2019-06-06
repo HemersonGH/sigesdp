@@ -47,11 +47,13 @@
                   data-vv-name='password'
                   data-vv-as='Senha'
                 )
-                v-btn.style-button(
+                v-btn.white--text.style-button(
                   color='#2196f3'
                   @click='login'
                 ) Entrar
-                  v-icon mdi-login
+                  v-icon(
+                    right
+                  ) mdi-login
             div.style-div
               span.align-left Redefinir senha
               router-link(
@@ -158,7 +160,6 @@ export default {
   width: 100%;
   font-weight: bold !important;
   font-size: 100%;
-  color: white;
 }
 
 .style-div {
