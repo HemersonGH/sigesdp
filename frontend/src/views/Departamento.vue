@@ -26,7 +26,7 @@
             :colorBottomFieldSearch='colorBottomFieldSearch'
             @valueSearch='valueSearch'
           )
-          ListagemDepartamento(
+          ListagemDepartamentos(
             :headers='headers'
             :contentTable='departamentos.data'
             :search='search'
@@ -43,7 +43,7 @@
 import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
-import ListagemDepartamento from '@/components/departamento/ListagemDepartamento.vue'
+import ListagemDepartamentos from '@/components/departamento/ListagemDepartamentos.vue'
 import FieldSearch from '@/components/shared/FieldSearch.vue'
 import DetalhesDepartamento from '@/components/departamento/DetalhesDepartamento.vue'
 
@@ -53,7 +53,7 @@ export default {
   components: {
     LinkVoltar,
     Card,
-    ListagemDepartamento,
+    ListagemDepartamentos,
     FieldSearch,
     DetalhesDepartamento
   },

@@ -1,16 +1,29 @@
 <template lang="pug">
-  v-container(
+  v-container.no-padding-top(
     fill-height
     fluid
     grid-list-xl
   )
-    v-layout(
+    v-layout.no-padding-top(
       justify-center
       wrap
     )
       v-flex.no-padding-top(
         md12
       )
+        div
+          div.text-xs-center
+            h2.style-title Gerenciar Alunos
+          div.text-xs-right
+            v-btn.style-button(
+              color='#3169B3'
+              @click='novoAluno()'
+            )
+              v-icon(
+                color='white'
+                size='25'
+              ) mdi-plus
+              | &nbsp Novo aluno
         PesquisaAlunos(
           :modalidades='modalidadesBolsa.data'
         )
@@ -25,31 +38,50 @@
             :headers='headers'
             :contentTable='alunos.data.alunos'
             @openModal='openModal'
+            @openModalConfirmaRemocao='openModalConfirmaRemocao'
           )
-      DetalhesAlunos(
-        :showDialog='showDialog'
-        :data='aluno'
-        @close='closeModal'
-      )
+    DetalhesAluno(
+      :showDialog='showDialog'
+      :data='aluno'
+      @close='closeModal'
+    )
+    ModalRemoveAluno(
+      :aluno='alunoRemove'
+      :showDialogConfirm='showDialogCofirmaRemocao'
+      @closeModalConfirmacaoRemocao='closeModalConfirmacaoRemocao'
+      @removeAlunoFromDataBase='removeAlunoFromDataBase'
+    )
+    SnackBar(
+      :data='snackbarAlunoRemovidoSucesso'
+    )
+    SnackBar(
+      :data='snackbarAlunoRemovidoErro'
+    )
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
+import StatsCardTitle from '@/components/shared/StatsCardTitle.vue'
 import PesquisaAlunos from '@/components/aluno/PesquisaAlunos.vue'
 import ListagemAlunos from '@/components/aluno/ListagemAlunos.vue'
-import DetalhesAlunos from '@/components/aluno/DetalhesAlunos.vue'
+import DetalhesAluno from '@/components/aluno/DetalhesAluno.vue'
+import ModalRemoveAluno from '@/components/aluno/ModalRemoveAluno.vue'
+import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
   name: 'Alunos',
 
   components: {
     LinkVoltar,
+    StatsCardTitle,
     Card,
     PesquisaAlunos,
     ListagemAlunos,
-    DetalhesAlunos
+    DetalhesAluno,
+    ModalRemoveAluno,
+    SnackBar
   },
 
   data () {
@@ -75,13 +107,28 @@ export default {
         }
       ],
       aluno: null,
-      showDialog: false
+      alunoRemove: null,
+      showDialog: false,
+      showDialogCofirmaRemocao: false,
+      snackbarAlunoRemovidoSucesso: {
+        icon: 'mdi-check-outline',
+        message: 'Aluno removido com sucesso.',
+        value: false,
+        color: 'success'
+      },
+      snackbarAlunoRemovidoErro: {
+        icon: 'mdi-alert-circle-outline',
+        message: 'Não foi possível remover o aluno.',
+        value: false,
+        color: 'error'
+      }
     }
   },
 
   methods: {
     ...mapActions({
-      getAlunos: 'docente/getAlunos',
+      getAlunos: 'aluno/getAlunos',
+      removeAluno: 'aluno/removeAluno',
       getModalidadesBolsa: 'modalidadesBolsa/getModalidadesBolsa'
     }),
 
@@ -96,13 +143,39 @@ export default {
 
     closeModal () {
       this.showDialog = false
+    },
+
+    openModalConfirmaRemocao (aluno) {
+      this.showDialogCofirmaRemocao = true
+      this.alunoRemove = aluno
+    },
+
+    closeModalConfirmacaoRemocao () {
+      this.showDialogCofirmaRemocao = false
+    },
+
+    removeAlunoFromDataBase (aluno) {
+      this.removeAluno(aluno.id).then((response) => {
+        this.removeAlunoListagem(aluno)
+        this.showDialogCofirmaRemocao = false
+        this.snackbarAlunoRemovidoSucesso.value = true
+        this.alunoRemove = null
+      }).catch((erro) => {
+        this.snackbarAlunoRemovidoErro.value = true
+      })
+    },
+
+    removeAlunoListagem (aluno) {
+      let index = this.alunos.data.alunos.indexOf(aluno)
+      this.alunos.data.alunos.splice(index, 1)
     }
   },
 
   computed: {
     ...mapGetters({
       usuarioLogado: 'usuario/usuarioLogado',
-      alunos: 'docente/alunos',
+      alunos: 'aluno/alunos',
+      alunoRemovido: 'aluno/alunoRemovido',
       modalidadesBolsa: 'modalidadesBolsa/modalidadesBolsa'
     }),
 
@@ -118,6 +191,7 @@ export default {
   created () {
     this.getAlunos(this.getUsuarioLogado.id)
     this.getModalidadesBolsa()
+    this.removeAluno()
   }
 }
 </script>
@@ -127,11 +201,14 @@ export default {
   padding-top: 0px !important;
 }
 
-.styleMouse{
-  cursor: pointer;
+.style-title {
+  font-weight: 300 !important;
+  margin-top: 10px;
 }
 
-.v-card--shared-stats.v-card .v-card__actions .caption {
-    color: #000;
+.style-button {
+  font-size: 15px;
+  font-weight: 500 !important;
+  color: white;
 }
 </style>

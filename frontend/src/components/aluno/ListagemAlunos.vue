@@ -39,6 +39,39 @@
                 color='#707070'
               ) mdi-eye
           span Visualizar
+        v-tooltip(
+          top
+          content-class='top'
+        )
+          template(
+            v-slot:activator='{ on }'
+          )
+            v-btn.v-btn--simple.no-margin(
+              v-on='on'
+              slot='activator'
+              icon
+            )
+              v-icon.no-margin(
+                color='#707070'
+              ) mdi-pencil
+          span Editar
+        v-tooltip(
+          top
+          content-class='top'
+        )
+          template(
+            v-slot:activator='{ on }'
+          )
+            v-btn.v-btn--simple.no-margin(
+              v-on='on'
+              slot='activator'
+              icon
+              @click.stop='removeAluno(item)'
+            )
+              v-icon.no-margin(
+                color='#707070'
+              ) mdi-delete
+          span Remover
     template(
       v-slot:pageText='props'
     ) Exibindo de {{ props.pageStart }} até {{ props.pageStop }} de {{ props.itemsLength }}
@@ -82,6 +115,10 @@ export default {
   methods: {
     viewDetails (item) {
       this.$emit('openModal', item)
+    },
+
+    removeAluno (aluno) {
+      this.$emit('openModalConfirmaRemocao', aluno)
     }
   }
 }

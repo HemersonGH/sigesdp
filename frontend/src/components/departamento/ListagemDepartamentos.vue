@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: 'ListagemDepartamento',
+  name: 'ListagemDepartamentos',
 
   props: {
     headers: {

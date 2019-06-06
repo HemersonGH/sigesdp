@@ -10,40 +10,34 @@
         span.headline Detalhes do Aluno
       v-divider.mx-3
       v-card-text.no-margin-top
-        v-container(
+        v-container.padding(
           grid-list-md
+          fluid
         )
           v-layout(
+            align-start
+            justify-start
+            row
             wrap
+            fill-height
           )
-            v-flex(
+            v-flex.padding(
               xs12
               sm12
               md12
             )
-              h5.font-weight-bold.no-margin-bottom Nome:
-              p {{ data.nome }}
-            v-flex(
-              xs12
-              sm12
-              md12
-            )
-              h5.font-weight-bold.no-margin-bottom Chefe:
-              p {{ data.chefe }}
-            v-flex(
-              xs12
-              sm12
-              md12
-            )
-              h5.font-weight-bold.no-margin-bottom Telefone:
-              p {{ data.telefone }}
-            v-flex(
-              xs12
-              sm12
-              md12
-            )
-              h5.font-weight-bold.no-margin-bottom Apresentação:
-              p {{ data.descricao }}
+              h5.font-weight-bold
+                | Nome:
+                span.style-sub-title {{ data.nome }}
+              h5.font-weight-bold
+                | Curso:
+                span.style-sub-title {{ data.curso.nome }}
+              h5.font-weight-bold
+                | Email:
+                span.style-sub-title {{ data.email }}
+              h5.font-weight-bold.no-margin-bottom
+                | Modalidade de Bolsa:
+                span.style-sub-title {{ data.modalidadeBolsa.nome }} - {{ data.modalidadeBolsa.sigla }}
       v-divider.mx-3
       v-card-actions
         v-spacer
@@ -55,12 +49,11 @@
 
 <script>
 export default {
-  name: 'DetalhesAlunos',
+  name: 'DetalhesAluno',
 
   props: {
     data: {
-      type: Object,
-      required: true
+      type: [Object, Array]
     },
 
     showDialog: {
@@ -84,10 +77,11 @@ export default {
 
 <style scoped>
 .no-margin-bottom {
+  padding-bottom: 0;
   margin-bottom: 0;
 }
 
-.no-margin-top{
+.no-margin-top {
   padding-top: 0;
 }
 
@@ -95,8 +89,14 @@ export default {
   justify-content: center;
 }
 
-.style-button{
+.style-button {
   font-weight: 450 !important;
   color: white;
+}
+
+.style-sub-title {
+  padding-left: 10px;
+  font-weight: 300;
+  font-size: calc(1.0625rem - 0.0895rem);
 }
 </style>

@@ -40,7 +40,10 @@ export default {
     },
 
     elevation: {
-      type: [Number, String],
+      type: [
+        Number,
+        String
+      ],
       default: 5
     }
   }

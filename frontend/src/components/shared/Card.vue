@@ -106,7 +106,6 @@ export default {
       default: false
     }
   },
-
   computed: {
     hasOffset () {
       return this.$slots.header ||
