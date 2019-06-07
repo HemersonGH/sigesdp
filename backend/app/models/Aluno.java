@@ -105,7 +105,6 @@ public class Aluno extends GenericModel {
 	public void atualiza(Aluno aluno) {
 		this.setNome(aluno.getNome());
 		this.setEmail(aluno.getEmail());
-		this.setProfessor(Professor.findById(aluno.professor.getId()));
 		this.setCurso(Curso.findById(aluno.curso.getId()));
 		this.setModalidadeBolsa(ModalidadeBolsa.findById(aluno.modalidadeBolsa.getId()));
 

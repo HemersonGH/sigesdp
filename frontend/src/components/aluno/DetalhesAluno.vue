@@ -28,16 +28,16 @@
             )
               h5.font-weight-bold
                 | Nome:
-                span.style-sub-title {{ data.nome }}
+                span.style-sub-title {{ alunoDetalhes.nome }}
               h5.font-weight-bold
                 | Curso:
-                span.style-sub-title {{ data.curso.nome }}
+                span.style-sub-title {{ alunoDetalhes.curso.nome }}
               h5.font-weight-bold
                 | Email:
-                span.style-sub-title {{ data.email }}
+                span.style-sub-title {{ alunoDetalhes.email }}
               h5.font-weight-bold.no-margin-bottom
                 | Modalidade de Bolsa:
-                span.style-sub-title {{ data.modalidadeBolsa.nome }} - {{ data.modalidadeBolsa.sigla }}
+                span.style-sub-title {{ alunoDetalhes.modalidadeBolsa.nome }} - {{ alunoDetalhes.modalidadeBolsa.sigla }}
       v-divider.mx-3
       v-card-actions
         v-spacer
@@ -52,19 +52,14 @@ export default {
   name: 'DetalhesAluno',
 
   props: {
-    data: {
-      type: [Object, Array]
-    },
-
     showDialogDetalhesAluno: {
       type: Boolean,
       required: true
-    }
-  },
+    },
 
-  data () {
-    return {
-    }
+    alunoDetalhes: {
+      type: Object
+    },
   },
 
   methods: {

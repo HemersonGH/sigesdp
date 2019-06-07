@@ -49,7 +49,7 @@
               v-model='pesquisaAluno.idModalidade'
               color='#3169B3'
               :items='modalidades'
-              item-text='sigla'
+              item-text='nome'
               item-value='id'
               no-data-text='Não há dados.'
               clearable

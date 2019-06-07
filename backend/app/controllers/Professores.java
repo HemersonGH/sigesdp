@@ -30,13 +30,13 @@ public class Professores extends DefaultController {
 
 	public static void findById(Integer id) {
 		if (id == null) {
-			throw new ValidationException(MessagesUtil.PROFESSOR_NAO_ENCONTRADO);
+			throw new ValidationException(MessagesUtil.ID_PROFESSOR_NAO_ENCONTRADO);
 		}
 
 		Professor professor = Professor.findById(id);
 
 		if (professor == null) {
-			throw new ValidationException(MessagesUtil.ID_PROFESSOR_NAO_ENCONTRADO);
+			throw new ValidationException(MessagesUtil.PROFESSOR_NAO_ENCONTRADO);
 		}
 
 //		renderJSON(professor);
@@ -73,7 +73,7 @@ public class Professores extends DefaultController {
 
 	public static void findByEmail(String email) {
 		if (email == null) {
-			throw new ValidationException(MessagesUtil.PROFESSOR_NAO_ENCONTRADO);
+			throw new ValidationException(MessagesUtil.ID_PROFESSOR_NAO_ENCONTRADO);
 		}
 
 		Usuario usuario = Usuario.find("email = :email").setParameter("email", email).first();
@@ -83,7 +83,7 @@ public class Professores extends DefaultController {
 		Professor professor = Professor.find("usuario.id", idUsuario).first();
 
 		if (professor == null) {
-			throw new ValidationException(MessagesUtil.ID_PROFESSOR_NAO_ENCONTRADO);
+			throw new ValidationException(MessagesUtil.PROFESSOR_NAO_ENCONTRADO);
 		}
 
 		renderJSON(professor, ProfessorSerializer.login);
@@ -91,16 +91,15 @@ public class Professores extends DefaultController {
 
 	public static void findAlunos(Integer id) {
 		if (id == null) {
-			throw new ValidationException(MessagesUtil.PROFESSOR_NAO_ENCONTRADO);
+			throw new ValidationException(MessagesUtil.ID_PROFESSOR_NAO_ENCONTRADO);
 		}
 
 		Professor professor = Professor.findById(id);
 
 		if (professor == null) {
-			throw new ValidationException(MessagesUtil.ID_PROFESSOR_NAO_ENCONTRADO);
+			throw new ValidationException(MessagesUtil.PROFESSOR_NAO_ENCONTRADO);
 		}
 
-//		renderJSON(professor);
 		renderJSON(professor, ProfessorSerializer.alunosDocente);
 	}
 }

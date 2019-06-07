@@ -50,6 +50,7 @@
               v-on='on'
               slot='activator'
               icon
+              @click.stop='atualizaAluno(item)'
             )
               v-icon.no-margin(
                 color='#707070'
@@ -69,7 +70,7 @@
               @click.stop='removeAluno(item)'
             )
               v-icon.no-margin(
-                color='#707070'
+                color='red'
               ) mdi-delete
           span Remover
     template(
@@ -113,8 +114,12 @@ export default {
   },
 
   methods: {
-    viewDetails (item) {
-      this.$emit('openModalDetalhesAlunos', item)
+    viewDetails (aluno) {
+      this.$emit('openModalDetalhesAluno', aluno)
+    },
+
+    atualizaAluno (aluno) {
+      this.$emit('openModalAtualizaAluno', aluno)
     },
 
     removeAluno (aluno) {

@@ -1,13 +1,13 @@
 <template lang="pug">
   v-dialog(
     max-width='600px'
-    v-model='showDialogCadastraAluno'
+    v-model='showDialogAtualizaAluno'
     :persistent='true'
     :scrollable='true'
   )
     v-card
       v-card-title.center
-        span.headline Adicionar Aluno
+        span.headline Atualizar Aluno
       v-divider.mx-3
       v-card-text.no-margin-top
         v-container.padding(
@@ -23,7 +23,7 @@
               md12
             )
               v-text-field(
-                v-model='aluno.nome'
+                v-model='alunoAtualiza.nome'
                 label='Nome * '
                 color='#2196f3'
                 v-validate="'required'"
@@ -37,7 +37,7 @@
               md12
             )
               v-text-field(
-                v-model='aluno.email'
+                v-model='alunoAtualiza.email'
                 label='Email * '
                 color='#2196f3'
                 v-validate="'required|email'"
@@ -51,7 +51,7 @@
               md12
             )
               v-select.font-weight-select(
-                v-model='aluno.curso.id'
+                v-model='alunoAtualiza.curso.id'
                 label='Selecione um curso *'
                 color='#2196f3'
                 :items='curso'
@@ -70,7 +70,7 @@
               md12
             )
               v-select.font-weight-select(
-                v-model='aluno.modalidadeBolsa.id'
+                v-model='alunoAtualiza.modalidadeBolsa.id'
                 label='Selecione um modalidade de bolsa *'
                 color='#2196f3'
                 :items='modalidadesBolsa'
@@ -87,7 +87,7 @@
       v-card-actions
         v-btn.white--text.style-button(
           color='error darken-1'
-          @click='cancela()'
+          @click='fechar()'
         )
           v-icon(
             left
@@ -96,13 +96,13 @@
         v-spacer
         v-btn.white--text.style-button(
           color='success darken-1'
-          @click='cadastrar()'
+          @click='atualizaAluno()'
         ) Salvar
           v-icon(
             right
           ) mdi-content-save
     SnackBar(
-      :data='snackbarCadastraAluno'
+      :data='snackbarValidaAtualizaAluno'
     )
 </template>
 
@@ -110,7 +110,7 @@
 import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
-  name: 'CadastraAluno',
+  name: 'AtualizaAluno',
 
   $_veeValidate: {
     validator: 'new'
@@ -121,9 +121,13 @@ export default {
   },
 
   props: {
-    showDialogCadastraAluno: {
+    showDialogAtualizaAluno: {
       type: Boolean,
       required: true
+    },
+
+    alunoAtualiza: {
+      type: Object
     },
 
     curso: {
@@ -137,20 +141,7 @@ export default {
 
   data () {
     return {
-      aluno: {
-        nome: null,
-        email: null,
-        professor: {
-          id: null
-        },
-        curso: {
-          id: null
-        },
-        modalidadeBolsa: {
-          id: null
-        }
-      },
-      snackbarCadastraAluno: {
+      snackbarValidaAtualizaAluno: {
         icon: 'mdi-alert-circle-outline',
         message: 'Verifique os campos obrigatórios.',
         value: false,
@@ -160,26 +151,16 @@ export default {
   },
 
   methods: {
-    reset () {
-      this.aluno.nome = null
-      this.aluno.email = null
-      this.aluno.professor.id = null
-      this.aluno.curso.id = null
-      this.aluno.modalidadeBolsa.id = null
-      this.$validator.reset()
+    fechar () {
+      this.$emit('closeModalAtualizaAluno')
     },
 
-    cancela () {
-      this.$emit('closeModalCadastraAluno')
-      this.reset()
-    },
-
-    cadastrar () {
+    atualizaAluno () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          this.$emit('cadastraAluno', this.aluno)
+          this.$emit('atualizaAluno', this.alunoAtualiza)
         } else {
-          this.snackbarCadastraAluno.value = true
+          this.snackbarValidaAtualizaAluno.value = true
         }
       })
     }

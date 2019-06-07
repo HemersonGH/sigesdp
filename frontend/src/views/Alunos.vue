@@ -17,7 +17,7 @@
           div.text-xs-right
             v-btn.white--text.style-button(
               color='#3169B3'
-              @click='openModalCadastro()'
+              @click='openModalCadastraAluno()'
             ) Adicionar aluno
               v-icon(
                 color='white'
@@ -37,20 +37,29 @@
           ListagemAlunos(
             :headers='headers'
             :contentTable='alunos.data.alunos'
-            @openModalDetalhesAlunos='openModalDetalhesAlunos'
+            @openModalDetalhesAluno='openModalDetalhesAluno'
+            @openModalAtualizaAluno='openModalAtualizaAluno'
             @openModalConfirmaRemocao='openModalConfirmaRemocao'
           )
     CadastraAluno(
       :showDialogCadastraAluno='showDialogCadastraAluno'
       :curso='cursos.data'
       :modalidadesBolsa='modalidadesBolsa.data'
-      @closeModalCadastro='closeModalCadastro'
+      @closeModalCadastraAluno='closeModalCadastraAluno'
       @cadastraAluno='cadastraAluno'
     )
     DetalhesAluno(
       :showDialogDetalhesAluno='showDialogDetalhesAluno'
-      :data='alunoDetalhes'
+      :alunoDetalhes='alunoDetalhes'
       @closeModalDetalhesAluno='closeModalDetalhesAluno'
+    )
+    AtualizaAluno(
+      :showDialogAtualizaAluno='showDialogAtualizaAluno'
+      :alunoAtualiza='alunoAtualiza'
+      :curso='cursos.data'
+      :modalidadesBolsa='modalidadesBolsa.data'
+      @closeModalAtualizaAluno='closeModalAtualizaAluno'
+      @atualizaAluno='atualizaAluno'
     )
     ModalRemoveAluno(
       :aluno='alunoRemove'
@@ -59,16 +68,22 @@
       @removeAlunoFromDataBase='removeAlunoFromDataBase'
     )
     SnackBar(
-      :data='snackbarAlunoRemovidoSucesso'
-    )
-    SnackBar(
-      :data='snackbarAlunoRemovidoErro'
-    )
-    SnackBar(
       :data='snackbarAlunoCadastradoSucesso'
     )
     SnackBar(
       :data='snackbarAlunoCadastradoErro'
+    )
+    SnackBar(
+      :data='snackbarAlunoAtualizadoSucesso'
+    )
+    SnackBar(
+      :data='snackbarAlunoAtualizadoErro'
+    )
+    SnackBar(
+      :data='snackbarAlunoRemovidoSucesso'
+    )
+    SnackBar(
+      :data='snackbarAlunoRemovidoErro'
     )
 </template>
 
@@ -81,6 +96,7 @@ import PesquisaAlunos from '@/components/aluno/PesquisaAlunos.vue'
 import ListagemAlunos from '@/components/aluno/ListagemAlunos.vue'
 import CadastraAluno from '@/components/aluno/CadastraAluno.vue'
 import DetalhesAluno from '@/components/aluno/DetalhesAluno.vue'
+import AtualizaAluno from '@/components/aluno/AtualizaAluno.vue'
 import ModalRemoveAluno from '@/components/aluno/ModalRemoveAluno.vue'
 import SnackBar from '@/components/shared/SnackBar.vue'
 
@@ -95,6 +111,7 @@ export default {
     ListagemAlunos,
     CadastraAluno,
     DetalhesAluno,
+    AtualizaAluno,
     ModalRemoveAluno,
     SnackBar
   },
@@ -122,9 +139,11 @@ export default {
         }
       ],
       alunoDetalhes: null,
+      alunoAtualiza: null,
       alunoRemove: null,
       showDialogCadastraAluno: false,
       showDialogDetalhesAluno: false,
+      showDialogAtualizaAluno: false,
       showDialogCofirmaRemocao: false,
       snackbarAlunoRemovidoSucesso: {
         icon: 'mdi-check-outline',
@@ -149,6 +168,18 @@ export default {
         message: 'Não foi possível cadastrar o aluno.',
         value: false,
         color: 'error'
+      },
+      snackbarAlunoAtualizadoSucesso: {
+        icon: 'mdi-check-outline',
+        message: 'Dados do aluno atualizado com sucesso.',
+        value: false,
+        color: 'success'
+      },
+      snackbarAlunoAtualizadoErro: {
+        icon: 'mdi-alert-circle-outline',
+        message: 'Não foi possível atualizar os dados do aluno.',
+        value: false,
+        color: 'error'
       }
     }
   },
@@ -157,25 +188,26 @@ export default {
     ...mapActions({
       getAlunos: 'aluno/getAlunos',
       createAluno: 'aluno/createAluno',
-      removeAluno: 'aluno/removeAluno',
+      updateAluno: 'aluno/updateAluno',
+      deleteAluno: 'aluno/deleteAluno',
       getModalidadesBolsa: 'modalidadesBolsa/getModalidadesBolsa',
-      getCursos: 'curso/getCursos'
+      getCursos: 'curso/getCursos',
     }),
 
     valueSearch (query) {
       this.search = query
     },
 
-    openModalCadastro () {
+    openModalCadastraAluno () {
       this.showDialogCadastraAluno = true
     },
 
-    closeModalCadastro () {
+    closeModalCadastraAluno () {
       this.showDialogCadastraAluno = false
     },
 
-    openModalDetalhesAlunos (item) {
-      this.alunoDetalhes = item
+    openModalDetalhesAluno (aluno) {
+      this.alunoDetalhes = aluno
       this.showDialogDetalhesAluno = true
     },
 
@@ -183,8 +215,17 @@ export default {
       this.showDialogDetalhesAluno = false
     },
 
-    openModalConfirmaRemocao (aluno) {
-      this.alunoRemove = aluno
+    openModalAtualizaAluno (alunoAtualizado) {
+      this.alunoAtualiza = alunoAtualizado
+      this.showDialogAtualizaAluno = true
+    },
+
+    closeModalAtualizaAluno () {
+      this.showDialogAtualizaAluno = false
+    },
+
+    openModalConfirmaRemocao (alunoDeletado) {
+      this.alunoRemove = alunoDeletado
       this.showDialogCofirmaRemocao = true
     },
 
@@ -197,7 +238,6 @@ export default {
 
       this.createAluno(aluno).then((response) => {
         this.getAlunos(this.getUsuarioLogado.id)
-
         this.showDialogCadastraAluno = false
         this.snackbarAlunoCadastradoSucesso.value = true
       }).catch((erro) => {
@@ -205,10 +245,19 @@ export default {
       })
     },
 
-    removeAlunoFromDataBase (aluno) {
-      this.removeAluno(aluno.id).then((response) => {
+    atualizaAluno (aluno) {
+      this.updateAluno(aluno).then((response) => {
         this.getAlunos(this.getUsuarioLogado.id)
+        this.showDialogAtualizaAluno = false
+        this.snackbarAlunoAtualizadoSucesso.value = true
+      }).catch((erro) => {
+        this.snackbarAlunoAtualizadoErro.value = true
+      })
+    },
 
+    removeAlunoFromDataBase (aluno) {
+      this.deleteAluno(aluno.id).then((response) => {
+        this.getAlunos(this.getUsuarioLogado.id)
         this.showDialogCofirmaRemocao = false
         this.snackbarAlunoRemovidoSucesso.value = true
         this.alunoRemove = null
@@ -244,7 +293,6 @@ export default {
   created () {
     this.getAlunos(this.getUsuarioLogado.id)
     this.getModalidadesBolsa()
-    this.removeAluno()
     this.getCursos()
   }
 }
