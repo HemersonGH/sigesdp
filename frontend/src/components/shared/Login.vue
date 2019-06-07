@@ -24,7 +24,7 @@
             elevation='5'
             :logoUfla='true'
           )
-            form(
+            v-form(
               @submit.prevent='login()'
             )
               div

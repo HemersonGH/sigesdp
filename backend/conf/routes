@@ -13,6 +13,13 @@ GET 	/departamentos							Departamentos.findAll
 GET 	/departamentos-list						Departamentos.fieldSelect
 GET   	/departamento/{id}						Departamentos.findById
 
+# Cursos
+POST 	/curso/novo								Cursos.cadastraCurso
+GET 	/cursos								    Cursos.findAll
+GET 	/curso/{id}					     		Cursos.findById
+PUT 	/curso/atualiza		     				Cursos.atualizaCurso
+DELETE 	/curso/remove/{id}			     		Cursos.removeCurso
+
 # Docentes
 POST 	/professor/novo							Professores.cadastraProfessor
 GET 	/docentes							    Professores.findAll

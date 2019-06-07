@@ -1,7 +1,7 @@
 <template lang="pug">
   v-dialog(
     max-width='600px'
-    v-model='showDialog'
+    v-model='showDialogDetalhesAluno'
     :persistent='true'
     :scrollable='true'
   )
@@ -56,7 +56,7 @@ export default {
       type: [Object, Array]
     },
 
-    showDialog: {
+    showDialogDetalhesAluno: {
       type: Boolean,
       required: true
     }
@@ -69,7 +69,7 @@ export default {
 
   methods: {
     close () {
-      this.$emit('close')
+      this.$emit('closeModalDetalhesAluno')
     }
   }
 }

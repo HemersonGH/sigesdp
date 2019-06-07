@@ -114,7 +114,7 @@ export default {
 
   methods: {
     viewDetails (item) {
-      this.$emit('openModal', item)
+      this.$emit('openModalDetalhesAlunos', item)
     },
 
     removeAluno (aluno) {

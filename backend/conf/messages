@@ -18,6 +18,13 @@ sigesdp.id.departamento.nao.encontrado=Nenhum departamento foi encontrado com es
 sigesdp.departamento.nao.encontrado=Não foi possível encontrar o departamento.
 sigesdp.departamentos.nao.encontrados=Não foi possível encontrar todos os departamentos.
 
+sigesdp.id.curso.nao.encontrado=Nenhum curso foi encontrado com esse id.
+sigesdp.curso.nao.encontrado=Não foi possível encontrar o curso.
+sigesdp.cursos.nao.encontrados=Não foi possível encontrar todos os cursos.
+sigesdp.curso.cadastrado.com.sucesso=Curso cadastrado com sucesso.
+sigesdp.curso.atualizado.com.sucesso=Curso atualizado com sucesso.
+sigesdp.curso.removido.com.sucesso=Curso removido com sucesso.
+
 sigesdp.id.professor.nao.encontrado=Nenhum professor foi encontrado com esse id.
 sigesdp.professor.nao.encontrado=Não foi possível encontrar o professor.
 sigesdp.professores.nao.encontrado=Não foi possível encontrar todos os professores.

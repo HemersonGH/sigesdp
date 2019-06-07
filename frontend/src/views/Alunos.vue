@@ -17,7 +17,7 @@
           div.text-xs-right
             v-btn.white--text.style-button(
               color='#3169B3'
-              @click='novoAluno()'
+              @click='openModalCadastro()'
             ) Adicionar aluno
               v-icon(
                 color='white'
@@ -37,13 +37,20 @@
           ListagemAlunos(
             :headers='headers'
             :contentTable='alunos.data.alunos'
-            @openModal='openModal'
+            @openModalDetalhesAlunos='openModalDetalhesAlunos'
             @openModalConfirmaRemocao='openModalConfirmaRemocao'
           )
+    CadastraAluno(
+      :showDialogCadastraAluno='showDialogCadastraAluno'
+      :curso='cursos.data'
+      :modalidadesBolsa='modalidadesBolsa.data'
+      @closeModalCadastro='closeModalCadastro'
+      @cadastraAluno='cadastraAluno'
+    )
     DetalhesAluno(
-      :showDialog='showDialog'
+      :showDialogDetalhesAluno='showDialogDetalhesAluno'
       :data='alunoDetalhes'
-      @close='closeModal'
+      @closeModalDetalhesAluno='closeModalDetalhesAluno'
     )
     ModalRemoveAluno(
       :aluno='alunoRemove'
@@ -57,6 +64,12 @@
     SnackBar(
       :data='snackbarAlunoRemovidoErro'
     )
+    SnackBar(
+      :data='snackbarAlunoCadastradoSucesso'
+    )
+    SnackBar(
+      :data='snackbarAlunoCadastradoErro'
+    )
 </template>
 
 <script>
@@ -66,6 +79,7 @@ import Card from '@/components/shared/Card.vue'
 import StatsCardTitle from '@/components/shared/StatsCardTitle.vue'
 import PesquisaAlunos from '@/components/aluno/PesquisaAlunos.vue'
 import ListagemAlunos from '@/components/aluno/ListagemAlunos.vue'
+import CadastraAluno from '@/components/aluno/CadastraAluno.vue'
 import DetalhesAluno from '@/components/aluno/DetalhesAluno.vue'
 import ModalRemoveAluno from '@/components/aluno/ModalRemoveAluno.vue'
 import SnackBar from '@/components/shared/SnackBar.vue'
@@ -79,6 +93,7 @@ export default {
     Card,
     PesquisaAlunos,
     ListagemAlunos,
+    CadastraAluno,
     DetalhesAluno,
     ModalRemoveAluno,
     SnackBar
@@ -108,7 +123,8 @@ export default {
       ],
       alunoDetalhes: null,
       alunoRemove: null,
-      showDialog: false,
+      showDialogCadastraAluno: false,
+      showDialogDetalhesAluno: false,
       showDialogCofirmaRemocao: false,
       snackbarAlunoRemovidoSucesso: {
         icon: 'mdi-check-outline',
@@ -121,6 +137,18 @@ export default {
         message: 'Não foi possível remover o aluno.',
         value: false,
         color: 'error'
+      },
+      snackbarAlunoCadastradoSucesso: {
+        icon: 'mdi-check-outline',
+        message: 'Aluno cadastrado com sucesso.',
+        value: false,
+        color: 'success'
+      },
+      snackbarAlunoCadastradoErro: {
+        icon: 'mdi-alert-circle-outline',
+        message: 'Não foi possível cadastrar o aluno.',
+        value: false,
+        color: 'error'
       }
     }
   },
@@ -128,21 +156,31 @@ export default {
   methods: {
     ...mapActions({
       getAlunos: 'aluno/getAlunos',
+      createAluno: 'aluno/createAluno',
       removeAluno: 'aluno/removeAluno',
-      getModalidadesBolsa: 'modalidadesBolsa/getModalidadesBolsa'
+      getModalidadesBolsa: 'modalidadesBolsa/getModalidadesBolsa',
+      getCursos: 'curso/getCursos'
     }),
 
     valueSearch (query) {
       this.search = query
     },
 
-    openModal (item) {
-      this.alunoDetalhes = item
-      this.showDialog = true
+    openModalCadastro () {
+      this.showDialogCadastraAluno = true
     },
 
-    closeModal () {
-      this.showDialog = false
+    closeModalCadastro () {
+      this.showDialogCadastraAluno = false
+    },
+
+    openModalDetalhesAlunos (item) {
+      this.alunoDetalhes = item
+      this.showDialogDetalhesAluno = true
+    },
+
+    closeModalDetalhesAluno () {
+      this.showDialogDetalhesAluno = false
     },
 
     openModalConfirmaRemocao (aluno) {
@@ -154,9 +192,23 @@ export default {
       this.showDialogCofirmaRemocao = false
     },
 
+    cadastraAluno (aluno) {
+      aluno.professor.id = this.getUsuarioLogado.id
+
+      this.createAluno(aluno).then((response) => {
+        this.getAlunos(this.getUsuarioLogado.id)
+
+        this.showDialogCadastraAluno = false
+        this.snackbarAlunoCadastradoSucesso.value = true
+      }).catch((erro) => {
+        this.snackbarAlunoCadastradoErro.value = true
+      })
+    },
+
     removeAlunoFromDataBase (aluno) {
       this.removeAluno(aluno.id).then((response) => {
         this.getAlunos(this.getUsuarioLogado.id)
+
         this.showDialogCofirmaRemocao = false
         this.snackbarAlunoRemovidoSucesso.value = true
         this.alunoRemove = null
@@ -176,7 +228,8 @@ export default {
       usuarioLogado: 'usuario/usuarioLogado',
       alunos: 'aluno/alunos',
       alunoRemovido: 'aluno/alunoRemovido',
-      modalidadesBolsa: 'modalidadesBolsa/modalidadesBolsa'
+      modalidadesBolsa: 'modalidadesBolsa/modalidadesBolsa',
+      cursos: 'curso/cursos'
     }),
 
     getUsuarioLogado: {
@@ -192,6 +245,7 @@ export default {
     this.getAlunos(this.getUsuarioLogado.id)
     this.getModalidadesBolsa()
     this.removeAluno()
+    this.getCursos()
   }
 }
 </script>

@@ -11,6 +11,13 @@ public class MessagesUtil {
 	public static final String DEPARTAMENTO_NAO_ENCONTRADO = Messages.get("sigesdp.departamento.nao.encontrado");
 	public static final String DEPARTAMENTOS_NAO_ENCONTRADOS = Messages.get("sigesdp.departamentos.nao.encontrados");
 	
+	public static final String ID_CURSO_NAO_ENCONTRADO = Messages.get("sigesdp.id.curso.nao.encontrado");
+	public static final String CURSO_NAO_ENCONTRADO = Messages.get("sigesdp.curso.nao.encontrado");
+	public static final String CURSOS_NAO_ENCONTRADOS = Messages.get("sigesdp.cursos.nao.encontrados");
+	public static final String CURSO_CADASTRADO_COM_SUCESSO = Messages.get("sigesdp.curso.cadastrado.com.sucesso");
+	public static final String CURSO_ATUALIZADO_COM_SUCESSO = Messages.get("sigesdp.curso.atualizado.com.sucesso");
+	public static final String CURSO_REMOVIDO_COM_SUCESSO = Messages.get("sigesdp.curso.removido.com.sucesso");
+	
 	public static final String ID_PROFESSOR_NAO_ENCONTRADO = Messages.get("sigesdp.id.professor.nao.encontrado");
 	public static final String PROFESSOR_NAO_ENCONTRADO = Messages.get("sigesdp.professor.nao.encontrado");
 	public static final String PROFESSORES_NAO_ENCONTRADOS = Messages.get("sigesdp.professores.nao.encontrado");
