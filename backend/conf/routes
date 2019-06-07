@@ -24,7 +24,6 @@ DELETE 	/curso/remove/{id}			     		Cursos.removeCurso
 POST 	/professor/novo							Professores.cadastraProfessor
 GET 	/docentes							    Professores.findAll
 GET 	/docente/{id}				     		Professores.findById
-GET   	/docente/{id}							Professores.findById
 GET   	/docente/alunos/{id}					Professores.findAlunos
 GET   	/docente/email/							Professores.findByEmail
 PUT 	/docente/atualiza		     			Professores.atualizaProfessor
@@ -49,6 +48,7 @@ GET 	/alunos								    Alunos.findAll
 GET 	/aluno/{id}					     		Alunos.findById
 PUT 	/aluno/atualiza		     				Alunos.atualizaAluno
 DELETE 	/aluno/remove/{id}			     		Alunos.removeAluno
+GET 	/aluno/filtro/							Alunos.findByFilter
 
 # Home page
 GET     /                                       Application.index

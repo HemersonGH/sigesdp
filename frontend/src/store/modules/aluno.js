@@ -58,6 +58,18 @@ const actions = {
     const result = await axios.delete(`/aluno/remove/${id}`)
     commit('SET_ALUNO_REMOVIDO', result)
     return result.data
+  },
+  async filtraUsuario ({ commit }, nome, idModalidade) {
+    const response = await axios({
+      method: 'get',
+      url: '/aluno/filtro/',
+      params: {
+        nome,
+        idModalidade
+      }
+    })
+    commit('SET_ALUNO_FILTRO', response.data)
+    return response.data
   }
 }
 

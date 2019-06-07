@@ -33,8 +33,9 @@ public class ProfessorSerializer {
 				.prettyPrint(prettyPrint);
 
 		alunosDocente = new JSONSerializer()
-				.include("id", "nome", "alunos.id", "alunos.nome", "alunos.email", "alunos.professor.nome", "alunos.curso.id", "alunos.curso.nome",
-						"alunos.modalidadeBolsa.id", "alunos.modalidadeBolsa.nome", "alunos.modalidadeBolsa.sigla")
+				.include("id", "nome", "alunos.id", "alunos.nome", "alunos.email", "alunos.professor.nome",
+						"alunos.professor.id", "alunos.curso.id", "alunos.curso.nome", "alunos.modalidadeBolsa.id",
+						"alunos.modalidadeBolsa.nome", "alunos.modalidadeBolsa.sigla")
 				.exclude("*").prettyPrint(prettyPrint);
 	}
 }

@@ -28,7 +28,7 @@
             md10
           )
             v-text-field.padding-bottom(
-              v-model='pesquisaAluno.nomeAluno'
+              v-model='pesquisaAluno.nome'
               placeholder='Informe o nome do aluno'
               color='#3169B3'
               clearable
@@ -56,6 +56,14 @@
             )
       v-divider.mx-3
       v-card-actions
+        v-btn.white--text.style-button(
+          color='#707070'
+          @click='limpar()'
+        )
+          v-icon(
+            left
+          ) mdi-eraser
+          | Limpar
         v-spacer
         v-btn.white--text.style-button(
           color='#3169B3'
@@ -67,6 +75,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Card from '@/components/shared/Card.vue'
 
 export default {
@@ -85,14 +94,22 @@ export default {
   data () {
     return {
       pesquisaAluno: {
-        nomeAluno: '',
+        nome: '',
         idModalidade: null
       }
     }
   },
 
   methods: {
+    ...mapActions({
+      filtraUsuario: 'aluno/filtraUsuario'
+    }),
+
     pesquisa () {
+      // this.filtraUsuario(this.pesquisaAluno.nome, this.pesquisaAluno.idModalidade).then((response) => {
+        // this.getAlunos(this.idProfessor)
+      // }).catch((erro) => {
+      // })
     }
   }
 }

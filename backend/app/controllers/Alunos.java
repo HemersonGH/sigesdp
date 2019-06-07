@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.ValidationException;
 
 import models.Aluno;
+import models.Professor;
 import serializers.AlunoSerializer;
 import serializers.ProfessorSerializer;
 import utils.MessagesUtil;
@@ -68,5 +69,21 @@ public class Alunos extends DefaultController {
 		aluno.remove();
 
 		renderText(MessagesUtil.ALUNO_REMOVIDO_COM_SUCESSO);
+	}
+
+	public static void findByFilter(Integer idModalidade) {
+//		String nome, 
+//		if (nome == null || idModalidade == null) {
+		if (idModalidade == null) {
+			throw new ValidationException(MessagesUtil.ALUNO_NAO_ENCONTRADO);
+		}
+
+		List<Aluno> alunos = Aluno.find("id_modalidade_bolsa", idModalidade).fetch(); // setParameter("id_modalidade_bolsa", idModalidade).
+
+		if (alunos == null) {
+			throw new ValidationException(MessagesUtil.ALUNOS_NAO_ENCONTRADOS);
+		}
+
+		renderJSON(alunos, ProfessorSerializer.alunosDocente);
 	}
 }
