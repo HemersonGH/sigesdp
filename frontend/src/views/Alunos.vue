@@ -43,10 +43,14 @@
           )
     CadastraAluno(
       :showDialogCadastraAluno='showDialogCadastraAluno'
+      :idProfessor='getUsuarioLogado.id'
       :curso='cursos.data'
       :modalidadesBolsa='modalidadesBolsa.data'
+      :snackbarCadastraAluno='snackbarCadastraAluno'
+      :snackbarAlunoCadastradoSucesso='snackbarAlunoCadastradoSucesso'
+      :snackbarAlunoCadastradoErro='snackbarAlunoCadastradoErro'
       @closeModalCadastraAluno='closeModalCadastraAluno'
-      @cadastraAluno='cadastraAluno'
+      @getNovoAlunoCadastrado='getNovoAlunoCadastrado'
     )
     DetalhesAluno(
       :showDialogDetalhesAluno='showDialogDetalhesAluno'
@@ -66,6 +70,9 @@
       :showDialogConfirm='showDialogCofirmaRemocao'
       @closeModalConfirmacaoRemocao='closeModalConfirmacaoRemocao'
       @removeAlunoFromDataBase='removeAlunoFromDataBase'
+    )
+    SnackBar(
+      :data='snackbarCadastraAluno'
     )
     SnackBar(
       :data='snackbarAlunoCadastradoSucesso'
@@ -145,15 +152,15 @@ export default {
       showDialogDetalhesAluno: false,
       showDialogAtualizaAluno: false,
       showDialogCofirmaRemocao: false,
-      snackbarAlunoRemovidoSucesso: {
+      snackbarAlunoAtualizadoSucesso: {
         icon: 'mdi-check-outline',
-        message: 'Aluno removido com sucesso.',
+        message: 'Dados do aluno atualizado com sucesso.',
         value: false,
         color: 'success'
       },
-      snackbarAlunoRemovidoErro: {
+      snackbarCadastraAluno: {
         icon: 'mdi-alert-circle-outline',
-        message: 'Não foi possível remover o aluno.',
+        message: 'Verifique os campos obrigatórios.',
         value: false,
         color: 'error'
       },
@@ -169,15 +176,21 @@ export default {
         value: false,
         color: 'error'
       },
-      snackbarAlunoAtualizadoSucesso: {
-        icon: 'mdi-check-outline',
-        message: 'Dados do aluno atualizado com sucesso.',
-        value: false,
-        color: 'success'
-      },
       snackbarAlunoAtualizadoErro: {
         icon: 'mdi-alert-circle-outline',
         message: 'Não foi possível atualizar os dados do aluno.',
+        value: false,
+        color: 'error'
+      },
+      snackbarAlunoRemovidoSucesso: {
+        icon: 'mdi-check-outline',
+        message: 'Aluno removido com sucesso.',
+        value: false,
+        color: 'success'
+      },
+      snackbarAlunoRemovidoErro: {
+        icon: 'mdi-alert-circle-outline',
+        message: 'Não foi possível remover o aluno.',
         value: false,
         color: 'error'
       }
@@ -187,11 +200,10 @@ export default {
   methods: {
     ...mapActions({
       getAlunos: 'aluno/getAlunos',
-      createAluno: 'aluno/createAluno',
       updateAluno: 'aluno/updateAluno',
       deleteAluno: 'aluno/deleteAluno',
       getModalidadesBolsa: 'modalidadesBolsa/getModalidadesBolsa',
-      getCursos: 'curso/getCursos',
+      getCursos: 'curso/getCursos'
     }),
 
     valueSearch (query) {
@@ -233,16 +245,9 @@ export default {
       this.showDialogCofirmaRemocao = false
     },
 
-    cadastraAluno (aluno) {
-      aluno.professor.id = this.getUsuarioLogado.id
-
-      this.createAluno(aluno).then((response) => {
-        this.getAlunos(this.getUsuarioLogado.id)
-        this.showDialogCadastraAluno = false
-        this.snackbarAlunoCadastradoSucesso.value = true
-      }).catch((erro) => {
-        this.snackbarAlunoCadastradoErro.value = true
-      })
+    getNovoAlunoCadastrado () {
+      this.showDialogCadastraAluno = false
+      this.getAlunos(this.getUsuarioLogado.id)
     },
 
     atualizaAluno (aluno) {

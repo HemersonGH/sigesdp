@@ -21,7 +21,7 @@ const actions = {
       const result = await axios.post('/login', user)
       commit('SET_AUTH_USER', result)
     } catch (error) {
-      console.log(error)
+      return error
     }
   },
 

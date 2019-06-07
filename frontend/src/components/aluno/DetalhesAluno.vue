@@ -59,7 +59,7 @@ export default {
 
     alunoDetalhes: {
       type: Object
-    },
+    }
   },
 
   methods: {

@@ -101,12 +101,11 @@
           v-icon(
             right
           ) mdi-content-save
-    SnackBar(
-      :data='snackbarCadastraAluno'
-    )
+
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
@@ -126,12 +125,32 @@ export default {
       required: true
     },
 
+    idProfessor: {
+      type: Number,
+      required: true
+    },
+
     curso: {
       type: [Object, Array]
     },
 
     modalidadesBolsa: {
       type: [Object, Array]
+    },
+
+    snackbarCadastraAluno: {
+      type: Object,
+      required: true
+    },
+
+    snackbarAlunoCadastradoSucesso: {
+      type: Object,
+      required: true
+    },
+
+    snackbarAlunoCadastradoErro: {
+      type: Object,
+      required: true
     }
   },
 
@@ -149,17 +168,15 @@ export default {
         modalidadeBolsa: {
           id: null
         }
-      },
-      snackbarCadastraAluno: {
-        icon: 'mdi-alert-circle-outline',
-        message: 'Verifique os campos obrigatórios.',
-        value: false,
-        color: 'error'
       }
     }
   },
 
   methods: {
+    ...mapActions({
+      createAluno: 'aluno/createAluno'
+    }),
+
     reset () {
       this.aluno.nome = null
       this.aluno.email = null
@@ -175,9 +192,17 @@ export default {
     },
 
     cadastrar () {
+      this.aluno.professor.id = this.idProfessor
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          this.$emit('cadastraAluno', this.aluno)
+          this.createAluno(this.aluno).then((response) => {
+            this.showDialogCadastraAluno = false
+            this.snackbarAlunoCadastradoSucesso.value = true
+            this.$emit('getNovoAlunoCadastrado')
+            this.reset()
+          }).catch((erro) => {
+            this.snackbarAlunoCadastradoErro.value = true
+          })
         } else {
           this.snackbarCadastraAluno.value = true
         }
