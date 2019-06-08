@@ -5,7 +5,12 @@
       :class='`elevation-4`'
     )
       v-card-title
-        span.white--text.font-weight Filtrar alunos
+        span.white--text.font-weight
+          v-icon(
+            left
+            color='white'
+          ) mdi-filter
+          | Filtrar alunos
     v-divider.mx-3
     v-card-text.padding
       v-container.padding(
@@ -111,7 +116,7 @@ export default {
 
     pesquisaAlunos () {
       // this.filtraUsuario(this.pesquisaAluno.nome, this.pesquisaAluno.idModalidade).then((response) => {
-        // this.getAlunos(this.idProfessor)
+      //   this.getAlunos(this.idProfessor)
       // }).catch((erro) => {
       // })
     }

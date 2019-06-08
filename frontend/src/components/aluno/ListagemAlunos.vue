@@ -6,7 +6,6 @@
     rows-per-page-text='Linhas por página:'
     no-data-text='Não há dados para exibir.'
     no-results-text='Não há resultados para sua busca.'
-    :search='search'
   )
     template(
       slot='headerCell'
@@ -20,8 +19,8 @@
       slot-scope='{ item }'
     )
       td.text-xs-left {{ item.nome }}
-      td {{ item.modalidadeBolsa.sigla }}
-      td.text-xs-right
+      td.text-xs-center {{ item.modalidadeBolsa.sigla }}
+      td.text-xs-center
         v-tooltip(
           top
           content-class='top'
@@ -90,19 +89,11 @@ export default {
 
     contentTable: {
       type: Array
-    },
-
-    search: {
-      type: String
     }
   },
 
   data () {
     return {
-      pagination: {
-        sortBy: 'nome'
-      },
-
       setRowPerPagItens: [
         5, 10, 20,
         {

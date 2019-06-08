@@ -5,7 +5,12 @@
       :class='`elevation-4`'
     )
       v-card-title
-        span.white--text.font-weight Filtrar disciplinas
+        span.white--text.font-weight
+          v-icon(
+            left
+            color='white'
+          ) mdi-filter
+          | Filtrar disciplinas
     v-divider.mx-3
     v-card-text.padding
       v-container.padding-container(

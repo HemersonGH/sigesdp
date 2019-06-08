@@ -108,26 +108,26 @@ export default {
         {
           title: 'Alunos',
           route: '/alunos',
-          icon: 'account_balance',
-          textTooltip: 'Acesse os cursos'
+          icon: 'mdi-account-multiple',
+          textTooltip: 'Gerenciar alunos'
         },
         {
           title: 'Projetos de Pesquisa',
           route: '/projetos-pesquisa',
           icon: 'find_in_page',
-          textTooltip: 'Acesse os cursos'
+          textTooltip: 'Gerenciar projetos de pesquisa'
         },
         {
           title: 'Disciplinas',
           route: '/disciplinas',
           icon: 'mdi-book-multiple-variant',
-          textTooltip: 'Acesse os cursos'
+          textTooltip: 'Gerenciar disciplinas'
         },
         {
           title: 'Publicações',
           route: '/publicacoes',
-          icon: 'mdi-book-multiple-variant',
-          textTooltip: 'Acesse os cursos'
+          icon: 'mdi-file-powerpoint',
+          textTooltip: 'Gerenciar publicações'
         }
       ]
     }

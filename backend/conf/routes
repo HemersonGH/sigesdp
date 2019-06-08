@@ -31,7 +31,7 @@ PUT 	/docente/atualiza		     			Professores.atualizaProfessor
 DELETE 	/docente/remove/{id}			     	Professores.removeProfessor
 
 # Disciplinas
-POST 	/disciplina/novo						Disciplinas.cadastraDisciplina
+POST 	/disciplina/nova						Disciplinas.cadastraDisciplina
 GET 	/disciplina/{id}		     			Disciplinas.findById
 PUT 	/disciplina/atualiza		     		Disciplinas.atualizaDisciplina
 DELETE 	/disciplina/remove/{id}			     	Disciplinas.removeDisciplina

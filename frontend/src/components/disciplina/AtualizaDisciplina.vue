@@ -15,53 +15,104 @@
           fluid
         )
           v-layout(
+            row
             wrap
           )
             v-flex.padding(
-              xs12
-              sm12
-              md12
+              xs6
+              sm6
+              md6
+            )
+              v-select.font-weight-select(
+                v-model='disciplinaAtualiza.tipo'
+                label='Selecione o tipo da disciplina *'
+                color='#11802C'
+                :items='tipos'
+                item-value='id'
+                item-text='nome'
+                no-data-text='Não há dados.'
+                v-validate="'required'"
+                :error-messages="errors.collect('tipo')"
+                data-vv-name='tipo'
+                data-vv-as='Tipo da disciplina'
+                clearable
+              )
+            v-flex.padding(
+              xs6
+              sm6
+              md6
             )
               v-text-field(
                 v-model='disciplinaAtualiza.nome'
-                label='Nome * '
-                color='#2196f3'
-                v-validate="'required'"
+                label='Nome *'
+                color='#11802C'
+                v-validate="'required|max:100'"
                 :error-messages="errors.collect('nome')"
                 data-vv-name='nome'
                 data-vv-as='Nome'
               )
             v-flex.padding(
-              xs12
-              sm12
-              md12
+              xs6
+              sm6
+              md6
             )
               v-text-field(
-                v-model='disciplinaAtualiza.email'
-                label='Email * '
-                color='#2196f3'
-                v-validate="'required|email'"
-                :error-messages="errors.collect('email')"
-                data-vv-name='email'
-                data-vv-as='Email'
+                v-model='disciplinaAtualiza.codigo'
+                label='Código *'
+                color='#11802C'
+                v-validate="'required|max:6'"
+                :error-messages="errors.collect('codigo')"
+                data-vv-name='codigo'
+                data-vv-as='Código'
+                mask='AAA###'
               )
             v-flex.padding(
-              xs12
-              sm12
-              md12
+              xs6
+              sm6
+              md6
             )
-              v-select.font-weight-select(
-                v-model='disciplinaAtualiza.curso.id'
-                label='Selecione um curso *'
-                color='#2196f3'
-                :items='curso'
-                item-text='nome'
-                item-value='id'
+              v-select(
+                v-model='disciplinaAtualiza.cargaHoraria'
+                label='Seleciona a carga horária *'
+                color='#11802C'
+                :items='cargasHoraria'
                 no-data-text='Não há dados.'
                 v-validate="'required'"
-                :error-messages="errors.collect('curso')"
-                data-vv-name='curso'
-                data-vv-as='Curso'
+                :error-messages="errors.collect('cargaHoraria')"
+                data-vv-name='cargaHoraria'
+                data-vv-as='Carga Horária'
+                suffix='horas'
+                clearable
+              )
+            v-flex.padding(
+              xs6
+              sm6
+              md6
+            )
+              v-text-field(
+                v-model='disciplinaAtualiza.local'
+                label='Local *'
+                color='#11802C'
+                v-validate="'required|max:100'"
+                :error-messages="errors.collect('local')"
+                data-vv-name='local'
+                data-vv-as='Local'
+              )
+            v-flex.padding(
+              xs6
+              sm6
+              md6
+            )
+              v-select.font-weight-select(
+                v-model='disciplinaAtualiza.horario'
+                label='Selecione um horário *'
+                color='#11802C'
+                :items='horarios'
+                no-data-text='Não há dados.'
+                v-validate="'required'"
+                :error-messages="errors.collect('horario')"
+                data-vv-name='horario'
+                data-vv-as='Horário'
                 clearable
               )
             v-flex.padding(
@@ -71,16 +122,16 @@
             )
               v-select.font-weight-select(
                 v-model='disciplinaAtualiza.departamento.id'
-                label='Selecione um modalidade de bolsa *'
-                color='#2196f3'
+                label='Selecione um departamento *'
+                color='#11802C'
                 :items='departamentos'
-                item-text='sigla'
                 item-value='id'
+                item-text='nome'
                 no-data-text='Não há dados.'
                 v-validate="'required'"
-                :error-messages="errors.collect('modalidadeBolsa')"
-                data-vv-name='modalidadeBolsa'
-                data-vv-as='Modalidade da Bolsa'
+                :error-messages="errors.collect('departamento')"
+                data-vv-name='departamento'
+                data-vv-as='Departamento'
                 clearable
               )
       v-divider.mx-3
@@ -96,7 +147,7 @@
         v-spacer
         v-btn.white--text.style-button(
           color='success darken-1'
-          @click='atualizaAluno()'
+          @click='atualizaDisciplina()'
         ) Salvar
           v-icon(
             right
@@ -137,6 +188,23 @@ export default {
 
   data () {
     return {
+      tipos: [
+        {
+          id: 0,
+          nome: 'Graduação'
+        },
+        {
+          id: 1,
+          nome: 'Pós-Graduação'
+        }
+      ],
+      cargasHoraria: [
+        '34', '68', '102'
+      ],
+      horarios: [
+        '07:00', '08:00', '09:00', '10:00', '14:00', '13:00',
+        '14:00', '15:00', '16:00', '17:00', '19:00', '21:00'
+      ],
       snackbarValidaAtualizaDisciplina: {
         icon: 'mdi-alert-circle-outline',
         message: 'Verifique os campos obrigatórios.',
@@ -151,10 +219,10 @@ export default {
       this.$emit('closeModalAtualizaDisciplina')
     },
 
-    atualizaAluno () {
+    atualizaDisciplina () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          this.$emit('atualizaAluno', this.disciplinaAtualiza)
+          this.$emit('atualizaDisciplina', this.disciplinaAtualiza)
         } else {
           this.snackbarValidaAtualizaDisciplina.value = true
         }

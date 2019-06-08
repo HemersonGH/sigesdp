@@ -30,11 +30,11 @@
                 | Nome:
                 span.style-sub-title {{ data.nome }}
               h5.font-weight-bold.no-margin-bottom
-                | Local:
-                span.style-sub-title {{ data.local }}
-              h5.font-weight-bold.no-margin-bottom
                 | Carga Horária:
                 span.style-sub-title {{ data.cargaHoraria }} horas
+              h5.font-weight-bold.no-margin-bottom
+                | Local:
+                span.style-sub-title {{ data.local }}
             v-flex.padding(
               xs6
               sm6

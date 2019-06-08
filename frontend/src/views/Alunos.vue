@@ -134,13 +134,14 @@ export default {
         {
           sortable: true,
           text: 'Modalidade',
-          value: 'modalidadeBolsa.sigla'
+          value: 'modalidadeBolsa.sigla',
+          align: 'center'
         },
         {
           sortable: false,
           text: 'Ações',
           value: 'actions',
-          align: 'right'
+          align: 'center'
         }
       ],
       alunoDetalhes: null,

@@ -95,9 +95,9 @@ public class Aluno extends GenericModel {
 	}
 
 	public void salvar() {
-		this.setProfessor(Professor.findById(this.professor.getId()));
-		this.setCurso(Curso.findById(this.curso.getId()));
-		this.setModalidadeBolsa(ModalidadeBolsa.findById(this.modalidadeBolsa.getId()));
+		this.setProfessor(Professor.findById(this.getProfessor().getId()));
+		this.setCurso(Curso.findById(this.getCurso().getId()));
+		this.setModalidadeBolsa(ModalidadeBolsa.findById(this.getModalidadeBolsa().getId()));
 
 		this.save();
 	}
@@ -105,8 +105,8 @@ public class Aluno extends GenericModel {
 	public void atualiza(Aluno aluno) {
 		this.setNome(aluno.getNome());
 		this.setEmail(aluno.getEmail());
-		this.setCurso(Curso.findById(aluno.curso.getId()));
-		this.setModalidadeBolsa(ModalidadeBolsa.findById(aluno.modalidadeBolsa.getId()));
+		this.setCurso(Curso.findById(aluno.getCurso().getId()));
+		this.setModalidadeBolsa(ModalidadeBolsa.findById(aluno.getModalidadeBolsa().getId()));
 
 		this.save();
 	}

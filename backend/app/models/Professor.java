@@ -170,22 +170,22 @@ public class Professor extends GenericModel {
 //	}
 
 	public void salvar() {
-		this.departamento = Departamento.findById(this.departamento.getId());
-		this.areaConhecimento = AreaConhecimento.findById(this.areaConhecimento.getId());
+		this.departamento = Departamento.findById(this.getDepartamento().getId());
+		this.areaConhecimento = AreaConhecimento.findById(this.getAreaConhecimento().getId());
 //		this.usuario.setSenha() 
 
 		this.save();
 	}
 
 	public void atualiza(Professor professor) {
-		this.setNome(professor.nome);
-		this.setcurriculoLattes(professor.curriculoLattes);
-		this.setFormacaoAcademica(professor.formacaoAcademica);
-		this.setSala(professor.sala);
-		this.setTelefone(professor.telefone);
-		this.setUsuario(Professor.findById(professor.usuario.getId()));
-		this.setDepartamento(Professor.findById(professor.departamento.getId()));
-		this.setAreaConhecimento(Professor.findById(professor.areaConhecimento.getId()));
+		this.setNome(professor.getNome());
+		this.setcurriculoLattes(professor.getcurriculoLattes());
+		this.setFormacaoAcademica(professor.getFormacaoAcademica());
+		this.setSala(professor.getSala());
+		this.setTelefone(professor.getTelefone());
+		this.setUsuario(Professor.findById(professor.getUsuario().getId()));
+		this.setDepartamento(Professor.findById(professor.getDepartamento().getId()));
+		this.setAreaConhecimento(Professor.findById(professor.getAreaConhecimento().getId()));
 
 		this.save();
 	}

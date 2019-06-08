@@ -1,4 +1,8 @@
-<template lang="pug">
+result
+result
+result
+result
+result<template lang="pug">
   v-container(
     grid-list-xl
     fluid

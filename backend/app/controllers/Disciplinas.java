@@ -54,7 +54,7 @@ public class Disciplinas extends DefaultController {
 	public static void atualizaDisciplina(Disciplina disciplina) {
 		notFoundIfNull(disciplina);
 
-		Disciplina disciplinaSave = Aluno.findById(disciplina.getId());
+		Disciplina disciplinaSave = Disciplina.findById(disciplina.getId());
 
 		if (disciplinaSave == null) {
 			throw new ValidationException(MessagesUtil.DISCIPLINA_NAO_ENCONTRADA);

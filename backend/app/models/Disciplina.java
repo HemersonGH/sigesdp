@@ -127,24 +127,24 @@ public class Disciplina extends GenericModel {
 	}
 
 	public void salvar() {
-		this.professor = Professor.findById(this.professor.getId());
-		this.departamento = Departamento.findById(this.departamento.getId());
+		this.professor = Professor.findById(this.getProfessor().getId());
+		this.departamento = Departamento.findById(this.getDepartamento().getId());
 
 		this.save();
 	}
 
 	public void atualiza(Disciplina disciplina) {
-		this.setNome(disciplina.nome);
-		this.setCodigo(disciplina.codigo);
-		this.setCargaHoraria(disciplina.cargaHoraria);
-		this.setLocal(disciplina.local);
-		this.setHorario(disciplina.horario);
-		this.setTipo(disciplina.tipo);
-		this.setDepartamento(Departamento.findById(disciplina.departamento.getId()));
-		
+		this.setNome(disciplina.getNome());
+		this.setCodigo(disciplina.getCodigo());
+		this.setCargaHoraria(disciplina.getCargaHoraria());
+		this.setLocal(disciplina.getLocal());
+		this.setHorario(disciplina.getHorario());
+		this.setTipo(disciplina.getTipo());
+		this.setDepartamento(Departamento.findById(disciplina.getDepartamento().getId()));
+
 		this.save();
 	}
-	
+
 	public void remove() {
 		this.delete();
 	}

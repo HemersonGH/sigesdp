@@ -66,10 +66,6 @@ export default {
 
   data () {
     return {
-      pagination: {
-        sortBy: 'nome'
-      },
-
       setRowPerPagItens: [
         5, 10, 20,
         {

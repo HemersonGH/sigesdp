@@ -17,7 +17,7 @@
           lg12
         )
           Card.text-xs-center(
-            color='#2196f3'
+            color='#11802C'
             title='Cadastro de Usuário'
             styleTitleDataTable='title-data-table'
             full-width
@@ -46,7 +46,7 @@
                   )
                     v-text-field(
                       v-model='novoUsuario.nome'
-                      label='Nome * '
+                      label='Nome *'
                       color='#2196f3'
                       v-validate="'required'"
                       :error-messages="errors.collect('nome')"
@@ -233,7 +233,7 @@
                 fill-height
               )
                 v-btn.white--text.style-btn-common.style-button-voltar(
-                  color='#2196f3'
+                  color='error'
                   to='/login'
                 )
                   v-icon(
@@ -241,7 +241,7 @@
                   ) mdi-arrow-left
                   | Voltar
                 v-btn.white--text.style-btn-common.style-button-cadastrar(
-                  color='#2196f3'
+                  color='success'
                   @click='cadastrar'
                 ) Cadastrar
                   v-icon(

@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-data-table.primary--text(
+  v-data-table(
     :headers='headers'
     :items='contentTable'
     :rows-per-page-items='setRowPerPagItens'
@@ -65,10 +65,6 @@ export default {
 
   data () {
     return {
-      pagination: {
-        sortBy: 'nome'
-      },
-
       setRowPerPagItens: [
         5, 10, 20,
         {

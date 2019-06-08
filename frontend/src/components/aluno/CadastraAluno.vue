@@ -24,7 +24,7 @@
             )
               v-text-field(
                 v-model='aluno.nome'
-                label='Nome * '
+                label='Nome *'
                 color='#2196f3'
                 v-validate="'required'"
                 :error-messages="errors.collect('nome')"
@@ -38,7 +38,7 @@
             )
               v-text-field(
                 v-model='aluno.email'
-                label='Email * '
+                label='Email *'
                 color='#2196f3'
                 v-validate="'required|email'"
                 :error-messages="errors.collect('email')"
@@ -71,7 +71,7 @@
             )
               v-select.font-weight-select(
                 v-model='aluno.modalidadeBolsa.id'
-                label='Selecione um modalidade de bolsa *'
+                label='Selecione uma modalidade de bolsa *'
                 color='#2196f3'
                 :items='modalidadesBolsa'
                 item-text='sigla'

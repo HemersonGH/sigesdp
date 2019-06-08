@@ -57,14 +57,14 @@ public class Curso extends GenericModel {
 	}
 
 	public void salvar() {
-		this.setDepartamento(Departamento.findById(this.departamento.getId()));
+		this.setDepartamento(Departamento.findById(this.getDepartamento().getId()));
 
 		this.save();
 	}
 
 	public void atualiza(Curso curso) {
 		this.setNome(curso.getNome());
-		this.setDepartamento(Departamento.findById(curso.departamento.getId()));
+		this.setDepartamento(Departamento.findById(curso.getDepartamento().getId()));
 
 		this.save();
 	}

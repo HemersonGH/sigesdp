@@ -23,13 +23,14 @@
             :colorBottomFieldSearch='colorBottomFieldSearch'
             @valueSearch='valueSearch'
           )
-          v-data-table.primary--text(
+          v-data-table(
             :headers='headers'
             :items='contentTable'
             :rows-per-page-items='setRowPerPagItens'
             rows-per-page-text='Linhas por página:'
             no-data-text='Não há dados para exibir.'
             no-results-text='Não há resultados para sua busca.'
+            :pagination.sync='pagination'
             :search='search'
           )
             template(

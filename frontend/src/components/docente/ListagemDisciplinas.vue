@@ -107,9 +107,6 @@ export default {
           align: 'right'
         }
       ],
-      pagination: {
-        sortBy: 'nome'
-      },
       setRowPerPagItens: [
         5, 10, 20,
         {

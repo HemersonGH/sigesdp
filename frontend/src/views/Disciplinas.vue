@@ -44,12 +44,12 @@
     CadastraDisciplina(
       :showDialogCadastraDisciplina='showDialogCadastraDisciplina'
       :idProfessor='getUsuarioLogado.id'
-      :curso='cursos.data'
+      :departamentos='departamentosSelect.data'
       :snackbarCadastraDisciplina='snackbarCadastraDisciplina'
       :snackbarDisciplinaCadastradaSucesso='snackbarDisciplinaCadastradaSucesso'
       :snackbarDisciplinaCadastradaErro='snackbarDisciplinaCadastradaErro'
       @closeModalCadastraDisciplina='closeModalCadastraDisciplina'
-      @getNovoDisciplinaCadastrado='getNovoDisciplinaCadastrado'
+      @getNovaDisciplinaCadastrada='getNovaDisciplinaCadastrada'
     )
     DetalhesDisciplina(
       :showDialogDetalhesDisciplina='showDialogDetalhesDisciplina'
@@ -59,6 +59,7 @@
     AtualizaDisciplina(
       :showDialogAtualizaDisciplina='showDialogAtualizaDisciplina'
       :disciplinaAtualiza='disciplinaAtualiza'
+      :departamentos='departamentosSelect.data'
       @closeModalAtualizaDisciplina='closeModalAtualizaDisciplina'
       @atualizaDisciplina='atualizaDisciplina'
     )
@@ -130,24 +131,25 @@ export default {
         },
         {
           sortable: true,
-          text: 'Código',
-          value: 'codigo'
-        },
-        {
-          sortable: true,
           text: 'Nome',
           value: 'nome'
         },
         {
           sortable: true,
+          text: 'Código',
+          value: 'codigo'
+        },
+        {
+          sortable: true,
           text: 'Departamento',
-          value: 'departamento.sigla'
+          value: 'departamento.sigla',
+          align: 'center'
         },
         {
           sortable: false,
           text: 'Ações',
           value: 'actions',
-          align: 'right'
+          align: 'center'
         }
       ],
       disciplinaDetalhes: null,
@@ -205,7 +207,7 @@ export default {
   methods: {
     ...mapActions({
       getDisciplinas: 'disciplina/getDisciplinas',
-      updateAluno: 'disciplina/updateAluno',
+      updateDisciplina: 'disciplina/updateDisciplina',
       deleteDisciplina: 'disciplina/deleteDisciplina',
       getDepartamentosSelect: 'departamento/getDepartamentosSelect',
       getCursos: 'curso/getCursos'
@@ -246,16 +248,17 @@ export default {
       this.showDialogCofirmaRemocaoDisciplina = false
     },
 
-    getNovoDisciplinaCadastrado () {
+    getNovaDisciplinaCadastrada () {
       this.showDialogCadastraDisciplina = false
-      this.getAlunos(this.getUsuarioLogado.id)
+      this.getDisciplinas(this.getUsuarioLogado.id)
     },
 
     atualizaDisciplina (disciplina) {
-      this.updateAluno(disciplina).then((response) => {
-        this.getAlunos(this.getUsuarioLogado.id)
+      this.updateDisciplina(disciplina).then((response) => {
+        this.getDisciplinas(this.getUsuarioLogado.id)
         this.showDialogAtualizaDisciplina = false
         this.snackbarDisciplinaAtualizadaSucesso.value = true
+        this.disciplinaAtualiza = null
       }).catch((erro) => {
         this.snackbarDisciplinaAtualizadaErro.value = true
       })
@@ -263,7 +266,7 @@ export default {
 
     removeDisciplinaFromDataBase (disciplina) {
       this.deleteDisciplina(disciplina.id).then((response) => {
-        this.getAlunos(this.getUsuarioLogado.id)
+        this.getDisciplinas(this.getUsuarioLogado.id)
         this.showDialogCofirmaRemocaoDisciplina = false
         this.snackbarDisciplinaRemovidaSucesso.value = true
         this.disciplinaRemove = null

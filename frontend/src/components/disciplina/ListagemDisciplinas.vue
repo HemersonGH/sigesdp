@@ -6,7 +6,7 @@
     rows-per-page-text='Linhas por página:'
     no-data-text='Não há dados para exibir.'
     no-results-text='Não há resultados para sua busca.'
-    :search='search'
+    :pagination.sync='pagination'
   )
     template(
       slot='headerCell'
@@ -20,10 +20,10 @@
       slot-scope='{ item }'
     )
       td.text-xs-left {{ item.tipo == 0 ? 'Graduação' : 'Pós-Graduação' }}
-      td {{ item.codigo }}
       td {{ item.nome }}
-      td {{ item.departamento.sigla }}
-      td.text-xs-right
+      td {{ item.codigo }}
+      td.text-xs-center {{ item.departamento.sigla }}
+      td.text-xs-center
         v-tooltip(
           top
           content-class='top'
@@ -92,10 +92,6 @@ export default {
 
     contentTable: {
       type: Array
-    },
-
-    search: {
-      type: String
     }
   },
 

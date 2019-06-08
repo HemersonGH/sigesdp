@@ -1,13 +1,13 @@
 <template lang="pug">
   v-dialog(
-    max-width='600px'
-    v-model='showDialogCadastraAluno'
+    max-width='700px'
+    v-model='showDialogCadastraDisciplina'
     :persistent='true'
     :scrollable='true'
   )
     v-card
       v-card-title.center
-        span.headline Adicionar Aluno
+        span.headline Adicionar Disciplina
       v-divider.mx-3
       v-card-text.no-margin-top
         v-container.padding(
@@ -15,53 +15,104 @@
           fluid
         )
           v-layout(
+            row
             wrap
           )
             v-flex.padding(
-              xs12
-              sm12
-              md12
+              xs6
+              sm6
+              md6
+            )
+              v-select.font-weight-select(
+                v-model='disciplina.tipo'
+                label='Selecione o tipo da disciplina *'
+                color='#11802C'
+                :items='tipos'
+                item-value='id'
+                item-text='nome'
+                no-data-text='Não há dados.'
+                v-validate="'required'"
+                :error-messages="errors.collect('tipo')"
+                data-vv-name='tipo'
+                data-vv-as='Tipo da disciplina'
+                clearable
+              )
+            v-flex.padding(
+              xs6
+              sm6
+              md6
             )
               v-text-field(
-                v-model='aluno.nome'
-                label='Nome * '
-                color='#2196f3'
-                v-validate="'required'"
+                v-model='disciplina.nome'
+                label='Nome *'
+                color='#11802C'
+                v-validate="'required|max:100'"
                 :error-messages="errors.collect('nome')"
                 data-vv-name='nome'
                 data-vv-as='Nome'
               )
             v-flex.padding(
-              xs12
-              sm12
-              md12
+              xs6
+              sm6
+              md6
             )
               v-text-field(
-                v-model='aluno.email'
-                label='Email * '
-                color='#2196f3'
-                v-validate="'required|email'"
-                :error-messages="errors.collect('email')"
-                data-vv-name='email'
-                data-vv-as='Email'
+                v-model='disciplina.codigo'
+                label='Código *'
+                color='#11802C'
+                v-validate="'required|max:6'"
+                :error-messages="errors.collect('codigo')"
+                data-vv-name='codigo'
+                data-vv-as='Código'
+                mask='AAA###'
               )
             v-flex.padding(
-              xs12
-              sm12
-              md12
+              xs6
+              sm6
+              md6
             )
-              v-select.font-weight-select(
-                v-model='aluno.curso.id'
-                label='Selecione um curso *'
-                color='#2196f3'
-                :items='curso'
-                item-text='nome'
-                item-value='id'
+              v-select(
+                v-model='disciplina.cargaHoraria'
+                label='Seleciona a carga horária *'
+                color='#11802C'
+                :items='cargasHoraria'
                 no-data-text='Não há dados.'
                 v-validate="'required'"
-                :error-messages="errors.collect('curso')"
-                data-vv-name='curso'
-                data-vv-as='Curso'
+                :error-messages="errors.collect('cargaHoraria')"
+                data-vv-name='cargaHoraria'
+                data-vv-as='Carga Horária'
+                suffix='horas'
+                clearable
+              )
+            v-flex.padding(
+              xs6
+              sm6
+              md6
+            )
+              v-text-field(
+                v-model='disciplina.local'
+                label='Local *'
+                color='#11802C'
+                v-validate="'required|max:100'"
+                :error-messages="errors.collect('local')"
+                data-vv-name='local'
+                data-vv-as='Local'
+              )
+            v-flex.padding(
+              xs6
+              sm6
+              md6
+            )
+              v-select.font-weight-select(
+                v-model='disciplina.horario'
+                label='Selecione um horário *'
+                color='#11802C'
+                :items='horarios'
+                no-data-text='Não há dados.'
+                v-validate="'required'"
+                :error-messages="errors.collect('horario')"
+                data-vv-name='horario'
+                data-vv-as='Horário'
                 clearable
               )
             v-flex.padding(
@@ -70,24 +121,24 @@
               md12
             )
               v-select.font-weight-select(
-                v-model='aluno.modalidadeBolsa.id'
-                label='Selecione um modalidade de bolsa *'
-                color='#2196f3'
-                :items='modalidadesBolsa'
-                item-text='sigla'
+                v-model='disciplina.departamento.id'
+                label='Selecione um departamento *'
+                color='#11802C'
+                :items='departamentos'
                 item-value='id'
+                item-text='nome'
                 no-data-text='Não há dados.'
                 v-validate="'required'"
-                :error-messages="errors.collect('modalidadeBolsa')"
-                data-vv-name='modalidadeBolsa'
-                data-vv-as='Modalidade da Bolsa'
+                :error-messages="errors.collect('departamento')"
+                data-vv-name='departamento'
+                data-vv-as='Departamento'
                 clearable
               )
       v-divider.mx-3
       v-card-actions
         v-btn.white--text.style-button(
           color='error darken-1'
-          @click='cancela()'
+          @click='cancelaCadastroDisciplina()'
         )
           v-icon(
             left
@@ -96,12 +147,11 @@
         v-spacer
         v-btn.white--text.style-button(
           color='success darken-1'
-          @click='cadastrar()'
+          @click='cadastrarDisciplina()'
         ) Salvar
           v-icon(
             right
           ) mdi-content-save
-
 </template>
 
 <script>
@@ -120,7 +170,7 @@ export default {
   },
 
   props: {
-    showDialogCadastraAluno: {
+    showDialogCadastraDisciplina: {
       type: Boolean,
       required: true
     },
@@ -130,25 +180,22 @@ export default {
       required: true
     },
 
-    curso: {
-      type: [Object, Array]
+    departamentos: {
+      type: [Object, Array],
+      required: true
     },
 
-    modalidadesBolsa: {
-      type: [Object, Array]
-    },
-
-    snackbarCadastraAluno: {
+    snackbarCadastraDisciplina: {
       type: Object,
       required: true
     },
 
-    snackbarAlunoCadastradoSucesso: {
+    snackbarDisciplinaCadastradaSucesso: {
       type: Object,
       required: true
     },
 
-    snackbarAlunoCadastradoErro: {
+    snackbarDisciplinaCadastradaErro: {
       type: Object,
       required: true
     }
@@ -156,55 +203,76 @@ export default {
 
   data () {
     return {
-      aluno: {
+      disciplina: {
         nome: null,
-        email: null,
+        codigo: null,
+        cargaHoraria: null,
+        local: null,
+        horario: null,
+        tipo: null,
         professor: {
           id: null
         },
-        curso: {
-          id: null
-        },
-        modalidadeBolsa: {
+        departamento: {
           id: null
         }
-      }
+      },
+      tipos: [
+        {
+          id: 0,
+          nome: 'Graduação'
+        },
+        {
+          id: 1,
+          nome: 'Pós-Graduação'
+        }
+      ],
+      cargasHoraria: [
+        '34', '68', '102'
+      ],
+      horarios: [
+        '07:00', '08:00', '09:00', '10:00', '14:00', '13:00',
+        '14:00', '15:00', '16:00', '17:00', '19:00', '21:00'
+      ]
     }
   },
 
   methods: {
     ...mapActions({
-      createAluno: 'aluno/createAluno'
+      createDisciplina: 'disciplina/createDisciplina'
     }),
 
     reset () {
-      this.aluno.nome = null
-      this.aluno.email = null
-      this.aluno.professor.id = null
-      this.aluno.curso.id = null
-      this.aluno.modalidadeBolsa.id = null
+      this.disciplina.nome = null
+      this.disciplina.codigo = null
+      this.disciplina.cargaHoraria = null
+      this.disciplina.local = null
+      this.disciplina.horario = null
+      this.disciplina.tipo = null
+      this.disciplina.professor.id = null
+      this.disciplina.departamento.id = null
       this.$validator.reset()
     },
 
-    cancela () {
-      this.$emit('closeModalCadastraAluno')
+    cancelaCadastroDisciplina () {
+      this.$emit('closeModalCadastraDisciplina')
       this.reset()
     },
 
-    cadastrar () {
-      this.aluno.professor.id = this.idProfessor
+    cadastrarDisciplina () {
+      this.disciplina.professor.id = this.idProfessor
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          this.createAluno(this.aluno).then((response) => {
-            this.showDialogCadastraAluno = false
-            this.snackbarAlunoCadastradoSucesso.value = true
-            this.$emit('getNovoAlunoCadastrado')
+          this.createDisciplina(this.disciplina).then((response) => {
+            this.showDialogCadastraDisciplina = false
+            this.snackbarDisciplinaCadastradaSucesso.value = true
+            this.$emit('getNovaDisciplinaCadastrada')
             this.reset()
           }).catch((erro) => {
-            this.snackbarAlunoCadastradoErro.value = true
+            this.snackbarDisciplinaCadastradaErro.value = true
           })
         } else {
-          this.snackbarCadastraAluno.value = true
+          this.snackbarCadastraDisciplina.value = true
         }
       })
     }
