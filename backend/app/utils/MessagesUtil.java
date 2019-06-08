@@ -26,9 +26,8 @@ public class MessagesUtil {
 	public static final String PROFESSOR_REMOVIDO_COM_SUCESSO = Messages.get("sigesdp.aluno.removido.com.sucesso");
 	
 	public static final String ID_DISCIPLINA_NAO_ENCONTRADA = Messages.get("sigesdp.id.disciplina.nao.encontrada");
-	public static final String PROFESSOR = Messages.get("sigesdp.disciplina.nao.encontrada");
-	public static final String DISCIPLINAS_NAO_ENCONTRADAS = Messages.get("sigesdp.disciplinas.nao.encontradas");
 	public static final String DISCIPLINA_NAO_ENCONTRADA = Messages.get("sigesdp.disciplina.nao.encontrada");
+	public static final String DISCIPLINAS_NAO_ENCONTRADAS = Messages.get("sigesdp.disciplinas.nao.encontradas");
 	public static final String DISCIPLINA_CADASTRADA_COM_SUCESSO = Messages.get("sigesdp.disciplina.cadastrada.com.sucesso");
 	public static final String DISCIPLINA_ATUALIZADA_COM_SUCESSO = Messages.get("sigesdp.disciplina.atualizada.com.sucesso");
 	public static final String DISCIPLINA_REMOVIDA_COM_SUCESSO = Messages.get("sigesdp.disciplina.removida.com.sucesso");

@@ -19,8 +19,10 @@
       slot='items'
       slot-scope='{ item }'
     )
-      td.text-xs-left {{ item.nome }}
-      td {{ item.modalidadeBolsa.sigla }}
+      td.text-xs-left {{ item.tipo == 0 ? 'Graduação' : 'Pós-Graduação' }}
+      td {{ item.codigo }}
+      td {{ item.nome }}
+      td {{ item.departamento.sigla }}
       td.text-xs-right
         v-tooltip(
           top
@@ -33,7 +35,7 @@
               v-on='on'
               slot='activator'
               icon
-              @click.stop='viewDetailsAluno(item)'
+              @click.stop='viewDetailsDisciplina(item)'
             )
               v-icon.no-margin(
                 color='#707070'
@@ -50,7 +52,7 @@
               v-on='on'
               slot='activator'
               icon
-              @click.stop='atualizaAluno(item)'
+              @click.stop='atualizaDisciplina(item)'
             )
               v-icon.no-margin(
                 color='#707070'
@@ -67,7 +69,7 @@
               v-on='on'
               slot='activator'
               icon
-              @click.stop='removeAluno(item)'
+              @click.stop='removeDisciplina(item)'
             )
               v-icon.no-margin(
                 color='red'
@@ -80,7 +82,7 @@
 
 <script>
 export default {
-  name: 'ListagemAlunos',
+  name: 'ListagemDisciplinas',
 
   props: {
     headers: {
@@ -114,16 +116,16 @@ export default {
   },
 
   methods: {
-    viewDetailsAluno (aluno) {
-      this.$emit('openModalDetalhesAluno', aluno)
+    viewDetailsDisciplina (disciplina) {
+      this.$emit('openModalDetalhesDisciplina', disciplina)
     },
 
-    atualizaAluno (aluno) {
-      this.$emit('openModalAtualizaAluno', aluno)
+    atualizaDisciplina (disciplina) {
+      this.$emit('openModalAtualizaDisciplina', disciplina)
     },
 
-    removeAluno (aluno) {
-      this.$emit('openModalConfirmaRemocaoAluno', aluno)
+    removeDisciplina (disciplina) {
+      this.$emit('openModalConfirmaRemocaoDisciplina', disciplina)
     }
   }
 }

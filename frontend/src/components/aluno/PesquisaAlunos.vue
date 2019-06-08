@@ -5,7 +5,7 @@
       :class='`elevation-4`'
     )
       v-card-title
-        span.white--text.font-weight Pesquisar alunos
+        span.white--text.font-weight Filtrar alunos
     v-divider.mx-3
     v-card-text.padding
       v-container.padding(
@@ -58,7 +58,7 @@
       v-card-actions
         v-btn.white--text.style-button(
           color='#707070'
-          @click='limpar()'
+          @click='limparFiltroAlunos()'
         )
           v-icon(
             left
@@ -67,7 +67,7 @@
         v-spacer
         v-btn.white--text.style-button(
           color='#3169B3'
-          @click='pesquisa()'
+          @click='pesquisaAlunos()'
         ) Pesquisar
           v-icon(
             right
@@ -105,7 +105,11 @@ export default {
       filtraUsuario: 'aluno/filtraUsuario'
     }),
 
-    pesquisa () {
+    limparFiltroAlunos () {
+
+    },
+
+    pesquisaAlunos () {
       // this.filtraUsuario(this.pesquisaAluno.nome, this.pesquisaAluno.idModalidade).then((response) => {
         // this.getAlunos(this.idProfessor)
       // }).catch((erro) => {

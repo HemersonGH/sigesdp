@@ -1,11 +1,11 @@
 <template lang="pug">
   v-card.ajust-top
     v-card(
-      color='#2CBF36'
+      color='#11802C'
       :class='`elevation-4`'
     )
       v-card-title
-        span.white--text.font-weight Pesquisar docentes
+        span.white--text.font-weight Filtrar docentes
     v-divider.mx-3
     v-card-text.padding
       v-container.padding(
@@ -30,7 +30,7 @@
             v-text-field.padding-bottom(
               v-model='nome'
               placeholder='Informe o nome do professor'
-              color='#2CBF36'
+              color='#11802C'
               clearable
             )
           v-flex.padding-top(
@@ -51,14 +51,14 @@
               item-text='nome'
               item-value='id'
               no-data-text='Não há dados.'
-              color='#2CBF36'
+              color='#11802C'
               clearable
             )
       v-divider.mx-3
       v-card-actions
         v-spacer
         v-btn.white--text.style-button(
-          color='#2CBF36'
+          color='#11802C'
           @click='pesquisa()'
         ) Pesquisar
           v-icon(

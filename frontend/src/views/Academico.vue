@@ -43,7 +43,7 @@ export default {
         {
           title: 'Docentes',
           text: 'Acesse as páginas publicas dos docentes da UFLA.',
-          colorCard: '#2CBF36',
+          colorCard: '#11802C',
           icon: 'mdi-account-multiple',
           route: '/academico/docentes'
         },

@@ -15,6 +15,7 @@ const state = {
 
 const getters = {
   alunos: state => state.alunos,
+  alunoNovo: state => state.alunoNovo,
   alunoAtualizado: state => state.alunoAtualizado,
   alunoRemovido: state => state.alunoRemovido
 }

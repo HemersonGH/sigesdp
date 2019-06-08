@@ -18,7 +18,7 @@
           :departamentos='departamentosSelect.data'
         )
         Card(
-          color='#2CBF36'
+          color='#11802C'
           :title='title'
           styleTitleDataTable='title-data-table'
           full-width

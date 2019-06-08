@@ -39,7 +39,7 @@
             :contentTable='alunos.data.alunos'
             @openModalDetalhesAluno='openModalDetalhesAluno'
             @openModalAtualizaAluno='openModalAtualizaAluno'
-            @openModalConfirmaRemocao='openModalConfirmaRemocao'
+            @openModalConfirmaRemocaoAluno='openModalConfirmaRemocaoAluno'
           )
     CadastraAluno(
       :showDialogCadastraAluno='showDialogCadastraAluno'
@@ -66,9 +66,9 @@
       @atualizaAluno='atualizaAluno'
     )
     ModalRemoveAluno(
-      :aluno='alunoRemove'
-      :showDialogConfirm='showDialogCofirmaRemocao'
-      @closeModalConfirmacaoRemocao='closeModalConfirmacaoRemocao'
+      :alunoRemove='alunoRemove'
+      :showDialogCofirmaRemocaoAluno='showDialogCofirmaRemocaoAluno'
+      @closeModalConfirmacaoRemocaoAluno='closeModalConfirmacaoRemocaoAluno'
       @removeAlunoFromDataBase='removeAlunoFromDataBase'
     )
     SnackBar(
@@ -96,7 +96,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
 import StatsCardTitle from '@/components/shared/StatsCardTitle.vue'
 import PesquisaAlunos from '@/components/aluno/PesquisaAlunos.vue'
@@ -111,7 +110,6 @@ export default {
   name: 'Alunos',
 
   components: {
-    LinkVoltar,
     StatsCardTitle,
     Card,
     PesquisaAlunos,
@@ -151,13 +149,7 @@ export default {
       showDialogCadastraAluno: false,
       showDialogDetalhesAluno: false,
       showDialogAtualizaAluno: false,
-      showDialogCofirmaRemocao: false,
-      snackbarAlunoAtualizadoSucesso: {
-        icon: 'mdi-check-outline',
-        message: 'Dados do aluno atualizado com sucesso.',
-        value: false,
-        color: 'success'
-      },
+      showDialogCofirmaRemocaoAluno: false,
       snackbarCadastraAluno: {
         icon: 'mdi-alert-circle-outline',
         message: 'Verifique os campos obrigatórios.',
@@ -175,6 +167,12 @@ export default {
         message: 'Não foi possível cadastrar o aluno.',
         value: false,
         color: 'error'
+      },
+      snackbarAlunoAtualizadoSucesso: {
+        icon: 'mdi-check-outline',
+        message: 'Dados do aluno atualizado com sucesso.',
+        value: false,
+        color: 'success'
       },
       snackbarAlunoAtualizadoErro: {
         icon: 'mdi-alert-circle-outline',
@@ -206,10 +204,6 @@ export default {
       getCursos: 'curso/getCursos'
     }),
 
-    valueSearch (query) {
-      this.search = query
-    },
-
     openModalCadastraAluno () {
       this.showDialogCadastraAluno = true
     },
@@ -236,13 +230,13 @@ export default {
       this.showDialogAtualizaAluno = false
     },
 
-    openModalConfirmaRemocao (alunoDeletado) {
+    openModalConfirmaRemocaoAluno (alunoDeletado) {
       this.alunoRemove = alunoDeletado
-      this.showDialogCofirmaRemocao = true
+      this.showDialogCofirmaRemocaoAluno = true
     },
 
-    closeModalConfirmacaoRemocao () {
-      this.showDialogCofirmaRemocao = false
+    closeModalConfirmacaoRemocaoAluno () {
+      this.showDialogCofirmaRemocaoAluno = false
     },
 
     getNovoAlunoCadastrado () {
@@ -263,7 +257,7 @@ export default {
     removeAlunoFromDataBase (aluno) {
       this.deleteAluno(aluno.id).then((response) => {
         this.getAlunos(this.getUsuarioLogado.id)
-        this.showDialogCofirmaRemocao = false
+        this.showDialogCofirmaRemocaoAluno = false
         this.snackbarAlunoRemovidoSucesso.value = true
         this.alunoRemove = null
       }).catch((erro) => {

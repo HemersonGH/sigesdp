@@ -1,7 +1,7 @@
 <template lang="pug">
   v-dialog(
-    max-width='450px'
-    v-model='showDialogCofirmaRemocaoAluno'
+    max-width='470px'
+    v-model='showDialogCofirmaRemocaoDisciplina'
     :persistent='true'
     :scrollable='true'
   )
@@ -32,48 +32,48 @@
               sm12
               md12
             )
-              h4.no-margin-bottom Tem certeza que deseja remover esse aluno?
+              h4.no-margin-bottom Tem certeza que deseja remover essa disciplina?
       v-divider.mx-3
       v-card-actions
         v-btn.white--text.style-button(
           color='error darken-1'
           small
-          @click.stop='cancelaRemocaoAluno()'
+          @click.stop='cancelaRemocaoDisciplina()'
         ) Não
         v-spacer
         v-btn.white--text.style-button(
           color='success darken-1'
           small
-          @click='confirmarRemocaoAluno()'
+          @click='confirmarRemocaoDisciplina()'
         ) Sim
 </template>
 
 <script>
 export default {
-  name: 'ModalRemoveAluno',
+  name: 'ModalRemoveDisciplina',
 
   props: {
     // data: {
     //   type: [Object, Array]
     // },
 
-    alunoRemove: {
+    disciplina: {
       type: Object
     },
 
-    showDialogCofirmaRemocaoAluno: {
+    showDialogCofirmaRemocaoDisciplina: {
       type: Boolean,
       required: true
     }
   },
 
   methods: {
-    cancelaRemocaoAluno () {
-      this.$emit('closeModalConfirmacaoRemocaoAluno')
+    cancelaRemocaoDisciplina () {
+      this.$emit('closeModalConfirmacaoRemocaoDisciplina')
     },
 
-    confirmarRemocaoAluno () {
-      this.$emit('removeAlunoFromDataBase', this.alunoRemove)
+    confirmarRemocaoDisciplina () {
+      this.$emit('removeDisciplinaFromDataBase', this.disciplina)
     }
   }
 }

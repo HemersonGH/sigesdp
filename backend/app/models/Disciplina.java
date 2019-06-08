@@ -140,7 +140,6 @@ public class Disciplina extends GenericModel {
 		this.setLocal(disciplina.local);
 		this.setHorario(disciplina.horario);
 		this.setTipo(disciplina.tipo);
-		this.setProfessor(Professor.findById(disciplina.professor.getId()));
 		this.setDepartamento(Departamento.findById(disciplina.departamento.getId()));
 		
 		this.save();

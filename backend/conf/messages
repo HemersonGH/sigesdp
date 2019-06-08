@@ -35,9 +35,9 @@ sigesdp.professor.removido.com.sucesso=Professor removido com sucesso.
 sigesdp.id.disciplina.nao.encontrada=Nenhuma disciplina foi encontrada com esse id.
 sigesdp.disciplina.nao.encontrada=Não foi possível encontrar a disciplina.
 sigesdp.disciplinas.nao.encontradas=Não foi possível encontrar todas as disciplinas do professor.
-sigesdp.disciplina.cadastrado.com.sucesso=Disciplina cadastrada com sucesso.
-sigesdp.disciplina.atualizado.com.sucesso=Disciplina atualizada com sucesso.
-sigesdp.disciplina.removido.com.sucesso=Disciplina removida com sucesso.
+sigesdp.disciplina.cadastrada.com.sucesso=Disciplina cadastrada com sucesso.
+sigesdp.disciplina.atualizada.com.sucesso=Disciplina atualizada com sucesso.
+sigesdp.disciplina.removida.com.sucesso=Disciplina removida com sucesso.
 
 sigesdp.id.area.conhecimento.nao.encontrada=Nenhuma área de conhecimento foi encontrada com esse id.
 sigesdp.area.conhecimento.nao.encontrada=Não foi possível encontrar a área de conhecimento.
