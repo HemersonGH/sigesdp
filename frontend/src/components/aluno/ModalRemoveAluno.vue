@@ -6,7 +6,7 @@
     :scrollable='true'
   )
     v-card
-      v-card-title.center
+      v-card-title.card-title
         span.headline
           v-icon(
             color='red'
@@ -89,7 +89,7 @@ export default {
   padding-top: 0;
 }
 
-.center {
+.card-title {
   justify-content: center;
 }
 

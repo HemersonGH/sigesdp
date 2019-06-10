@@ -88,7 +88,8 @@ export default {
     },
 
     contentTable: {
-      type: Array
+      type: Array,
+      required: true
     }
   },
 

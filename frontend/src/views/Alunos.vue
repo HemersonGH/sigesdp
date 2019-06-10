@@ -59,11 +59,14 @@
     )
     AtualizaAluno(
       :showDialogAtualizaAluno='showDialogAtualizaAluno'
-      :alunoAtualiza='alunoAtualiza'
+      :aluno='alunoAtualiza'
       :curso='cursos.data'
       :modalidadesBolsa='modalidadesBolsa.data'
+      :snackbarValidaAtualizaAluno='snackbarValidaAtualizaAluno'
+      :snackbarAlunoAtualizadoSucesso='snackbarAlunoAtualizadoSucesso'
+      :snackbarAlunoAtualizadoErro='snackbarAlunoAtualizadoErro'
+      @getNovoAlunoCadastrado='getNovoAlunoCadastrado'
       @closeModalAtualizaAluno='closeModalAtualizaAluno'
-      @atualizaAluno='atualizaAluno'
     )
     ModalRemoveAluno(
       :alunoRemove='alunoRemove'
@@ -81,6 +84,9 @@
       :data='snackbarAlunoCadastradoErro'
     )
     SnackBar(
+      :data='snackbarValidaAtualizaAluno'
+    )
+    SnackBar(
       :data='snackbarAlunoAtualizadoSucesso'
     )
     SnackBar(
@@ -95,6 +101,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
 import PesquisaAlunos from '@/components/aluno/PesquisaAlunos.vue'
@@ -167,6 +174,12 @@ export default {
         value: false,
         color: 'error'
       },
+      snackbarValidaAtualizaAluno: {
+        icon: 'mdi-alert-circle-outline',
+        message: 'Verifique os campos obrigatórios.',
+        value: false,
+        color: 'error'
+      },
       snackbarAlunoAtualizadoSucesso: {
         icon: 'mdi-check-outline',
         message: 'Dados do aluno atualizado com sucesso.',
@@ -197,7 +210,6 @@ export default {
   methods: {
     ...mapActions({
       getAlunos: 'aluno/getAlunos',
-      updateAluno: 'aluno/updateAluno',
       deleteAluno: 'aluno/deleteAluno',
       getModalidadesBolsa: 'modalidadesBolsa/getModalidadesBolsa',
       getCursos: 'curso/getCursos'
@@ -212,7 +224,7 @@ export default {
     },
 
     openModalDetalhesAluno (aluno) {
-      this.alunoDetalhes = aluno
+      this.alunoDetalhes = _.cloneDeep(aluno)
       this.showDialogDetalhesAluno = true
     },
 
@@ -221,7 +233,7 @@ export default {
     },
 
     openModalAtualizaAluno (alunoAtualizado) {
-      this.alunoAtualiza = alunoAtualizado
+      this.alunoAtualiza = _.cloneDeep(alunoAtualizado)
       this.showDialogAtualizaAluno = true
     },
 
@@ -230,7 +242,7 @@ export default {
     },
 
     openModalConfirmaRemocaoAluno (alunoDeletado) {
-      this.alunoRemove = alunoDeletado
+      this.alunoRemove = _.cloneDeep(alunoDeletado)
       this.showDialogCofirmaRemocaoAluno = true
     },
 
@@ -239,18 +251,9 @@ export default {
     },
 
     getNovoAlunoCadastrado () {
-      this.showDialogCadastraAluno = false
       this.getAlunos(this.getUsuarioLogado.id)
-    },
-
-    atualizaAluno (aluno) {
-      this.updateAluno(aluno).then((response) => {
-        this.getAlunos(this.getUsuarioLogado.id)
-        this.showDialogAtualizaAluno = false
-        this.snackbarAlunoAtualizadoSucesso.value = true
-      }).catch((erro) => {
-        this.snackbarAlunoAtualizadoErro.value = true
-      })
+      this.showDialogCadastraAluno = false
+      this.showDialogAtualizaAluno = false
     },
 
     removeAlunoFromDataBase (aluno) {

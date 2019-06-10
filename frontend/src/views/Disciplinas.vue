@@ -58,10 +58,13 @@
     )
     AtualizaDisciplina(
       :showDialogAtualizaDisciplina='showDialogAtualizaDisciplina'
-      :disciplinaAtualiza='disciplinaAtualiza'
+      :disciplina='disciplinaAtualiza'
       :departamentos='departamentosSelect.data'
+      :snackbarValidaAtualizaDisciplina='snackbarValidaAtualizaDisciplina'
+      :snackbarDisciplinaAtualizadaSucesso='snackbarDisciplinaAtualizadaSucesso'
+      :snackbarDisciplinaAtualizadaErro='snackbarDisciplinaAtualizadaErro'
+      @getNovaDisciplinaCadastrada='getNovaDisciplinaCadastrada'
       @closeModalAtualizaDisciplina='closeModalAtualizaDisciplina'
-      @atualizaDisciplina='atualizaDisciplina'
     )
     ModalRemoveDisciplina(
       :disciplina='disciplinaRemove'
@@ -79,6 +82,9 @@
       :data='snackbarDisciplinaCadastradaErro'
     )
     SnackBar(
+      :data='snackbarValidaAtualizaDisciplina'
+    )
+    SnackBar(
       :data='snackbarDisciplinaAtualizadaSucesso'
     )
     SnackBar(
@@ -93,6 +99,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
 import PesquisaDisciplinas from '@/components/disciplina/PesquisaDisciplinas.vue'
@@ -175,6 +182,12 @@ export default {
         value: false,
         color: 'error'
       },
+      snackbarValidaAtualizaDisciplina: {
+        icon: 'mdi-alert-circle-outline',
+        message: 'Verifique os campos obrigatórios.',
+        value: false,
+        color: 'error'
+      },
       snackbarDisciplinaAtualizadaSucesso: {
         icon: 'mdi-check-outline',
         message: 'Dados do disciplina atualizado com sucesso.',
@@ -205,7 +218,6 @@ export default {
   methods: {
     ...mapActions({
       getDisciplinas: 'disciplina/getDisciplinas',
-      updateDisciplina: 'disciplina/updateDisciplina',
       deleteDisciplina: 'disciplina/deleteDisciplina',
       getDepartamentosSelect: 'departamento/getDepartamentosSelect',
       getCursos: 'curso/getCursos'
@@ -220,7 +232,7 @@ export default {
     },
 
     openModalDetalhesDisciplina (disciplina) {
-      this.disciplinaDetalhes = disciplina
+      this.disciplinaDetalhes = _.cloneDeep(disciplina)
       this.showDialogDetalhesDisciplina = true
     },
 
@@ -229,7 +241,7 @@ export default {
     },
 
     openModalAtualizaDisciplina (disciplinaAtualizada) {
-      this.disciplinaAtualiza = disciplinaAtualizada
+      this.disciplinaAtualiza = _.cloneDeep(disciplinaAtualizada)
       this.showDialogAtualizaDisciplina = true
     },
 
@@ -238,7 +250,7 @@ export default {
     },
 
     openModalConfirmaRemocaoDisciplina (disciplinaRemovida) {
-      this.disciplinaRemove = disciplinaRemovida
+      this.disciplinaRemove = _.cloneDeep(disciplinaRemovida)
       this.showDialogCofirmaRemocaoDisciplina = true
     },
 
@@ -247,19 +259,9 @@ export default {
     },
 
     getNovaDisciplinaCadastrada () {
-      this.showDialogCadastraDisciplina = false
       this.getDisciplinas(this.getUsuarioLogado.id)
-    },
-
-    atualizaDisciplina (disciplina) {
-      this.updateDisciplina(disciplina).then((response) => {
-        this.getDisciplinas(this.getUsuarioLogado.id)
-        this.showDialogAtualizaDisciplina = false
-        this.snackbarDisciplinaAtualizadaSucesso.value = true
-        this.disciplinaAtualiza = null
-      }).catch((erro) => {
-        this.snackbarDisciplinaAtualizadaErro.value = true
-      })
+      this.showDialogCadastraDisciplina = false
+      this.showDialogAtualizaDisciplina = false
     },
 
     removeDisciplinaFromDataBase (disciplina) {

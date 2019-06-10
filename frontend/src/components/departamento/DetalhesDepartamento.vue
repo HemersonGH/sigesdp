@@ -6,15 +6,17 @@
     :scrollable='true'
   )
     v-card
-      v-card-title.center
+      v-card-title.card-title.white--text
         span.headline Detalhes do Departamento
       v-divider.mx-3
       v-card-text.no-margin-top
         v-container(
           grid-list-md
+          fluid
         )
           v-layout(
             wrap
+            row
           )
             v-flex(
               xs12
@@ -22,28 +24,28 @@
               md12
             )
               h5.font-weight-bold.no-margin-bottom Nome:
-              p {{ data.nome }}
+                span.style-sub-title {{ data.nome }}
             v-flex(
               xs12
               sm12
               md12
             )
               h5.font-weight-bold.no-margin-bottom Chefe:
-              p {{ data.chefe }}
+                span.style-sub-title {{ data.chefe }}
             v-flex(
               xs12
               sm12
               md12
             )
               h5.font-weight-bold.no-margin-bottom Telefone:
-              p {{ data.telefone }}
+                span.style-sub-title {{ data.telefone }}
             v-flex(
               xs12
               sm12
               md12
             )
               h5.font-weight-bold.no-margin-bottom Apresentação:
-              p {{ data.descricao }}
+              span.style-sub-resumo {{ data.descricao }}
       v-divider.mx-3
       v-card-actions
         v-spacer
@@ -91,8 +93,20 @@ export default {
   padding-top: 0;
 }
 
-.center {
+.card-title {
   justify-content: center;
+  background: #3169B3;
+}
+
+.style-sub-title {
+  padding-left: 10px;
+  font-weight: 300;
+  font-size: 95%;
+}
+
+.style-sub-resumo {
+  font-weight: 300;
+  font-size: 95%;
 }
 
 .style-button{

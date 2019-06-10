@@ -24,7 +24,7 @@
               md6
             )
               v-select.font-weight-select(
-                v-model='disciplinaAtualiza.tipo'
+                v-model='disciplina.tipo'
                 label='Selecione o tipo da disciplina *'
                 color='#11802C'
                 :items='tipos'
@@ -43,7 +43,7 @@
               md6
             )
               v-text-field(
-                v-model='disciplinaAtualiza.nome'
+                v-model='disciplina.nome'
                 label='Nome *'
                 color='#11802C'
                 v-validate="'required|max:100'"
@@ -57,7 +57,7 @@
               md6
             )
               v-text-field(
-                v-model='disciplinaAtualiza.codigo'
+                v-model='disciplina.codigo'
                 label='Código *'
                 color='#11802C'
                 v-validate="'required|max:6'"
@@ -72,7 +72,7 @@
               md6
             )
               v-select(
-                v-model='disciplinaAtualiza.cargaHoraria'
+                v-model='disciplina.cargaHoraria'
                 label='Seleciona a carga horária *'
                 color='#11802C'
                 :items='cargasHoraria'
@@ -90,7 +90,7 @@
               md6
             )
               v-text-field(
-                v-model='disciplinaAtualiza.local'
+                v-model='disciplina.local'
                 label='Local *'
                 color='#11802C'
                 v-validate="'required|max:100'"
@@ -104,7 +104,7 @@
               md6
             )
               v-select.font-weight-select(
-                v-model='disciplinaAtualiza.horario'
+                v-model='disciplina.horario'
                 label='Selecione um horário *'
                 color='#11802C'
                 :items='horarios'
@@ -121,7 +121,7 @@
               md12
             )
               v-select.font-weight-select(
-                v-model='disciplinaAtualiza.departamento.id'
+                v-model='disciplina.departamento.id'
                 label='Selecione um departamento *'
                 color='#11802C'
                 :items='departamentos'
@@ -152,13 +152,10 @@
           v-icon(
             right
           ) mdi-content-save
-    SnackBar(
-      :data='snackbarValidaAtualizaDisciplina'
-    )
 </template>
 
 <script>
-import SnackBar from '@/components/shared/SnackBar.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'AtualizaDisciplina',
@@ -167,22 +164,35 @@ export default {
     validator: 'new'
   },
 
-  components: {
-    SnackBar
-  },
-
   props: {
     showDialogAtualizaDisciplina: {
       type: Boolean,
       required: true
     },
 
-    disciplinaAtualiza: {
-      type: Object
+    disciplina: {
+      type: Object,
+      required: true
     },
 
     departamentos: {
-      type: [Object, Array]
+      type: [Object, Array],
+      required: true
+    },
+
+    snackbarValidaAtualizaDisciplina: {
+      type: Object,
+      required: true
+    },
+
+    snackbarDisciplinaAtualizadaSucesso: {
+      type: Object,
+      required: true
+    },
+
+    snackbarDisciplinaAtualizadaErro: {
+      type: Object,
+      required: true
     }
   },
 
@@ -204,17 +214,15 @@ export default {
       horarios: [
         '07:00', '08:00', '09:00', '10:00', '14:00', '13:00',
         '14:00', '15:00', '16:00', '17:00', '19:00', '21:00'
-      ],
-      snackbarValidaAtualizaDisciplina: {
-        icon: 'mdi-alert-circle-outline',
-        message: 'Verifique os campos obrigatórios.',
-        value: false,
-        color: 'error'
-      }
+      ]
     }
   },
 
   methods: {
+    ...mapActions({
+      updateDisciplina: 'disciplina/updateDisciplina'
+    }),
+
     fecharAtualizaDisciplina () {
       this.$emit('closeModalAtualizaDisciplina')
     },
@@ -222,7 +230,12 @@ export default {
     atualizaDisciplina () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          this.$emit('atualizaDisciplina', this.disciplinaAtualiza)
+          this.updateDisciplina(this.disciplina).then((response) => {
+            this.snackbarDisciplinaAtualizadaSucesso.value = true
+            this.$emit('getNovaDisciplinaCadastrada')
+          }).catch((erro) => {
+            this.snackbarDisciplinaAtualizadaErro.value = true
+          })
         } else {
           this.snackbarValidaAtualizaDisciplina.value = true
         }

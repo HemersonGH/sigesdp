@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {
+  SET_ALUNO,
   SET_ALUNOS_LIST,
   SET_CADASTRA_ALUNO,
   SET_ALUNO_ATUALIZADO,
@@ -7,6 +8,7 @@ import {
 } from '../mutation-types'
 
 const state = {
+  aluno: {},
   alunos: [],
   alunoNovo: null,
   alunoAtualizado: null,
@@ -14,6 +16,7 @@ const state = {
 }
 
 const getters = {
+  aluno: state => state.aluno,
   alunos: state => state.alunos,
   alunoNovo: state => state.alunoNovo,
   alunoAtualizado: state => state.alunoAtualizado,
@@ -21,6 +24,9 @@ const getters = {
 }
 
 const mutations = {
+  [SET_ALUNO] (state, aluno) {
+    state.aluno = aluno
+  },
   [SET_ALUNOS_LIST] (state, alunos) {
     state.alunos = alunos
   },
@@ -42,7 +48,7 @@ const actions = {
   },
   async getAluno ({ commit }, id) {
     const result = await axios.get(`/aluno/${id}`)
-    commit('SET_ALUNO_ATUALIZADO', result)
+    commit('SET_ALUNO', result)
     return result.data
   },
   async createAluno ({ commit }, novoAluno) {

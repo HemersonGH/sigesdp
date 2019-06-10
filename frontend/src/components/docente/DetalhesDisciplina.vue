@@ -6,7 +6,7 @@
     :scrollable='true'
   )
     v-card
-      v-card-title.center
+      v-card-title.card-title.white--text
         span.headline Detalhes da Disciplina
       v-divider.mx-3
       v-card-text.no-margin-top
@@ -93,8 +93,9 @@ export default {
   padding-top: 0;
 }
 
-.center {
+.card-title {
   justify-content: center;
+  background: #3169B3;
 }
 
 .style-button{
@@ -104,6 +105,6 @@ export default {
 .style-sub-title {
   padding-left: 10px;
   font-weight: 300;
-  font-size: calc(1.0625rem - 0.0895rem);
+  font-size: 90%;
 }
 </style>

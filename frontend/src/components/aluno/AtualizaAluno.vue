@@ -23,10 +23,10 @@
               md12
             )
               v-text-field(
-                v-model='alunoAtualiza.nome'
+                v-model='aluno.nome'
                 label='Nome *'
                 color='#3169B3'
-                v-validate="'required'"
+                v-validate="'required|max:150'"
                 :error-messages="errors.collect('nome')"
                 data-vv-name='nome'
                 data-vv-as='Nome'
@@ -37,10 +37,10 @@
               md12
             )
               v-text-field(
-                v-model='alunoAtualiza.email'
+                v-model='aluno.email'
                 label='Email *'
                 color='#3169B3'
-                v-validate="'required|email'"
+                v-validate="'required|email|max:200'"
                 :error-messages="errors.collect('email')"
                 data-vv-name='email'
                 data-vv-as='Email'
@@ -51,12 +51,12 @@
               md12
             )
               v-select.font-weight-select(
-                v-model='alunoAtualiza.curso.id'
+                v-model='aluno.curso.id'
                 label='Selecione um curso *'
                 color='#3169B3'
                 :items='curso'
-                item-text='nome'
                 item-value='id'
+                item-text='nome'
                 no-data-text='Não há dados.'
                 v-validate="'required'"
                 :error-messages="errors.collect('curso')"
@@ -70,12 +70,12 @@
               md12
             )
               v-select.font-weight-select(
-                v-model='alunoAtualiza.modalidadeBolsa.id'
+                v-model='aluno.modalidadeBolsa.id'
                 label='Selecione uma modalidade de bolsa *'
                 color='#3169B3'
                 :items='modalidadesBolsa'
-                item-text='sigla'
                 item-value='id'
+                item-text='sigla'
                 no-data-text='Não há dados.'
                 v-validate="'required'"
                 :error-messages="errors.collect('modalidadeBolsa')"
@@ -101,13 +101,10 @@
           v-icon(
             right
           ) mdi-content-save
-    SnackBar(
-      :data='snackbarValidaAtualizaAluno'
-    )
 </template>
 
 <script>
-import SnackBar from '@/components/shared/SnackBar.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'AtualizaAluno',
@@ -116,41 +113,48 @@ export default {
     validator: 'new'
   },
 
-  components: {
-    SnackBar
-  },
-
   props: {
     showDialogAtualizaAluno: {
       type: Boolean,
       required: true
     },
 
-    alunoAtualiza: {
-      type: Object
+    aluno: {
+      type: Object,
+      required: true
     },
 
     curso: {
-      type: [Object, Array]
+      type: [Object, Array],
+      required: true
     },
 
     modalidadesBolsa: {
-      type: [Object, Array]
-    }
-  },
+      type: [Object, Array],
+      required: true
+    },
 
-  data () {
-    return {
-      snackbarValidaAtualizaAluno: {
-        icon: 'mdi-alert-circle-outline',
-        message: 'Verifique os campos obrigatórios.',
-        value: false,
-        color: 'error'
-      }
+    snackbarValidaAtualizaAluno: {
+      type: Object,
+      required: true
+    },
+
+    snackbarAlunoAtualizadoSucesso: {
+      type: Object,
+      required: true
+    },
+
+    snackbarAlunoAtualizadoErro: {
+      type: Object,
+      required: true
     }
   },
 
   methods: {
+    ...mapActions({
+      updateAluno: 'aluno/updateAluno'
+    }),
+
     fechar () {
       this.$emit('closeModalAtualizaAluno')
     },
@@ -158,7 +162,12 @@ export default {
     atualizaAluno () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          this.$emit('atualizaAluno', this.alunoAtualiza)
+          this.updateAluno(this.aluno).then((response) => {
+            this.snackbarAlunoAtualizadoSucesso.value = true
+            this.$emit('getNovoAlunoCadastrado')
+          }).catch((erro) => {
+            this.snackbarAlunoAtualizadoErro.value = true
+          })
         } else {
           this.snackbarValidaAtualizaAluno.value = true
         }

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {
+  SET_DISCIPLINA,
   SET_DISCIPLINAS_LIST,
   SET_CADASTRA_DISCIPLINA,
   SET_DISCIPLINA_ATUALIZADA,
@@ -7,6 +8,7 @@ import {
 } from '../mutation-types'
 
 const state = {
+  disciplina: {},
   disciplinas: [],
   disciplinaNova: null,
   disciplinaAtualizada: null,
@@ -14,6 +16,7 @@ const state = {
 }
 
 const getters = {
+  disciplina: state => state.disciplina,
   disciplinas: state => state.disciplinas,
   disciplinaNova: state => state.disciplinaNova,
   disciplinaAtualizada: state => state.disciplinaAtualizada,
@@ -21,6 +24,9 @@ const getters = {
 }
 
 const mutations = {
+  [SET_DISCIPLINA] (state, disciplina) {
+    state.disciplina = disciplina
+  },
   [SET_DISCIPLINAS_LIST] (state, disciplinas) {
     state.disciplinas = disciplinas
   },
@@ -42,7 +48,7 @@ const actions = {
   },
   async getDisciplina ({ commit }, id) {
     const response = await axios.get(`/disciplina/${id}`)
-    commit('SET_DISCIPLINA_ATUALIZADA', response)
+    commit('SET_DISCIPLINA', response)
     return response.data
   },
   async createDisciplina ({ commit }, novoDisciplina) {

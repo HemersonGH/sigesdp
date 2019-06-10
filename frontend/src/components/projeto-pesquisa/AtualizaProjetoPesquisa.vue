@@ -1,7 +1,7 @@
 <template lang="pug">
   v-dialog(
     max-width='600px'
-    v-model='showDialogAtualizaProjetoPesquisa'
+    :value='showDialogAtualizaProjetoPesquisa'
     :persistent='true'
     :scrollable='true'
   )
@@ -24,7 +24,7 @@
               md6
             )
               v-select.font-weight-select(
-                v-model='projetoPesquisaAtualiza.tipo'
+                :value='projetoPesquisaAtualiza.tipo'
                 label='Selecione o tipo da disciplina *'
                 color='#F5DE31'
                 :items='tipos'
@@ -43,7 +43,7 @@
               md6
             )
               v-text-field(
-                v-model='projetoPesquisaAtualiza.nome'
+                :value='projetoPesquisaAtualiza.nome'
                 label='Nome *'
                 color='#F5DE31'
                 v-validate="'required|max:100'"
@@ -57,7 +57,7 @@
               md6
             )
               v-text-field(
-                v-model='projetoPesquisaAtualiza.codigo'
+                :value='projetoPesquisaAtualiza.codigo'
                 label='Código *'
                 color='#F5DE31'
                 v-validate="'required|max:6'"
@@ -72,7 +72,7 @@
               md6
             )
               v-select(
-                v-model='projetoPesquisaAtualiza.cargaHoraria'
+                :value='projetoPesquisaAtualiza.cargaHoraria'
                 label='Seleciona a carga horária *'
                 color='#F5DE31'
                 :items='cargasHoraria'
@@ -90,7 +90,7 @@
               md6
             )
               v-text-field(
-                v-model='projetoPesquisaAtualiza.local'
+                :value='projetoPesquisaAtualiza.local'
                 label='Local *'
                 color='#F5DE31'
                 v-validate="'required|max:100'"
@@ -104,7 +104,7 @@
               md6
             )
               v-select.font-weight-select(
-                v-model='projetoPesquisaAtualiza.horario'
+                :value='projetoPesquisaAtualiza.horario'
                 label='Selecione um horário *'
                 color='#F5DE31'
                 :items='horarios'
@@ -121,7 +121,7 @@
               md12
             )
               v-select.font-weight-select(
-                v-model='projetoPesquisaAtualiza.departamento.id'
+                :value='projetoPesquisaAtualiza.departamento.id'
                 label='Selecione um departamento *'
                 color='#F5DE31'
                 :items='departamentos'

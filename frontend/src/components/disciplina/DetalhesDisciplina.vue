@@ -69,7 +69,8 @@ export default {
     },
 
     disciplinaDetalhes: {
-      type: Object
+      type: Object,
+      required: true
     }
   },
 

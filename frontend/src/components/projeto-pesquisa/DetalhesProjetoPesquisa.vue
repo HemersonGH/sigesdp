@@ -10,7 +10,7 @@
         span.headline Detalhes do Projeto de Pesquisa
       v-divider.mx-3
       v-card-text.no-margin-top
-        v-container.padding(
+        v-container(
           grid-list-md
           fluid
         )
@@ -18,7 +18,7 @@
             row
             wrap
           )
-            v-flex.padding(
+            v-flex(
               xs6
               sm6
               md6
@@ -26,7 +26,7 @@
               h5.font-weight-bold.no-margin-bottom
                 | Código:
                 span.style-sub-title {{ projetoPesquisaDetalhes.codigo }}
-            v-flex.padding(
+            v-flex(
               xs6
               sm6
               md6
@@ -34,7 +34,7 @@
               h5.font-weight-bold.no-margin-bottom
                 | Período:
                 span.style-sub-title {{ projetoPesquisaDetalhes.dataInicio }} até {{ projetoPesquisaDetalhes.dataTermino }}
-            v-flex.padding(
+            v-flex(
               xs12
               sm12
               md12
@@ -42,7 +42,7 @@
               h5.font-weight-bold.no-margin-bottom
                 | Título:
                 span.style-sub-title {{ projetoPesquisaDetalhes.titulo }}
-            v-flex.padding(
+            v-flex(
               xs6
               sm6
               md6
@@ -50,7 +50,7 @@
               h5.font-weight-bold.no-margin-bottom
                 | Coordenador:
                 span.style-sub-title {{ docente.nome }}
-            v-flex.padding(
+            v-flex(
               xs6
               sm6
               md6
@@ -58,7 +58,7 @@
               h5.font-weight-bold.no-margin-bottom
                 | Email:
                 span.style-sub-title {{ docente.usuario.email }}
-            v-flex.padding(
+            v-flex(
               xs12
               sm12
               md12
@@ -66,7 +66,7 @@
               h5.font-weight-bold.no-margin-bottom
                 | Área do Conhecimeto:
                 span.style-sub-title {{ docente.areaConhecimento.nome }}
-            v-flex.padding(
+            v-flex(
               xs12
               sm12
               md12

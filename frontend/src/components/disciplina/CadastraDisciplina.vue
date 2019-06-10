@@ -265,7 +265,6 @@ export default {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
           this.createDisciplina(this.disciplina).then((response) => {
-            this.showDialogCadastraDisciplina = false
             this.snackbarDisciplinaCadastradaSucesso.value = true
             this.$emit('getNovaDisciplinaCadastrada')
             this.reset()

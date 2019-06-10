@@ -196,7 +196,6 @@ export default {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
           this.createAluno(this.aluno).then((response) => {
-            this.showDialogCadastraAluno = false
             this.snackbarAlunoCadastradoSucesso.value = true
             this.$emit('getNovoAlunoCadastrado')
             this.reset()

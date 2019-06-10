@@ -58,7 +58,8 @@ export default {
     },
 
     alunoDetalhes: {
-      type: Object
+      type: Object,
+      required: true
     }
   },
 

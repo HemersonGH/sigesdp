@@ -110,7 +110,7 @@
         v-spacer
         v-btn.white--text.style-button(
           color='#11802C'
-          @click='pesquisarDisciplina()'
+          @click='pesquisarDisciplinas()'
         ) Pesquisar
           v-icon(
             right
@@ -129,7 +129,8 @@ export default {
 
   props: {
     departamentos: {
-      type: [Object, Array]
+      type: [Object, Array],
+      required: true
     }
   },
 
@@ -155,11 +156,11 @@ export default {
   },
 
   methods: {
-    limparFiltroDisciplina () {
+    limparFiltroDisciplinas () {
 
     },
 
-    pesquisarDisciplina () {
+    pesquisarDisciplinas () {
       // this.filtraAluno(this.pesquisaDisciplina.nome, this.pesquisaDisciplina.idModalidade).then((response) => {
       //   this.getAlunos(this.idProfessor)
       // }).catch((erro) => {
