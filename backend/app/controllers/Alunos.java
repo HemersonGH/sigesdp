@@ -78,7 +78,8 @@ public class Alunos extends DefaultController {
 			throw new ValidationException(MessagesUtil.ALUNO_NAO_ENCONTRADO);
 		}
 
-		List<Aluno> alunos = Aluno.find("id_modalidade_bolsa", idModalidade).fetch(); // setParameter("id_modalidade_bolsa", idModalidade).
+		List<Aluno> alunos = Aluno.find("id_modalidade_bolsa", idModalidade).fetch(); // setParameter("id_modalidade_bolsa",
+																						// idModalidade).
 //		List<Aluno> alunos = Aluno.find("id_modalidade_bolsa", idModalidade).fetch(); // setParameter("id_modalidade_bolsa", idModalidade).
 
 		if (alunos == null) {

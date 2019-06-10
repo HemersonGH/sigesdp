@@ -33,7 +33,7 @@
             )
               h5.font-weight-bold.no-margin-bottom
                 | Período:
-                span.style-sub-title {{ projetoPesquisaDetalhes.dataInicio.replace(/\-/g, '/') }} até {{ projetoPesquisaDetalhes.dataTermino.replace(/\-/g, '/') }}
+                span.style-sub-title {{ projetoPesquisaDetalhes.dataInicio }} até {{ projetoPesquisaDetalhes.dataTermino }}
             v-flex.padding(
               xs12
               sm12
@@ -49,7 +49,7 @@
             )
               h5.font-weight-bold.no-margin-bottom
                 | Coordenador:
-                span.style-sub-title {{ projetoPesquisaDetalhes.professor }}
+                span.style-sub-title {{ docente.nome }}
             v-flex.padding(
               xs6
               sm6
@@ -57,7 +57,7 @@
             )
               h5.font-weight-bold.no-margin-bottom
                 | Email:
-                span.style-sub-title {{ projetoPesquisaDetalhes.professor }}
+                span.style-sub-title {{ docente.usuario.email }}
             v-flex.padding(
               xs12
               sm12
@@ -65,7 +65,7 @@
             )
               h5.font-weight-bold.no-margin-bottom
                 | Área do Conhecimeto:
-                span.style-sub-title {{ projetoPesquisaDetalhes.professor }}
+                span.style-sub-title {{ docente.areaConhecimento.nome }}
             v-flex.padding(
               xs12
               sm12
@@ -97,6 +97,10 @@ export default {
     },
 
     projetoPesquisaDetalhes: {
+      type: Object
+    },
+
+    docente: {
       type: Object
     }
   },

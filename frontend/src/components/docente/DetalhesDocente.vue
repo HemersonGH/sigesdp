@@ -63,7 +63,7 @@ export default {
 
   methods: {
     ...mapActions({
-      getDocenteById: 'docente/getDocenteById'
+      getDocente: 'docente/getDocente'
     })
   },
 
@@ -74,7 +74,7 @@ export default {
   },
 
   created () {
-    this.getDocenteById(this.$route.params.id)
+    this.getDocente(this.$route.params.id)
   }
 }
 </script>

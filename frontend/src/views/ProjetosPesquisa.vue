@@ -54,6 +54,7 @@
     DetalhesProjetoPesquisa(
       :showDialogDetalhesProjetoPesquisa='showDialogDetalhesProjetoPesquisa'
       :projetoPesquisaDetalhes='projetoPesquisaDetalhes'
+      :docente='docente.data'
       @closeModalDetalhesProjetoPesquisa='closeModalDetalhesProjetoPesquisa'
     )
     AtualizaProjetoPesquisa(
@@ -199,6 +200,7 @@ export default {
 
   methods: {
     ...mapActions({
+      getDocente: 'docente/getDocente',
       getDepartamentos: 'departamento/getDepartamentos',
       getAlunos: 'aluno/getAlunos',
       getProjetosPesquisa: 'projetoPesquisa/getProjetosPesquisa',
@@ -279,6 +281,7 @@ export default {
     ...mapGetters({
       usuarioLogado: 'usuario/usuarioLogado',
       departamentos: 'departamento/departamentos',
+      docente: 'docente/docente',
       alunos: 'aluno/alunos',
       projetosPesquisa: 'projetoPesquisa/projetosPesquisa',
       projetoPesquisaRemovido: 'projetoPesquisa/projetoPesquisaRemovido',
@@ -297,6 +300,7 @@ export default {
 
   created () {
     this.getDepartamentos()
+    this.getDocente(this.getUsuarioLogado.id)
     this.getProjetosPesquisa(this.getUsuarioLogado.id)
     this.getAlunos(this.getUsuarioLogado.id)
   }
