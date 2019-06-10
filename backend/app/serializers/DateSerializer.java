@@ -16,20 +16,15 @@ import play.Play;
 public class DateSerializer implements JsonSerializer<Date> {
 
 	private static final String DATE_FORMAT = Play.configuration.getProperty("date.format");
-	private static final String DATE_FORMAT_TIMETABLE = Play.configuration.getProperty("date.format.timetable");
 
 	@Override
 	public JsonElement serialize(Date date, Type arg1, JsonSerializationContext arg2) {
-		SimpleDateFormat simpleDateFormatter = new SimpleDateFormat(DATE_FORMAT_TIMETABLE);
+		SimpleDateFormat simpleDateFormatter = new SimpleDateFormat(DATE_FORMAT);
 
 		return new JsonPrimitive(simpleDateFormatter.format(date));
 	}
 
 	public static Transformer getTransformer() {
 		return new DateTransformer(DATE_FORMAT);
-	}
-
-	public static Transformer getTransformerWithTimetable() {
-		return new DateTransformer(DATE_FORMAT_TIMETABLE);
 	}
 }

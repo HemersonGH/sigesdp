@@ -97,7 +97,6 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
-import StatsCardTitle from '@/components/shared/StatsCardTitle.vue'
 import PesquisaAlunos from '@/components/aluno/PesquisaAlunos.vue'
 import ListagemAlunos from '@/components/aluno/ListagemAlunos.vue'
 import CadastraAluno from '@/components/aluno/CadastraAluno.vue'
@@ -110,7 +109,6 @@ export default {
   name: 'Alunos',
 
   components: {
-    StatsCardTitle,
     Card,
     PesquisaAlunos,
     ListagemAlunos,

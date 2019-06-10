@@ -88,7 +88,7 @@ const router = new Router({
       path: '/projetos-pesquisa',
       name: 'pesquisaDocente',
       component: ProjetosPesquisa,
-      title: 'Projeto de Pesquisa',
+      title: 'Projetos de Pesquisa',
       public: true
     },
     {

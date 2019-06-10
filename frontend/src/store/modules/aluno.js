@@ -60,7 +60,7 @@ const actions = {
     commit('SET_ALUNO_REMOVIDO', result)
     return result.data
   },
-  async filtraUsuario ({ commit }, nome, idModalidade) {
+  async filtraAluno ({ commit }, nome, idModalidade) {
     const response = await axios({
       method: 'get',
       url: '/aluno/filtro/',

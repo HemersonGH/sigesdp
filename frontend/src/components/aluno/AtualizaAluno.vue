@@ -6,7 +6,7 @@
     :scrollable='true'
   )
     v-card
-      v-card-title.center
+      v-card-title.card-title.white--text
         span.headline Atualizar Aluno
       v-divider.mx-3
       v-card-text.no-margin-top
@@ -25,7 +25,7 @@
               v-text-field(
                 v-model='alunoAtualiza.nome'
                 label='Nome *'
-                color='#2196f3'
+                color='#3169B3'
                 v-validate="'required'"
                 :error-messages="errors.collect('nome')"
                 data-vv-name='nome'
@@ -39,7 +39,7 @@
               v-text-field(
                 v-model='alunoAtualiza.email'
                 label='Email *'
-                color='#2196f3'
+                color='#3169B3'
                 v-validate="'required|email'"
                 :error-messages="errors.collect('email')"
                 data-vv-name='email'
@@ -53,7 +53,7 @@
               v-select.font-weight-select(
                 v-model='alunoAtualiza.curso.id'
                 label='Selecione um curso *'
-                color='#2196f3'
+                color='#3169B3'
                 :items='curso'
                 item-text='nome'
                 item-value='id'
@@ -72,7 +72,7 @@
               v-select.font-weight-select(
                 v-model='alunoAtualiza.modalidadeBolsa.id'
                 label='Selecione uma modalidade de bolsa *'
-                color='#2196f3'
+                color='#3169B3'
                 :items='modalidadesBolsa'
                 item-text='sigla'
                 item-value='id'
@@ -178,8 +178,9 @@ export default {
   padding-top: 0;
 }
 
-.center {
+.card-title {
   justify-content: center;
+  background: #3169B3;
 }
 
 .style-button {

@@ -1,13 +1,13 @@
 <template lang="pug">
   v-dialog(
     max-width='600px'
-    v-model='showDialogAtualizaDisciplina'
+    v-model='showDialogAtualizaProjetoPesquisa'
     :persistent='true'
     :scrollable='true'
   )
     v-card
-      v-card-title.card-title.white--text
-        span.headline Atualizar Disciplina
+      v-card-title.v-card-title.white--text
+        span.headline Atualizar Projeto de Pesquisa
       v-divider.mx-3
       v-card-text.no-margin-top
         v-container.padding(
@@ -24,9 +24,9 @@
               md6
             )
               v-select.font-weight-select(
-                v-model='disciplinaAtualiza.tipo'
+                v-model='projetoPesquisaAtualiza.tipo'
                 label='Selecione o tipo da disciplina *'
-                color='#11802C'
+                color='#F5DE31'
                 :items='tipos'
                 item-value='id'
                 item-text='nome'
@@ -43,9 +43,9 @@
               md6
             )
               v-text-field(
-                v-model='disciplinaAtualiza.nome'
+                v-model='projetoPesquisaAtualiza.nome'
                 label='Nome *'
-                color='#11802C'
+                color='#F5DE31'
                 v-validate="'required|max:100'"
                 :error-messages="errors.collect('nome')"
                 data-vv-name='nome'
@@ -57,9 +57,9 @@
               md6
             )
               v-text-field(
-                v-model='disciplinaAtualiza.codigo'
+                v-model='projetoPesquisaAtualiza.codigo'
                 label='Código *'
-                color='#11802C'
+                color='#F5DE31'
                 v-validate="'required|max:6'"
                 :error-messages="errors.collect('codigo')"
                 data-vv-name='codigo'
@@ -72,9 +72,9 @@
               md6
             )
               v-select(
-                v-model='disciplinaAtualiza.cargaHoraria'
+                v-model='projetoPesquisaAtualiza.cargaHoraria'
                 label='Seleciona a carga horária *'
-                color='#11802C'
+                color='#F5DE31'
                 :items='cargasHoraria'
                 no-data-text='Não há dados.'
                 v-validate="'required'"
@@ -90,9 +90,9 @@
               md6
             )
               v-text-field(
-                v-model='disciplinaAtualiza.local'
+                v-model='projetoPesquisaAtualiza.local'
                 label='Local *'
-                color='#11802C'
+                color='#F5DE31'
                 v-validate="'required|max:100'"
                 :error-messages="errors.collect('local')"
                 data-vv-name='local'
@@ -104,9 +104,9 @@
               md6
             )
               v-select.font-weight-select(
-                v-model='disciplinaAtualiza.horario'
+                v-model='projetoPesquisaAtualiza.horario'
                 label='Selecione um horário *'
-                color='#11802C'
+                color='#F5DE31'
                 :items='horarios'
                 no-data-text='Não há dados.'
                 v-validate="'required'"
@@ -121,9 +121,9 @@
               md12
             )
               v-select.font-weight-select(
-                v-model='disciplinaAtualiza.departamento.id'
+                v-model='projetoPesquisaAtualiza.departamento.id'
                 label='Selecione um departamento *'
-                color='#11802C'
+                color='#F5DE31'
                 :items='departamentos'
                 item-value='id'
                 item-text='nome'
@@ -138,7 +138,7 @@
       v-card-actions
         v-btn.white--text.style-button(
           color='error darken-1'
-          @click='fecharAtualizaDisciplina()'
+          @click='fecharAtualizaProjetoPesquisa()'
         )
           v-icon(
             left
@@ -147,13 +147,13 @@
         v-spacer
         v-btn.white--text.style-button(
           color='success darken-1'
-          @click='atualizaDisciplina()'
+          @click='atualizaProjetoPesquisa()'
         ) Salvar
           v-icon(
             right
           ) mdi-content-save
     SnackBar(
-      :data='snackbarValidaAtualizaDisciplina'
+      :data='snackbarValidaAtualizaprojetoPesquisa'
     )
 </template>
 
@@ -161,7 +161,7 @@
 import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
-  name: 'AtualizaDisciplina',
+  name: 'AtualizaProjetoPesquisa',
 
   $_veeValidate: {
     validator: 'new'
@@ -172,12 +172,12 @@ export default {
   },
 
   props: {
-    showDialogAtualizaDisciplina: {
+    showDialogAtualizaProjetoPesquisa: {
       type: Boolean,
       required: true
     },
 
-    disciplinaAtualiza: {
+    projetoPesquisaAtualiza: {
       type: Object
     },
 
@@ -205,7 +205,7 @@ export default {
         '07:00', '08:00', '09:00', '10:00', '14:00', '13:00',
         '14:00', '15:00', '16:00', '17:00', '19:00', '21:00'
       ],
-      snackbarValidaAtualizaDisciplina: {
+      snackbarValidaAtualizaprojetoPesquisa: {
         icon: 'mdi-alert-circle-outline',
         message: 'Verifique os campos obrigatórios.',
         value: false,
@@ -215,16 +215,16 @@ export default {
   },
 
   methods: {
-    fecharAtualizaDisciplina () {
-      this.$emit('closeModalAtualizaDisciplina')
+    fecharAtualizaProjetoPesquisa () {
+      this.$emit('closeModalAtualizaProjetoPesquisa')
     },
 
-    atualizaDisciplina () {
+    atualizaProjetoPesquisa () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          this.$emit('atualizaDisciplina', this.disciplinaAtualiza)
+          this.$emit('atualizaProjetoPesquisa', this.projetoPesquisaAtualiza)
         } else {
-          this.snackbarValidaAtualizaDisciplina.value = true
+          this.snackbarValidaAtualizaprojetoPesquisa.value = true
         }
       })
     }
@@ -242,9 +242,9 @@ export default {
   padding-top: 0;
 }
 
-.card-title {
+.v-card-title {
   justify-content: center;
-  background: #11802C;
+  background: #EF154B;
 }
 
 .style-button {

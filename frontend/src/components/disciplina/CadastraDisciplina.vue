@@ -6,7 +6,7 @@
     :scrollable='true'
   )
     v-card
-      v-card-title.center
+      v-card-title.card-title.white--text
         span.headline Adicionar Disciplina
       v-divider.mx-3
       v-card-text.no-margin-top
@@ -60,7 +60,7 @@
                 v-model='disciplina.codigo'
                 label='Código *'
                 color='#11802C'
-                v-validate="'required|max:6'"
+                v-validate="'required|min:6|max:6'"
                 :error-messages="errors.collect('codigo')"
                 data-vv-name='codigo'
                 data-vv-as='Código'
@@ -113,6 +113,7 @@
                 :error-messages="errors.collect('horario')"
                 data-vv-name='horario'
                 data-vv-as='Horário'
+                suffix='horas'
                 clearable
               )
             v-flex.padding(
@@ -290,8 +291,9 @@ export default {
   padding-top: 0;
 }
 
-.center {
+.card-title {
   justify-content: center;
+  background: #11802C;
 }
 
 .style-button {

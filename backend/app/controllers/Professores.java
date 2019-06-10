@@ -116,4 +116,18 @@ public class Professores extends DefaultController {
 		
 		renderJSON(professor, ProfessorSerializer.disciplinasDocente);
 	}
+	
+	public static void findProjetosPesquisa(Integer id) {
+		if (id == null) {
+			throw new ValidationException(MessagesUtil.ID_PROFESSOR_NAO_ENCONTRADO);
+		}
+		
+		Professor professor = Professor.findById(id);
+		
+		if (professor == null) {
+			throw new ValidationException(MessagesUtil.PROFESSOR_NAO_ENCONTRADO);
+		}
+		
+		renderJSON(professor, ProfessorSerializer.projetosPesquisaDocente);
+	}
 }

@@ -70,8 +70,8 @@ public class Professor extends GenericModel {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = Disciplina.class)
 	public List<Disciplina> disciplinas;
 
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = ProjetoPesquisa.class)
-//	public List<ProjetoPesquisa> projetosPesquisa;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor", targetEntity = ProjetoPesquisa.class)
+	public List<ProjetoPesquisa> projetosPesquisa;
 
 	public Integer getId() {
 		return this.id;
@@ -89,11 +89,11 @@ public class Professor extends GenericModel {
 		this.nome = nome;
 	}
 
-	public String getcurriculoLattes() {
+	public String getCurriculoLattes() {
 		return this.curriculoLattes;
 	}
 
-	public void setcurriculoLattes(String curriculoLattes) {
+	public void setCurriculoLattes(String curriculoLattes) {
 		this.curriculoLattes = curriculoLattes;
 	}
 
@@ -161,6 +161,14 @@ public class Professor extends GenericModel {
 		this.disciplinas = disciplinas;
 	}
 
+	public List<ProjetoPesquisa> getProjetosPesquisa() {
+		return projetosPesquisa;
+	}
+
+	public void setProjetosPesquisa(List<ProjetoPesquisa> projetosPesquisa) {
+		this.projetosPesquisa = projetosPesquisa;
+	}
+
 //	public void validate() {
 //		Validation.current().clear();
 //
@@ -170,8 +178,8 @@ public class Professor extends GenericModel {
 //	}
 
 	public void salvar() {
-		this.departamento = Departamento.findById(this.getDepartamento().getId());
-		this.areaConhecimento = AreaConhecimento.findById(this.getAreaConhecimento().getId());
+		this.setDepartamento(Departamento.findById(this.getDepartamento().getId()));
+		this.setAreaConhecimento(AreaConhecimento.findById(this.getAreaConhecimento().getId()));
 //		this.usuario.setSenha() 
 
 		this.save();
@@ -179,7 +187,7 @@ public class Professor extends GenericModel {
 
 	public void atualiza(Professor professor) {
 		this.setNome(professor.getNome());
-		this.setcurriculoLattes(professor.getcurriculoLattes());
+		this.setCurriculoLattes(professor.getCurriculoLattes());
 		this.setFormacaoAcademica(professor.getFormacaoAcademica());
 		this.setSala(professor.getSala());
 		this.setTelefone(professor.getTelefone());

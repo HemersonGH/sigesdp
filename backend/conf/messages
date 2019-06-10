@@ -53,3 +53,10 @@ sigesdp.alunos.nao.encontrados=Não foi possível encontrar todos os alunos.
 sigesdp.aluno.cadastrado.com.sucesso=Aluno cadastrado com sucesso.
 sigesdp.aluno.atualizado.com.sucesso=Aluno atualizado com sucesso.
 sigesdp.aluno.removido.com.sucesso=Aluno removido com sucesso.
+
+sigesdp.id.projeto.pesquisa.nao.encontrado=Nenhum projeto de pesquisa foi encontrado com esse id.
+sigesdp.projeto.pesquisa.nao.encontrado=Não foi possível encontrar o projeto de pesquisa.
+sigesdp.projetos.pesquisa.nao.encontrados=Não foi possível encontrar todos os projeto de pesquisa.
+sigesdp.projeto.pesquisa.cadastrado.com.sucesso=Projeto de Pesquisa cadastrado com sucesso.
+sigesdp.projeto.pesquisa.atualizado.com.sucesso=Projeto de Pesquisa atualizado com sucesso.
+sigesdp.projeto.pesquisa.removido.com.sucesso=Projeto de Pesquisa removido com sucesso.

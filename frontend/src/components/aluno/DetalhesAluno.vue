@@ -6,7 +6,7 @@
     :scrollable='true'
   )
     v-card
-      v-card-title.center
+      v-card-title.card-title.white--text
         span.headline Detalhes do Aluno
       v-divider.mx-3
       v-card-text.no-margin-top
@@ -80,8 +80,9 @@ export default {
   padding-top: 0;
 }
 
-.center {
+.card-title {
   justify-content: center;
+  background: #3169B3;
 }
 
 .style-button {

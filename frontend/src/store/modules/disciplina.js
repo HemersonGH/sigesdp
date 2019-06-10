@@ -47,7 +47,7 @@ const actions = {
   },
   async createDisciplina ({ commit }, novoDisciplina) {
     const response = await axios.post('/disciplina/nova', novoDisciplina)
-    commit('SET_CADASTRA_ALUNO', response.data)
+    commit('SET_CADASTRA_DISCIPLINA', response.data)
     return response
   },
   async updateDisciplina ({ commit }, disciplinaAtualizada) {

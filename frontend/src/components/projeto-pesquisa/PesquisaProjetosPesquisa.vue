@@ -1,7 +1,7 @@
 <template lang="pug">
   v-card.ajust-top
     v-card(
-      color='#11802C'
+      color='#EF154B'
       :class='`elevation-4`'
     )
       v-card-title
@@ -10,7 +10,7 @@
             left
             color='white'
           ) mdi-filter
-          | Filtrar disciplinas
+          | Filtrar projetos de pesquisa
     v-divider.mx-3
     v-card-text.padding
       v-container.padding-container(
@@ -33,9 +33,9 @@
             md10
           )
             v-text-field.padding-bottom(
-              v-model='pesquisaDisciplina.codigo'
+              v-model='pesquisaProjetoPesquisa.codigo'
               placeholder='Informe o código da disciplina'
-              color='#11802C'
+              color='#EF154B'
               clearable
             )
           v-flex(
@@ -50,9 +50,9 @@
             md10
           )
             v-text-field.padding(
-              v-model='pesquisaDisciplina.nome'
+              v-model='pesquisaProjetoPesquisa.nome'
               placeholder='Informe o nome da disciplina'
-              color='#11802C'
+              color='#EF154B'
               clearable
             )
           v-flex.padding(
@@ -68,8 +68,8 @@
           )
             v-select.padding(
               placeholder='Selecione um departamento'
-              v-model='pesquisaDisciplina.idDepartamento'
-              color='#11802C'
+              v-model='pesquisaProjetoPesquisa.idDepartamento'
+              color='#EF154B'
               :items='departamentos'
               item-text='nome'
               item-value='id'
@@ -89,8 +89,8 @@
           )
             v-select(
               placeholder='Selecione o tipo da disciplina'
-              v-model='pesquisaDisciplina.idTipo'
-              color='#11802C'
+              v-model='pesquisaProjetoPesquisa.idTipo'
+              color='#EF154B'
               :items='tipos'
               item-text='nome'
               item-value='id'
@@ -101,7 +101,7 @@
       v-card-actions
         v-btn.white--text.style-button(
           color='#707070'
-          @click='limparFiltroDisciplinas()'
+          @click='limparFiltroProjetoPesquisa()'
         )
           v-icon(
             left
@@ -109,8 +109,8 @@
           | Limpar
         v-spacer
         v-btn.white--text.style-button(
-          color='#11802C'
-          @click='pesquisarDisciplina()'
+          color='#EF154B'
+          @click='pesquisarProjetoPesquisa()'
         ) Pesquisar
           v-icon(
             right
@@ -121,7 +121,7 @@
 import Card from '@/components/shared/Card.vue'
 
 export default {
-  name: 'PesquisaDisciplinas',
+  name: 'PesquisaProjetosPesquisa',
 
   components: {
     Card
@@ -145,7 +145,7 @@ export default {
           nome: 'Pós-Graduação'
         }
       ],
-      pesquisaDisciplina: {
+      pesquisaProjetoPesquisa: {
         nome: '',
         codigo: '',
         idDepartamento: null,
@@ -155,12 +155,12 @@ export default {
   },
 
   methods: {
-    limparFiltroDisciplina () {
+    limparFiltroProjetoPesquisa () {
 
     },
 
-    pesquisarDisciplina () {
-      // this.filtraAluno(this.pesquisaDisciplina.nome, this.pesquisaDisciplina.idModalidade).then((response) => {
+    pesquisarProjetoPesquisa () {
+      // this.filtraAluno(this.pesquisaProjetoPesquisa.nome, this.pesquisaProjetoPesquisa.idModalidade).then((response) => {
       //   this.getAlunos(this.idProfessor)
       // }).catch((erro) => {
       // })

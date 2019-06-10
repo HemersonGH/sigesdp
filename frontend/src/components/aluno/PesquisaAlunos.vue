@@ -80,7 +80,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import Card from '@/components/shared/Card.vue'
 
 export default {
@@ -106,16 +105,12 @@ export default {
   },
 
   methods: {
-    ...mapActions({
-      filtraUsuario: 'aluno/filtraUsuario'
-    }),
-
     limparFiltroAlunos () {
 
     },
 
     pesquisaAlunos () {
-      // this.filtraUsuario(this.pesquisaAluno.nome, this.pesquisaAluno.idModalidade).then((response) => {
+      // this.filtraAluno(this.pesquisaAluno.nome, this.pesquisaAluno.idModalidade).then((response) => {
       //   this.getAlunos(this.idProfessor)
       // }).catch((erro) => {
       // })
