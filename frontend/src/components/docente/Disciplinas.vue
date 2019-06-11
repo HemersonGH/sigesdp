@@ -50,7 +50,8 @@ export default {
 
   props: {
     data: {
-      type: [Object, Array]
+      type: [Object, Array],
+      required: true
     }
   },
 
@@ -87,7 +88,7 @@ export default {
     this.posGraduacao = this.data.filter(function (disciplina) {
       return disciplina.tipo === 1
     })
-  },
+  }
 }
 </script>
 
