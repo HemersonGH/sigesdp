@@ -66,7 +66,7 @@
       @atualizaProjetoPesquisa='atualizaProjetoPesquisa'
     )
     ModalRemoveProjetoPesquisa(
-      :projetoPesquisaRemove='projetoPesquisaRemove'
+      :projetoPesquisa='projetoPesquisaRemove'
       :showDialogCofirmaRemocaoProjetoPesquisa='showDialogCofirmaRemocaoProjetoPesquisa'
       @closeModalConfirmacaoRemocaoProjetoPesquisa='closeModalConfirmacaoRemocaoProjetoPesquisa'
       @removeProjetoPesquisaFromDataBase='removeProjetoPesquisaFromDataBase'
@@ -95,6 +95,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
 import CadastraProjetoPesquisa from '@/components/projeto-pesquisa/CadastraProjetoPesquisa.vue'
@@ -219,7 +220,7 @@ export default {
     },
 
     openModalDetalhesProjetoPesquisa (projetoPesquisa) {
-      this.projetoPesquisaDetalhes = projetoPesquisa
+      this.projetoPesquisaDetalhes = _.cloneDeep(projetoPesquisa)
       this.showDialogDetalhesProjetoPesquisa = true
     },
 
@@ -228,7 +229,7 @@ export default {
     },
 
     openModalAtualizaProjetoPesquisa (projetoPesquisaAtualizado) {
-      this.projetoPesquisaAtualiza = projetoPesquisaAtualizado
+      this.projetoPesquisaAtualiza = _.cloneDeep(projetoPesquisaAtualizado)
       this.showDialogAtualizaProjetoPesquisa = true
     },
 
@@ -237,7 +238,7 @@ export default {
     },
 
     openModalConfirmaRemocaoProjetoPesquisa (projetoPesquisaDeletado) {
-      this.projetoPesquisaRemove = projetoPesquisaDeletado
+      this.projetoPesquisaRemove = _.cloneDeep(projetoPesquisaDeletado)
       this.showDialogCofirmaRemocaoProjetoPesquisa = true
     },
 
@@ -246,8 +247,9 @@ export default {
     },
 
     getNovoProjetoPesquisaCadastrado () {
-      this.showDialogCadastraProjetoPesquisa = false
       this.getProjetosPesquisa(this.getUsuarioLogado.id)
+      this.showDialogCadastraProjetoPesquisa = false
+      this.showDialogAtualizaProjetoPesquisa = false
     },
 
     atualizaProjetoPesquisa (projetoPesquisa) {
@@ -261,6 +263,7 @@ export default {
     },
 
     removeProjetoPesquisaFromDataBase (projetoPesquisa) {
+      console.log(projetoPesquisa)
       this.deleteProjetoPesquisa(projetoPesquisa.id).then((response) => {
         this.getProjetosPesquisa(this.getUsuarioLogado.id)
         this.showDialogCofirmaRemocaoProjetoPesquisa = false

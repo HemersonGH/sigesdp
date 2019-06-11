@@ -33,7 +33,7 @@
             md10
           )
             v-text-field.padding-bottom(
-              v-model='nome'
+              v-model='filtroDocente.nome'
               placeholder='Informe o nome do professor'
               color='#11802C'
               clearable
@@ -50,8 +50,8 @@
             md10
           )
             v-select.padding-top(
+              v-model='filtroDocente.idDepartamento'
               placeholder='Selecione um departamento'
-              v-model='select'
               :items='departamentos'
               item-text='nome'
               item-value='id'
@@ -61,10 +61,18 @@
             )
       v-divider.mx-3
       v-card-actions
+        v-btn.white--text.style-button(
+          color='#707070'
+          @click='limparFiltroDocentes()'
+        )
+          v-icon(
+            left
+          ) mdi-eraser
+          | Limpar
         v-spacer
         v-btn.white--text.style-button(
           color='#11802C'
-          @click='pesquisa()'
+          @click='pesquisaDocentes()'
         ) Pesquisar
           v-icon(
             right
@@ -89,13 +97,18 @@ export default {
 
   data () {
     return {
-      nome: '',
-      select: null
+      filtroDocente: {
+        nome: '',
+        idDepartamento: null
+      }
     }
   },
 
   methods: {
-    pesquisa () {
+    pesquisaDocentes () {
+    },
+
+    limparFiltroDocentes () {
     }
   }
 }

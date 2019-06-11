@@ -1,9 +1,6 @@
-result
-result
-result
-result
-result<template lang="pug">
+<template lang="pug">
   v-container(
+    v-if='data'
     grid-list-xl
     fluid
     fill-height
@@ -39,7 +36,7 @@ result<template lang="pug">
             )
       DetalhesDisciplina(
         :showDialog='showDialog'
-        :data='disciplina'
+        :disciplina='disciplina'
         @close='closeModal'
       )
 </template>
@@ -53,8 +50,7 @@ export default {
 
   props: {
     data: {
-      type: [Object, Array],
-      required: true
+      type: [Object, Array]
     }
   },
 
@@ -72,16 +68,6 @@ export default {
     }
   },
 
-  created () {
-    this.graduacao = this.data.filter(function (disciplina) {
-      return disciplina.tipo === 0
-    })
-
-    this.posGraduacao = this.data.filter(function (disciplina) {
-      return disciplina.tipo === 1
-    })
-  },
-
   methods: {
     openModal (item) {
       this.disciplina = item
@@ -91,7 +77,17 @@ export default {
     closeModal () {
       this.showDialog = false
     }
-  }
+  },
+
+  created () {
+    this.graduacao = this.data.filter(function (disciplina) {
+      return disciplina.tipo === 0
+    })
+
+    this.posGraduacao = this.data.filter(function (disciplina) {
+      return disciplina.tipo === 1
+    })
+  },
 }
 </script>
 

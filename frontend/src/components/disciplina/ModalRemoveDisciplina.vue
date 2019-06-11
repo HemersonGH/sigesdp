@@ -53,10 +53,6 @@ export default {
   name: 'ModalRemoveDisciplina',
 
   props: {
-    // data: {
-    //   type: [Object, Array]
-    // },
-
     disciplina: {
       type: Object
     },

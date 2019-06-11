@@ -1,5 +1,7 @@
 <template lang="pug">
-  div
+  div(
+    v-if='this.$route.params.id'
+  )
     LinkVoltar.margin(
       :link='routeParent'
     )
@@ -28,13 +30,15 @@
         | Disciplinas
       v-tab-item
         PerfilPessoal(
-          :data='docente.data'
+          v-if='docente'
+          :data='docente'
         )
       v-tab-item
         ListagemProjetosPesquisa
       v-tab-item
         Disciplinas(
-          :data='docente.data.disciplinas'
+          v-if='docente'
+          :data='docente.disciplinas'
         )
 </template>
 

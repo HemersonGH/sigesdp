@@ -32,7 +32,7 @@
               sm12
               md12
             )
-              h4.no-margin-bottom Tem certeza que deseja remover essa projeto de pesquisa?
+              h4.no-margin-bottom Tem certeza que deseja remover esse projeto de pesquisa?
       v-divider.mx-3
       v-card-actions
         v-btn.white--text.style-button(
@@ -53,10 +53,6 @@ export default {
   name: 'ModalRemoveProjetoPesquisa',
 
   props: {
-    // data: {
-    //   type: [Object, Array]
-    // },
-
     projetoPesquisa: {
       type: Object
     },

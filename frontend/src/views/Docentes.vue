@@ -27,8 +27,11 @@
           ListagemDocentes(
             :headers='headers'
             :contentTable='docentes.data'
-            @openDetails='openDetails'
+            @openDetalhesDocente='openDetalhesDocente'
           )
+    SnackBar(
+      :data='snackbarErroObterDadosDocente'
+    )
 </template>
 
 <script>
@@ -37,6 +40,7 @@ import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
 import PesquisaDocentes from '@/components/docente/PesquisaDocentes.vue'
 import ListagemDocentes from '@/components/docente/ListagemDocentes.vue'
+import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
   name: 'Docentes',
@@ -45,7 +49,8 @@ export default {
     LinkVoltar,
     Card,
     PesquisaDocentes,
-    ListagemDocentes
+    ListagemDocentes,
+    SnackBar
   },
 
   data () {
@@ -70,7 +75,13 @@ export default {
           align: 'right'
         }
       ],
-      routeParent: '/academico'
+      routeParent: '/academico',
+      snackbarErroObterDadosDocente: {
+        icon: 'mdi-alert-circle-outline',
+        message: 'Ocorreu um erro no sistema, tente novamente ou entre em contato com o administrador.',
+        value: false,
+        color: 'error'
+      }
     }
   },
 
@@ -84,7 +95,13 @@ export default {
       this.search = query
     },
 
-    openDetails () {
+    openDetalhesDocente (idDocente) {
+      this.$router.push({
+        name: 'detalhesDocentes',
+        params: {
+          id: idDocente
+        }
+      })
     }
   },
 

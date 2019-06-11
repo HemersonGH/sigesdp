@@ -77,13 +77,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import logo from '@/assets/images/icone-ufla.png'
 
 export default {
   name: 'SideMenu',
 
   data () {
     return {
-      logo: './img/icone-ufla.png',
+      logo: logo,
       itensMenuPublico: [
         {
           title: 'Acadêmico',

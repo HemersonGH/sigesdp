@@ -1,6 +1,7 @@
 <template lang="pug">
   v-dialog(
-    max-width='600px'
+    v-if='disciplina'
+    max-width='700px'
     v-model='showDialog'
     :persistent='true'
     :scrollable='true'
@@ -22,30 +23,30 @@
             fill-height
           )
             v-flex.padding(
-              xs6
-              sm6
-              md6
+              xs7
+              sm7
+              md7
             )
               h5.font-weight-bold.no-margin-bottom
                 | Nome:
-                span.style-sub-title {{ data.nome }}
+                span.style-sub-title {{ disciplina.nome }}
               h5.font-weight-bold.no-margin-bottom
                 | Carga Horária:
-                span.style-sub-title {{ data.cargaHoraria }} horas
+                span.style-sub-title {{ disciplina.cargaHoraria }} horas
               h5.font-weight-bold.no-margin-bottom
                 | Local:
-                span.style-sub-title {{ data.local }}
+                span.style-sub-title {{ disciplina.local }}
             v-flex.padding(
-              xs6
-              sm6
-              md6
+              xs5
+              sm5
+              md5
             )
               h5.font-weight-bold.no-margin-bottom
                 | Código:
-                span.style-sub-title {{ data.codigo }}
+                span.style-sub-title {{ disciplina.codigo }}
               h5.font-weight-bold.no-margin-bottom
                 | Horário:
-                span.style-sub-title {{ data.horario }} horas
+                span.style-sub-title {{ disciplina.horario }} horas
       v-divider.mx-3
       v-card-actions
         v-spacer
@@ -60,9 +61,8 @@ export default {
   name: 'DetalhesDisciplina',
 
   props: {
-    data: {
-      type: [Object, Array],
-      required: true
+    disciplina: {
+      type: Object
     },
 
     showDialog: {

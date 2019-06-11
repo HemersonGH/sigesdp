@@ -1,5 +1,7 @@
 <template lang="pug">
-  v-card
+  v-card(
+    v-if='data'
+  )
     v-card-title.align
       v-icon(
         color='#2b2b2b'

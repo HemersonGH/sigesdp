@@ -53,10 +53,6 @@ export default {
   name: 'ModalRemoveAluno',
 
   props: {
-    // data: {
-    //   type: [Object, Array]
-    // },
-
     alunoRemove: {
       type: Object
     },
