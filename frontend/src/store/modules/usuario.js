@@ -39,14 +39,14 @@ const mutations = {
 
 const actions = {
   async createUsuario ({ commit }, novoUsuario) {
-    const response = await axios.post('/docente/novo', novoUsuario)
+    const response = await axios.post('/docentes/novo', novoUsuario)
     commit('SET_CADASTRA_USUARIO', response.data)
     return response
   },
   async getUsuario ({ commit }, email) {
     const response = await axios({
       method: 'get',
-      url: '/docente/email/',
+      url: '/docentes/email/',
       params: {
         email
       }

@@ -43,26 +43,26 @@ const mutations = {
 
 const actions = {
   async getAlunos ({ commit }, id) {
-    const result = await axios.get(`/docente/alunos/${id}`)
+    const result = await axios.get(`/docentes/alunos/${id}`)
     commit('SET_ALUNOS_LIST', result)
   },
   async getAluno ({ commit }, id) {
-    const result = await axios.get(`/aluno/${id}`)
+    const result = await axios.get(`/alunos/${id}`)
     commit('SET_ALUNO', result)
     return result.data
   },
   async createAluno ({ commit }, novoAluno) {
-    const response = await axios.post('/aluno/novo', novoAluno)
+    const response = await axios.post('/alunos/novo', novoAluno)
     commit('SET_CADASTRA_ALUNO', response.data)
     return response
   },
   async updateAluno ({ commit }, alunoAtualizado) {
-    const response = await axios.put('/aluno/atualiza', alunoAtualizado)
+    const response = await axios.put('/alunos/atualiza', alunoAtualizado)
     commit('SET_ALUNO_ATUALIZADO', response.data)
     return response
   },
   async deleteAluno ({ commit }, id) {
-    const result = await axios.delete(`/aluno/remove/${id}`)
+    const result = await axios.delete(`/alunos/remove/${id}`)
     commit('SET_ALUNO_REMOVIDO', result)
     return result.data
   },
