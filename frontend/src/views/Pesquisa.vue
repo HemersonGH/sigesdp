@@ -43,7 +43,7 @@ export default {
         {
           title: 'Pesquisadores',
           text: 'Consulte os pesquisadores da UFLA.',
-          colorCard: '#F5DE31',
+          colorCard: '#E20000',
           icon: 'mdi-account-multiple',
           route: '/pesquisa/pesquisadores'
         },
@@ -57,7 +57,7 @@ export default {
         {
           title: 'Bases de Pesquisas',
           text: 'Consulte as bases de pesquisa atuantes na UFLA.',
-          colorCard: '#FF407D',
+          colorCard: '#F5DE31',
           icon: 'mdi-database',
           route: '/pesquisa/bases-de-pesquisas'
         }

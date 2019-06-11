@@ -1,6 +1,6 @@
 <template lang="pug">
   v-container(
-    v-if='data'
+    v-if='disciplinas'
     grid-list-xl
     fluid
     fill-height
@@ -24,14 +24,14 @@
             ListagemDisciplinas(
               title='Graduação'
               text='Pesquise as disciplina de graduação do professor'
-              :data='graduacao'
+              :disciplinas='this.disciplinas.filter(function (disciplina) { return disciplina.tipo === 0 })'
               @openModal='openModal'
             )
           v-tab-item
             ListagemDisciplinas(
               title='Pós-Graduação'
               text='Pesquise as disciplina de pós-graduação do professor'
-              :data='posGraduacao'
+              :disciplinas='this.posGraduacao = this.disciplinas.filter(function (disciplina) { return disciplina.tipo === 1 })'
               @openModal='openModal'
             )
       DetalhesDisciplina(
@@ -49,9 +49,8 @@ export default {
   name: 'Disciplinas',
 
   props: {
-    data: {
-      type: [Object, Array],
-      required: true
+    disciplinas: {
+      type: Array
     }
   },
 
@@ -78,16 +77,6 @@ export default {
     closeModal () {
       this.showDialog = false
     }
-  },
-
-  created () {
-    this.graduacao = this.data.filter(function (disciplina) {
-      return disciplina.tipo === 0
-    })
-
-    this.posGraduacao = this.data.filter(function (disciplina) {
-      return disciplina.tipo === 1
-    })
   }
 }
 </script>

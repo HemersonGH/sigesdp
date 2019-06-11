@@ -1,7 +1,5 @@
 <template lang="pug">
-  v-card(
-    v-if='data'
-  )
+  v-card
     v-card-title.align
       v-icon(
         color='#2b2b2b'
@@ -27,15 +25,15 @@
             md12
           )
             h5.font-weight-label Nome:
-              span.style-sub-title {{ data.nome }}
+              span.style-sub-title {{ docente.nome }}
             h5.font-weight-label Departamento:
-              span.style-sub-title {{ data.departamento.nome }}
+              span.style-sub-title {{ docente.departamento.nome }}
             h5.font-weight-label Curriculo Lates:
-              span.style-sub-title {{ data.curriculoLattes }}
+              span.style-sub-title {{ docente.curriculoLattes }}
             h5.font-weight-label Área Interesse:
-              span.style-sub-title {{ data.areaConhecimento.nome }}
+              span.style-sub-title {{ docente.areaConhecimento.nome }}
             h5.font-weight-label Formação Acadêmica/Profissional:
-              span.style-sub-title {{ data.formacaoAcademica }}
+              span.style-sub-title {{ docente.formacaoAcademica }}
 </template>
 
 <script>
@@ -43,9 +41,8 @@ export default {
   name: 'InformacoesPessoais',
 
   props: {
-    data: {
-      type: [Object, Array],
-      required: true
+    docente: {
+      type: Object
     }
   }
 }

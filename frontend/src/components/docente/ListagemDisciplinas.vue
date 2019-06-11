@@ -13,7 +13,7 @@
     )
     v-data-table(
       :headers='headers'
-      :items='data'
+      :items='disciplinas'
       :rows-per-page-items='setRowPerPagItens'
       rows-per-page-text='Linhas por página:'
       no-data-text='Não há dados para exibir.'
@@ -79,9 +79,8 @@ export default {
       required: true
     },
 
-    data: {
-      type: [Object, Array],
-      required: false
+    disciplinas: {
+      type: [Object, Array]
     }
   },
 

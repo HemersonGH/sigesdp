@@ -54,7 +54,7 @@
     DetalhesProjetoPesquisa(
       :showDialogDetalhesProjetoPesquisa='showDialogDetalhesProjetoPesquisa'
       :projetoPesquisaDetalhes='projetoPesquisaDetalhes'
-      :docente='docente.data'
+      :docente='docente'
       @closeModalDetalhesProjetoPesquisa='closeModalDetalhesProjetoPesquisa'
     )
     AtualizaProjetoPesquisa(

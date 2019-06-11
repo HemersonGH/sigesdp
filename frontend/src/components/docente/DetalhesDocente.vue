@@ -30,15 +30,13 @@
         | Disciplinas
       v-tab-item
         PerfilPessoal(
-          v-if='docente'
-          :data='docente'
+          :docente='docente'
         )
       v-tab-item
         ListagemProjetosPesquisa
       v-tab-item
         Disciplinas(
-          v-if='docente'
-          :data='docente.disciplinas'
+          :disciplinas='docente.disciplinas'
         )
 </template>
 

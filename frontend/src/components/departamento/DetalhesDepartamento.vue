@@ -61,8 +61,7 @@ export default {
 
   props: {
     data: {
-      type: [Object, Array],
-      required: true
+      type: Object
     },
 
     showDialog: {

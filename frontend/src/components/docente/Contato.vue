@@ -25,11 +25,11 @@
             md12
           )
             h5.font-weight-label Sala:
-              span.style-sub-title {{ data.sala }}
+              span.style-sub-title {{ docente.sala }}
             h5.font-weight-label Telefone/Ramal:
-              span.style-sub-title {{ data.telefone }}
+              span.style-sub-title {{ docente.telefone }}
             h5.font-weight-label Email:
-              span.style-sub-title {{ data.usuario.email }}
+              span.style-sub-title {{ docente.usuario.email }}
 </template>
 
 <script>
@@ -37,9 +37,8 @@ export default {
   name: 'Contato',
 
   props: {
-    data: {
-      type: [Object, Array],
-      required: true
+    docente: {
+      type: Object
     }
   }
 }

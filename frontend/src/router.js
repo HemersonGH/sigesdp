@@ -8,7 +8,7 @@ import Pesquisa from '@/views/Pesquisa.vue'
 import Academico from '@/views/Academico.vue'
 import Disciplinas from '@/views/Disciplinas.vue'
 import Publicacoes from '@/views/Publicacoes.vue'
-import Departamento from '@/views/Departamento.vue'
+import Departamentos from '@/views/Departamentos.vue'
 import ProjetosPesquisa from '@/views/ProjetosPesquisa.vue'
 
 import Login from '@/components/shared/Login.vue'
@@ -45,8 +45,8 @@ const router = new Router({
     {
       path: '/academico/departamentos',
       name: 'departamento',
-      component: Departamento,
-      title: 'Departamento',
+      component: Departamentos,
+      title: 'Departamentos',
       public: true
     },
     {

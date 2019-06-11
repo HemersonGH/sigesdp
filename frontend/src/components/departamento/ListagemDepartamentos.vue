@@ -56,7 +56,7 @@ export default {
     },
 
     contentTable: {
-      type: [Object, Array]
+      type: Array
     },
 
     search: {

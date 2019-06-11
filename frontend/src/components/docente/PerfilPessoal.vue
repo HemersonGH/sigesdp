@@ -12,10 +12,10 @@
         md12
       )
         InformacoesPessoais(
-          :data='data'
+          :docente='docente'
         )
         Contato(
-          :data='data'
+          :docente='docente'
         )
 </template>
 
@@ -27,9 +27,8 @@ export default {
   name: 'PerfilPessoal',
 
   props: {
-    data: {
-      type: [Object, Array],
-      required: true
+    docente: {
+      type: Object
     }
   },
 
