@@ -8,34 +8,34 @@ GET     /getAuthUser                            Secure.getAuthenticatedUser
 GET     /logout                                 Secure.logout
 
 # Departamentos
-POST 	/departamento/novo						Departamentos.cadastraDepartamento
+POST 	/departamentos/novo						Departamentos.cadastraDepartamento
 GET 	/departamentos							Departamentos.findAll
 GET 	/departamentos-list						Departamentos.fieldSelect
-GET   	/departamento/{id}						Departamentos.findById
+GET   	/departamentos/{id}						Departamentos.findById
 
 # Cursos
-POST 	/curso/novo								Cursos.cadastraCurso
+POST 	/cursos/novo							Cursos.cadastraCurso
 GET 	/cursos								    Cursos.findAll
-GET 	/curso/{id}					     		Cursos.findById
-PUT 	/curso/atualiza		     				Cursos.atualizaCurso
-DELETE 	/curso/remove/{id}			     		Cursos.removeCurso
+GET 	/cursos/{id}					     	Cursos.findById
+PUT 	/cursos/atualiza		     			Cursos.atualizaCurso
+DELETE 	/cursos/remove/{id}			     		Cursos.removeCurso
 
 # Docentes
-POST 	/professor/novo							Professores.cadastraProfessor
+POST 	/docentes/novo							Professores.cadastraProfessor
 GET 	/docentes							    Professores.findAll
-GET 	/docente/{id}				     		Professores.findById
-GET   	/docente/alunos/{id}					Professores.findAlunos
-GET   	/docente/disciplinas/{id}				Professores.findDisciplinas
-GET   	/docente/projetos-pesquisa/{id}			Professores.findProjetosPesquisa
-GET   	/docente/email/							Professores.findByEmail
-PUT 	/docente/atualiza		     			Professores.atualizaProfessor
-DELETE 	/docente/remove/{id}			     	Professores.removeProfessor
+GET 	/docentes/{id}				     		Professores.findById
+GET   	/docentes/alunos/{id}					Professores.findAlunos
+GET   	/docentes/disciplinas/{id}				Professores.findDisciplinas
+GET   	/docentes/projetos-pesquisa/{id}		Professores.findProjetosPesquisa
+GET   	/docentes/email/						Professores.findByEmail
+PUT 	/docentes/atualiza		     			Professores.atualizaProfessor
+DELETE 	/docentes/remove/{id}			     	Professores.removeProfessor
 
 # Disciplinas
-POST 	/disciplina/nova						Disciplinas.cadastraDisciplina
-GET 	/disciplina/{id}		     			Disciplinas.findById
-PUT 	/disciplina/atualiza		     		Disciplinas.atualizaDisciplina
-DELETE 	/disciplina/remove/{id}			     	Disciplinas.removeDisciplina
+POST 	/disciplinas/nova						Disciplinas.cadastraDisciplina
+GET 	/disciplinas/{id}		     			Disciplinas.findById
+PUT 	/disciplinas/atualiza		     		Disciplinas.atualizaDisciplina
+DELETE 	/disciplinas/remove/{id}			    Disciplinas.removeDisciplina
 
 # Áreas Do Conhecimento
 GET 	/areas-conhecimento					    AreasConhecimento.findAll
@@ -45,20 +45,20 @@ GET 	/modalidades-bolsa					    ModalidadesBolsa.findAll
 GET 	/modalidades-bolsa/{id}		     		ModalidadesBolsa.findById
 
 # Alunos
-POST 	/aluno/novo								Alunos.cadastraAluno
+POST 	/alunos/novo							Alunos.cadastraAluno
 GET 	/alunos								    Alunos.findAll
-GET 	/aluno/{id}					     		Alunos.findById
-PUT 	/aluno/atualiza		     				Alunos.atualizaAluno
-DELETE 	/aluno/remove/{id}			     		Alunos.removeAluno
-GET 	/aluno/filtro/							Alunos.findByFilter
+GET 	/alunos/{id}					     	Alunos.findById
+PUT 	/alunos/atualiza		     			Alunos.atualizaAluno
+DELETE 	/alunos/remove/{id}			     		Alunos.removeAluno
+GET 	/alunos/filtro/							Alunos.findByFilter
 
 # Projetos De Pesquisa
-POST 	/projeto-pesquisa/novo					ProjetosPesquisa.cadastraProjetoPesquisa
+POST 	/projetos-pesquisa/novo					ProjetosPesquisa.cadastraProjetoPesquisa
 GET 	/projetos-pesquisa						ProjetosPesquisa.findAll
-GET 	/projeto-pesquisa/{id}					ProjetosPesquisa.findById
-PUT 	/projeto-pesquisa/atualiza		     	ProjetosPesquisa.atualizaProjetoPesquisa
-DELETE 	/projeto-pesquisa/remove/{id}			ProjetosPesquisa.removeProjetoPesquisa
-GET 	/projeto-pesquisa/filtro/				ProjetosPesquisa.findByFilter
+GET 	/projetos-pesquisa/{id}					ProjetosPesquisa.findById
+PUT 	/projetos-pesquisa/atualiza		     	ProjetosPesquisa.atualizaProjetoPesquisa
+DELETE 	/projetos-pesquisa/remove/{id}			ProjetosPesquisa.removeProjetoPesquisa
+GET 	/projetos-pesquisa/filtro/				ProjetosPesquisa.findByFilter
 
 # Home page
 GET     /                                       Application.index
