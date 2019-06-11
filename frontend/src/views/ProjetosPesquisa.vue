@@ -16,7 +16,7 @@
             h2 Gerenciar Projetos de Pesquisa
           div.text-xs-right
             v-btn.white--text.style-button(
-              color='#EF154B'
+              color='#E20000'
               @click='openModalCadastraProjetoPesquisa()'
             ) Adicionar Projeto de Pesquisa
               v-icon(
@@ -28,7 +28,7 @@
           :departamentos='departamentos.data'
         )
         Card(
-          color='#EF154B'
+          color='#E20000'
           :title='title'
           styleTitleDataTable='title-data-table'
           full-width

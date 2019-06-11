@@ -26,7 +26,7 @@
               v-text-field(
                 v-model='projetoPesquisa.titulo'
                 label='Título *'
-                color='#EF154B'
+                color='#E20000'
                 v-validate="'required|max:100'"
                 :error-messages="errors.collect('nome')"
                 data-vv-name='nome'
@@ -40,7 +40,7 @@
               v-text-field(
                 v-model='projetoPesquisa.codigo'
                 label='Código *'
-                color='#EF154B'
+                color='#E20000'
                 v-validate="'required|max:20'"
                 :error-messages="errors.collect('codigo')"
                 data-vv-name='codigo'
@@ -66,7 +66,7 @@
                 )
                   v-text-field(
                     v-model='projetoPesquisa.dataInicio'
-                    color='#EF154B'
+                    color='#E20000'
                     label='Data de Início'
                     prepend-icon='event'
                     v-on='on'
@@ -78,7 +78,7 @@
                 v-date-picker(
                   v-model='projetoPesquisa.dataInicio'
                   @input='menuDataInicio = false'
-                  color='#EF154B'
+                  color='#E20000'
                   scrollable
                   locale='pt-BR'
                 )
@@ -102,7 +102,7 @@
                 )
                   v-text-field(
                     v-model='projetoPesquisa.dataTermino'
-                    color='#EF154B'
+                    color='#E20000'
                     label='Data de Término'
                     prepend-icon='event'
                     v-on='on'
@@ -114,7 +114,7 @@
                 v-date-picker(
                   v-model='projetoPesquisa.dataTermino'
                   @input='menuDataTermino = false'
-                  color='#EF154B'
+                  color='#E20000'
                   scrollable
                   locale='pt-BR'
                 )
@@ -126,7 +126,7 @@
               v-select(
                 v-model='projetoPesquisa.aluno.id'
                 label='Seleciona o discente *'
-                color='#EF154B'
+                color='#E20000'
                 :items='alunos'
                 item-value='id'
                 item-text='nome'
@@ -145,7 +145,7 @@
               v-textarea(
                 v-model='projetoPesquisa.resumo'
                 label='Resumo *'
-                color='#EF154B'
+                color='#E20000'
                 auto-grow
                 v-validate="'required|max:500'"
                 :error-messages="errors.collect('resumo')"
@@ -297,7 +297,7 @@ export default {
 
 .v-card-title {
   justify-content: center;
-  background: #EF154B;
+  background: #E20000;
 }
 
 .style-button {

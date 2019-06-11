@@ -1,7 +1,7 @@
 <template lang="pug">
   v-card.ajust-top
     v-card(
-      color='#EF154B'
+      color='#E20000'
       :class='`elevation-4`'
     )
       v-card-title
@@ -35,7 +35,7 @@
             v-text-field.padding-bottom(
               v-model='pesquisaProjetoPesquisa.codigo'
               placeholder='Informe o código da disciplina'
-              color='#EF154B'
+              color='#E20000'
               clearable
             )
           v-flex(
@@ -52,7 +52,7 @@
             v-text-field.padding(
               v-model='pesquisaProjetoPesquisa.nome'
               placeholder='Informe o nome da disciplina'
-              color='#EF154B'
+              color='#E20000'
               clearable
             )
           v-flex.padding(
@@ -69,7 +69,7 @@
             v-select.padding(
               placeholder='Selecione um departamento'
               v-model='pesquisaProjetoPesquisa.idDepartamento'
-              color='#EF154B'
+              color='#E20000'
               :items='departamentos'
               item-text='nome'
               item-value='id'
@@ -90,7 +90,7 @@
             v-select(
               placeholder='Selecione o tipo da disciplina'
               v-model='pesquisaProjetoPesquisa.idTipo'
-              color='#EF154B'
+              color='#E20000'
               :items='tipos'
               item-text='nome'
               item-value='id'
@@ -109,7 +109,7 @@
           | Limpar
         v-spacer
         v-btn.white--text.style-button(
-          color='#EF154B'
+          color='#E20000'
           @click='pesquisarProjetoPesquisa()'
         ) Pesquisar
           v-icon(

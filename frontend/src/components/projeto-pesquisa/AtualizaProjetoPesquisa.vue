@@ -244,7 +244,7 @@ export default {
 
 .v-card-title {
   justify-content: center;
-  background: #EF154B;
+  background: #E20000;
 }
 
 .style-button {

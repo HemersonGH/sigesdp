@@ -125,7 +125,7 @@ export default {
 
 .card-title {
   justify-content: center;
-  background: #EF154B;
+  background: #E20000;
 }
 
 .style-button {
