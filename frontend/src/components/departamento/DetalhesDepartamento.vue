@@ -1,7 +1,7 @@
 <template lang="pug">
   v-dialog(
     max-width='600px'
-    v-model='showDialog'
+    v-model='showModalDetalhesDepartamento'
     :persistent='true'
     :scrollable='true'
   )
@@ -51,7 +51,7 @@
         v-spacer
         v-btn.white--text.style-button(
           color='blue darken-1'
-          @click='close()'
+          @click='closeModalDetalhesDepartamento()'
         ) Fechar
 </template>
 
@@ -64,7 +64,7 @@ export default {
       type: Object
     },
 
-    showDialog: {
+    showModalDetalhesDepartamento: {
       type: Boolean,
       required: true
     }
@@ -76,8 +76,8 @@ export default {
   },
 
   methods: {
-    close () {
-      this.$emit('close')
+    closeModalDetalhesDepartamento () {
+      this.$emit('closeModalDetalhesDepartamento')
     }
   }
 }

@@ -18,7 +18,7 @@ const mutations = {
 const actions = {
   async getCursos ({ commit }) {
     const result = await axios.get(`/cursos`)
-    commit('SET_CURSOS_LIST', result)
+    commit('SET_CURSOS_LIST', result.data)
   }
 }
 

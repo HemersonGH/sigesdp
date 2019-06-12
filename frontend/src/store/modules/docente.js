@@ -26,7 +26,7 @@ const mutations = {
 const actions = {
   async getDocentes ({ commit }) {
     const result = await axios.get('/docentes')
-    commit('SET_DOCENTES', result)
+    commit('SET_DOCENTES', result.data)
   },
   async getDocente ({ commit }, id) {
     const result = await axios.get(`/docentes/${id}`)

@@ -44,26 +44,27 @@ const mutations = {
 const actions = {
   async getProjetosPesquisa ({ commit }, id) {
     const response = await axios.get(`/docentes/projetos-pesquisa/${id}`)
-    commit('SET_PROJETOS_PESQUISA_LIST', response)
+    commit('SET_PROJETOS_PESQUISA_LIST', response.data)
+    return response.data
   },
   async getProjetoPesquisa ({ commit }, id) {
     const response = await axios.get(`/projetos-pesquisa/${id}`)
-    commit('SET_PROJETO_PESQUISA', response)
+    commit('SET_PROJETO_PESQUISA', response.data)
     return response.data
   },
   async createProjetoPesquisa ({ commit }, novoProjetoPesquisa) {
     const response = await axios.post('/projetos-pesquisa/novo', novoProjetoPesquisa)
     commit('SET_CADASTRA_PROJETO_PESQUISA', response.data)
-    return response
+    return response.data
   },
   async updateProjetoPesquisa ({ commit }, projetoPesquisaAtualizado) {
     const response = await axios.put('/projetos-pesquisa/atualiza', projetoPesquisaAtualizado)
     commit('SET_PROJETO_PESQUISA_ATUALIZADO', response.data)
-    return response
+    return response.data
   },
   async deleteProjetoPesquisa ({ commit }, id) {
     const response = await axios.delete(`/projetos-pesquisa/remove/${id}`)
-    commit('SET_PROJETO_PESQUISA_REMOVIDO', response)
+    commit('SET_PROJETO_PESQUISA_REMOVIDO', response.data)
     return response.data
   }
 }

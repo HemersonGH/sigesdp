@@ -41,7 +41,7 @@
                 v-model='projetoPesquisa.codigo'
                 label='Código *'
                 color='#E20000'
-                v-validate="'required|max:20'"
+                v-validate="'required|max:15'"
                 :error-messages="errors.collect('codigo')"
                 data-vv-name='codigo'
                 data-vv-as='Código'
@@ -65,15 +65,16 @@
                   v-slot:activator='{ on }'
                 )
                   v-text-field(
+                    v-on='on'
                     v-model='projetoPesquisa.dataInicio'
                     color='#E20000'
                     label='Data de Início'
                     prepend-icon='event'
-                    v-on='on'
                     v-validate="'required'"
                     :error-messages="errors.collect('dataInicio')"
                     data-vv-name='dataInicio'
                     data-vv-as='Data de Início'
+                    mask='####-##-##'
                   )
                 v-date-picker(
                   v-model='projetoPesquisa.dataInicio'
@@ -101,15 +102,16 @@
                   v-slot:activator='{ on }'
                 )
                   v-text-field(
+                    v-on='on'
                     v-model='projetoPesquisa.dataTermino'
                     color='#E20000'
                     label='Data de Término'
                     prepend-icon='event'
-                    v-on='on'
                     v-validate="'required'"
                     :error-messages="errors.collect('dataTermino')"
                     data-vv-name='dataTermino'
                     data-vv-as='Data de Término'
+                    mask='####-##-##'
                   )
                 v-date-picker(
                   v-model='projetoPesquisa.dataTermino'
@@ -147,7 +149,7 @@
                 label='Resumo *'
                 color='#E20000'
                 auto-grow
-                v-validate="'required|max:500'"
+                v-validate="'required|max:800'"
                 :error-messages="errors.collect('resumo')"
                 data-vv-name='resumo'
                 data-vv-as='Resumo'
@@ -203,7 +205,7 @@ export default {
       required: true
     },
 
-    snackbarCadastraProjetoPesquisa: {
+    snackbarValidaCamposProjetoPesquisa: {
       type: Object,
       required: true
     },
@@ -228,7 +230,7 @@ export default {
         dataTermino: null,
         resumo: null,
         anexo: {
-          id: 6
+          id: 2
         },
         professor: {
           id: null
@@ -253,7 +255,7 @@ export default {
       this.projetoPesquisa.dataInicio = null
       this.projetoPesquisa.dataTermino = null
       this.projetoPesquisa.resumo = null
-      this.projetoPesquisa.anexo.id = 6
+      this.projetoPesquisa.anexo.id = 2
       this.projetoPesquisa.professor.id = null
       this.projetoPesquisa.aluno.id = null
       this.$validator.reset()
@@ -269,15 +271,14 @@ export default {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
           this.createProjetoPesquisa(this.projetoPesquisa).then((response) => {
-            this.showDialogCadastraProjetoPesquisa = false
             this.snackbarProjetoPesquisaCadastradoSucesso.value = true
-            this.$emit('getNovoProjetoPesquisaCadastrado')
+            this.$emit('atualizaListaProjetoPesquisa')
             this.reset()
           }).catch((erro) => {
             this.snackbarProjetoPesquisaCadastradoErro.value = true
           })
         } else {
-          this.snackbarCadastraProjetoPesquisa.value = true
+          this.snackbarValidaCamposProjetoPesquisa.value = true
         }
       })
     }

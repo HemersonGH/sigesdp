@@ -28,18 +28,19 @@
           )
           ListagemDepartamentos(
             :headers='headers'
-            :contentTable='departamentos.data'
+            :contentTable='departamentos'
             :search='search'
-            @openModal='openModal'
+            @openModalDetalhesDepartamento='openModalDetalhesDepartamento'
           )
       DetalhesDepartamento(
-        :showDialog='showDialog'
+        :showModalDetalhesDepartamento='showModalDetalhesDepartamento'
         :data='departamento'
-        @close='closeModal'
+        @closeModalDetalhesDepartamento='closeModalDetalhesDepartamento'
       )
 </template>
 
 <script>
+import _ from 'lodash'
 import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
@@ -87,7 +88,7 @@ export default {
         }
       ],
       departamento: null,
-      showDialog: false,
+      showModalDetalhesDepartamento: false,
       search: '',
       colorBottomFieldSearch: '#3169B3',
       routeParent: '/academico'
@@ -99,13 +100,13 @@ export default {
       getDepartamentos: 'departamento/getDepartamentos'
     }),
 
-    openModal (item) {
-      this.departamento = item
-      this.showDialog = true
+    openModalDetalhesDepartamento (item) {
+      this.departamento = _.cloneDeep(item)
+      this.showModalDetalhesDepartamento = true
     },
 
-    closeModal () {
-      this.showDialog = false
+    closeModalDetalhesDepartamento () {
+      this.showModalDetalhesDepartamento = false
     },
 
     valueSearch (query) {

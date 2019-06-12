@@ -25,7 +25,7 @@
                 right
               ) mdi-plus
         PesquisaAlunos(
-          :modalidades='modalidadesBolsa.data'
+          :modalidades='modalidadesBolsa'
         )
         Card(
           color='#3169B3'
@@ -36,7 +36,7 @@
         )
           ListagemAlunos(
             :headers='headers'
-            :contentTable='alunos.data.alunos'
+            :contentTable='alunos.alunos'
             @openModalDetalhesAluno='openModalDetalhesAluno'
             @openModalAtualizaAluno='openModalAtualizaAluno'
             @openModalConfirmaRemocaoAluno='openModalConfirmaRemocaoAluno'
@@ -44,8 +44,8 @@
     CadastraAluno(
       :showDialogCadastraAluno='showDialogCadastraAluno'
       :idProfessor='getUsuarioLogado.id'
-      :curso='cursos.data'
-      :modalidadesBolsa='modalidadesBolsa.data'
+      :curso='cursos'
+      :modalidadesBolsa='modalidadesBolsa'
       :snackbarCadastraAluno='snackbarCadastraAluno'
       :snackbarAlunoCadastradoSucesso='snackbarAlunoCadastradoSucesso'
       :snackbarAlunoCadastradoErro='snackbarAlunoCadastradoErro'
@@ -60,8 +60,8 @@
     AtualizaAluno(
       :showDialogAtualizaAluno='showDialogAtualizaAluno'
       :aluno='alunoAtualiza'
-      :curso='cursos.data'
-      :modalidadesBolsa='modalidadesBolsa.data'
+      :curso='cursos'
+      :modalidadesBolsa='modalidadesBolsa'
       :snackbarValidaAtualizaAluno='snackbarValidaAtualizaAluno'
       :snackbarAlunoAtualizadoSucesso='snackbarAlunoAtualizadoSucesso'
       :snackbarAlunoAtualizadoErro='snackbarAlunoAtualizadoErro'
@@ -268,8 +268,8 @@ export default {
     },
 
     removeAlunoListagem (aluno) {
-      let index = this.alunos.data.alunos.indexOf(aluno)
-      this.alunos.data.alunos.splice(index, 1)
+      let index = this.alunos.alunos.indexOf(aluno)
+      this.alunos.alunos.splice(index, 1)
     }
   },
 

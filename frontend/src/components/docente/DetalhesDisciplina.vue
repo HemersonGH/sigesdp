@@ -2,7 +2,7 @@
   v-dialog(
     v-if='disciplina'
     max-width='700px'
-    v-model='showDialog'
+    v-model='showModalDetalhesDisciplina'
     :persistent='true'
     :scrollable='true'
   )
@@ -52,7 +52,7 @@
         v-spacer
         v-btn.white--text.style-button(
           color='blue darken-1'
-          @click='close()'
+          @click='closeModalDetalehesDisciplina()'
         ) Fechar
 </template>
 
@@ -65,7 +65,7 @@ export default {
       type: Object
     },
 
-    showDialog: {
+    showModalDetalhesDisciplina: {
       type: Boolean,
       required: true
     }
@@ -77,8 +77,8 @@ export default {
   },
 
   methods: {
-    close () {
-      this.$emit('close')
+    closeModalDetalehesDisciplina () {
+      this.$emit('closeModalDetalehesDisciplina')
     }
   }
 }

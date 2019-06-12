@@ -1,5 +1,6 @@
 <template lang="pug">
   v-data-table(
+    v-if='contentTable'
     :headers='headers'
     :items='contentTable'
     :rows-per-page-items='setRowPerPagItens'
@@ -34,7 +35,7 @@
               v-on='on'
               slot='activator'
               icon
-              @click.stop='viewDetails(item)'
+              @click.stop='viewDetailsDepartamento(item)'
             )
               v-icon.no-margin(
                 color='#707070'
@@ -77,8 +78,8 @@ export default {
   },
 
   methods: {
-    viewDetails (item) {
-      this.$emit('openModal', item)
+    viewDetailsDepartamento (departamento) {
+      this.$emit('openModalDetalhesDepartamento', departamento)
     }
   }
 }

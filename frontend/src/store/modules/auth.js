@@ -19,7 +19,7 @@ const actions = {
   async authenticate ({ commit }, user) {
     try {
       const result = await axios.post('/login', user)
-      commit('SET_AUTH_USER', result)
+      commit('SET_AUTH_USER', result.data)
     } catch (error) {
       return error
     }

@@ -25,7 +25,7 @@
                 right
               ) mdi-plus
         PesquisaProjetosPesquisa(
-          :departamentos='departamentos.data'
+          :departamentos='departamentos'
         )
         Card(
           color='#E20000'
@@ -36,7 +36,7 @@
         )
           ListagemProjetosPesquisa(
             :headers='headers'
-            :contentTable='projetosPesquisa.data.projetosPesquisa'
+            :contentTable='projetosPesquisa.projetosPesquisa'
             @openModalDetalhesProjetoPesquisa='openModalDetalhesProjetoPesquisa'
             @openModalAtualizaProjetoPesquisa='openModalAtualizaProjetoPesquisa'
             @openModalConfirmaRemocaoProjetoPesquisa='openModalConfirmaRemocaoProjetoPesquisa'
@@ -44,12 +44,12 @@
     CadastraProjetoPesquisa(
       :showDialogCadastraProjetoPesquisa='showDialogCadastraProjetoPesquisa'
       :idProfessor='getUsuarioLogado.id'
-      :alunos='alunos.data.alunos'
-      :snackbarCadastraProjetoPesquisa='snackbarCadastraProjetoPesquisa'
+      :alunos='alunos.alunos'
+      :snackbarValidaCamposProjetoPesquisa='snackbarValidaCamposProjetoPesquisa'
       :snackbarProjetoPesquisaCadastradoSucesso='snackbarProjetoPesquisaCadastradoSucesso'
       :snackbarProjetoPesquisaCadastradoErro='snackbarProjetoPesquisaCadastradoErro'
       @closeModalCadastraProjetoPesquisa='closeModalCadastraProjetoPesquisa'
-      @getNovoProjetoPesquisaCadastrado='getNovoProjetoPesquisaCadastrado'
+      @atualizaListaProjetoPesquisa='atualizaListaProjetoPesquisa'
     )
     DetalhesProjetoPesquisa(
       :showDialogDetalhesProjetoPesquisa='showDialogDetalhesProjetoPesquisa'
@@ -60,10 +60,12 @@
     AtualizaProjetoPesquisa(
       :showDialogAtualizaProjetoPesquisa='showDialogAtualizaProjetoPesquisa'
       :projetoPesquisaAtualiza='projetoPesquisaAtualiza'
-      :curso='cursos.data'
-      :modalidadesBolsa='alunos.data'
+      :alunos='alunos.alunos'
+      :snackbarValidaCamposProjetoPesquisa='snackbarValidaCamposProjetoPesquisa'
+      :snackbarProjetoPesquisaAtualizadoSucesso='snackbarProjetoPesquisaAtualizadoSucesso'
+      :snackbarProjetoPesquisaAtualizadoErro='snackbarProjetoPesquisaAtualizadoErro'
       @closeModalAtualizaProjetoPesquisa='closeModalAtualizaProjetoPesquisa'
-      @atualizaProjetoPesquisa='atualizaProjetoPesquisa'
+      @atualizaListaProjetoPesquisa='atualizaListaProjetoPesquisa'
     )
     ModalRemoveProjetoPesquisa(
       :projetoPesquisa='projetoPesquisaRemove'
@@ -72,7 +74,7 @@
       @removeProjetoPesquisaFromDataBase='removeProjetoPesquisaFromDataBase'
     )
     SnackBar(
-      :data='snackbarCadastraProjetoPesquisa'
+      :data='snackbarValidaCamposProjetoPesquisa'
     )
     SnackBar(
       :data='snackbarProjetoPesquisaCadastradoSucesso'
@@ -154,7 +156,7 @@ export default {
       showDialogDetalhesProjetoPesquisa: false,
       showDialogAtualizaProjetoPesquisa: false,
       showDialogCofirmaRemocaoProjetoPesquisa: false,
-      snackbarCadastraProjetoPesquisa: {
+      snackbarValidaCamposProjetoPesquisa: {
         icon: 'mdi-alert-circle-outline',
         message: 'Verifique os campos obrigatórios.',
         value: false,
@@ -205,7 +207,6 @@ export default {
       getDepartamentos: 'departamento/getDepartamentos',
       getAlunos: 'aluno/getAlunos',
       getProjetosPesquisa: 'projetoPesquisa/getProjetosPesquisa',
-      updateProjetoPesquisa: 'projetoPesquisa/updateProjetoPesquisa',
       deleteProjetoPesquisa: 'projetoPesquisa/deleteProjetoPesquisa',
       getModalidadesBolsa: 'modalidadesBolsa/getModalidadesBolsa',
       getCursos: 'curso/getCursos'
@@ -246,24 +247,13 @@ export default {
       this.showDialogCofirmaRemocaoProjetoPesquisa = false
     },
 
-    getNovoProjetoPesquisaCadastrado () {
+    atualizaListaProjetoPesquisa () {
       this.getProjetosPesquisa(this.getUsuarioLogado.id)
       this.showDialogCadastraProjetoPesquisa = false
       this.showDialogAtualizaProjetoPesquisa = false
     },
 
-    atualizaProjetoPesquisa (projetoPesquisa) {
-      this.updateProjetoPesquisa(projetoPesquisa).then((response) => {
-        this.getProjetosPesquisa(this.getUsuarioLogado.id)
-        this.showDialogAtualizaProjetoPesquisa = false
-        this.snackbarProjetoPesquisaAtualizadoSucesso.value = true
-      }).catch((erro) => {
-        this.snackbarProjetoPesquisaAtualizadoErro.value = true
-      })
-    },
-
     removeProjetoPesquisaFromDataBase (projetoPesquisa) {
-      console.log(projetoPesquisa)
       this.deleteProjetoPesquisa(projetoPesquisa.id).then((response) => {
         this.getProjetosPesquisa(this.getUsuarioLogado.id)
         this.showDialogCofirmaRemocaoProjetoPesquisa = false
@@ -275,8 +265,8 @@ export default {
     },
 
     removeProjetoPesquisaListagem (projetoPesquisa) {
-      let index = this.projetosPesquisa.data.projetosPesquisa.indexOf(projetoPesquisa)
-      this.projetosPesquisa.data.projetosPesquisa.splice(index, 1)
+      let index = this.projetosPesquisa.projetosPesquisa.indexOf(projetoPesquisa)
+      this.projetosPesquisa.projetosPesquisa.splice(index, 1)
     }
   },
 

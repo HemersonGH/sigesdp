@@ -44,26 +44,27 @@ const mutations = {
 const actions = {
   async getDisciplinas ({ commit }, id) {
     const response = await axios.get(`/docentes/disciplinas/${id}`)
-    commit('SET_DISCIPLINAS_LIST', response)
+    commit('SET_DISCIPLINAS_LIST', response.data)
+    return response.data
   },
   async getDisciplina ({ commit }, id) {
     const response = await axios.get(`/disciplinas/${id}`)
-    commit('SET_DISCIPLINA', response)
+    commit('SET_DISCIPLINA', response.data)
     return response.data
   },
   async createDisciplina ({ commit }, novoDisciplina) {
     const response = await axios.post('/disciplinas/nova', novoDisciplina)
     commit('SET_CADASTRA_DISCIPLINA', response.data)
-    return response
+    return response.data
   },
   async updateDisciplina ({ commit }, disciplinaAtualizada) {
     const response = await axios.put('/disciplinas/atualiza', disciplinaAtualizada)
     commit('SET_DISCIPLINA_ATUALIZADA', response.data)
-    return response
+    return response.data
   },
   async deleteDisciplina ({ commit }, id) {
     const response = await axios.delete(`/disciplinas/remove/${id}`)
-    commit('SET_DISCIPLINA_REMOVIDA', response)
+    commit('SET_DISCIPLINA_REMOVIDA', response.data)
     return response.data
   }
 }

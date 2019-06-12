@@ -15,7 +15,7 @@
           :link='routeParent'
         )
         PesquisaDocentes(
-          :departamentos='departamentosSelect.data'
+          :departamentos='departamentosSelect'
         )
         Card(
           color='#11802C'
@@ -26,7 +26,7 @@
         )
           ListagemDocentes(
             :headers='headers'
-            :contentTable='docentes.data'
+            :contentTable='docentes'
             @openDetalhesDocente='openDetalhesDocente'
           )
     SnackBar(

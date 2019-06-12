@@ -1,7 +1,7 @@
 <template lang="pug">
   v-dialog(
-    max-width='600px'
-    :value='showDialogAtualizaProjetoPesquisa'
+    max-width='850px'
+    v-model='showDialogAtualizaProjetoPesquisa'
     :persistent='true'
     :scrollable='true'
   )
@@ -23,29 +23,10 @@
               sm6
               md6
             )
-              v-select.font-weight-select(
-                :value='projetoPesquisaAtualiza.tipo'
-                label='Selecione o tipo da disciplina *'
-                color='#F5DE31'
-                :items='tipos'
-                item-value='id'
-                item-text='nome'
-                no-data-text='Não há dados.'
-                v-validate="'required'"
-                :error-messages="errors.collect('tipo')"
-                data-vv-name='tipo'
-                data-vv-as='Tipo da disciplina'
-                clearable
-              )
-            v-flex.padding(
-              xs6
-              sm6
-              md6
-            )
               v-text-field(
-                :value='projetoPesquisaAtualiza.nome'
-                label='Nome *'
-                color='#F5DE31'
+                v-model='projetoPesquisaAtualiza.titulo'
+                label='Título *'
+                color='#E20000'
                 v-validate="'required|max:100'"
                 :error-messages="errors.collect('nome')"
                 data-vv-name='nome'
@@ -57,62 +38,105 @@
               md6
             )
               v-text-field(
-                :value='projetoPesquisaAtualiza.codigo'
+                v-model='projetoPesquisaAtualiza.codigo'
                 label='Código *'
-                color='#F5DE31'
-                v-validate="'required|max:6'"
+                color='#E20000'
+                v-validate="'required|max:15'"
                 :error-messages="errors.collect('codigo')"
                 data-vv-name='codigo'
                 data-vv-as='Código'
-                mask='AAA###'
               )
             v-flex.padding(
               xs6
               sm6
               md6
+            )
+              v-menu(
+                v-model='menuDataInicio'
+                :close-on-content-click='false'
+                :nudge-right='30'
+                lazy
+                transition='scale-transition'
+                offset-y
+                full-width
+                min-width='290px'
+              )
+                template(
+                  v-slot:activator='{ on }'
+                )
+                  v-text-field(
+                    v-on='on'
+                    v-model='projetoPesquisaAtualiza.dataInicio'
+                    color='#E20000'
+                    label='Data de Início'
+                    prepend-icon='event'
+                    v-validate="'required'"
+                    :error-messages="errors.collect('dataInicio')"
+                    data-vv-name='dataInicio'
+                    data-vv-as='Data de Início'
+                    mask='####-##-##'
+                  )
+                v-date-picker(
+                  v-model='projetoPesquisaAtualiza.dataInicio'
+                  @input='menuDataInicio = false'
+                  color='#E20000'
+                  scrollable
+                  locale='pt-BR'
+                )
+            v-flex.padding(
+              xs6
+              sm6
+              md6
+            )
+              v-menu(
+                v-model='menuDataTermino'
+                :close-on-content-click='false'
+                :nudge-right='30'
+                lazy
+                transition='scale-transition'
+                offset-y
+                full-width
+                min-width='290px'
+              )
+                template(
+                  v-slot:activator='{ on }'
+                )
+                  v-text-field(
+                    v-on='on'
+                    v-model='projetoPesquisaAtualiza.dataTermino'
+                    color='#E20000'
+                    label='Data de Término'
+                    prepend-icon='event'
+                    v-validate="'required'"
+                    :error-messages="errors.collect('dataTermino')"
+                    data-vv-name='dataTermino'
+                    data-vv-as='Data de Término'
+                    mask='####-##-##'
+                  )
+                v-date-picker(
+                  v-model='projetoPesquisaAtualiza.dataTermino'
+                  @input='menuDataTermino = false'
+                  color='#E20000'
+                  scrollable
+                  locale='pt-BR'
+                )
+            v-flex.padding(
+              xs12
+              sm12
+              md12
             )
               v-select(
-                :value='projetoPesquisaAtualiza.cargaHoraria'
-                label='Seleciona a carga horária *'
-                color='#F5DE31'
-                :items='cargasHoraria'
+                v-model='projetoPesquisaAtualiza.aluno.id'
+                label='Seleciona o discente *'
+                color='#E20000'
+                :items='alunos'
+                item-value='id'
+                item-text='nome'
                 no-data-text='Não há dados.'
                 v-validate="'required'"
-                :error-messages="errors.collect('cargaHoraria')"
-                data-vv-name='cargaHoraria'
-                data-vv-as='Carga Horária'
-                suffix='horas'
-                clearable
-              )
-            v-flex.padding(
-              xs6
-              sm6
-              md6
-            )
-              v-text-field(
-                :value='projetoPesquisaAtualiza.local'
-                label='Local *'
-                color='#F5DE31'
-                v-validate="'required|max:100'"
-                :error-messages="errors.collect('local')"
-                data-vv-name='local'
-                data-vv-as='Local'
-              )
-            v-flex.padding(
-              xs6
-              sm6
-              md6
-            )
-              v-select.font-weight-select(
-                :value='projetoPesquisaAtualiza.horario'
-                label='Selecione um horário *'
-                color='#F5DE31'
-                :items='horarios'
-                no-data-text='Não há dados.'
-                v-validate="'required'"
-                :error-messages="errors.collect('horario')"
-                data-vv-name='horario'
-                data-vv-as='Horário'
+                :error-messages="errors.collect('idAluno')"
+                data-vv-name='idAluno'
+                data-vv-as='Discente'
                 clearable
               )
             v-flex.padding(
@@ -120,19 +144,15 @@
               sm12
               md12
             )
-              v-select.font-weight-select(
-                :value='projetoPesquisaAtualiza.departamento.id'
-                label='Selecione um departamento *'
-                color='#F5DE31'
-                :items='departamentos'
-                item-value='id'
-                item-text='nome'
-                no-data-text='Não há dados.'
-                v-validate="'required'"
-                :error-messages="errors.collect('departamento')"
-                data-vv-name='departamento'
-                data-vv-as='Departamento'
-                clearable
+              v-textarea(
+                v-model='projetoPesquisaAtualiza.resumo'
+                label='Resumo *'
+                color='#E20000'
+                auto-grow
+                v-validate="'required|max:800'"
+                :error-messages="errors.collect('resumo')"
+                data-vv-name='resumo'
+                data-vv-as='Resumo'
               )
       v-divider.mx-3
       v-card-actions
@@ -152,12 +172,10 @@
           v-icon(
             right
           ) mdi-content-save
-    SnackBar(
-      :data='snackbarValidaAtualizaprojetoPesquisa'
-    )
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
@@ -181,40 +199,39 @@ export default {
       type: Object
     },
 
-    departamentos: {
-      type: [Object, Array]
+    alunos: {
+      type: Array,
+      required: true
+    },
+
+    snackbarValidaCamposProjetoPesquisa: {
+      type: Object,
+      required: true
+    },
+
+    snackbarProjetoPesquisaAtualizadoSucesso: {
+      type: Object,
+      required: true
+    },
+
+    snackbarProjetoPesquisaAtualizadoErro: {
+      type: Object,
+      required: true
     }
   },
 
   data () {
     return {
-      tipos: [
-        {
-          id: 0,
-          nome: 'Graduação'
-        },
-        {
-          id: 1,
-          nome: 'Pós-Graduação'
-        }
-      ],
-      cargasHoraria: [
-        '34', '68', '102'
-      ],
-      horarios: [
-        '07:00', '08:00', '09:00', '10:00', '14:00', '13:00',
-        '14:00', '15:00', '16:00', '17:00', '19:00', '21:00'
-      ],
-      snackbarValidaAtualizaprojetoPesquisa: {
-        icon: 'mdi-alert-circle-outline',
-        message: 'Verifique os campos obrigatórios.',
-        value: false,
-        color: 'error'
-      }
+      menuDataInicio: false,
+      menuDataTermino: false
     }
   },
 
   methods: {
+    ...mapActions({
+      updateProjetoPesquisa: 'projetoPesquisa/updateProjetoPesquisa'
+    }),
+
     fecharAtualizaProjetoPesquisa () {
       this.$emit('closeModalAtualizaProjetoPesquisa')
     },
@@ -222,9 +239,14 @@ export default {
     atualizaProjetoPesquisa () {
       this.$validator.validateAll().then(sucess => {
         if (sucess) {
-          this.$emit('atualizaProjetoPesquisa', this.projetoPesquisaAtualiza)
+          this.updateProjetoPesquisa(this.projetoPesquisaAtualiza).then((response) => {
+            this.snackbarProjetoPesquisaAtualizadoSucesso.value = true
+            this.$emit('atualizaListaProjetoPesquisa')
+          }).catch((erro) => {
+            this.snackbarProjetoPesquisaAtualizadoErro.value = true
+          })
         } else {
-          this.snackbarValidaAtualizaprojetoPesquisa.value = true
+          this.snackbarValidaCamposProjetoPesquisa.value = true
         }
       })
     }

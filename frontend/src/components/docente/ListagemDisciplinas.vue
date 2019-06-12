@@ -45,7 +45,7 @@
                 v-on='on'
                 slot='activator'
                 icon
-                @click.stop='viewDetails(item)'
+                @click.stop='viewDetailsDisciplina(item)'
               )
                 v-icon.no-margin(
                   color='#707070'
@@ -119,8 +119,8 @@ export default {
   },
 
   methods: {
-    viewDetails (item) {
-      this.$emit('openModal', item)
+    viewDetailsDisciplina (disciplina) {
+      this.$emit('openModalDetalhesDisciplina', disciplina)
     },
 
     valueSearch (query) {

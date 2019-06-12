@@ -25,23 +25,24 @@
               title='Graduação'
               text='Pesquise as disciplina de graduação do professor'
               :disciplinas='this.disciplinas.filter(function (disciplina) { return disciplina.tipo === 0 })'
-              @openModal='openModal'
+              @openModalDetalhesDisciplina='openModalDetalhesDisciplina'
             )
           v-tab-item
             ListagemDisciplinas(
               title='Pós-Graduação'
               text='Pesquise as disciplina de pós-graduação do professor'
               :disciplinas='this.posGraduacao = this.disciplinas.filter(function (disciplina) { return disciplina.tipo === 1 })'
-              @openModal='openModal'
+              @openModalDetalhesDisciplina='openModalDetalhesDisciplina'
             )
       DetalhesDisciplina(
-        :showDialog='showDialog'
+        :showModalDetalhesDisciplina='showModalDetalhesDisciplina'
         :disciplina='disciplina'
-        @close='closeModal'
+        @closeModalDetalehesDisciplina='closeModalDetalehesDisciplina'
       )
 </template>
 
 <script>
+import _ from 'lodash'
 import ListagemDisciplinas from '@/components/docente/ListagemDisciplinas.vue'
 import DetalhesDisciplina from '@/components/docente/DetalhesDisciplina.vue'
 
@@ -64,18 +65,18 @@ export default {
       graduacao: null,
       posGraduacao: null,
       disciplina: null,
-      showDialog: false
+      showModalDetalhesDisciplina: false
     }
   },
 
   methods: {
-    openModal (item) {
-      this.disciplina = item
-      this.showDialog = true
+    openModalDetalhesDisciplina (disciplina) {
+      this.disciplina = _.cloneDeep(disciplina)
+      this.showModalDetalhesDisciplina = true
     },
 
-    closeModal () {
-      this.showDialog = false
+    closeModalDetalehesDisciplina () {
+      this.showModalDetalhesDisciplina = false
     }
   }
 }

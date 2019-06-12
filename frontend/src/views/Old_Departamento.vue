@@ -29,7 +29,7 @@
           DataTable(
             :headers='headers'
             :columnsTable='columnsTable'
-            :contentTable='departamentos.data'
+            :contentTable='departamentos'
             :search='search'
             @openModal='openModal'
           )

@@ -26,11 +26,11 @@ const mutations = {
 const actions = {
   async getDepartamentos ({ commit }) {
     const result = await axios.get('/departamentos')
-    commit('SET_DEPARTAMENTOS', result)
+    commit('SET_DEPARTAMENTOS', result.data)
   },
   async getDepartamentosSelect ({ commit }) {
     const result = await axios.get('/departamentos-list')
-    commit('SET_DEPARTAMENTOS_LIST', result)
+    commit('SET_DEPARTAMENTOS_LIST', result.data)
   }
 }
 

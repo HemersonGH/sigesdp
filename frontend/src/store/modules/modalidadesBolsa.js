@@ -18,7 +18,8 @@ const mutations = {
 const actions = {
   async getModalidadesBolsa ({ commit }) {
     const result = await axios.get('/modalidades-bolsa')
-    commit('SET_MODALIDADE_BOLSA', result)
+    commit('SET_MODALIDADE_BOLSA', result.data)
+    return result.data
   }
 }
 

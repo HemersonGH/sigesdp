@@ -33,7 +33,10 @@
             )
               h5.font-weight-bold.no-margin-bottom
                 | Período:
-                span.style-sub-title {{ projetoPesquisaDetalhes.dataInicio }} até {{ projetoPesquisaDetalhes.dataTermino }}
+                span.style-sub-title
+                  | {{ formatDate(projetoPesquisaDetalhes.dataInicio) }}
+                  | até
+                  | {{ formatDate(projetoPesquisaDetalhes.dataTermino) }}
             v-flex(
               xs12
               sm12
@@ -108,6 +111,15 @@ export default {
   methods: {
     closeDetalhesProjetoPesquisa () {
       this.$emit('closeModalDetalhesProjetoPesquisa')
+    },
+
+    formatDate (date) {
+      if (!date) {
+        return null
+      } else {
+        const [year, month, day] = date.split('-')
+        return `${day}/${month}/${year}`
+      }
     }
   }
 }

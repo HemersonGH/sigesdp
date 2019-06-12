@@ -18,7 +18,7 @@ const mutations = {
 const actions = {
   async getAreasConhecimento ({ commit }) {
     const result = await axios.get('/areas-conhecimento')
-    commit('SET_AREA_CONHECIMENTO_LIST', result)
+    commit('SET_AREA_CONHECIMENTO_LIST', result.data)
   }
 }
 

@@ -25,7 +25,7 @@
                 right
               ) mdi-plus
         PesquisaDisciplinas(
-          :departamentos='departamentosSelect.data'
+          :departamentos='departamentosSelect'
         )
         Card(
           color='#11802C'
@@ -36,7 +36,7 @@
         )
           ListagemDisciplinas(
             :headers='headers'
-            :contentTable='disciplinas.data.disciplinas'
+            :contentTable='disciplinas.disciplinas'
             @openModalDetalhesDisciplina='openModalDetalhesDisciplina'
             @openModalAtualizaDisciplina='openModalAtualizaDisciplina'
             @openModalConfirmaRemocaoDisciplina='openModalConfirmaRemocaoDisciplina'
@@ -44,7 +44,7 @@
     CadastraDisciplina(
       :showDialogCadastraDisciplina='showDialogCadastraDisciplina'
       :idProfessor='getUsuarioLogado.id'
-      :departamentos='departamentosSelect.data'
+      :departamentos='departamentosSelect'
       :snackbarCadastraDisciplina='snackbarCadastraDisciplina'
       :snackbarDisciplinaCadastradaSucesso='snackbarDisciplinaCadastradaSucesso'
       :snackbarDisciplinaCadastradaErro='snackbarDisciplinaCadastradaErro'
@@ -59,7 +59,7 @@
     AtualizaDisciplina(
       :showDialogAtualizaDisciplina='showDialogAtualizaDisciplina'
       :disciplina='disciplinaAtualiza'
-      :departamentos='departamentosSelect.data'
+      :departamentos='departamentosSelect'
       :snackbarValidaAtualizaDisciplina='snackbarValidaAtualizaDisciplina'
       :snackbarDisciplinaAtualizadaSucesso='snackbarDisciplinaAtualizadaSucesso'
       :snackbarDisciplinaAtualizadaErro='snackbarDisciplinaAtualizadaErro'
@@ -276,8 +276,8 @@ export default {
     },
 
     removeDisciplinaListagem (disciplina) {
-      let index = this.disciplinas.data.disciplinas.indexOf(disciplina)
-      this.disciplinas.data.disciplinas.splice(index, 1)
+      let index = this.disciplinas.disciplinas.indexOf(disciplina)
+      this.disciplinas.disciplinas.splice(index, 1)
     }
   },
 
