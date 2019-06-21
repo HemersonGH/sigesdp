@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {
   SET_PROJETO_PESQUISA,
+  SET_ALL_PROJETOS_PESQUISA_LIST,
   SET_PROJETOS_PESQUISA_LIST,
   SET_CADASTRA_PROJETO_PESQUISA,
   SET_PROJETO_PESQUISA_ATUALIZADO,
@@ -8,6 +9,7 @@ import {
 } from '../mutation-types'
 
 const state = {
+  allProjetosPesquisa: [],
   projetosPesquisa: [],
   projetoPesquisa: {},
   projetoPesquisaNovo: null,
@@ -16,6 +18,7 @@ const state = {
 }
 
 const getters = {
+  allProjetosPesquisa: state => state.allProjetosPesquisa,
   projetosPesquisa: state => state.projetosPesquisa,
   projetoPesquisa: state => state.projetoPesquisa,
   projetoPesquisaNovo: state => state.projetoPesquisaNovo,
@@ -24,6 +27,9 @@ const getters = {
 }
 
 const mutations = {
+  [SET_ALL_PROJETOS_PESQUISA_LIST] (state, allProjetosPesquisa) {
+    state.allProjetosPesquisa = allProjetosPesquisa
+  },
   [SET_PROJETOS_PESQUISA_LIST] (state, projetosPesquisa) {
     state.projetosPesquisa = projetosPesquisa
   },
@@ -42,6 +48,11 @@ const mutations = {
 }
 
 const actions = {
+  async getAllProjetosPesquisa ({ commit }, id) {
+    const response = await axios.get(`/projetos-pesquisa`)
+    commit('SET_ALL_PROJETOS_PESQUISA_LIST', response.data)
+    return response.data
+  },
   async getProjetosPesquisa ({ commit }, id) {
     const response = await axios.get(`/docentes/projetos-pesquisa/${id}`)
     commit('SET_PROJETOS_PESQUISA_LIST', response.data)

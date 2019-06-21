@@ -1,7 +1,7 @@
 <template lang="pug">
   v-card.ajust-top
     v-card(
-      color='#11802C'
+      color='#BC2121'
       :class='`elevation-4`'
     )
       v-card-title
@@ -10,7 +10,7 @@
             left
             color='white'
           ) mdi-filter
-          | Filtrar docentes
+          | Filtrar pesquisadores
     v-divider.mx-3
     v-card-text.padding
       v-container.padding(
@@ -22,48 +22,69 @@
           align-center
         )
           v-flex.padding-bottom(
-            xs4
-            sm2
-            md2
+            xs3
+            sm3
+            md3
           )
-            h5.padding-bottom.font-weight.no-margin-bottom Nome:
+            h5.padding-bottom.font-weight Nome:
           v-flex.padding-bottom(
-            xs8
-            sm10
-            md10
+            xs9
+            sm9
+            md9
           )
             v-text-field.padding-bottom(
-              v-model='filtroDocente.nome'
-              placeholder='Informe o nome do professor'
-              color='#11802C'
+              v-model='filtroPesquisador.nome'
+              placeholder='Informe o nome do pesquisador'
+              color='#BC2121'
               clearable
             )
           v-flex.padding-top(
-            xs4
-            sm2
-            md2
+            xs3
+            sm3
+            md3
           )
-            h5.padding-top.font-weight.no-margin-bottom Departamento:
+            h5.padding-top.font-weight Departamento:
           v-flex.padding-top(
-            xs8
-            sm10
-            md10
+            xs9
+            sm9
+            md9
           )
             v-select.padding-top(
-              v-model='filtroDocente.idDepartamento'
+              v-model='filtroPesquisador.idDepartamento'
               placeholder='Selecione um departamento'
               :items='departamentos'
               item-text='nome'
               item-value='id'
               no-data-text='Não há dados.'
-              color='#11802C'
+              color='#BC2121'
+              clearable
+            )
+          v-flex.padding-top(
+            xs3
+            sm3
+            md3
+          )
+            h5.padding-top.font-weight Área de Conhecimento:
+          v-flex.padding-top(
+            xs9
+            sm9
+            md9
+          )
+            v-select.padding-top(
+              v-model='filtroPesquisador.idAreaConhecimento'
+              placeholder='Selecione uma área de conhecimento'
+              :items='areasConhecimento'
+              item-text='nome'
+              item-value='id'
+              no-data-text='Não há dados.'
+              color='#BC2121'
               clearable
             )
       v-divider.mx-3
       v-card-actions
         v-btn.white--text.style-button(
           color='#707070'
-          @click='limparFiltroDocentes()'
+          @click='limparFiltroPesquisadores()'
         )
           v-icon(
             left
@@ -71,8 +92,8 @@
           | Limpar
         v-spacer
         v-btn.white--text.style-button(
-          color='#11802C'
-          @click='pesquisaDocentes()'
+          color='#BC2121'
+          @click='pesquisaPesquisadores()'
         ) Pesquisar
           v-icon(
             right
@@ -83,7 +104,7 @@
 import Card from '@/components/shared/Card.vue'
 
 export default {
-  name: 'PesquisaDocentes',
+  name: 'PesquisaPesquisadores',
 
   components: {
     Card
@@ -92,23 +113,36 @@ export default {
   props: {
     departamentos: {
       type: [Object, Array]
+    },
+
+    areasConhecimento: {
+      type: [Object, Array]
     }
   },
 
   data () {
     return {
-      filtroDocente: {
-        nome: '',
-        idDepartamento: null
+      filtroPesquisador: {
+        nome: null,
+        idDepartamento: null,
+        idAreaConhecimento: null
       }
     }
   },
 
   methods: {
-    pesquisaDocentes () {
+    reset () {
+      this.filtroPesquisador.nome = null
+      this.filtroPesquisador.idDepartamento = null
+      this.filtroPesquisador.idAreaConhecimento = null
+      // this.$validator.reset()
     },
 
-    limparFiltroDocentes () {
+    pesquisaPesquisadores () {
+    },
+
+    limparFiltroPesquisadores () {
+      this.reset()
     }
   }
 }
@@ -118,6 +152,7 @@ export default {
 .padding {
   padding-top: 0px;
   padding-bottom: 0px;
+  margin: 0px !important;
 }
 
 .padding-bottom {

@@ -1,7 +1,7 @@
 <template lang="pug">
   v-card.ajust-top
     v-card(
-      color='#E20000'
+      color='#BC2121'
       :class='`elevation-4`'
     )
       v-card-title
@@ -26,7 +26,7 @@
             sm2
             md2
           )
-            h5.padding.font-weight.no-margin-bottom Código:
+            h5.padding.font-weight Código:
           v-flex.padding(
             xs8
             sm10
@@ -35,7 +35,7 @@
             v-text-field.padding-bottom(
               v-model='pesquisaProjetoPesquisa.codigo'
               placeholder='Informe o código da disciplina'
-              color='#E20000'
+              color='#BC2121'
               clearable
             )
           v-flex(
@@ -43,7 +43,7 @@
             sm2
             md2
           )
-            h5.font-weight.no-margin-bottom Nome:
+            h5.font-weight Nome:
           v-flex.padding(
             xs8
             sm10
@@ -52,7 +52,7 @@
             v-text-field.padding(
               v-model='pesquisaProjetoPesquisa.nome'
               placeholder='Informe o nome da disciplina'
-              color='#E20000'
+              color='#BC2121'
               clearable
             )
           v-flex.padding(
@@ -60,7 +60,7 @@
             sm2
             md2
           )
-            h5.font-weight.no-margin-bottom Departamento:
+            h5.font-weight Departamento:
           v-flex.padding(
             xs8
             sm10
@@ -69,7 +69,7 @@
             v-select.padding(
               placeholder='Selecione um departamento'
               v-model='pesquisaProjetoPesquisa.idDepartamento'
-              color='#E20000'
+              color='#BC2121'
               :items='departamentos'
               item-text='nome'
               item-value='id'
@@ -81,7 +81,7 @@
             sm2
             md2
           )
-            h5.font-weight.no-margin-bottom Tipo:
+            h5.font-weight Tipo:
           v-flex.padding(
             xs8
             sm10
@@ -90,7 +90,7 @@
             v-select(
               placeholder='Selecione o tipo da disciplina'
               v-model='pesquisaProjetoPesquisa.idTipo'
-              color='#E20000'
+              color='#BC2121'
               :items='tipos'
               item-text='nome'
               item-value='id'
@@ -109,7 +109,7 @@
           | Limpar
         v-spacer
         v-btn.white--text.style-button(
-          color='#E20000'
+          color='#BC2121'
           @click='pesquisarProjetoPesquisa()'
         ) Pesquisar
           v-icon(
@@ -155,15 +155,23 @@ export default {
   },
 
   methods: {
-    limparFiltroProjetoPesquisa () {
-
+    reset () {
+      this.pesquisaProjetoPesquisa.nome = null
+      this.pesquisaProjetoPesquisa.codigo = null
+      this.pesquisaProjetoPesquisa.idDepartamento = null
+      this.pesquisaProjetoPesquisa.idTipo = null
+      // this.$validator.reset()
     },
 
     pesquisarProjetoPesquisa () {
       // this.filtraAluno(this.pesquisaProjetoPesquisa.nome, this.pesquisaProjetoPesquisa.idModalidade).then((response) => {
-      //   this.getAlunos(this.idProfessor)
+      // this.getAlunos(this.idProfessor)
       // }).catch((erro) => {
       // })
+    },
+
+    limparFiltroProjetoPesquisa () {
+      this.reset()
     }
   }
 }
@@ -175,6 +183,8 @@ export default {
   padding-bottom: 5px !important;
   margin-top: 10px !important;
   margin-bottom: 5px !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
 }
 
 .padding {

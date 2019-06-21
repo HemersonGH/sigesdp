@@ -61,7 +61,7 @@ export default {
 
   data () {
     return {
-      title: 'Departamentos',
+      title: 'Listagem de Departamentos',
       text: 'Pesquise os departamentos da UFLA',
       headers: [
         {

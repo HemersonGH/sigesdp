@@ -46,10 +46,10 @@ public class ProjetoPesquisa extends GenericModel {
 
 	// id_grupo_pesquisa
 
-	@Required
-	@OneToOne
-	@JoinColumn(name = "id_anexo", referencedColumnName = "id")
-	private Anexo anexo;
+//	@Required
+//	@OneToOne
+//	@JoinColumn(name = "id_anexo", referencedColumnName = "id")
+//	private Anexo anexo;
 
 	@Required
 	@OneToOne
@@ -101,13 +101,13 @@ public class ProjetoPesquisa extends GenericModel {
 		this.resumo = resumo;
 	}
 
-	public Anexo getAnexo() {
-		return this.anexo;
-	}
-
-	public void setAnexo(Anexo anexo) {
-		this.anexo = anexo;
-	}
+//	public Anexo getAnexo() {
+//		return this.anexo;
+//	}
+//
+//	public void setAnexo(Anexo anexo) {
+//		this.anexo = anexo;
+//	}
 
 	public String getCodigo() {
 		return this.codigo;

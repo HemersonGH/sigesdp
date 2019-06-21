@@ -5,6 +5,8 @@ import Router from 'vue-router'
 import Alunos from '@/views/Alunos.vue'
 import Docentes from '@/views/Docentes.vue'
 import Pesquisa from '@/views/Pesquisa.vue'
+import Pesquisadores from '@/views/Pesquisadores.vue'
+import IniciacaoCientifica from '@/views/IniciacaoCientifica.vue'
 import Academico from '@/views/Academico.vue'
 import Disciplinas from '@/views/Disciplinas.vue'
 import Publicacoes from '@/views/Publicacoes.vue'
@@ -13,7 +15,7 @@ import ProjetosPesquisa from '@/views/ProjetosPesquisa.vue'
 
 import Login from '@/components/shared/Login.vue'
 import CadastraUsuario from '@/components/shared/CadastraUsuario.vue'
-import DetalhesDocentes from '@/components/docente/DetalhesDocente.vue'
+import DetalhesDocentes from '@/components/academico/docente/DetalhesDocente.vue'
 
 Vue.use(Router)
 
@@ -68,6 +70,20 @@ const router = new Router({
       name: 'pesquisa',
       component: Pesquisa,
       title: 'Pesquisa',
+      public: true
+    },
+    {
+      path: '/pesquisa/pesquisadores',
+      name: 'pesquisadores',
+      component: Pesquisadores,
+      title: 'Pesquisadores',
+      public: true
+    },
+    {
+      path: '/pesquisa/iniciacao-cientifica',
+      name: 'iniciacaoCientifica',
+      component: IniciacaoCientifica,
+      title: 'Iniciação Científica',
       public: true
     },
     {

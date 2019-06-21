@@ -100,7 +100,7 @@ export default {
         },
         {
           title: 'Cursos',
-          route: '/cursos',
+          route: '',
           icon: 'collections_bookmark',
           textTooltip: 'Acesse os cursos'
         }
@@ -126,7 +126,7 @@ export default {
         },
         {
           title: 'Publicações',
-          route: '/publicacoes',
+          route: '',
           icon: 'mdi-file-powerpoint',
           textTooltip: 'Gerenciar publicações'
         }

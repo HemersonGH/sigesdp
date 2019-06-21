@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import InformacoesPessoais from '@/components/docente/InformacoesPessoais.vue'
-import Contato from '@/components/docente/Contato.vue'
+import InformacoesPessoais from '@/components/academico/docente/InformacoesPessoais.vue'
+import Contato from '@/components/academico/docente/Contato.vue'
 
 export default {
   name: 'PerfilPessoal',

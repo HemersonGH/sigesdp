@@ -25,7 +25,7 @@
           )
           v-data-table(
             :headers='headers'
-            :items='contentTable'
+            :items='projetosPesquisa'
             :rows-per-page-items='setRowPerPagItens'
             rows-per-page-text='Linhas por página:'
             no-data-text='Não há dados para exibir.'
@@ -44,9 +44,9 @@
               slot='items'
               slot-scope='{ item }'
             )
-              td.text-xs-left {{ item.nome }}
-              td {{ item.sigla }}
-              td {{ item.chefe }}
+              td.text-xs-left {{ item.codigo }}
+              td {{ item.titulo }}
+              td {{ item.aluno.nome }}
               td.text-xs-right
                 v-tooltip(
                   top
@@ -59,7 +59,7 @@
                       v-on='on'
                       slot='activator'
                       icon
-                      @click.stop='viewDetails(item)'
+                      @click.stop='viewDetailsProjetoPesquisaDocente(item)'
                     )
                       v-icon.no-margin(
                         color='#707070'
@@ -83,14 +83,14 @@ export default {
   },
 
   props: {
-    contentTable: {
+    projetosPesquisa: {
       type: [Object, Array]
     }
   },
 
   data () {
     return {
-      title: 'Projetos de Pesquisas',
+      title: 'Listagem de Projetos de Pesquisa',
       text: 'Pesquise os projetos de pesquisas da UFLA',
       headers: [
         {
@@ -102,14 +102,12 @@ export default {
         {
           sortable: true,
           text: 'Título',
-          value: 'titulo',
-          align: 'right'
+          value: 'titulo'
         },
         {
           sortable: true,
-          text: 'Área do Conhecimento',
-          value: 'area',
-          align: 'center'
+          text: 'Bolsista',
+          value: 'aluno.nome'
         },
         {
           sortable: false,
@@ -128,15 +126,14 @@ export default {
           'value': -1
         }
       ],
-      showDialog: false,
       search: '',
       colorBottomFieldSearch: '#3169B3'
     }
   },
 
   methods: {
-    viewDetails (item) {
-      this.$emit('openModal', item)
+    viewDetailsProjetoPesquisaDocente (item) {
+      this.$emit('openModalDetalhesProjetoPesquisa', item)
     },
 
     valueSearch (query) {

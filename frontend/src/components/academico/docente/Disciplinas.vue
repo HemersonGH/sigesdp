@@ -22,14 +22,14 @@
           v-tab Pós-Graduação
           v-tab-item
             ListagemDisciplinas(
-              title='Graduação'
+              title='Listagem de Disciplinas de Graduação'
               text='Pesquise as disciplina de graduação do professor'
               :disciplinas='this.disciplinas.filter(function (disciplina) { return disciplina.tipo === 0 })'
               @openModalDetalhesDisciplina='openModalDetalhesDisciplina'
             )
           v-tab-item
             ListagemDisciplinas(
-              title='Pós-Graduação'
+              title='Listagem de Disciplinas de Pós-Graduação'
               text='Pesquise as disciplina de pós-graduação do professor'
               :disciplinas='this.posGraduacao = this.disciplinas.filter(function (disciplina) { return disciplina.tipo === 1 })'
               @openModalDetalhesDisciplina='openModalDetalhesDisciplina'
@@ -43,8 +43,8 @@
 
 <script>
 import _ from 'lodash'
-import ListagemDisciplinas from '@/components/docente/ListagemDisciplinas.vue'
-import DetalhesDisciplina from '@/components/docente/DetalhesDisciplina.vue'
+import ListagemDisciplinas from '@/components/academico/docente/ListagemDisciplinas.vue'
+import DetalhesDisciplina from '@/components/academico/docente/DetalhesDisciplina.vue'
 
 export default {
   name: 'Disciplinas',

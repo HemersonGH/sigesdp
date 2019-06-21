@@ -1,7 +1,7 @@
 <template lang="pug">
-  v-dialog(
+v-dialog(
     max-width='750px'
-    v-model='showDialogDetalhesProjetoPesquisa'
+    v-model='showModalDetalhesProjetoPesquisa'
     :persistent='true'
     :scrollable='true'
   )
@@ -25,7 +25,7 @@
             )
               h5.font-weight-bold.no-margin-bottom
                 | Código:
-                span.style-sub-title {{ projetoPesquisaDetalhes.codigo }}
+                span.style-sub-title {{ projetoPesquisa.codigo }}
             v-flex(
               xs6
               sm6
@@ -34,9 +34,9 @@
               h5.font-weight-bold.no-margin-bottom
                 | Período:
                 span.style-sub-title
-                  | {{ formatDate(projetoPesquisaDetalhes.dataInicio) }}
+                  | {{ formatDate(projetoPesquisa.dataInicio) }}
                   | até
-                  | {{ formatDate(projetoPesquisaDetalhes.dataTermino) }}
+                  | {{ formatDate(projetoPesquisa.dataTermino) }}
             v-flex(
               xs12
               sm12
@@ -44,7 +44,7 @@
             )
               h5.font-weight-bold.no-margin-bottom
                 | Título:
-                span.style-sub-title {{ projetoPesquisaDetalhes.titulo }}
+                span.style-sub-title {{ projetoPesquisa.titulo }}
             v-flex(
               xs6
               sm6
@@ -52,40 +52,53 @@
             )
               h5.font-weight-bold.no-margin-bottom
                 | Coordenador:
-                span.style-sub-title {{ docente.nome }}
+                span.style-sub-title {{ nomeDocente }}
             v-flex(
-              xs6
+              xs6v
               sm6
               md6
             )
               h5.font-weight-bold.no-margin-bottom
                 | Email:
-                span.style-sub-title {{ docente.usuario.email }}
+                span.style-sub-title {{ emailDocente }}
             v-flex(
               xs12
               sm12
               md12
             )
               h5.font-weight-bold.no-margin-bottom
-                | Área do Conhecimeto:
-                span.style-sub-title {{ docente.areaConhecimento.nome }}
+                | Área do Conhecimento:
+                span.style-sub-title {{ areaConhecimentoDocente }}
             v-flex(
-              xs12
-              sm12
-              md12
+              xs8
+              sm8
+              md8
             )
               h5.font-weight-bold.no-margin-bottom
                 | Discente Responsável:
-                span.style-sub-title {{ projetoPesquisaDetalhes.aluno.nome }}
+                span.style-sub-title {{ projetoPesquisa.aluno.nome }}
+            v-flex(
+              xs4
+              sm4
+              md4
+            )
+              h5.font-weight-bold.no-margin-bottom
+                | Modalidade:
+                span.style-sub-title {{ projetoPesquisa.aluno.modalidadeBolsa.sigla }}
+            v-flex(
+              xs12
+              sm12
+              md12
+            )
               h5.font-weight-bold.no-margin-bottom
                 | Resumo:
-                span.style-sub-title {{ projetoPesquisaDetalhes.resumo }}
+                span.style-sub-title {{ projetoPesquisa.resumo }}
       v-divider.mx-3
       v-card-actions
         v-spacer
         v-btn.white--text.style-button(
           color='blue darken-1'
-          @click='closeDetalhesProjetoPesquisa()'
+          @click='closeModalDetalhesProjetoPesquisa()'
         ) Fechar
 </template>
 
@@ -94,22 +107,30 @@ export default {
   name: 'DetalhesProjetoPesquisa',
 
   props: {
-    showDialogDetalhesProjetoPesquisa: {
+    nomeDocente: {
+      type: String
+    },
+
+    emailDocente: {
+      type: String
+    },
+
+    areaConhecimentoDocente: {
+      type: String
+    },
+
+    projetoPesquisa: {
+      type: Object
+    },
+
+    showModalDetalhesProjetoPesquisa: {
       type: Boolean,
       required: true
-    },
-
-    projetoPesquisaDetalhes: {
-      type: Object
-    },
-
-    docente: {
-      type: Object
     }
   },
 
   methods: {
-    closeDetalhesProjetoPesquisa () {
+    closeModalDetalhesProjetoPesquisa () {
       this.$emit('closeModalDetalhesProjetoPesquisa')
     },
 
@@ -127,26 +148,30 @@ export default {
 
 <style scoped>
 .no-margin-bottom {
-  padding-bottom: 0;
   margin-bottom: 0;
 }
 
-.no-margin-top {
+.no-margin-top{
   padding-top: 0;
 }
 
 .card-title {
   justify-content: center;
-  background: #E20000;
-}
-
-.style-button {
-  font-weight: 450 !important;
+  background: #2196f3;
 }
 
 .style-sub-title {
   padding-left: 10px;
   font-weight: 300;
-  font-size: calc(1.0625rem - 0.0895rem);
+  font-size: 95%;
+}
+
+.style-sub-resumo {
+  font-weight: 300;
+  font-size: 95%;
+}
+
+.style-button{
+  font-weight: 450 !important;
 }
 </style>

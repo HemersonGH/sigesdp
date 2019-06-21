@@ -38,8 +38,8 @@
 import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
-import PesquisaDocentes from '@/components/docente/PesquisaDocentes.vue'
-import ListagemDocentes from '@/components/docente/ListagemDocentes.vue'
+import PesquisaDocentes from '@/components/academico/docente/PesquisaDocentes.vue'
+import ListagemDocentes from '@/components/academico/docente/ListagemDocentes.vue'
 import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
@@ -55,7 +55,7 @@ export default {
 
   data () {
     return {
-      title: 'Docentes',
+      title: 'Listagem de Docentes',
       headers: [
         {
           sortable: true,

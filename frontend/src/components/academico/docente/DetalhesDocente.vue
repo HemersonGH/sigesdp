@@ -33,19 +33,32 @@
           :docente='docente'
         )
       v-tab-item
-        ListagemProjetosPesquisa
+        ListagemProjetosPesquisa(
+          :projetosPesquisa='docente.projetosPesquisa'
+          @openModalDetalhesProjetoPesquisa='openModalDetalhesProjetoPesquisa'
+        )
       v-tab-item
         Disciplinas(
           :disciplinas='docente.disciplinas'
         )
+    DetalhesProjetoPesquisa(
+      :showModalDetalhesProjetoPesquisa='showModalDetalhesProjetoPesquisa'
+      :projetoPesquisa='projetoPesquisa'
+      :nomeDocente='docente.nome'
+      :emailDocente='docente.usuario.email'
+      :areaConhecimentoDocente='docente.areaConhecimento.nome'
+      @closeModalDetalhesProjetoPesquisa='closeModalDetalhesProjetoPesquisa'
+    )
 </template>
 
 <script>
+import _ from 'lodash'
 import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
-import PerfilPessoal from '@/components/docente/PerfilPessoal.vue'
-import ListagemProjetosPesquisa from '@/components/docente/ListagemProjetosPesquisa.vue'
-import Disciplinas from '@/components/docente/Disciplinas.vue'
+import PerfilPessoal from '@/components/academico/docente/PerfilPessoal.vue'
+import ListagemProjetosPesquisa from '@/components/academico/docente/ListagemProjetosPesquisa.vue'
+import DetalhesProjetoPesquisa from '@/components/academico/docente/DetalhesProjetoPesquisa.vue'
+import Disciplinas from '@/components/academico/docente/Disciplinas.vue'
 
 export default {
   name: 'DetalhesDocente',
@@ -54,11 +67,14 @@ export default {
     LinkVoltar,
     PerfilPessoal,
     ListagemProjetosPesquisa,
+    DetalhesProjetoPesquisa,
     Disciplinas
   },
 
   data () {
     return {
+      projetoPesquisa: null,
+      showModalDetalhesProjetoPesquisa: false,
       routeParent: '/academico/docentes'
     }
   },
@@ -66,7 +82,16 @@ export default {
   methods: {
     ...mapActions({
       getDocente: 'docente/getDocente'
-    })
+    }),
+
+    openModalDetalhesProjetoPesquisa (item) {
+      this.projetoPesquisa = _.cloneDeep(item)
+      this.showModalDetalhesProjetoPesquisa = true
+    },
+
+    closeModalDetalhesProjetoPesquisa () {
+      this.showModalDetalhesProjetoPesquisa = false
+    }
   },
 
   computed: {

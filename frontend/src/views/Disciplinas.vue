@@ -102,12 +102,12 @@
 import _ from 'lodash'
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
-import PesquisaDisciplinas from '@/components/disciplina/PesquisaDisciplinas.vue'
-import ListagemDisciplinas from '@/components/disciplina/ListagemDisciplinas.vue'
-import CadastraDisciplina from '@/components/disciplina/CadastraDisciplina.vue'
-import DetalhesDisciplina from '@/components/disciplina/DetalhesDisciplina.vue'
-import AtualizaDisciplina from '@/components/disciplina/AtualizaDisciplina.vue'
-import ModalRemoveDisciplina from '@/components/disciplina/ModalRemoveDisciplina.vue'
+import PesquisaDisciplinas from '@/components/docente/disciplina/PesquisaDisciplinas.vue'
+import ListagemDisciplinas from '@/components/docente/disciplina/ListagemDisciplinas.vue'
+import CadastraDisciplina from '@/components/docente/disciplina/CadastraDisciplina.vue'
+import DetalhesDisciplina from '@/components/docente/disciplina/DetalhesDisciplina.vue'
+import AtualizaDisciplina from '@/components/docente/disciplina/AtualizaDisciplina.vue'
+import ModalRemoveDisciplina from '@/components/docente/disciplina/ModalRemoveDisciplina.vue'
 import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
@@ -126,7 +126,7 @@ export default {
 
   data () {
     return {
-      title: 'Disciplinas',
+      title: 'Listagem de Disciplinas',
       headers: [
         {
           sortable: true,

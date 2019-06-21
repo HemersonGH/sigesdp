@@ -26,7 +26,7 @@
             sm2
             md2
           )
-            h5.padding.font-weight.no-margin-bottom Código:
+            h5.padding.font-weight Código:
           v-flex.padding(
             xs8
             sm10
@@ -43,7 +43,7 @@
             sm2
             md2
           )
-            h5.font-weight.no-margin-bottom Nome:
+            h5.font-weight Nome:
           v-flex.padding(
             xs8
             sm10
@@ -60,7 +60,7 @@
             sm2
             md2
           )
-            h5.font-weight.no-margin-bottom Departamento:
+            h5.font-weight Departamento:
           v-flex.padding(
             xs8
             sm10
@@ -81,7 +81,7 @@
             sm2
             md2
           )
-            h5.font-weight.no-margin-bottom Tipo:
+            h5.font-weight Tipo:
           v-flex.padding(
             xs8
             sm10
@@ -156,8 +156,16 @@ export default {
   },
 
   methods: {
-    limparFiltroDisciplinas () {
+    reset () {
+      this.pesquisaDisciplina.nome = null
+      this.pesquisaDisciplina.codigo = null
+      this.pesquisaDisciplina.idDepartamento = null
+      this.pesquisaDisciplina.idTipo = null
+      // this.$validator.reset()
+    },
 
+    limparFiltroDisciplinas () {
+      this.reset()
     },
 
     pesquisarDisciplinas () {
@@ -176,6 +184,8 @@ export default {
   padding-bottom: 5px !important;
   margin-top: 10px !important;
   margin-bottom: 5px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 
 .padding {

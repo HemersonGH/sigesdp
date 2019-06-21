@@ -26,7 +26,7 @@
             sm2
             md2
           )
-            h5.padding-bottom.font-weight.no-margin-bottom Nome:
+            h5.padding-bottom.font-weight Nome:
           v-flex.padding-bottom(
             xs8
             sm10
@@ -43,7 +43,7 @@
             sm2
             md2
           )
-            h5.padding-top.font-weight.no-margin-bottom Modalidade:
+            h5.padding-top.font-weight Modalidade:
           v-flex.padding-top(
             xs8
             sm10
@@ -105,8 +105,14 @@ export default {
   },
 
   methods: {
-    limparFiltroAlunos () {
+    reset () {
+      this.pesquisaAluno.nome = null
+      this.pesquisaAluno.idModalidade = null
+      // this.$validator.reset()
+    },
 
+    limparFiltroAlunos () {
+      this.reset()
     },
 
     pesquisaAlunos () {
@@ -123,6 +129,7 @@ export default {
 .padding {
   padding-top: 0px;
   padding-bottom: 0px;
+  margin: 0px !important;
 }
 
 .padding-bottom {

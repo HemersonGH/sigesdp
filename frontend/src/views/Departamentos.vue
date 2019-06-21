@@ -44,9 +44,9 @@ import _ from 'lodash'
 import { mapActions, mapGetters } from 'vuex'
 import LinkVoltar from '@/components/shared/LinkVoltar.vue'
 import Card from '@/components/shared/Card.vue'
-import ListagemDepartamentos from '@/components/departamento/ListagemDepartamentos.vue'
+import ListagemDepartamentos from '@/components/academico/departamento/ListagemDepartamentos.vue'
 import FieldSearch from '@/components/shared/FieldSearch.vue'
-import DetalhesDepartamento from '@/components/departamento/DetalhesDepartamento.vue'
+import DetalhesDepartamento from '@/components/academico/departamento/DetalhesDepartamento.vue'
 
 export default {
   name: 'Departamentos',
@@ -61,7 +61,7 @@ export default {
 
   data () {
     return {
-      title: 'Departamentos',
+      title: 'Listagem de Departamentos',
       text: 'Pesquise os departamentos da UFLA',
       headers: [
         {

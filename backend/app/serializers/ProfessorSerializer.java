@@ -17,13 +17,20 @@ public class ProfessorSerializer {
 		docentesTables = new JSONSerializer().include("id", "nome", "departamento.nome", "departamento.sigla")
 				.exclude("*").prettyPrint(prettyPrint);
 
-		docentes = new JSONSerializer().include("id", "nome", "curriculoLattes", "formacaoAcademica", "sala",
-				"telefone", "usuario.id", "usuario.email", "departamento.id", "departamento.nome", "departamento.sigla",
-				"areaConhecimento.id", "areaConhecimento.nome", "disciplinas.id", "disciplinas.codigo",
-				"disciplinas.nome", "disciplinas.cargaHoraria", "disciplinas.local", "disciplinas.horario",
-				"disciplinas.tipo", "alunos.id", "alunos.nome", "alunos.email", "alunos.curso.id", "alunos.curso.nome",
-				"alunos.modalidadeBolsa.id", "alunos.modalidadeBolsa.nome", "alunos.modalidadeBolsa.sigla").exclude("*")
-				.prettyPrint(prettyPrint);
+		docentes = new JSONSerializer()
+				.include("id", "nome", "curriculoLattes", "formacaoAcademica", "sala", "telefone", "usuario.id",
+						"usuario.email", "departamento.id", "departamento.nome", "departamento.sigla",
+						"areaConhecimento.id", "areaConhecimento.nome", "disciplinas.id", "disciplinas.codigo",
+						"disciplinas.nome", "disciplinas.cargaHoraria", "disciplinas.local", "disciplinas.horario",
+						"disciplinas.tipo", "alunos.id", "alunos.nome", "alunos.email", "alunos.curso.id",
+						"alunos.curso.nome", "alunos.modalidadeBolsa.id", "alunos.modalidadeBolsa.nome",
+						"alunos.modalidadeBolsa.sigla", "projetosPesquisa.id", "projetosPesquisa.titulo",
+						"projetosPesquisa.dataInicio", "projetosPesquisa.dataTermino", "projetosPesquisa.resumo",
+						"projetosPesquisa.codigo", "projetosPesquisa.aluno.id", "projetosPesquisa.aluno.nome",
+						"projetosPesquisa.aluno.curso.nome", "projetosPesquisa.aluno.curso.departamento.nome",
+						"projetosPesquisa.aluno.curso.departamento.sigla", "projetosPesquisa.aluno.modalidadeBolsa.id",
+						"projetosPesquisa.aluno.modalidadeBolsa.nome", "projetosPesquisa.aluno.modalidadeBolsa.sigla")
+				.transform(new DateSerializer().getTransformer(), Date.class).exclude("*").prettyPrint(prettyPrint);
 
 		docentesDetails = new JSONSerializer()
 				.include("id", "nome", "curriculoLattes", "formacaoAcademica", "sala", "telefone", "departamento.id",
@@ -46,12 +53,13 @@ public class ProfessorSerializer {
 				"disciplinas.tipo", "disciplinas.departamento.id", "disciplinas.departamento.nome",
 				"disciplinas.departamento.sigla").exclude("*").prettyPrint(prettyPrint);
 
-		projetosPesquisaDocente = new JSONSerializer().include("id", "nome", "usuario.email", "areaConhecimento.id",
-				"areaConhecimento.nome", "projetosPesquisa.id", "projetosPesquisa.titulo",
-				"projetosPesquisa.dataInicio", "projetosPesquisa.dataTermino", "projetosPesquisa.resumo",
-				"projetosPesquisa.codigo", "projetosPesquisa.anexo.id", "projetosPesquisa.anexo.caminho",
-				"projetosPesquisa.aluno.id", "projetosPesquisa.aluno.nome", "projetosPesquisa.aluno.curso.nome",
-				"projetosPesquisa.aluno.curso.departamento.nome", "projetosPesquisa.aluno.curso.departamento.sigla")
+		projetosPesquisaDocente = new JSONSerializer()
+				.include("id", "nome", "usuario.email", "areaConhecimento.id", "areaConhecimento.nome",
+						"projetosPesquisa.id", "projetosPesquisa.titulo", "projetosPesquisa.dataInicio",
+						"projetosPesquisa.dataTermino", "projetosPesquisa.resumo", "projetosPesquisa.codigo",
+						"projetosPesquisa.aluno.id", "projetosPesquisa.aluno.nome", "projetosPesquisa.aluno.curso.nome",
+						"projetosPesquisa.aluno.curso.departamento.nome",
+						"projetosPesquisa.aluno.curso.departamento.sigla")
 				.transform(new DateSerializer().getTransformer(), Date.class).exclude("*").prettyPrint(prettyPrint);
 	}
 }

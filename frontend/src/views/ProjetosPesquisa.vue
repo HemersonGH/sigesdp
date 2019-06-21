@@ -16,7 +16,7 @@
             h2 Gerenciar Projetos de Pesquisa
           div.text-xs-right
             v-btn.white--text.style-button(
-              color='#E20000'
+              color='#BC2121'
               @click='openModalCadastraProjetoPesquisa()'
             ) Adicionar Projeto de Pesquisa
               v-icon(
@@ -28,7 +28,7 @@
           :departamentos='departamentos'
         )
         Card(
-          color='#E20000'
+          color='#BC2121'
           :title='title'
           styleTitleDataTable='title-data-table'
           full-width
@@ -100,12 +100,12 @@
 import _ from 'lodash'
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
-import CadastraProjetoPesquisa from '@/components/projeto-pesquisa/CadastraProjetoPesquisa.vue'
-import PesquisaProjetosPesquisa from '@/components/projeto-pesquisa/PesquisaProjetosPesquisa.vue'
-import ListagemProjetosPesquisa from '@/components/projeto-pesquisa/ListagemProjetosPesquisa.vue'
-import DetalhesProjetoPesquisa from '@/components/projeto-pesquisa/DetalhesProjetoPesquisa.vue'
-import AtualizaProjetoPesquisa from '@/components/projeto-pesquisa/AtualizaProjetoPesquisa.vue'
-import ModalRemoveProjetoPesquisa from '@/components/projeto-pesquisa/ModalRemoveProjetoPesquisa.vue'
+import CadastraProjetoPesquisa from '@/components/docente/projeto-pesquisa/CadastraProjetoPesquisa.vue'
+import PesquisaProjetosPesquisa from '@/components/docente/projeto-pesquisa/PesquisaProjetosPesquisa.vue'
+import ListagemProjetosPesquisa from '@/components/docente/projeto-pesquisa/ListagemProjetosPesquisa.vue'
+import DetalhesProjetoPesquisa from '@/components/docente/projeto-pesquisa/DetalhesProjetoPesquisa.vue'
+import AtualizaProjetoPesquisa from '@/components/docente/projeto-pesquisa/AtualizaProjetoPesquisa.vue'
+import ModalRemoveProjetoPesquisa from '@/components/docente/projeto-pesquisa/ModalRemoveProjetoPesquisa.vue'
 import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
@@ -124,7 +124,7 @@ export default {
 
   data () {
     return {
-      title: 'Projetos de Pesquisa',
+      title: 'Listagem de Projetos de Pesquisa',
       headers: [
         {
           sortable: true,

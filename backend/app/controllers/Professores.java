@@ -40,7 +40,7 @@ public class Professores extends DefaultController {
 		}
 
 //		renderJSON(professor);
-		renderJSON(professor, ProfessorSerializer.docentesDetails);
+		renderJSON(professor, ProfessorSerializer.docentes);
 	}
 
 	public static void atualizaDisciplina(Professor professor) {

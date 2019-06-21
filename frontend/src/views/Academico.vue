@@ -59,7 +59,7 @@ export default {
           text: 'Consulte as publicações dos discentes.',
           colorCard: '#B836B6',
           icon: 'mdi-book-open',
-          route: '/academico/publicacoes'
+          route: ''
         }
       ]
     }

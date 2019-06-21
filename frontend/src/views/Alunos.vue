@@ -104,12 +104,12 @@
 import _ from 'lodash'
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/shared/Card.vue'
-import PesquisaAlunos from '@/components/aluno/PesquisaAlunos.vue'
-import ListagemAlunos from '@/components/aluno/ListagemAlunos.vue'
-import CadastraAluno from '@/components/aluno/CadastraAluno.vue'
-import DetalhesAluno from '@/components/aluno/DetalhesAluno.vue'
-import AtualizaAluno from '@/components/aluno/AtualizaAluno.vue'
-import ModalRemoveAluno from '@/components/aluno/ModalRemoveAluno.vue'
+import PesquisaAlunos from '@/components/docente/aluno/PesquisaAlunos.vue'
+import ListagemAlunos from '@/components/docente/aluno/ListagemAlunos.vue'
+import CadastraAluno from '@/components/docente/aluno/CadastraAluno.vue'
+import DetalhesAluno from '@/components/docente/aluno/DetalhesAluno.vue'
+import AtualizaAluno from '@/components/docente/aluno/AtualizaAluno.vue'
+import ModalRemoveAluno from '@/components/docente/aluno/ModalRemoveAluno.vue'
 import SnackBar from '@/components/shared/SnackBar.vue'
 
 export default {
@@ -128,7 +128,7 @@ export default {
 
   data () {
     return {
-      title: 'Alunos',
+      title: 'Listagem de Alunos',
       headers: [
         {
           sortable: true,
