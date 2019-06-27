@@ -20,12 +20,11 @@ import DetalhesDocentes from '@/components/academico/docente/DetalhesDocente.vue
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
-      name: 'home',
+      redirect: '/academico',
+      name: 'academico',
       component: Academico,
       title: 'Acadêmico',
       public: true

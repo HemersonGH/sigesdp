@@ -10,6 +10,6 @@ import models.*;
 public class Application extends Controller {
 
 	public static void index() {
-		render();
+		renderTemplate("public/index.html");
 	}
 }

@@ -90,8 +90,8 @@ export default {
   data () {
     return {
       user: {
-        email: 'hemersonel@gmail.com',
-        senha: 'Eueueueueueu'
+        email: '',
+        senha: ''
       },
       snackbarCreateUser: {
         icon: 'mdi-check-outline',
