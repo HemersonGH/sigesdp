@@ -25,7 +25,7 @@
         )
           v-img.background(
             v-if='logoUfla'
-            src='./img/svg_ufla_colorida_chapada.svg'
+            :src='imgLogoUfla'
             height='150'
             contain
           )
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import imgLogoUfla from '@/assets/images/svg_ufla_colorida_chapada.svg'
+
 export default {
   name: 'Card',
 
@@ -106,6 +108,12 @@ export default {
       default: false
     }
   },
+  data () {
+    return {
+      imgLogoUfla: imgLogoUfla
+    }
+  },
+
   computed: {
     hasOffset () {
       return this.$slots.header ||
