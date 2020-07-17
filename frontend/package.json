@@ -12,7 +12,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
     "sjcl": "^1.0.8",
